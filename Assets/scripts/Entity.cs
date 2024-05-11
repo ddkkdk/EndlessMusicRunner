@@ -28,7 +28,7 @@ public class Entity : MonoBehaviour
     public bool facingRight = true;
     protected virtual void Awake() 
     {
-    
+        
     }
 
     protected virtual void Start() 
