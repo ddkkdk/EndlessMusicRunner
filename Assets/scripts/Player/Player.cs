@@ -53,7 +53,7 @@ public class Player : Entity
     {
         base.Start();
     
-        stateMachine.Initialized(idleState);
+        stateMachine.Initialized(moveState);
     }
 
     protected override void Update()

@@ -22,14 +22,13 @@ public class PlayerMoveState : PlayerGroundState
     {
         base.Update();
 
-       player.SetVelocity(xInput * player.moveSpeed, _rigidBody.velocity.y);
+    
 
-        if (xInput==0 || player.isWallDetected()) 
-        {
-            stateMachine.ChangeState(player.idleState);
-        
-        }
+     
+        if (Input.GetMouseButtonDown(0))
+            stateMachine.ChangeState(player.attackState); 
 
-   
+
+
     }
 }

@@ -24,13 +24,6 @@ public class PlayerIdleState : PlayerGroundState
     {
         base.Update();
 
-        if (xInput == player.flipDir && player.isWallDetected())
-            return;
-         
-        if (xInput!=0 && !player.isBusy) 
-        {
-            stateMachine.ChangeState(player.moveState);
-        
-        }
+      
     }
 }
