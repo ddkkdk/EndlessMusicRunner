@@ -4,50 +4,43 @@ using UnityEngine;
 
 public class PlayerState
 {
-   
-    protected PlayerStateMachine stateMachine;
-    protected Rigidbody2D _rigidBody;
+    protected PlayerstateMachine stateMachine;
     protected Player player;
-    private string animBoolName;
 
-    protected float xInput;
-    protected float yInput;
-    protected float stateTimer;
+    private string animBoolName;
+    protected Rigidbody2D rb;
+
     protected bool triggerCalled;
-    public PlayerState( Player _player,PlayerStateMachine _stateMachine,string _animBoolName) 
+
+    public PlayerState(PlayerstateMachine stateMachine, Player player, string animBoolName)
     {
-        this.player = _player;
-        this.stateMachine = _stateMachine;
-        this.animBoolName = _animBoolName;
-    
+        this.stateMachine = stateMachine;
+        this.player = player;
+        this.animBoolName = animBoolName;
     }
 
     public virtual void Enter() 
     {
-        player.anim.SetBool(animBoolName, true);
-        _rigidBody = player.rb;
+        player.animator.SetBool(animBoolName, true);
+        rb = player.rb;
         triggerCalled = false;
     }
 
     public virtual void Update() 
     {
-        stateTimer -= Time.deltaTime;
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
-        player.anim.SetFloat("yVelocity", _rigidBody.velocity.y);
-       
+    
     }
 
     public virtual void Exit() 
     {
-        player.anim.SetBool(animBoolName, false);
+        player.animator.SetBool(animBoolName, false);
 
     }
 
     public virtual void AnimationFinishTrigger() 
     {
         triggerCalled = true;
+
     
     }
-   
 }

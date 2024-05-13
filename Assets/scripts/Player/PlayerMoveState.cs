@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundState
 {
-    public PlayerMoveState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
+    public PlayerMoveState(PlayerstateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
     {
+
     }
 
     public override void Enter()
@@ -15,20 +16,11 @@ public class PlayerMoveState : PlayerGroundState
 
     public override void Exit()
     {
-        base.Exit();
+        base.Exit(); 
     }
 
     public override void Update()
     {
         base.Update();
-
-    
-
-     
-        if (Input.GetMouseButtonDown(0))
-            stateMachine.ChangeState(player.attackState); 
-
-
-
     }
 }

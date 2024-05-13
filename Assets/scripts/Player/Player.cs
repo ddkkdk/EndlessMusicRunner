@@ -1,96 +1,49 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class Player : Entity
+public class Player : MonoBehaviour
 {
-    [Header("Attack details")]
-    public Vector2[] attackMovement;
+    public PlayerstateMachine stateMachine { get; private set; }
 
-    [Header("MoveInfo")]
-    public float moveSpeed;
-    public float jumpSpeed;
-
-    [Header("Dash Info")]
-    [SerializeField] private float dashCoolDown;
-    private float dashTimer;
-    public float dashSpeed;
-    public float dashDuration;
-    public float dashDirection { get; private set; }
-
-    public bool isBusy { get; private set; }
-
- 
-    public PlayerStateMachine stateMachine { get; private set; }
-
-    public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
-    public PlayerJumpState jumpState { get; private set; }
-    public PlayerAirState airState { get; private set; }
+    public PlayerJumpState jumpState { get; set; }
+    public PlayerPrimaryAttack primaryAttack { get; private set; }
 
-    public PlayerDashState dashState { get; private set; }
-    public PlayerWallSlideState wallSlideState { get; private set; }
-    public PlayerAttackState attackState { get; private set; }  
-    public PlayerWallJumpState wallJumpState { get; private set; }
+    public SingleAttackState singleAttack { get; private set; }
 
-    
-    protected override void Awake()
+    public Animator animator { get; private set; }
+    public Rigidbody2D rb { get; private set; }
+
+
+    private void Awake()
     {
-        base.Awake();
-        stateMachine=new PlayerStateMachine();
-        idleState = new PlayerIdleState(this, stateMachine, "Idle");
-        moveState = new PlayerMoveState(this, stateMachine, "Move");
-        jumpState = new PlayerJumpState(this, stateMachine, "Jump");
-        airState = new  PlayerAirState(this, stateMachine, "Jump");
-        dashState = new PlayerDashState(this, stateMachine, "Dash");
-        wallSlideState = new PlayerWallSlideState(this, stateMachine, "WallSlide");
-        attackState = new PlayerAttackState(this, stateMachine, "Attack");
-        wallJumpState = new PlayerWallJumpState(this, stateMachine, "WallJump");
+        stateMachine = new PlayerstateMachine();
+        moveState = new PlayerMoveState( stateMachine, this, "Move");
+        jumpState = new PlayerJumpState(stateMachine, this, "Jump");
+        primaryAttack = new PlayerPrimaryAttack(stateMachine, this, "Attack");
+        singleAttack = new SingleAttackState(stateMachine, this, "SingleAttack");
     }
 
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
-    
-        stateMachine.Initialized(moveState);
+        animator = GetComponentInChildren<Animator>();  
+        rb = GetComponent<Rigidbody2D>();
+        stateMachine.Initialize(moveState);
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
         stateMachine.currentState.Update();
-        CHeckForDashInput();      
-       
     }
 
-    public IEnumerator BusyFor(float _seconds) 
+    public void SetVelocity(float _xVelocity, float _yVelocity) 
     {
-        isBusy = true;
-        yield return new WaitForSeconds(_seconds);
-        isBusy = false;
+        rb.velocity = new Vector2(_xVelocity, _yVelocity);
+
     
     }
 
-    private void CHeckForDashInput() 
-    {
-        dashTimer -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer<0) 
-        {
-            dashTimer = dashCoolDown;
-            dashDirection = Input.GetAxisRaw("Horizontal");
-
-            if (dashDirection == 0)
-                dashDirection = flipDir;
-
-            stateMachine.ChangeState(dashState);
-        }
-         
-    
-    }
-
-    public virtual void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
-
-  
+    public void AnimationTrigger()=>stateMachine.currentState.AnimationFinishTrigger();
 
 }

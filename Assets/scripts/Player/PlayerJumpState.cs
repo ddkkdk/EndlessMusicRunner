@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerState
 {
-    public PlayerJumpState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
+    public PlayerJumpState(PlayerstateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
     {
-
     }
 
     public override void Enter()
     {
         base.Enter();
-        _rigidBody.velocity = new Vector3(_rigidBody.velocity.x, player.jumpSpeed);
+       // rb.velocity = new Vector2(rb.velocity.x, 17);
+        //rb.velocity = new Vector2(rb.velocity.x, 17);
+        rb.AddForce(new Vector2(0, 17), ForceMode2D.Impulse);
+        stateMachine.ChangeState(player.singleAttack);
+
+
+
     }
 
     public override void Exit()
@@ -23,8 +28,9 @@ public class PlayerJumpState : PlayerState
     public override void Update()
     {
         base.Update();
-
-        if (_rigidBody.velocity.y < 0)
-            stateMachine.ChangeState(player.airState);
+        if (rb.velocity.y == 0)
+            stateMachine.ChangeState(player.moveState);
     }
+
+  
 }
