@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerGroundState : PlayerState
 {
-    public PlayerGroundState(PlayerstateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
+    public PlayerGroundState(PlayerstateMachine stateMachine, Player player) : base(stateMachine, player)
     {
 
     }
@@ -25,7 +25,5 @@ public class PlayerGroundState : PlayerState
         if (Input.GetKeyDown(KeyCode.F))
             stateMachine.ChangeState(player.jumpState);
 
-        if(Input.GetKeyDown(KeyCode.J))
-            stateMachine.ChangeState(player.primaryAttack);
     }
 }

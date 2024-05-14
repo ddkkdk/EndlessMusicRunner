@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundState
 {
-    public PlayerMoveState(PlayerstateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
+    public PlayerMoveState(PlayerstateMachine stateMachine, Player player) : base(stateMachine, player)
     {
 
     }
@@ -12,6 +12,8 @@ public class PlayerMoveState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        player.skeletonObj.AnimationState.SetAnimation(16, "Running", true);
+        
     }
 
     public override void Exit()

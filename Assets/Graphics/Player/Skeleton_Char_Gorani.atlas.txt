@@ -1,0 +1,173 @@
+Skeleton_Char_Gorani.png
+	size: 1645, 1645
+	filter: Linear, Linear
+	pma: true
+	scale: 0.5
+arm_L
+	bounds: 580, 689, 129, 260
+	rotate: 90
+arm_L_jump
+	bounds: 1283, 1155, 183, 230
+arm_L_perfect
+	bounds: 1109, 1138, 259, 172
+	rotate: 90
+arm_L_ready
+	bounds: 1468, 1156, 229, 168
+	rotate: 90
+arm_L_retire1
+	bounds: 959, 19, 133, 152
+arm_L_retire2
+	bounds: 1437, 837, 144, 113
+	rotate: 90
+arm_L_super
+	bounds: 297, 3, 213, 200
+arm_R
+	bounds: 842, 689, 129, 260
+	rotate: 90
+arm_R_jump1
+	bounds: 1225, 4, 142, 107
+arm_R_jump2
+	bounds: 512, 8, 195, 126
+	offsets: 2, 0, 197, 126
+	rotate: 90
+arm_R_perfect
+	bounds: 577, 524, 241, 163
+arm_R_ready
+	bounds: 970, 1087, 137, 262
+arm_R_retire
+	bounds: 577, 379, 143, 226
+	rotate: 90
+arm_R_super
+	bounds: 820, 565, 258, 122
+blush
+	bounds: 1277, 936, 200, 28
+	rotate: 90
+body
+	bounds: 1346, 1387, 256, 290
+	rotate: 90
+body_perfect
+	bounds: 311, 488, 264, 309
+body_ready
+	bounds: 868, 820, 256, 265
+body_retire
+	bounds: 295, 205, 281, 276
+	rotate: 90
+body_super
+	bounds: 1001, 1399, 244, 343
+	rotate: 90
+cheek
+	bounds: 1001, 1351, 46, 101
+	rotate: 90
+ear_L
+	bounds: 1289, 605, 132, 147
+ear_L_ready
+	bounds: 1126, 749, 132, 157
+	rotate: 90
+ear_L_retire
+	bounds: 1094, 10, 129, 164
+ear_L_super
+	bounds: 2, 2, 141, 197
+ear_R
+	bounds: 1291, 456, 133, 147
+	offsets: 16, 0, 149, 147
+ear_R_ready
+	bounds: 1235, 258, 132, 157
+ear_R_super
+	bounds: 1104, 585, 183, 162
+effect_retire
+	bounds: 580, 1137, 34, 27
+effect_super
+	bounds: 573, 226, 212, 151
+eye
+	bounds: 1067, 439, 112, 18
+	rotate: 90
+eye_jump
+	bounds: 1598, 927, 110, 45
+	rotate: 90
+eye_perfect
+	bounds: 1080, 553, 134, 22
+	rotate: 90
+eye_retire
+	bounds: 1478, 312, 143, 118
+	offsets: 0, 0, 144, 118
+	rotate: 90
+eye_super
+	bounds: 1369, 257, 140, 49
+fur
+	bounds: 1369, 308, 146, 107
+	rotate: 90
+fur_retire
+	bounds: 1369, 6, 136, 116
+fur_super
+	bounds: 1437, 983, 170, 108
+	rotate: 90
+g
+	bounds: 2, 1166, 663, 477
+g2
+	bounds: 2, 799, 576, 365
+head
+	bounds: 667, 1087, 301, 262
+head_perfect
+	bounds: 667, 1351, 332, 292
+head_ready
+	bounds: 580, 820, 286, 265
+	offsets: 0, 1, 287, 266
+head_retire
+	bounds: 2, 201, 291, 287
+head_super
+	bounds: 2, 490, 307, 307
+leg_L
+	bounds: 805, 305, 130, 242
+	rotate: 90
+leg_L_jump1
+	bounds: 1307, 854, 128, 135
+leg_L_jump2
+	bounds: 1031, 176, 89, 154
+	rotate: 90
+leg_L_perfect
+	bounds: 1126, 883, 149, 253
+leg_L_ready1
+	bounds: 1285, 754, 117, 98
+leg_L_ready2
+	bounds: 1426, 457, 105, 151
+leg_L_retire
+	bounds: 1104, 417, 185, 166
+leg_L_super1
+	bounds: 1364, 124, 133, 131
+leg_L_super2
+	bounds: 640, 20, 124, 204
+leg_R
+	bounds: 787, 173, 130, 242
+	rotate: 90
+leg_R_jump
+	bounds: 820, 437, 126, 245
+	rotate: 90
+leg_R_perfect1
+	bounds: 1225, 113, 137, 143
+leg_R_perfect2
+	bounds: 145, 8, 191, 150
+	rotate: 90
+leg_R_ready
+	bounds: 1307, 991, 162, 128
+	rotate: 90
+leg_R_retire1
+	bounds: 1423, 694, 130, 141
+leg_R_retire2
+	bounds: 766, 21, 191, 150
+leg_R_super
+	bounds: 1049, 267, 184, 148
+mouth
+	bounds: 1511, 240, 100, 70
+mouth_jump
+	bounds: 1547, 1039, 115, 90
+	rotate: 90
+mouth_perfect
+	bounds: 1423, 610, 101, 82
+mouth_retire
+	bounds: 1499, 133, 105, 105
+mouth_super
+	bounds: 1507, 30, 101, 89
+	rotate: 90
+tail
+	bounds: 1526, 623, 69, 106
+	rotate: 90

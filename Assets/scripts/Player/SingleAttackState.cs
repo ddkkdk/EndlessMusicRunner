@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SingleAttackState : PlayerState
 {
-    public SingleAttackState(PlayerstateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
+    public SingleAttackState(PlayerstateMachine stateMachine, Player player) : base(stateMachine, player)
     {
     }
 

@@ -8,7 +8,7 @@ public class PlayerPrimaryAttack : PlayerState
 
     private float lastTimeAttack;
     private float comboWindow = 2;
-    public PlayerPrimaryAttack(PlayerstateMachine stateMachine, Player player, string animBoolName) : base(stateMachine, player, animBoolName)
+    public PlayerPrimaryAttack(PlayerstateMachine stateMachine, Player player) : base(stateMachine, player)
     {
     }
 
@@ -16,25 +16,20 @@ public class PlayerPrimaryAttack : PlayerState
     {
         base.Enter();
 
-        if (comboCounter > 2 || Time.time >=lastTimeAttack+comboWindow)
-            comboCounter = 0;
-
-        player.animator.SetInteger("ComboCounter", comboCounter);
+     
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        comboCounter++;
-        lastTimeAttack = Time.time;
+      
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (triggerCalled)
-            stateMachine.ChangeState(player.moveState);
+
     }
 }
