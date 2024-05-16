@@ -1,0 +1,53 @@
+{ "skeleton": { "images": "D:/1모음/1엘라스타즈/엘라 몬스터 스파인/수박/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "L_foot", "bone": "root", "attachment": "L_foot" },
+	{ "name": "R_foot", "bone": "root", "attachment": "R_foot" },
+	{ "name": "R_hand", "bone": "root", "attachment": "R_hand" },
+	{ "name": "bady", "bone": "root", "attachment": "bady" },
+	{ "name": "face_4", "bone": "root", "attachment": "face_4" },
+	{ "name": "face_3", "bone": "root", "attachment": "face_3" },
+	{ "name": "face_2", "bone": "root", "attachment": "face_2" },
+	{ "name": "face_1", "bone": "root", "attachment": "face_1" },
+	{ "name": "face", "bone": "root", "attachment": "face" },
+	{ "name": "L_hand", "bone": "root", "attachment": "L_hand" }
+],
+"skins": {
+	"default": {
+		"L_foot": {
+			"L_foot": { "x": 299, "y": -806.5, "width": 158, "height": 105 }
+		},
+		"R_foot": {
+			"R_foot": { "x": 572.5, "y": -733, "width": 145, "height": 80 }
+		},
+		"R_hand": {
+			"R_hand": { "x": 747, "y": -462.5, "width": 296, "height": 171 }
+		},
+		"bady": {
+			"bady": { "x": 361, "y": -401, "width": 600, "height": 774 }
+		},
+		"face_4": {
+			"face_4": { "x": 454, "y": -435.5, "width": 660, "height": 535 }
+		},
+		"face_3": {
+			"face_3": { "x": 454, "y": -468, "width": 408, "height": 476 }
+		},
+		"face_2": {
+			"face_2": { "x": 326.5, "y": -460, "width": 495, "height": 408 }
+		},
+		"face_1": {
+			"face_1": { "x": 298.5, "y": -487, "width": 437, "height": 336 }
+		},
+		"face": {
+			"face": { "x": 355, "y": -487, "width": 366, "height": 354 }
+		},
+		"L_hand": {
+			"L_hand": { "x": 100.5, "y": -316, "width": 171, "height": 310 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

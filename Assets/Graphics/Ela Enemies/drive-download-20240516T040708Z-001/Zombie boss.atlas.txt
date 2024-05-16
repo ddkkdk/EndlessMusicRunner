@@ -1,0 +1,141 @@
+Zombie boss.png
+	size: 701, 701
+	filter: Linear, Linear
+	pma: true
+	scale: 0.5
+Bag1
+	bounds: 524, 4, 56, 45
+Bag1_Attack2
+	bounds: 103, 5, 91, 71
+Bag1_Attack3
+	bounds: 525, 186, 91, 71
+Bag2
+	bounds: 568, 442, 115, 91
+Bag2_Attack1
+	bounds: 2, 196, 99, 135
+Bag2_Attack2
+	bounds: 2, 579, 202, 120
+Bag2_Attack3
+	bounds: 2, 457, 202, 120
+Eye
+	bounds: 582, 9, 48, 40
+Eye_Attack2
+	bounds: 578, 51, 46, 38
+Eye_Attack3
+	bounds: 660, 298, 39, 44
+Eye_X
+	bounds: 632, 33, 48, 40
+	offsets: 8, 10, 64, 61
+Hair
+	bounds: 412, 269, 95, 102
+Hair_Attack1
+	bounds: 245, 98, 109, 103
+	rotate: 90
+Hair_Attack2
+	bounds: 313, 241, 109, 97
+	rotate: 90
+Hair_Attack3
+	bounds: 565, 344, 96, 105
+	rotate: 90
+Head
+	bounds: 315, 481, 86, 134
+Head_Attack3
+	bounds: 140, 321, 86, 134
+Left arm
+	bounds: 568, 535, 114, 102
+Left arm1_Attack1
+	bounds: 350, 82, 48, 82
+	rotate: 90
+Left arm2_Attack1
+	bounds: 2, 3, 99, 58
+Left arm_Attack1
+	bounds: 206, 617, 178, 82
+Left arm_Attack2
+	bounds: 2, 333, 136, 122
+Left arm_Attack3
+	bounds: 103, 78, 96, 129
+Left leg
+	bounds: 509, 279, 51, 104
+Left leg2_Attack3
+	bounds: 672, 374, 66, 24
+	rotate: 90
+Left leg_Attack2
+	bounds: 222, 209, 110, 89
+	rotate: 90
+Left leg_Attack3
+	bounds: 626, 75, 56, 50
+LeftFinger1_Attack2
+	bounds: 196, 32, 44, 38
+	rotate: 90
+LeftFinger2_Attack2
+	bounds: 453, 2, 43, 69
+	rotate: 90
+Pants
+	bounds: 618, 127, 76, 70
+String1
+	bounds: 618, 199, 81, 58
+String2
+	bounds: 618, 199, 81, 58
+String1_Attack2
+	bounds: 500, 486, 137, 66
+	offsets: 0, 20, 137, 107
+	rotate: 90
+String2_Attack2
+	bounds: 228, 346, 138, 66
+	rotate: 90
+String2_Attack3
+	bounds: 389, 373, 82, 106
+	offsets: 28, 0, 138, 106
+String3_Attack3
+	bounds: 434, 168, 89, 99
+	offsets: 0, 4, 89, 107
+String_Attack2
+	bounds: 473, 385, 90, 99
+String_Attack3
+	bounds: 350, 132, 82, 107
+	offsets: 4, 3, 90, 110
+Tongue
+	bounds: 517, 51, 38, 59
+	rotate: 90
+Tongue_Attack1
+	bounds: 527, 91, 88, 31
+Zipper_Attack3
+	bounds: 228, 324, 37, 20
+body
+	bounds: 2, 63, 131, 99
+	rotate: 90
+body_Attack1
+	bounds: 296, 352, 91, 127
+body_Attack2
+	bounds: 206, 486, 107, 129
+body_Attack3
+	bounds: 386, 625, 147, 74
+pen_Attack1
+	bounds: 201, 82, 125, 42
+	rotate: 90
+right arm
+	bounds: 535, 639, 60, 155
+	rotate: 90
+right arm2_Attack3
+	bounds: 434, 101, 65, 91
+	rotate: 90
+right arm_Attack1
+	bounds: 403, 489, 95, 134
+right arm_Attack2
+	bounds: 103, 209, 117, 110
+right arm_Attack3
+	bounds: 245, 39, 99, 57
+right leg
+	bounds: 346, 39, 41, 105
+	rotate: 90
+right leg_Attack2
+	bounds: 527, 124, 60, 89
+	rotate: 90
+right leg_Attack3
+	bounds: 562, 259, 83, 96
+	rotate: 90
+rightFinger1_Attack3
+	bounds: 453, 47, 62, 52
+rightFinger2_Attack3
+	bounds: 660, 259, 37, 27
+	rotate: 90
