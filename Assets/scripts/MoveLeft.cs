@@ -9,6 +9,11 @@ public class MoveLeft : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * speed *Time.deltaTime);
+
+        if (transform.position.x < -60) 
+        {
+            Destroy(this.gameObject);
+        }
         
     }
 }

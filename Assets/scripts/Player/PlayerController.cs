@@ -5,20 +5,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Entity
 {
     private Rigidbody2D playerRb;
     private SkeletonAnimation playerSkeletonAnimation;
     public float jumpForce;
-    private bool isOnGround=true;
+ 
     public bool isJump=false;
     public float gravityModifier;
-    
-
-    [Header("Collision Info")]
-    [SerializeField] private float groundCheckDistance;
-    [SerializeField] private LayerMask whatIsGround;
-
+     
     [SpineAnimation]
     public string runAnimation;
 
@@ -29,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public string kickAnimation;
 
 
-    private void Start()
+    protected override void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
        
@@ -40,31 +35,36 @@ public class PlayerController : MonoBehaviour
 
     }   
 
-    private void Update()
+    protected override void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && isOnGround) 
-        {                                
+        {
+          
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false);
             isOnGround= false;
+          
                       
         }
 
         if (Input.GetKeyDown(KeyCode.J)) 
         {
             playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false);
+            GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = true;
+            Invoke("ColliderDeactivate", 0.5f);
 
         }
 
                    
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void ColliderDeactivate() 
     {
-        isOnGround = true;
-        Debug.Log(isOnGround);
+        GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = false;
+
     }
 
+  
     IEnumerator RunAnimation() 
     {
         while (true) 
@@ -73,15 +73,12 @@ public class PlayerController : MonoBehaviour
             {
                 playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
 
         }
     
     }
      
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance));
-    }
+   
 }

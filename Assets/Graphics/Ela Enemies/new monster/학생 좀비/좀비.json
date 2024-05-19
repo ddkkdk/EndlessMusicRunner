@@ -1,0 +1,61 @@
+{ "skeleton": { "images": "D:/1모음/1엘라스타즈/엘라 몬스터 스파인/학생 좀비/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "L_arm", "bone": "root", "attachment": "L_arm" },
+	{ "name": "L_leg", "bone": "root", "attachment": "L_leg" },
+	{ "name": "L_feet", "bone": "root", "attachment": "L_feet" },
+	{ "name": "R_feet", "bone": "root", "attachment": "R_feet" },
+	{ "name": "pants", "bone": "root", "attachment": "pants" },
+	{ "name": "bady", "bone": "root", "attachment": "bady" },
+	{ "name": "head", "bone": "root", "attachment": "head" },
+	{ "name": "cap", "bone": "root", "attachment": "cap" },
+	{ "name": "hair", "bone": "root", "attachment": "hair" },
+	{ "name": "face", "bone": "root", "attachment": "face" },
+	{ "name": "R_arm", "bone": "root", "attachment": "R_arm" },
+	{ "name": "Bag", "bone": "root", "attachment": "Bag" }
+],
+"skins": {
+	"default": {
+		"L_arm": {
+			"L_arm": { "x": 329, "y": -663, "width": 170, "height": 196 }
+		},
+		"L_leg": {
+			"L_leg": { "x": 513.5, "y": -877, "width": 99, "height": 202 }
+		},
+		"L_feet": {
+			"L_feet": { "x": 429, "y": -923.5, "width": 268, "height": 139 }
+		},
+		"R_feet": {
+			"R_feet": { "x": 774, "y": -767, "width": 148, "height": 260 }
+		},
+		"pants": {
+			"pants": { "x": 616.5, "y": -712.5, "width": 381, "height": 271 }
+		},
+		"bady": {
+			"bady": { "x": 517, "y": -603.5, "width": 302, "height": 333 }
+		},
+		"head": {
+			"head": { "x": 333.5, "y": -370, "width": 515, "height": 438 }
+		},
+		"cap": {
+			"cap": { "x": 333.5, "y": -124.5, "width": 493, "height": 251 }
+		},
+		"hair": {
+			"hair": { "x": 123, "y": -224.5, "width": 248, "height": 193 }
+		},
+		"face": {
+			"face": { "x": 289, "y": -403.5, "width": 408, "height": 361 }
+		},
+		"R_arm": {
+			"R_arm": { "x": 662.5, "y": -352, "width": 251, "height": 240 }
+		},
+		"Bag": {
+			"Bag": { "x": 564.5, "y": -587.5, "width": 409, "height": 199 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}
