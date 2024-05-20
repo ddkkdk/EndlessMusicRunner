@@ -5,58 +5,81 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public List<MonsterItem> monster;
-    public float startDelay = 2;
-    public float repeatDelay = 1.2f;
+    public static SpawnManager instance;
 
-    public float spawnInterval = 3f;
-    private float timer;
+    public List<MonsterItem> monster;
+    public float itemSpawnDelay = 1;
+    public float setSpawnDelay = 2f;
+
+    public GameObject spawnObjects;
 
     public Transform spawnPoint_1;
     public Transform spawnPoint_2;
+
+    private bool isSpawning = false;
+    public bool startSpawn = false;
     void Start()
     {
-
-        //InvokeRepeating("SpawnMonstersAtRandomPos", startDelay, repeatDelay);
-        timer = spawnInterval;
-    }
-
-    private void Update()
-    {
-        timer -= Time.deltaTime;
-
-        if (timer <= 0) 
+        if (instance != null)
         {
-            SpawnMonstersAtRandomPos();
-            timer = spawnInterval;
-
+            Destroy(this.gameObject);
 
         }
+        else 
+        {
+            instance = this;
+        
+        }
+
+       
     }
 
-    void SpawnMonstersAtRandomPos()
+    public void StartSpawningObjects(bool isSpawn) 
+    {
+        if(isSpawn)
+            StartCoroutine(SpawnMonstersAtRandomPos());
+
+    }
+
+  
+    IEnumerator SpawnMonstersAtRandomPos()
     {
         
         if (monster.Count == 0)
         {
             Debug.LogWarning("Item sets list is empty!");
-            return;
+            yield break;
         }
 
-        
-        int randomSetIndex = Random.Range(0, monster.Count);
-        MonsterItem selectedSet = monster[randomSetIndex];
 
-        Transform spawnPoint=Random.value > 0.5f ? spawnPoint_1 : spawnPoint_2;
-
-        
-        foreach (GameObject item in selectedSet.monster)
+        while (true) 
         {
-            if (item != null)
+            for (int setIndex = 0; setIndex < monster.Count; setIndex++)
             {
-                Instantiate(item, spawnPoint.position, item.transform.rotation);
+                MonsterItem currentSet = monster[setIndex];
+                Transform spawnPoint = Random.value > 0.5f ? spawnPoint_1 : spawnPoint_2;
+
+
+                for (int i = 0; i < currentSet.monster.Length; i++)
+                {
+                    GameObject item = currentSet.monster[i];
+                    if (item != null)
+                    {
+                        GameObject spawnedObjects=Instantiate(item, spawnPoint.position, item.transform.rotation) ;
+                        spawnedObjects.transform.SetParent(spawnObjects.transform);
+
+                        yield return new WaitForSeconds(itemSpawnDelay);
+                    }
+                }
+
+                yield return new WaitForSeconds(setSpawnDelay);
             }
+
+
         }
+
+        
+       
     }
 
 }

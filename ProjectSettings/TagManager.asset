@@ -15,7 +15,7 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - 
+  - Vfx
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 2927593355
+    locked: 0
+  - name: Vfx
+    uniqueID: 3029174975
     locked: 0

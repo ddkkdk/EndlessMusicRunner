@@ -1,0 +1,79 @@
+Character_Ella.png
+	size: 1298, 1298
+	filter: Linear, Linear
+	pma: true
+Head
+	bounds: 2, 16, 369, 222
+	rotate: 90
+Head_Kick
+	bounds: 611, 763, 313, 215
+	rotate: 90
+Left arm
+	bounds: 1083, 540, 164, 205
+	rotate: 90
+Left arm_Kick
+	bounds: 1046, 39, 156, 160
+	rotate: 90
+Left arm_Running
+	bounds: 390, 15, 218, 110
+Left leg
+	bounds: 331, 410, 147, 247
+	offsets: 6, 5, 158, 257
+	rotate: 90
+Left leg2_Kick
+	bounds: 880, 104, 92, 164
+	rotate: 90
+Left leg_Kick
+	bounds: 658, 195, 220, 219
+Left leg_Running
+	bounds: 828, 875, 285, 265
+	offsets: 0, 18, 285, 287
+Left leg_fly
+	bounds: 828, 597, 253, 107
+Left leg_retire
+	bounds: 807, 416, 244, 179
+Tail
+	bounds: 226, 77, 308, 162
+	offsets: 0, 8, 308, 178
+	rotate: 90
+Tail_Kick
+	bounds: 748, 1142, 396, 154
+Wing
+	bounds: 658, 68, 180, 125
+Wing_Kick
+	bounds: 880, 198, 216, 165
+	rotate: 90
+body
+	bounds: 338, 737, 271, 339
+	offsets: 0, 3, 271, 345
+body_Kick
+	bounds: 390, 127, 266, 281
+body_Running
+	bounds: 2, 387, 327, 333
+body_fly
+	bounds: 2, 1078, 744, 218
+face
+	bounds: 828, 706, 282, 167
+face_Kick
+	bounds: 1053, 341, 224, 197
+face_fly
+	bounds: 611, 601, 215, 160
+face_retire
+	bounds: 338, 559, 271, 176
+right arm
+	bounds: 1047, 197, 142, 186
+	rotate: 90
+right arm_Kick
+	bounds: 840, 8, 151, 94
+	offsets: 1, 1, 153, 95
+right arm_Running
+	bounds: 611, 464, 194, 135
+right leg
+	bounds: 1146, 1067, 150, 229
+	offsets: 22, 33, 180, 262
+right leg_Kick
+	bounds: 2, 722, 334, 354
+right leg_Running
+	bounds: 1115, 847, 180, 218
+right leg_fly
+	bounds: 1112, 706, 183, 139

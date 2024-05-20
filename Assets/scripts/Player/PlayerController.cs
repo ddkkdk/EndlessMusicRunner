@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
+using System.Threading.Tasks;
 
 public class PlayerController : Entity
 {
@@ -26,6 +28,7 @@ public class PlayerController : Entity
 
     protected override void Start()
     {
+        MoveAnimation();
         playerRb = GetComponent<Rigidbody2D>();
        
         playerSkeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
@@ -73,11 +76,22 @@ public class PlayerController : Entity
             {
                 playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true);
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
 
         }
     
     }
+
+    public void MoveAnimation() 
+    {
+        transform.DOMoveX(-54, 2).SetEase(Ease.Flash).OnComplete(async() =>
+        {
+            await Task.Delay(1500);
+            UIManager.Instance.ActivatPanel(true);
+        });
+    }
+
+
      
 
    
