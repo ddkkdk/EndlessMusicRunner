@@ -25,6 +25,10 @@ public class PlayerController : Entity
     [SpineAnimation]
     public string kickAnimation;
 
+    public int counter;
+
+    
+
 
     protected override void Start()
     {
@@ -35,6 +39,7 @@ public class PlayerController : Entity
 
         StartCoroutine(RunAnimation());
         Physics.gravity*=gravityModifier;
+        
 
     }   
 
@@ -44,7 +49,7 @@ public class PlayerController : Entity
         {
           
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false);
+            GameManager.instance.AnimationController(flyAnimation);
             isOnGround= false;
           
                       
@@ -52,7 +57,8 @@ public class PlayerController : Entity
 
         if (Input.GetKeyDown(KeyCode.J)) 
         {
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false);
+                
+            GameManager.instance.AnimationController(kickAnimation);
             GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = true;
             Invoke("ColliderDeactivate", 0.5f);
 
@@ -84,11 +90,18 @@ public class PlayerController : Entity
 
     public void MoveAnimation() 
     {
-        transform.DOMoveX(-54, 2).SetEase(Ease.Flash).OnComplete(async() =>
+        transform.DOMoveX(-54, 2).SetEase(Ease.Flash).OnComplete(() =>
         {
-            await Task.Delay(1500);
-            UIManager.Instance.ActivatPanel(true);
+            StartCoroutine(WatingTime());
+           
         });
+    }
+
+    IEnumerator WatingTime() 
+    {
+        yield return new WaitForSeconds(1.5f);
+        UIManager.Instance.ActivatPanel(true);
+
     }
 
 

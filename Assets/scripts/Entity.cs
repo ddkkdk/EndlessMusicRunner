@@ -12,12 +12,15 @@ public class Entity : MonoBehaviour
 
 
     protected  bool isOnGround = true;
+
+    
     protected virtual void Awake() 
     {
     
     }
     protected virtual void Start()
     {
+        
         
     }
 
@@ -33,14 +36,14 @@ public class Entity : MonoBehaviour
         Debug.Log(isOnGround);
     } 
 
-    protected virtual void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(attackCheck.position, attackRadius);
-    }
+    
 
     public virtual void Damage() 
     {
         Debug.Log(gameObject.name + "was damaged");
+        FlashFx.Instance.callFlash();
+
+        
     
     }
 }

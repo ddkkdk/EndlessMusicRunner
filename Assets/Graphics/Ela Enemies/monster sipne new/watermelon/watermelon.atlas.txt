@@ -1,0 +1,34 @@
+watermelon.png
+	size: 1361, 1361
+	filter: Linear, Linear
+	pma: true
+수박/L_foot
+	bounds: 488, 427, 156, 103
+	offsets: 1, 1, 158, 105
+	rotate: 90
+수박/L_hand
+	bounds: 1060, 512, 171, 310
+수박/R_foot
+	bounds: 1252, 1216, 143, 78
+	offsets: 1, 1, 145, 80
+	rotate: 90
+수박/R_hand
+	bounds: 2, 2, 296, 171
+수박/bady
+	bounds: 2, 585, 600, 774
+수박/face
+	bounds: 918, 58, 360, 354
+	offsets: 3, 0, 366, 354
+수박/face_1
+	bounds: 488, 76, 428, 336
+	offsets: 4, 0, 437, 336
+수박/face_2
+	bounds: 2, 175, 484, 408
+	offsets: 5, 0, 495, 408
+수박/face_3
+	bounds: 604, 414, 408, 454
+	offsets: 0, 11, 408, 476
+	rotate: 90
+수박/face_4
+	bounds: 604, 824, 646, 535
+	offsets: 7, 0, 660, 535
