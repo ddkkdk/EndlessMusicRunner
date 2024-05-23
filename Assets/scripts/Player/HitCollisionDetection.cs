@@ -11,8 +11,9 @@ public class HitCollisionDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Monster") 
         {
-            
-            
+            AudioManager.instance.PlaySound();
+
+
             Vector2 hitPoint = other.ClosestPoint(transform.position);
 
             if (hitEffect != null) 
@@ -33,7 +34,7 @@ public class HitCollisionDetection : MonoBehaviour
 
     public void MoveUPword(GameObject perfectTxtEffect, Vector2 hitPoint) 
     {
-        perfectTxtEffect.transform.DOMoveY(hitPoint.y+5, 0.5f);
+        perfectTxtEffect.transform.DOMoveY(hitPoint.y+10, 0.5f);
     
     }
 }

@@ -168,3 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf14aa19107eee946b6e8380e33102ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCheckDistance: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  attackCheck: {fileID: 0}
+  attackRadius: 0
