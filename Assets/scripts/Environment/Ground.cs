@@ -9,7 +9,7 @@ public class Ground : MonoBehaviour
     public float speed;
     void Start()
     {
-        repeatWidth = GetComponent<BoxCollider2D>().size.x;
+        repeatWidth = GetComponent<BoxCollider2D>().size.x/2;
 
         startPosition = transform.position;
 

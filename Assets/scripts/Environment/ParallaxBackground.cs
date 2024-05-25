@@ -10,14 +10,14 @@ public class ParallaxBackground : MonoBehaviour
     public float speed;
     void Start()
     {
-        repeatWidth = GetComponent<BoxCollider>().size.x;
-       
         startPosition = transform.position;
+        repeatWidth = GetComponent<BoxCollider>().size.x/2;
+                   
         
     }
 
    
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(Vector3.left * Time.deltaTime * speed);
 
