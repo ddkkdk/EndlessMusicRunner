@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4756041591857840771}
   - component: {fileID: 345578015453725092}
   - component: {fileID: 98197925962513228}
+  - component: {fileID: 4793484756398850136}
   m_Layer: 8
   m_Name: Can
   m_TagString: Monster
@@ -174,3 +175,24 @@ CircleCollider2D:
   m_Offset: {x: -0.335155, y: 3.965963}
   serializedVersion: 2
   m_Radius: 4.3501377
+--- !u!50 &4793484756398850136
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450675091563296711}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
         skeleton = GameObject.Find("Player").transform.GetChild(0).GetComponent<SkeletonAnimation>();
     }
 
+    // After playing some times background will
+    // will change autometically .
+    // Implement it here
+
     public void AnimationController(string animationName) 
     {
         skeleton.AnimationState.SetAnimation(0, animationName, false);
