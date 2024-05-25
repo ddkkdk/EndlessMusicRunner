@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public SkeletonAnimation skeleton;
+    public Sprite background;
    
     void Start()
     {

@@ -47,7 +47,7 @@ public class SpawnManager : MonoBehaviour
         
         if (monster.Count == 0)
         {
-            Debug.LogWarning("Item sets list is empty!");
+            
             yield break;
         }
 
@@ -65,7 +65,7 @@ public class SpawnManager : MonoBehaviour
                     GameObject item = currentSet.monster[i];
                     if (item != null)
                     {
-                       // Transform spawnPoint = (i == 1 || i == 5) ? spawnPoint_1 : spawnPoint_2;
+                       
 
 
                         GameObject spawnedObjects =Instantiate(item, spawnPoint.position, item.transform.rotation) ;

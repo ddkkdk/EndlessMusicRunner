@@ -39,20 +39,24 @@ public class PlayerController : Entity
 
         StartCoroutine(RunAnimation());
         Physics.gravity*=gravityModifier;
+
+        
         
 
     }   
 
     protected override void Update()
     {
+        Debug.Log("Time :" + Time.time);
         if (Input.GetKeyDown(KeyCode.F) && isOnGround) 
         {
           
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             GameManager.instance.AnimationController(flyAnimation);
             isOnGround= false;
-          
-                      
+
+        
+
         }
 
         if (Input.GetKeyDown(KeyCode.J)) 
