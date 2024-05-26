@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class PlayerController : Entity
 {
@@ -25,10 +26,10 @@ public class PlayerController : Entity
     [SpineAnimation]
     public string kickAnimation;
 
-    public int counter;
-
     
 
+   
+  
 
     protected override void Start()
     {
@@ -40,8 +41,9 @@ public class PlayerController : Entity
         StartCoroutine(RunAnimation());
         Physics.gravity*=gravityModifier;
 
-        
-        
+        currentHealth = maxHealth;
+
+
 
     }   
 
@@ -108,8 +110,16 @@ public class PlayerController : Entity
 
     }
 
+    public void SetHealthBar()
+    {
+        
+        fillAmount.fillAmount = currentHealth / maxHealth;
 
-     
 
-   
+    }
+
+
+
+
+
 }

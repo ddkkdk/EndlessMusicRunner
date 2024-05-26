@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsGround;
     public Transform attackCheck;
     public float attackRadius;
+
+    public float maxHealth;
+    public float currentHealth;
+
+    public Image fillAmount;
+
 
 
     protected  bool isOnGround = true;
@@ -20,8 +27,9 @@ public class Entity : MonoBehaviour
     }
     protected virtual void Start()
     {
-        
-        
+
+      
+
     }
 
     
@@ -38,12 +46,23 @@ public class Entity : MonoBehaviour
 
     
 
-    public virtual void Damage() 
+    public virtual void Damage(int damageAmount) 
     {
         Debug.Log(gameObject.name + "was damaged");
+
+        currentHealth -= damageAmount;
+        SetHealthBar();
         FlashFx.Instance.callFlash();
 
         
     
+    }
+
+    public void SetHealthBar()
+    {
+
+        fillAmount.fillAmount = currentHealth / maxHealth;
+
+
     }
 }

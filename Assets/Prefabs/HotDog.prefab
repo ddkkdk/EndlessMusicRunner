@@ -174,3 +174,5 @@ MonoBehaviour:
     m_Bits: 0
   attackCheck: {fileID: 0}
   attackRadius: 0
+  playerCurrentHealth: 0
+  damageAmount: 5

@@ -158,6 +158,8 @@ MonoBehaviour:
     m_Bits: 0
   attackCheck: {fileID: 0}
   attackRadius: 0
+  playerCurrentHealth: 0
+  damageAmount: 1
 --- !u!61 &2249227629863875094
 BoxCollider2D:
   m_ObjectHideFlags: 0

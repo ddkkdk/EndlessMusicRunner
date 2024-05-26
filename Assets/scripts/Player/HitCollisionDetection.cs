@@ -5,15 +5,31 @@ using UnityEngine;
 
 public class HitCollisionDetection : MonoBehaviour
 {
+    public static HitCollisionDetection Instance;
     public GameObject hitEffect;
     public GameObject perfectTxtEffect;
+    public int score;
+
+    private void Start()
+    {
+        if (Instance != null)
+        {
+            Destroy(this.gameObject);
+
+        }
+        else 
+        {
+            Instance = this;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Monster") 
         {
             AudioManager.instance.PlaySound();
 
-
+            score++;
+            UIManager.Instance.ScoreUpdater(score);
             Vector2 hitPoint = other.ClosestPoint(transform.position);
 
             if (hitEffect != null) 

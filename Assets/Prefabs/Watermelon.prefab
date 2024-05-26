@@ -145,6 +145,8 @@ MonoBehaviour:
     m_Bits: 0
   attackCheck: {fileID: 0}
   attackRadius: 0
+  playerCurrentHealth: 0
+  damageAmount: 3
 --- !u!114 &8209945473938468765
 MonoBehaviour:
   m_ObjectHideFlags: 0
