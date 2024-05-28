@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3407263268091767538}
   - component: {fileID: 8209945473938468765}
   - component: {fileID: 7529112082843205451}
+  - component: {fileID: -9049287886348220912}
   m_Layer: 8
   m_Name: WaterMelon
   m_TagString: Monster
@@ -145,7 +146,9 @@ MonoBehaviour:
     m_Bits: 0
   attackCheck: {fileID: 0}
   attackRadius: 0
-  playerCurrentHealth: 0
+  maxHealth: 0
+  currentHealth: 0
+  fillAmount: {fileID: 0}
   damageAmount: 3
 --- !u!114 &8209945473938468765
 MonoBehaviour:
@@ -160,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  monsterNumber: 4
 --- !u!58 &7529112082843205451
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -176,3 +180,24 @@ CircleCollider2D:
   m_Offset: {x: -0.23587394, y: 4.177396}
   serializedVersion: 2
   m_Radius: 3.8550131
+--- !u!50 &-9049287886348220912
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8755797267905834417}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

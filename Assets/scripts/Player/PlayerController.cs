@@ -49,7 +49,7 @@ public class PlayerController : Entity
 
     protected override void Update()
     {
-        Debug.Log("Time :" + Time.time);
+      //  Debug.Log("Time :" + Time.time);
         if (Input.GetKeyDown(KeyCode.F) && isOnGround) 
         {
           
@@ -110,13 +110,7 @@ public class PlayerController : Entity
 
     }
 
-    public void SetHealthBar()
-    {
-        
-        fillAmount.fillAmount = currentHealth / maxHealth;
-
-
-    }
+   
 
 
 

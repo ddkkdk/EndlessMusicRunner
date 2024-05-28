@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
     public float speed;
+    public int monsterNumber;
    
     void Update()
     {

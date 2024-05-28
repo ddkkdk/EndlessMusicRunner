@@ -41,14 +41,14 @@ public class Entity : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isOnGround = true;
-        Debug.Log(isOnGround);
+        
     } 
 
     
 
     public virtual void Damage(int damageAmount) 
     {
-        Debug.Log(gameObject.name + "was damaged");
+        
 
         currentHealth -= damageAmount;
         SetHealthBar();

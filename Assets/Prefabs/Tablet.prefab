@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8345069518641479120}
   - component: {fileID: 1586732273323951856}
   - component: {fileID: 2249227629863875094}
+  - component: {fileID: 625802925541443427}
   m_Layer: 8
   m_Name: tablet
   m_TagString: Monster
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2027002376000927764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.21880673, y: 0.21880673, z: 0.21880673}
+  m_LocalScale: {x: 0.2265525, y: 0.2265525, z: 0.2265525}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  monsterNumber: 3
 --- !u!114 &1586732273323951856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +160,9 @@ MonoBehaviour:
     m_Bits: 0
   attackCheck: {fileID: 0}
   attackRadius: 0
-  playerCurrentHealth: 0
+  maxHealth: 0
+  currentHealth: 0
+  fillAmount: {fileID: 0}
   damageAmount: 1
 --- !u!61 &2249227629863875094
 BoxCollider2D:
@@ -186,3 +190,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.4985456, y: 8.06278}
   m_EdgeRadius: 0
+--- !u!50 &625802925541443427
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027002376000927764}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

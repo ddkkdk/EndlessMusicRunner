@@ -8,8 +8,8 @@ public class SpawnManager : MonoBehaviour
     public static SpawnManager instance;
 
     public List<MonsterItem> monster;
-    public float itemSpawnDelay = 1;
-    public float setSpawnDelay = 2f;
+    public float itemSpawnDelay ;
+    public float setSpawnDelay ;
 
     public GameObject spawnObjects;
 
@@ -31,7 +31,15 @@ public class SpawnManager : MonoBehaviour
         
         }
 
+      //  itemSpawnDelay = Random.Range(0.1f, 0.5f);
+       // setSpawnDelay = Random.Range(0.1f, 0.75f);
+
        
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void StartSpawningObjects(bool isSpawn) 
@@ -66,7 +74,6 @@ public class SpawnManager : MonoBehaviour
                     if (item != null)
                     {
                        
-
 
                         GameObject spawnedObjects =Instantiate(item, spawnPoint.position, item.transform.rotation) ;
                         spawnedObjects.transform.SetParent(spawnObjects.transform);

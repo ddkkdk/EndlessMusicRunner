@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public GameObject lowerPanel;
     public float upperPosition;
     public Image fillAmount;
+    public float instructionPanelActivationTime;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class UIManager : MonoBehaviour
         UpperPanel.gameObject.SetActive(true);
         //Invoke("LowerPanelActivate", 0.2f);
         LowerPanelActivate(true);
+        
 
     }
     public void LowerPanelActivate(bool activate) 
@@ -50,7 +52,7 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator DeactivatePanel() 
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(instructionPanelActivationTime);
         instructionPanel.SetActive(false);
         UpperPanelActive(true);
         SpawnManager.instance.StartSpawningObjects(true);
@@ -71,13 +73,6 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void SetHealthBar(float currentHealth, float maxHealth) 
-    {
-        currentHealth = HealthBar.Instance.currentHealth;
-        maxHealth= HealthBar.Instance.maxHealth;
-        fillAmount.fillAmount = currentHealth / maxHealth;
-
-    
-    }
+  
     
 }
