@@ -52,20 +52,20 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 0
-    value: 11
+    overrideState: 1
+    value: -19
   tint:
     overrideState: 0
-    value: 38
+    value: 17
   colorFilter:
-    overrideState: 0
-    value: {r: 0.8679245, g: 0.7573869, b: 0.7573869, a: 1}
+    overrideState: 1
+    value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 0
     value: 0
   saturation:
-    overrideState: 0
-    value: 77
+    overrideState: 1
+    value: 35
   brightness:
     overrideState: 0
     value: 0
@@ -73,8 +73,8 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   contrast:
-    overrideState: 0
-    value: 34
+    overrideState: 1
+    value: 7
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1344,26 +1344,26 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 0
+    overrideState: 1
     value: 0
   color:
-    overrideState: 0
-    value: {r: 0.5081635, g: 0.5566038, b: 0.44895872, a: 1}
+    overrideState: 1
+    value: {r: 0.8396226, g: 0.74061054, b: 0.81134033, a: 1}
   center:
     overrideState: 0
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.48
+    value: 0.36
   smoothness:
-    overrideState: 0
-    value: 0.07
+    overrideState: 1
+    value: 0.23
   roundness:
-    overrideState: 0
-    value: 0.2
+    overrideState: 1
+    value: 1
   rounded:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   mask:
     overrideState: 0
     value: {fileID: 0}
@@ -1404,7 +1404,7 @@ MonoBehaviour:
     value: 100
   distanceFade:
     overrideState: 1
-    value: 0
+    value: 0.15
   vignette:
     overrideState: 1
-    value: 0.18
+    value: 0.28

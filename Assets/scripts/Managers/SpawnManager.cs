@@ -15,9 +15,12 @@ public class SpawnManager : MonoBehaviour
 
     public Transform spawnPoint_1;
     public Transform spawnPoint_2;
+    public Transform spawnPoint_3;
 
     private bool isSpawning = false;
     public bool startSpawn = false;
+
+    private Transform spawnPoint;
     void Start()
     {
         if (instance != null)
@@ -31,8 +34,8 @@ public class SpawnManager : MonoBehaviour
         
         }
 
-      //  itemSpawnDelay = Random.Range(0.1f, 0.5f);
-       // setSpawnDelay = Random.Range(0.1f, 0.75f);
+        itemSpawnDelay = Random.Range(0.1f, 0.5f);
+        setSpawnDelay = Random.Range(0.1f, 0.75f);
 
        
     }
@@ -65,8 +68,23 @@ public class SpawnManager : MonoBehaviour
             for (int setIndex = 0; setIndex < monster.Count; setIndex++)
             {
                 MonsterItem currentSet = monster[setIndex];
-                Transform spawnPoint = (setIndex==1|| setIndex==5) ? spawnPoint_1 : spawnPoint_2;
 
+               
+                if (setIndex == 1 || setIndex == 5)
+                {
+                     spawnPoint = spawnPoint_1;
+
+
+                }
+                else if (setIndex == 7 || setIndex == 8 || setIndex == 9|| setIndex == 10 || setIndex == 11 || setIndex == 12 || setIndex == 13
+                    || setIndex == 14 || setIndex == 15 || setIndex == 16 || setIndex == 17) 
+                {
+                     spawnPoint = spawnPoint_3;
+                }
+                else 
+                {
+                     spawnPoint = spawnPoint_2;
+                }
 
                 for (int i = 0; i < currentSet.monster.Length; i++)
                 {
