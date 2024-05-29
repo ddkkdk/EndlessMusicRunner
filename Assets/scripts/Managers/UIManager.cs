@@ -41,7 +41,6 @@ public class UIManager : MonoBehaviour
     public void UpperPanelActive(bool activate)
     {
         UpperPanel.gameObject.SetActive(true);
-        //Invoke("LowerPanelActivate", 0.2f);
         LowerPanelActivate(true);
         
 
@@ -66,7 +65,7 @@ public class UIManager : MonoBehaviour
         {
             combo.gameObject.SetActive(true);
             comboTxt.text=score.ToString(); 
-            comboTxt.gameObject.SetActive(true);
+          
         
         }
      

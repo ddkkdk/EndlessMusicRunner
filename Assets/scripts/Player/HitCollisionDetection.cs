@@ -28,6 +28,8 @@ public class HitCollisionDetection : MonoBehaviour
         {
             Instance = this;
         }
+
+        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -67,12 +69,7 @@ public class HitCollisionDetection : MonoBehaviour
 
             }
 
-            if(position<-7) 
-            {
-                Debug.Log("Hit lower");
-                other.GetComponent<Rigidbody2D>().AddForce(transform.right * 100, ForceMode2D.Impulse);
-
-            }
+           
 
 
 
