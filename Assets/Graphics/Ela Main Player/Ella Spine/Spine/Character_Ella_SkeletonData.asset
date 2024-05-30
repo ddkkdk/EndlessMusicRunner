@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character_Ella_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: c0ed96adee926cd4081e65d02c27e0b2, type: 2}
+  - {fileID: 0}
   scale: 0.01
   skeletonJSON: {fileID: 4900000, guid: 1404b94d4e8834042af0d3492019f81e, type: 3}
   isUpgradingBlendModeMaterials: 0
