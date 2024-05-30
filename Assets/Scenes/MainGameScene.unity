@@ -787,7 +787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &341237508
 Transform:
   m_ObjectHideFlags: 0
@@ -1553,9 +1553,9 @@ GameObject:
   - component: {fileID: 514379565}
   - component: {fileID: 514379566}
   - component: {fileID: 514379567}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: AttackPoint_Down
-  m_TagString: Untagged
+  m_TagString: HittingCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1634,10 +1634,10 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514379561}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1675,7 +1675,7 @@ MonoBehaviour:
   - {fileID: 8400117977535812919, guid: 146594d094c8c0c4a8d026ede7cc5cc7, type: 3}
   - {fileID: 3355147322530775092, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
   puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
-  perfectTxtEffect: {fileID: 4178395351329918027, guid: 4a3582834fa9ba04296848c0c9aa3568, type: 3}
+  perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
   score: 0
   HitAnimation: 
 --- !u!1 &529761307
@@ -5170,7 +5170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608568224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -54.8, y: -1.91, z: 0}
+  m_LocalPosition: {x: -66.67, y: -1.91, z: 0}
   m_LocalScale: {x: 9.118104, y: 9.118104, z: 9.118104}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6375,10 +6375,10 @@ GameObject:
   - component: {fileID: 2046699416}
   - component: {fileID: 2046699418}
   - component: {fileID: 2046699419}
-  - component: {fileID: 2046699420}
-  m_Layer: 7
+  - component: {fileID: 2046699421}
+  m_Layer: 0
   m_Name: AttackPoint_Up
-  m_TagString: Untagged
+  m_TagString: HittingCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6457,10 +6457,10 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046699414}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -6479,16 +6479,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
---- !u!114 &2046699420
+--- !u!114 &2046699421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046699414}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f74fe0a7c861bc4db87aad6883c46d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 3247441007696276540, guid: 5ddfde0f3c51e7f47ae4e0dd604a670c, type: 3}

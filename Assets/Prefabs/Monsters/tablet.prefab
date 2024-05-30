@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76197c701dba3554588f057ef2c81496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 20
   monsterNumber: 3
 --- !u!114 &1586732273323951856
 MonoBehaviour:

@@ -55,8 +55,9 @@ public class PlayerController : Entity
           
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             GameManager.instance.AnimationController(kickAnimation);
-
-            isOnGround= false;
+            GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
+            Invoke("UpperColliderDeactivate", 0.5f);
+            isOnGround = false;
 
         
 
@@ -66,8 +67,10 @@ public class PlayerController : Entity
         {
                 
             GameManager.instance.AnimationController(kickAnimation);
-            GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = true;
-            Invoke("ColliderDeactivate", 0.5f);
+            GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
+            Invoke("LowerColliderDeactivate", 0.5f);
+            // GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = true;
+           // Invoke("LowerColliderDeactivate", 0.5f);
 
         }
 
@@ -79,8 +82,18 @@ public class PlayerController : Entity
         GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = false;
 
     }
+    public void UpperColliderDeactivate()
+    {
+        GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = false;
 
-  
+    }
+    public void LowerColliderDeactivate()
+    {
+        GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = false;
+
+    }
+
+
     IEnumerator RunAnimation() 
     {
         while (true) 
