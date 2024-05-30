@@ -179,9 +179,9 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: launch
+  _animationName: Hit
   loop: 1
-  timeScale: 1
+  timeScale: 2
 --- !u!23 &213378160
 MeshRenderer:
   m_ObjectHideFlags: 0

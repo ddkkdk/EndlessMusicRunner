@@ -6,6 +6,7 @@ public class FlashFx : MonoBehaviour
 {
     public static FlashFx Instance;
     private MeshRenderer mesh;
+ 
 
     [SerializeField] private Material hitMat;
     private Material orginalMat;
@@ -40,6 +41,8 @@ public class FlashFx : MonoBehaviour
 
     }
 
+
+   
 
 }
  

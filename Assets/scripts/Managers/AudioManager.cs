@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip clap_1;
     public AudioClip clap_2;
+    public AudioClip ouch_1;
+    public AudioClip ouch_2;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -20,7 +22,7 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
         
-        }
+        } 
     }
 
     
@@ -29,5 +31,11 @@ public class AudioManager : MonoBehaviour
         AudioClip clipToPlay=Random.value>0.5?clap_1 : clap_2;
 
         audioSource.PlayOneShot(clipToPlay, 0.1f);
+    }
+
+    public void PlayerHItSound() 
+    {
+        //AudioClip clipToPlay = Random.value > 0.5 ? ouch_1 : ouch_2;
+        audioSource.PlayOneShot(ouch_2, 0.1f);
     }
 }

@@ -181,6 +181,7 @@ MonoBehaviour:
   currentHealth: 0
   fillAmount: {fileID: 0}
   damageAmount: 10
+  damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
 --- !u!114 &-7034009947147531928
 MonoBehaviour:
   m_ObjectHideFlags: 0

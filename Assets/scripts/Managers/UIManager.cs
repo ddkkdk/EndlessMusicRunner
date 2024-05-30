@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public GameObject instructionPanel;
+    public GameObject attackPoints;
     public TextMeshProUGUI scoreTxt;
     public GameObject combo;
     public TextMeshProUGUI comboTxt;

@@ -180,6 +180,7 @@ MonoBehaviour:
   currentHealth: 0
   fillAmount: {fileID: 0}
   damageAmount: 3
+  damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
 --- !u!50 &519227151299903132
 Rigidbody2D:
   serializedVersion: 4

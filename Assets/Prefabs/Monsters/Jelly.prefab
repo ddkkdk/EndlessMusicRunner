@@ -127,7 +127,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 1
-  timeScale: 1.5
+  timeScale: 2
 --- !u!114 &5443936255498264701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +164,7 @@ MonoBehaviour:
   currentHealth: 0
   fillAmount: {fileID: 0}
   damageAmount: 5
+  damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
 --- !u!70 &180291809882834327
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

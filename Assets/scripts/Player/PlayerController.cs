@@ -108,6 +108,7 @@ public class PlayerController : Entity
     {
         yield return new WaitForSeconds(1.5f);
         UIManager.Instance.ActivatPanel(true);
+        UIManager.Instance.attackPoints.SetActive(true);
 
     }
 

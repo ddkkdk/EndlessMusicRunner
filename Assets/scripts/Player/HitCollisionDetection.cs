@@ -60,7 +60,7 @@ public class HitCollisionDetection : MonoBehaviour
             other.GetComponent<MoveLeft>().speed = 0;
 
             float position = other.gameObject.transform.position.y;
-            Debug.Log("Psotion " + position);
+            
 
             if (position > -8)
             {

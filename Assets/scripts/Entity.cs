@@ -10,17 +10,10 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsGround;
     public Transform attackCheck;
     public float attackRadius;
-
     public float maxHealth;
     public float currentHealth;
-
     public Image fillAmount;
-
-
-
     protected  bool isOnGround = true;
-
-    
     protected virtual void Awake() 
     {
     
@@ -28,11 +21,7 @@ public class Entity : MonoBehaviour
     protected virtual void Start()
     {
 
-      
-
-    }
-
-    
+    }   
     protected virtual void Update()
     {
         
@@ -43,18 +32,14 @@ public class Entity : MonoBehaviour
         isOnGround = true;
         
     } 
-
-    
-
+ 
     public virtual void Damage(int damageAmount) 
     {
         
-
         currentHealth -= damageAmount;
         SetHealthBar();
         FlashFx.Instance.callFlash();
-
-        
+        AudioManager.instance.PlayerHItSound();
     
     }
 
