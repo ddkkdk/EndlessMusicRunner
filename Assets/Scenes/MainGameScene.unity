@@ -1378,7 +1378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &383832945
 Transform:
   m_ObjectHideFlags: 0
@@ -3042,7 +3042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99999999
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
   m_sharedMaterial: {fileID: -2765540932396252278, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
@@ -6018,7 +6018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99999999
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
   m_sharedMaterial: {fileID: -2765540932396252278, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
@@ -6112,7 +6112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1744640699
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6655,7 +6655,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 43dd2022f8d213e4e9e71f3426b98925, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6878,9 +6878,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instructionPanel: {fileID: 878702052}
   attackPoints: {fileID: 383832944}
-  scoreTxt: {fileID: 1730673837}
+  scoreTxt_1: {fileID: 820386160}
+  scoreTxt_2: {fileID: 1730673837}
   combo: {fileID: 1744640698}
-  comboTxt: {fileID: 889040488}
+  comboTxt_1: {fileID: 69428776}
+  comboTxt_2: {fileID: 889040488}
   UpperPanel: {fileID: 1534680385}
   lowerPanel: {fileID: 715426368}
   upperPosition: -50

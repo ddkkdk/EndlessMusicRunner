@@ -11,9 +11,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject instructionPanel;
     public GameObject attackPoints;
-    public TextMeshProUGUI scoreTxt;
+    public TextMeshProUGUI scoreTxt_1;
+    public TextMeshProUGUI scoreTxt_2;
     public GameObject combo;
-    public TextMeshProUGUI comboTxt;
+    public TextMeshProUGUI comboTxt_1;
+    public TextMeshProUGUI comboTxt_2;
     public GameObject UpperPanel;
     public GameObject lowerPanel;
     public float upperPosition;
@@ -60,14 +62,16 @@ public class UIManager : MonoBehaviour
     }
     public void ScoreUpdater(int score) 
     {
-        scoreTxt.text=score.ToString();
+        scoreTxt_1.text=score.ToString();
+        scoreTxt_2.text = score.ToString();
 
         if (score >= 5) 
         {
             combo.gameObject.SetActive(true);
-            comboTxt.text=score.ToString(); 
-          
-        
+            comboTxt_1.text=score.ToString();
+            comboTxt_2.text = score.ToString();
+
+
         }
      
     }
