@@ -1378,7 +1378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &383832945
 Transform:
   m_ObjectHideFlags: 0
@@ -2584,13 +2584,14 @@ GameObject:
   - component: {fileID: 753292738}
   - component: {fileID: 753292740}
   - component: {fileID: 753292739}
+  - component: {fileID: 753292741}
   m_Layer: 5
   m_Name: img_R_speaker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &753292738
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2651,6 +2652,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753292737}
   m_CullTransparentMesh: 1
+--- !u!114 &753292741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753292737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edea78beb8b878947b72818e0e551e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleUpFactor: 3
+  duration: 0.5
+  shakeDuration: 2
+  shakeStrength: 3
+  vibrato: 10
 --- !u!1 &758125017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,6 +3168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skeleton: {fileID: 0}
   background: {fileID: 21300000, guid: eb8455c8ba7811b4080a2180b9350a5d, type: 3}
+  speaker_1: {fileID: 1881881561}
+  speaker_2: {fileID: 753292737}
 --- !u!4 &827244270
 Transform:
   m_ObjectHideFlags: 0
@@ -6696,13 +6716,14 @@ GameObject:
   - component: {fileID: 1881881562}
   - component: {fileID: 1881881564}
   - component: {fileID: 1881881563}
+  - component: {fileID: 1881881565}
   m_Layer: 5
   m_Name: img_R_speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1881881562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6763,6 +6784,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881881561}
   m_CullTransparentMesh: 1
+--- !u!114 &1881881565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881881561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edea78beb8b878947b72818e0e551e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleUpFactor: 3
+  duration: 0.5
+  shakeDuration: 2
+  shakeStrength: 3
+  vibrato: 10
 --- !u!1 &1903210103
 GameObject:
   m_ObjectHideFlags: 0

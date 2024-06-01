@@ -69,8 +69,7 @@ public class PlayerController : Entity
             GameManager.instance.AnimationController(kickAnimation);
             GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
             Invoke("LowerColliderDeactivate", 0.5f);
-            // GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = true;
-           // Invoke("LowerColliderDeactivate", 0.5f);
+           
 
         }
 
