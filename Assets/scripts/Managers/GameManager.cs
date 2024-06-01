@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         {
             speaker_1.gameObject.SetActive(true);
             speaker_2.gameObject.SetActive(true);
+            Invoke("DeactivatSpeaker", 5f);
         
         }
     }
@@ -42,6 +43,13 @@ public class GameManager : MonoBehaviour
     {
         skeleton.AnimationState.SetAnimation(0, animationName, false);
         
+
+    }
+
+    public void DeactivatSpeaker() 
+    {
+        speaker_1.gameObject.SetActive(false);
+        speaker_2.gameObject.SetActive(false);
 
     }
 }

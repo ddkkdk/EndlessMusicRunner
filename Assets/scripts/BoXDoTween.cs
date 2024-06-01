@@ -13,10 +13,15 @@ public class BoXDoTween : MonoBehaviour
 
     private Vector3 originalScale;
 
-    void Start()
+    void OnEnable()
     {
         originalScale = transform.localScale;
         ScaleUpAndShake();
+    }
+
+    void OnDisable()
+    {
+        ScaleUpAndShake(); 
     }
 
     public void ScaleUpAndShake()
