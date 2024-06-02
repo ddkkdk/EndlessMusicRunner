@@ -11,6 +11,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     public GameObject[] destroyParticleEffects;
     public GameObject puffEffect;
     public GameObject perfectTxtEffect;
+    private Collider2D selfCollider;
     public int score;
 
     [SpineAnimation]
@@ -29,7 +30,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
             Instance = this;
         }
 
-
+        selfCollider = GetComponent<Collider2D>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,20 +38,29 @@ public class UpperHitCollisionDetection : MonoBehaviour
         {
             AudioManager.instance.PlaySound();
 
+            Vector2 centerPos = selfCollider.bounds.center;
+
             score++;
             UIManager.Instance.ScoreUpdater(score);
             Vector2 hitPoint = other.ClosestPoint(transform.position);
 
             if (hitEffect != null)
             {
+                if (other.transform.position.x == centerPos.x) 
+                {
+                    GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+                    MoveUPword(perfectTxtObject, hitPoint);
+                    Destroy(perfectTxtObject, 0.8f);
+                }
+
                 GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+               // GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                 GameObject destroyEffects = Instantiate(destroyParticleEffects[Random.Range(0, 4)], hitPoint, Quaternion.identity);
 
-                MoveUPword(perfectTxtObject, hitPoint);
+               // MoveUPword(perfectTxtObject, hitPoint);
 
                 Destroy(hitObject, 0.2f);
-                Destroy(perfectTxtObject, 0.8f);
+               // Destroy(perfectTxtObject, 0.8f);
                 Destroy(destroyEffects, 0.5f);
 
 

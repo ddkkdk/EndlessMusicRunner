@@ -26,10 +26,6 @@ public class PlayerController : Entity
     [SpineAnimation]
     public string kickAnimation;
 
-    
-
-   
-  
 
     protected override void Start()
     {
