@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public float upperPosition;
     public Image fillAmount;
     public float instructionPanelActivationTime;
+    public int comboScore;
 
     private void Start()
     {
@@ -65,18 +66,30 @@ public class UIManager : MonoBehaviour
         scoreTxt_1.text=score.ToString();
         scoreTxt_2.text = score.ToString();
 
-        if (score >= 5) 
+         
+    }
+
+    public void ComboScoreUpdater(int score)
+    {
+      
+        comboTxt_1.text = score.ToString();
+        comboTxt_2.text = score.ToString();
+
+        if (score >= 5)
         {
             combo.gameObject.SetActive(true);
-            comboTxt_1.text=score.ToString();
-            comboTxt_2.text = score.ToString();
 
 
         }
-     
+        else if (score<=0) 
+        {
+            combo.gameObject.SetActive(false);
+
+        }
+
     }
 
 
-  
-    
+
+
 }

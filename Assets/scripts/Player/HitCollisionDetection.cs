@@ -12,6 +12,7 @@ public class HitCollisionDetection : MonoBehaviour
     public GameObject puffEffect;
     public GameObject perfectTxtEffect;
     public int score;
+    public int comboScore;
 
     [SpineAnimation]
     public string HitAnimation;
@@ -38,7 +39,11 @@ public class HitCollisionDetection : MonoBehaviour
             AudioManager.instance.PlaySound();
 
             score++;
+            comboScore++;
+
             UIManager.Instance.ScoreUpdater(score);
+            UIManager.Instance.ComboScoreUpdater(comboScore);
+            
             Vector2 hitPoint = other.ClosestPoint(transform.position);
 
             if (hitEffect != null) 
@@ -56,6 +61,7 @@ public class HitCollisionDetection : MonoBehaviour
 
             }
 
+            other.GetComponent<Collider2D>().enabled = false;
             other.GetComponent<Rigidbody2D>().isKinematic = false;
             other.GetComponent<MoveLeft>().speed = 0;
 

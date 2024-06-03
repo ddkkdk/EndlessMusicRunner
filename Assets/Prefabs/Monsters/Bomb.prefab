@@ -127,7 +127,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 1
-  timeScale: 2
+  timeScale: 0.2
 --- !u!114 &7983996246859701685
 MonoBehaviour:
   m_ObjectHideFlags: 0

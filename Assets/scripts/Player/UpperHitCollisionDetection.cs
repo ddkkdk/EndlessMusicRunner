@@ -13,6 +13,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     public GameObject perfectTxtEffect;
     private Collider2D selfCollider;
     public int score;
+    public int comboScore;
 
     [SpineAnimation]
     public string HitAnimation;
@@ -37,40 +38,34 @@ public class UpperHitCollisionDetection : MonoBehaviour
         if (other.gameObject.tag == "Monster")
         {
             AudioManager.instance.PlaySound();
-
-            Vector2 centerPos = selfCollider.bounds.center;
-
+         
             score++;
+            comboScore++;
+
             UIManager.Instance.ScoreUpdater(score);
+            UIManager.Instance.ComboScoreUpdater(comboScore);
             Vector2 hitPoint = other.ClosestPoint(transform.position);
 
             if (hitEffect != null)
             {
-                if (other.transform.position.x == centerPos.x) 
-                {
-                    GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-                    MoveUPword(perfectTxtObject, hitPoint);
-                    Destroy(perfectTxtObject, 0.8f);
-                }
-
-                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-               // GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-                GameObject destroyEffects = Instantiate(destroyParticleEffects[Random.Range(0, 4)], hitPoint, Quaternion.identity);
-
-               // MoveUPword(perfectTxtObject, hitPoint);
-
-                Destroy(hitObject, 0.2f);
-               // Destroy(perfectTxtObject, 0.8f);
-                Destroy(destroyEffects, 0.5f);
+                               
+               GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+               GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+               GameObject destroyEffects = Instantiate(destroyParticleEffects[Random.Range(0, 4)], hitPoint, Quaternion.identity);
+               MoveUPword(perfectTxtObject, hitPoint);
+               Destroy(perfectTxtObject, 0.8f);
+               
+               Destroy(hitObject, 0.2f);
+               Destroy(destroyEffects, 0.5f);
 
 
             }
 
+            other.GetComponent<Collider2D>().enabled = false;
             other.GetComponent<Rigidbody2D>().isKinematic = false;
             other.GetComponent<MoveLeft>().speed = 0;
 
             float position = other.gameObject.transform.position.y;
-
 
             if (position > -8)
             {
@@ -78,8 +73,6 @@ public class UpperHitCollisionDetection : MonoBehaviour
                 other.GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
 
             }
-
-
 
             if (other.GetComponent<MoveLeft>().monsterNumber == 6)
             {
@@ -96,7 +89,6 @@ public class UpperHitCollisionDetection : MonoBehaviour
                 other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit_Fly_1", false);
 
             }
-
 
 
         }
