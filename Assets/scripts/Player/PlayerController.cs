@@ -27,6 +27,7 @@ public class PlayerController : Entity
     public string kickAnimation;
 
     public float runningTimeScale;
+    public GameObject movingEffect;
 
 
     protected override void Start()
@@ -44,7 +45,8 @@ public class PlayerController : Entity
 
     protected override void FixedUpdate()
     {
-       
+       if(isOnGround)
+            movingEffect.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.F) && isOnGround) 
         {
@@ -53,6 +55,7 @@ public class PlayerController : Entity
             GameManager.instance.AnimationController(kickAnimation);
             GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
             Invoke("UpperColliderDeactivate", 0.5f);
+            movingEffect.SetActive(false);
             isOnGround = false;
 
         
@@ -107,7 +110,7 @@ public class PlayerController : Entity
     {
         transform.DOMoveX(-56, 2).SetEase(Ease.Flash).OnComplete(() =>
         {
-            StartCoroutine(WatingTime());
+           // StartCoroutine(WatingTime());
            
         });
     }
