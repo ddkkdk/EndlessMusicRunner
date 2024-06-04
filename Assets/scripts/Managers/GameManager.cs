@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public SkeletonAnimation skeleton;
     public GameObject speaker_1;
     public GameObject speaker_2;
-    public float timeScale;
+    
     public float flyTimeScale;
     public float retireTimeScale;
     public float kickTimeScale;

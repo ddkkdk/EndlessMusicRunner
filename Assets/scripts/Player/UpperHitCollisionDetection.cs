@@ -51,12 +51,13 @@ public class UpperHitCollisionDetection : MonoBehaviour
                                
                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-               GameObject destroyEffects = Instantiate(destroyParticleEffects[Random.Range(0, 4)], hitPoint, Quaternion.identity);
+                HIttingEffects(other.gameObject, hitPoint);
+                
                MoveUPword(perfectTxtObject, hitPoint);
                Destroy(perfectTxtObject, 0.8f);
                
                Destroy(hitObject, 0.2f);
-               Destroy(destroyEffects, 0.5f);
+               
 
 
             }
@@ -100,6 +101,54 @@ public class UpperHitCollisionDetection : MonoBehaviour
         perfectTxtEffect.transform.DOMoveY(hitPoint.y + 2, 0.1f);
 
     }
+    public void HIttingEffects(GameObject other, Vector2 hitPoint)
+    {
+        Debug.Log("fshfkshfkshfkshfsjkhfjwsk");
+        int mNumber = other.GetComponent<MoveLeft>().monsterNumber;
+
+        if (mNumber == 0)
+        {
+            GameObject destroyEffects = Instantiate(destroyParticleEffects[0], hitPoint, Quaternion.identity);
+            Destroy(destroyEffects, 0.5f);
+
+        }
+        else if (mNumber == 1)
+        {
+            GameObject destroyEffects = Instantiate(destroyParticleEffects[1], hitPoint, Quaternion.identity);
+            Destroy(destroyEffects, 0.5f);
+
+        }
+        else if (mNumber == 2)
+        {
+            GameObject destroyEffects = Instantiate(destroyParticleEffects[2], hitPoint, Quaternion.identity);
+            Destroy(destroyEffects, 0.5f);
+        }
+        else if (mNumber == 3)
+        {
+            GameObject destroyEffects = Instantiate(destroyParticleEffects[3], hitPoint, Quaternion.identity);
+            Destroy(destroyEffects, 0.5f);
+        }
+        else if (mNumber == 4)
+        {
+            GameObject destroyEffects = Instantiate(destroyParticleEffects[4], hitPoint, Quaternion.identity);
+            Destroy(destroyEffects, 0.5f);
+
+        }
+        else if (mNumber == 5)
+        {
+            GameObject destroyEffects = Instantiate(destroyParticleEffects[5], hitPoint, Quaternion.identity);
+            Destroy(destroyEffects, 0.5f);
+
+        }
+        else if (mNumber == 6)
+        {
+            GameObject destroyEffects = Instantiate(destroyParticleEffects[6], hitPoint, Quaternion.identity);
+            Destroy(destroyEffects, 0.5f);
+        }
+
+
+    }
+
 
 
 }

@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip clap_1;
     public AudioClip clap_2;
     public AudioClip ouch_1;
-    public AudioClip ouch_2;
+    
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayerHItSound() 
     {
-        //AudioClip clipToPlay = Random.value > 0.5 ? ouch_1 : ouch_2;
-        audioSource.PlayOneShot(ouch_2, 0.1f);
+        
+        audioSource.PlayOneShot(ouch_1, 0.1f);
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4430773791317904}
   - component: {fileID: 198328996188583790}
   - component: {fileID: 199063500125287056}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4821,13 +4821,13 @@ GameObject:
   - component: {fileID: 4591328501978900}
   - component: {fileID: 198125528418200750}
   - component: {fileID: 199377189370075720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Monster_Tablet_hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4591328501978900
 Transform:
   m_ObjectHideFlags: 0
@@ -4837,7 +4837,7 @@ Transform:
   m_GameObject: {fileID: 1563634094512642}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.7476392, y: 3.7476392, z: 3.7476392}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4430773791317904}
@@ -9588,8 +9588,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1265792321
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_RenderMode: 1
   m_MeshDistribution: 0

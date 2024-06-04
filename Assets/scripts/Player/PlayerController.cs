@@ -28,8 +28,7 @@ public class PlayerController : Entity
 
     public float runningTimeScale;
     public GameObject movingEffect;
-    public Transform groundCheck;
-    public float groundCheckDistance;
+   
 
 
 

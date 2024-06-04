@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4324496754223618}
   - component: {fileID: 198551026613658746}
   - component: {fileID: 199873909069691804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Droplets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 4552537231885416}
   - component: {fileID: 198154314341742666}
   - component: {fileID: 199102060743036140}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Monster_Egg_HIT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4835,9 +4835,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377947171569574}
-  m_LocalRotation: {x: 0.000000029802322, y: 1, z: 0.000000029802322, w: -0.00000014901161}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.7476392, y: 3.7476392, z: 3.7476392}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4324496754223618}
@@ -9588,8 +9588,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1265792321
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0

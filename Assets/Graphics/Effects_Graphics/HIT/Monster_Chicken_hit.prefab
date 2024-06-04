@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 468230}
   - component: {fileID: 19851458}
   - component: {fileID: 19987854}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ExplosionRays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 429306}
   - component: {fileID: 19825090}
   - component: {fileID: 19938972}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9668,13 +9668,13 @@ GameObject:
   - component: {fileID: 19825358}
   - component: {fileID: 19952246}
   - component: {fileID: -5829850269793496861}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Monster_Chicken_hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &475894
 Transform:
   m_ObjectHideFlags: 0
@@ -9684,7 +9684,7 @@ Transform:
   m_GameObject: {fileID: 181478}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1.1242918, y: 1.1242918, z: 1.1242918}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 429306}

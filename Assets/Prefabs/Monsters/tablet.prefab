@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  monsterNumber: 3
+  monsterNumber: 4
 --- !u!114 &1586732273323951856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   fillAmount: {fileID: 0}
+  isOnGround: 1
   damageAmount: 1
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
 --- !u!61 &2249227629863875094
