@@ -10,7 +10,7 @@ Head
 	offsets: 35, 0, 434, 262
 	rotate: 90
 Head_Kick
-	bounds: 949, 1073, 361, 273
+	bounds: 950, 1073, 361, 273
 	offsets: 28, 0, 389, 273
 Left arm
 	bounds: 2, 22, 145, 208
@@ -25,7 +25,7 @@ Left leg_Kick
 Tail
 	bounds: 555, 524, 326, 200
 Wing
-	bounds: 1234, 908, 163, 98
+	bounds: 1235, 908, 163, 98
 	rotate: 90
 body
 	bounds: 296, 128, 280, 347
@@ -38,7 +38,7 @@ face
 face2
 	bounds: 578, 8, 283, 256
 face3
-	bounds: 949, 815, 283, 256
+	bounds: 950, 815, 283, 256
 face4
 	bounds: 883, 557, 283, 256
 face_Kick
@@ -54,6 +54,7 @@ right arm
 right leg
 	bounds: 1108, 111, 123, 192
 right leg_Kick
-	bounds: 543, 1005, 404, 341
+	bounds: 544, 1005, 404, 341
 swing
-	bounds: 2, 878, 539, 468
+	bounds: 2, 878, 540, 468
+	offsets: 4, 40, 548, 548
