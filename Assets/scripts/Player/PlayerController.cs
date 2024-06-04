@@ -28,18 +28,21 @@ public class PlayerController : Entity
 
     public float runningTimeScale;
     public GameObject movingEffect;
+    public Transform groundCheck;
+    public float groundCheckDistance;
+
 
 
     protected override void Start()
     {
         MoveAnimation();
         playerRb = GetComponent<Rigidbody2D>();
-        //StartCoroutine(RunAnimation());
+        StartCoroutine(RunAnimation());
         Physics.gravity*=gravityModifier;
 
         currentHealth = maxHealth;
 
-        playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale = runningTimeScale;
+        //playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale = runningTimeScale;
 
     }   
 
@@ -67,8 +70,8 @@ public class PlayerController : Entity
 
         if (Input.GetKeyDown(KeyCode.J)) 
         {
-                
-            GameManager.instance.AnimationController(kickAnimation);
+            
+            GameManager.instance.AnimationController(kickAnimation);          
             GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
             Invoke("LowerColliderDeactivate", 0.5f);
            
@@ -113,7 +116,7 @@ public class PlayerController : Entity
     {
         transform.DOMoveX(-56, 2).SetEase(Ease.Flash).OnComplete(() =>
         {
-           // StartCoroutine(WatingTime());
+            StartCoroutine(WatingTime());
            
         });
     }
@@ -127,6 +130,7 @@ public class PlayerController : Entity
     }
 
    
+
 
 
 

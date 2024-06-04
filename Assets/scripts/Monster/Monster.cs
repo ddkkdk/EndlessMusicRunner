@@ -13,7 +13,7 @@ public class Monster : Entity
     {
         if (this.gameObject.transform.position.y >= 3.47 && this.gameObject.transform.position.x<=-56)
         {
-          
+
             UpperHitCollisionDetection.Instance.comboScore = 0;
             HitCollisionDetection.Instance.comboScore = 0;
             UIManager.Instance.ComboScoreUpdater(0);

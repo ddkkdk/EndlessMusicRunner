@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject speaker_1;
     public GameObject speaker_2;
     public float timeScale;
+    public float flyTimeScale;
+    public float retireTimeScale;
+    public float kickTimeScale;
     void Start()
     {
         if (instance != null)
@@ -46,12 +49,16 @@ public class GameManager : MonoBehaviour
 
         if (animationName == "fly")
         {
-            kickTrackEntry.TimeScale = 4.5f;
+            kickTrackEntry.TimeScale = flyTimeScale;
 
         }
         else if (animationName == "retire") 
         {
-            kickTrackEntry.TimeScale = 8f;
+            kickTrackEntry.TimeScale = retireTimeScale;
+        }
+        else if (animationName == "Kick")
+        {
+            kickTrackEntry.TimeScale = kickTimeScale;
         }
 
         kickTrackEntry.Complete += (TrackEntry trackEntry) =>

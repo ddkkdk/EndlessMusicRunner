@@ -13,7 +13,7 @@ public class Entity : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public Image fillAmount;
-    protected  bool isOnGround = true;
+    public  bool isOnGround = true;
     protected virtual void Awake() 
     {
     

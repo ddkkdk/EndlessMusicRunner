@@ -989,13 +989,14 @@ GameObject:
   m_Component:
   - component: {fileID: 341237508}
   - component: {fileID: 341237509}
+  - component: {fileID: 341237510}
   m_Layer: 0
   m_Name: AttackChecked
   m_TagString: HittingCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &341237508
 Transform:
   m_ObjectHideFlags: 0
@@ -1024,9 +1025,32 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22135551, y: 0.16}
+  m_Offset: {x: 0.27406412, y: 0.14930555}
   serializedVersion: 2
-  m_Radius: 0.073917374
+  m_Radius: 0.11474078
+--- !u!114 &341237510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341237507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 3247441007696276540, guid: 5ddfde0f3c51e7f47ae4e0dd604a670c, type: 3}
+  destroyParticleEffects:
+  - {fileID: 8946561951230704596, guid: 251037608b1bd6d4e9d7b4536292b2d7, type: 3}
+  - {fileID: 4162943617169064942, guid: 89fe8180237a51245ade71e8c425f495, type: 3}
+  - {fileID: 8400117977535812919, guid: 146594d094c8c0c4a8d026ede7cc5cc7, type: 3}
+  - {fileID: 3355147322530775092, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
+  puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
+  perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
+  score: 0
+  comboScore: 0
+  HitAnimation: 
 --- !u!1 &342117584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,7 +1789,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514379561}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
   m_Name: 
@@ -2817,6 +2841,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779471935}
   m_CullTransparentMesh: 1
+--- !u!1 &786341262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 786341263}
+  m_Layer: 7
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &786341263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786341262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1878545306}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &804989332
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,6 +3117,9 @@ MonoBehaviour:
   speaker_1: {fileID: 1881881561}
   speaker_2: {fileID: 753292737}
   timeScale: 15
+  flyTimeScale: 8
+  retireTimeScale: 35
+  kickTimeScale: 0
 --- !u!4 &827244270
 Transform:
   m_ObjectHideFlags: 0
@@ -5034,6 +5092,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 181478, guid: 5424767cf5fd7b5439906bdd5a6dd834, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 475894, guid: 5424767cf5fd7b5439906bdd5a6dd834, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5089,6 +5151,10 @@ PrefabInstance:
     - target: {fileID: 475894, guid: 5424767cf5fd7b5439906bdd5a6dd834, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19825358, guid: 5424767cf5fd7b5439906bdd5a6dd834, type: 3}
+      propertyPath: looping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19952246, guid: 5424767cf5fd7b5439906bdd5a6dd834, type: 3}
       propertyPath: m_SortingLayer
@@ -5678,6 +5744,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   fillAmount: {fileID: 605063367}
+  isOnGround: 1
   playerSkeletonAnimation: {fileID: 1878545307}
   jumpForce: 25
   isJump: 0
@@ -5687,6 +5754,8 @@ MonoBehaviour:
   kickAnimation: Kick
   runningTimeScale: 1.9
   movingEffect: {fileID: 1494954703}
+  groundCheck: {fileID: 786341263}
+  groundCheckDistance: 0.4
 --- !u!4 &1608568228
 Transform:
   m_ObjectHideFlags: 0
@@ -6294,6 +6363,7 @@ Transform:
   m_Children:
   - {fileID: 341237508}
   - {fileID: 1494954704}
+  - {fileID: 786341263}
   m_Father: {fileID: 1608568228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6943,7 +7013,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046699414}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f74fe0a7c861bc4db87aad6883c46d2, type: 3}
   m_Name: 
