@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class PlayerController : Entity
 {
     private Rigidbody2D playerRb;
-    private SkeletonAnimation playerSkeletonAnimation;
+    public SkeletonAnimation playerSkeletonAnimation;
     public float jumpForce;
  
     public bool isJump=false;
@@ -26,26 +26,26 @@ public class PlayerController : Entity
     [SpineAnimation]
     public string kickAnimation;
 
+    public float runningTimeScale;
+
 
     protected override void Start()
     {
         MoveAnimation();
         playerRb = GetComponent<Rigidbody2D>();
-       
-        playerSkeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
-
-        StartCoroutine(RunAnimation());
+        //StartCoroutine(RunAnimation());
         Physics.gravity*=gravityModifier;
 
         currentHealth = maxHealth;
 
-
+        playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale = runningTimeScale;
 
     }   
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-      
+       
+
         if (Input.GetKeyDown(KeyCode.F) && isOnGround) 
         {
           
@@ -95,7 +95,7 @@ public class PlayerController : Entity
         {
             if (isOnGround)
             {
-                playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true);
+                playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale= runningTimeScale;
             }
             yield return new WaitForSeconds(0.5f);
 
@@ -105,7 +105,7 @@ public class PlayerController : Entity
 
     public void MoveAnimation() 
     {
-        transform.DOMoveX(-54, 2).SetEase(Ease.Flash).OnComplete(() =>
+        transform.DOMoveX(-56, 2).SetEase(Ease.Flash).OnComplete(() =>
         {
             StartCoroutine(WatingTime());
            

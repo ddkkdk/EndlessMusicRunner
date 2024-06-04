@@ -106,7 +106,7 @@ public class HitCollisionDetection : MonoBehaviour
 
     public void MoveUPword(GameObject perfectTxtEffect, Vector2 hitPoint) 
     {
-        perfectTxtEffect.transform.DOMoveY(hitPoint.y+7, 0.5f);
+        perfectTxtEffect.transform.DOMoveY(hitPoint.y+4, 0.1f);
     
     }
 

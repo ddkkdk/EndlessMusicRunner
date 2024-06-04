@@ -26,6 +26,10 @@ public class Entity : MonoBehaviour
     {
         
     }
+    protected virtual void FixedUpdate()
+    {
+
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -1,3 +1,4 @@
+using Spine;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,9 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public SkeletonAnimation skeleton;
-    public Sprite background;
     public GameObject speaker_1;
     public GameObject speaker_2;
+    public float timeScale;
     void Start()
     {
         if (instance != null)
@@ -41,7 +42,13 @@ public class GameManager : MonoBehaviour
 
     public void AnimationController(string animationName) 
     {
-        skeleton.AnimationState.SetAnimation(0, animationName, false);
+      TrackEntry kickTrackEntry=  skeleton.AnimationState.SetAnimation(0, animationName, true);
+
+        kickTrackEntry.Complete += (TrackEntry trackEntry) =>
+        {
+            skeleton.AnimationState.SetAnimation(0, "Running", true);
+
+        };
         
 
     }
