@@ -989,7 +989,6 @@ GameObject:
   m_Component:
   - component: {fileID: 341237508}
   - component: {fileID: 341237509}
-  - component: {fileID: 341237510}
   m_Layer: 0
   m_Name: AttackChecked
   m_TagString: HittingCollider
@@ -1028,29 +1027,6 @@ CircleCollider2D:
   m_Offset: {x: 0.22135551, y: 0.16}
   serializedVersion: 2
   m_Radius: 0.073917374
---- !u!114 &341237510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341237507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 3247441007696276540, guid: 5ddfde0f3c51e7f47ae4e0dd604a670c, type: 3}
-  destroyParticleEffects:
-  - {fileID: 8946561951230704596, guid: 251037608b1bd6d4e9d7b4536292b2d7, type: 3}
-  - {fileID: 4162943617169064942, guid: 89fe8180237a51245ade71e8c425f495, type: 3}
-  - {fileID: 8400117977535812919, guid: 146594d094c8c0c4a8d026ede7cc5cc7, type: 3}
-  - {fileID: 3355147322530775092, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
-  puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
-  perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
-  score: 0
-  comboScore: 0
-  HitAnimation: 
 --- !u!1 &342117584
 GameObject:
   m_ObjectHideFlags: 0

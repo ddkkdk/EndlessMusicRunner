@@ -44,6 +44,16 @@ public class GameManager : MonoBehaviour
     {
       TrackEntry kickTrackEntry=  skeleton.AnimationState.SetAnimation(0, animationName, true);
 
+        if (animationName == "fly")
+        {
+            kickTrackEntry.TimeScale = 4.5f;
+
+        }
+        else if (animationName == "retire") 
+        {
+            kickTrackEntry.TimeScale = 8f;
+        }
+
         kickTrackEntry.Complete += (TrackEntry trackEntry) =>
         {
             skeleton.AnimationState.SetAnimation(0, "Running", true);

@@ -52,7 +52,10 @@ public class PlayerController : Entity
         {
           
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            GameManager.instance.AnimationController(kickAnimation);
+
+
+            GameManager.instance.AnimationController(flyAnimation);
+
             GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
             Invoke("UpperColliderDeactivate", 0.5f);
             movingEffect.SetActive(false);
