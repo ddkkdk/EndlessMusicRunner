@@ -1,0 +1,39 @@
+닭.png
+	size: 597, 597
+	filter: Linear, Linear
+	pma: true
+	scale: 0.5
+D_mouth
+	bounds: 373, 35, 78, 43
+	rotate: 90
+L_foot
+	bounds: 258, 115, 128, 109
+L_wing
+	bounds: 398, 322, 164, 273
+Path
+	bounds: 492, 55, 41, 70
+Path - Pixel Layer
+	bounds: 521, 260, 74, 60
+R_leg
+	bounds: 398, 204, 116, 121
+	rotate: 90
+R_wing
+	bounds: 2, 21, 203, 254
+	rotate: 90
+U_mouth
+	bounds: 535, 80, 64, 53
+	rotate: 90
+bady
+	bounds: 2, 226, 394, 369
+cap
+	bounds: 258, 8, 113, 105
+eye
+	bounds: 530, 203, 55, 65
+	offsets: 0, 1, 55, 67
+	rotate: 90
+eye_1
+	bounds: 388, 127, 140, 75
+eye_2
+	bounds: 530, 146, 64, 55
+eye_3
+	bounds: 418, 55, 72, 70

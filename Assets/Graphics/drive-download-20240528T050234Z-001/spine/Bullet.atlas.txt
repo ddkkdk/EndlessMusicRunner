@@ -1,0 +1,19 @@
+Bullet.png
+	size: 974, 974
+	filter: Linear, Linear
+	pma: true
+Can
+	bounds: 542, 150, 484, 374
+	offsets: 11, 1, 507, 375
+	rotate: 90
+Watermelon
+	bounds: 2, 2, 509, 293
+	offsets: 8, 1, 525, 294
+egg
+	bounds: 553, 636, 408, 336
+ham
+	bounds: 2, 297, 538, 428
+	offsets: 4, 1, 546, 429
+pencil
+	bounds: 2, 727, 549, 245
+	offsets: 11, 0, 572, 245

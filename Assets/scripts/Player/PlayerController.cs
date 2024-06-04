@@ -6,11 +6,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class PlayerController : Entity
 {
     private Rigidbody2D playerRb;
-    private SkeletonAnimation playerSkeletonAnimation;
+    public SkeletonAnimation playerSkeletonAnimation;
     public float jumpForce;
  
     public bool isJump=false;
@@ -25,36 +26,55 @@ public class PlayerController : Entity
     [SpineAnimation]
     public string kickAnimation;
 
+    public float runningTimeScale;
+    public GameObject movingEffect;
+    public Transform groundCheck;
+    public float groundCheckDistance;
+
+
 
     protected override void Start()
     {
         MoveAnimation();
         playerRb = GetComponent<Rigidbody2D>();
-       
-        playerSkeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
-
         StartCoroutine(RunAnimation());
         Physics.gravity*=gravityModifier;
 
+        currentHealth = maxHealth;
+
+        //playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale = runningTimeScale;
+
     }   
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
+       if(isOnGround)
+            movingEffect.SetActive(true);
+
         if (Input.GetKeyDown(KeyCode.F) && isOnGround) 
         {
           
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false);
-            isOnGround= false;
-          
-                      
+
+
+            GameManager.instance.AnimationController(flyAnimation);
+
+            GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
+            Invoke("UpperColliderDeactivate", 0.5f);
+            movingEffect.SetActive(false);
+            isOnGround = false;
+
+        
+
         }
 
         if (Input.GetKeyDown(KeyCode.J)) 
         {
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false);
-            GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = true;
-            Invoke("ColliderDeactivate", 0.5f);
+            
+            GameManager.instance.AnimationController(kickAnimation);          
+            GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
+            Invoke("LowerColliderDeactivate", 0.5f);
+           
 
         }
 
@@ -66,15 +86,25 @@ public class PlayerController : Entity
         GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = false;
 
     }
+    public void UpperColliderDeactivate()
+    {
+        GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = false;
 
-  
+    }
+    public void LowerColliderDeactivate()
+    {
+        GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = false;
+
+    }
+
+
     IEnumerator RunAnimation() 
     {
         while (true) 
         {
             if (isOnGround)
             {
-                playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true);
+                playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale= runningTimeScale;
             }
             yield return new WaitForSeconds(0.5f);
 
@@ -84,15 +114,26 @@ public class PlayerController : Entity
 
     public void MoveAnimation() 
     {
-        transform.DOMoveX(-54, 2).SetEase(Ease.Flash).OnComplete(async() =>
+        transform.DOMoveX(-56, 2).SetEase(Ease.Flash).OnComplete(() =>
         {
-            await Task.Delay(1500);
-            UIManager.Instance.ActivatPanel(true);
+            StartCoroutine(WatingTime());
+           
         });
     }
 
+    IEnumerator WatingTime() 
+    {
+        yield return new WaitForSeconds(1.5f);
+        UIManager.Instance.ActivatPanel(true);
+        UIManager.Instance.attackPoints.SetActive(true);
 
-     
+    }
 
    
+
+
+
+
+
+
 }

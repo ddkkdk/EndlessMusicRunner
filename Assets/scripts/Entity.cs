@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
 {
@@ -9,38 +10,48 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsGround;
     public Transform attackCheck;
     public float attackRadius;
-
-
-    protected  bool isOnGround = true;
+    public float maxHealth;
+    public float currentHealth;
+    public Image fillAmount;
+    public  bool isOnGround = true;
     protected virtual void Awake() 
     {
     
     }
     protected virtual void Start()
     {
-        
-    }
 
-    
+    }   
     protected virtual void Update()
     {
         
+    }
+    protected virtual void FixedUpdate()
+    {
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isOnGround = true;
-        Debug.Log(isOnGround);
+        
     } 
-
-    protected virtual void OnDrawGizmos()
+ 
+    public virtual void Damage(int damageAmount) 
     {
-        Gizmos.DrawWireSphere(attackCheck.position, attackRadius);
+        
+        currentHealth -= damageAmount;
+        SetHealthBar();
+        FlashFx.Instance.callFlash();
+        AudioManager.instance.PlayerHItSound();
+    
     }
 
-    public virtual void Damage() 
+    public void SetHealthBar()
     {
-        Debug.Log(gameObject.name + "was damaged");
-    
+
+        fillAmount.fillAmount = currentHealth / maxHealth;
+
+
     }
 }

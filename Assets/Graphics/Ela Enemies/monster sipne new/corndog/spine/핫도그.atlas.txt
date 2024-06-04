@@ -1,0 +1,45 @@
+핫도그.png
+	size: 695, 695
+	filter: Linear, Linear
+	pma: true
+	scale: 0.5
+Group
+	bounds: 373, 19, 66, 191
+	offsets: 0, 1, 66, 192
+LD_vegetable
+	bounds: 435, 317, 128, 157
+LU_vegetable
+	bounds: 567, 549, 126, 144
+L_bread
+	bounds: 2, 30, 233, 328
+L_eye
+	bounds: 609, 24, 78, 91
+L_foot
+	bounds: 237, 20, 96, 61
+	rotate: 90
+Layer 1
+	bounds: 237, 197, 134, 129
+RD_vegetable
+	bounds: 373, 212, 103, 148
+	rotate: 90
+RU_vegetable
+	bounds: 565, 234, 115, 134
+R_bread
+	bounds: 2, 360, 233, 333
+R_eye
+	bounds: 237, 118, 77, 92
+	rotate: 90
+R_foot
+	bounds: 513, 15, 94, 100
+R_hand
+	bounds: 567, 370, 177, 102
+	rotate: 90
+eye_x
+	bounds: 237, 328, 196, 146
+eye_xx
+	bounds: 523, 117, 125, 115
+mouth
+	bounds: 441, 75, 70, 135
+sausage
+	bounds: 237, 476, 217, 328
+	rotate: 90

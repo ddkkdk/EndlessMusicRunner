@@ -1,0 +1,38 @@
+Bullet.png
+	size: 1475, 1475
+	filter: Linear, Linear
+	pma: true
+Bomb
+	bounds: 549, 448, 540, 402
+	offsets: 0, 1, 540, 404
+Can
+	bounds: 1091, 68, 484, 374
+	offsets: 11, 1, 507, 375
+	rotate: 90
+Dumbbell
+	bounds: 2, 926, 558, 300
+	offsets: 4, 58, 564, 429
+Watermelon
+	bounds: 1113, 554, 509, 293
+	offsets: 8, 1, 525, 294
+	rotate: 90
+egg
+	bounds: 1137, 1065, 408, 336
+	rotate: 90
+ham
+	bounds: 2, 199, 538, 428
+	offsets: 4, 1, 546, 429
+pencil
+	bounds: 562, 852, 549, 245
+	offsets: 11, 0, 572, 245
+pencil2
+	bounds: 2, 1228, 572, 245
+small donut
+	bounds: 542, 17, 535, 429
+	offsets: 14, 0, 564, 429
+small note
+	bounds: 576, 1099, 559, 374
+	offsets: 2, 28, 564, 429
+white bird
+	bounds: 2, 629, 545, 295
+	offsets: 0, 67, 546, 429
