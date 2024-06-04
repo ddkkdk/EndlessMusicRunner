@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 104039804}
   - component: {fileID: 104039806}
   - component: {fileID: 104039805}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,7 +996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &341237508
 Transform:
   m_ObjectHideFlags: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341237507}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
   m_Name: 
@@ -1789,7 +1789,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514379561}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
   m_Name: 
@@ -3119,7 +3119,7 @@ MonoBehaviour:
   timeScale: 15
   flyTimeScale: 8
   retireTimeScale: 35
-  kickTimeScale: 0
+  kickTimeScale: 2
 --- !u!4 &827244270
 Transform:
   m_ObjectHideFlags: 0
@@ -5755,7 +5755,7 @@ MonoBehaviour:
   runningTimeScale: 1.9
   movingEffect: {fileID: 1494954703}
   groundCheck: {fileID: 786341263}
-  groundCheckDistance: 0.4
+  groundCheckDistance: 10
 --- !u!4 &1608568228
 Transform:
   m_ObjectHideFlags: 0
@@ -7013,7 +7013,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046699414}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f74fe0a7c861bc4db87aad6883c46d2, type: 3}
   m_Name: 
