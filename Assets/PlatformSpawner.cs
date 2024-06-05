@@ -10,11 +10,13 @@ public class PlatformSpawner : MonoBehaviour
     }
     public static PlatformSpawner instance;  
     public float itemSpawnDelay;
-    public float setSpawnDelay;
     public GameObject platform;
-    public Transform spawnPoint;  
-    private bool isSpawning = false;
-    public bool startSpawn = false;
+
+    public float platformSize;
+    public GameObject plaformPoint;
+    public float xSpawn = 0;
+
+    public Vector3 offset;
  
     void Start()
     {
@@ -29,22 +31,23 @@ public class PlatformSpawner : MonoBehaviour
 
         }
 
-        StartCoroutine(SpawnMonstersAtRandomPos());
 
+        SpawnPlatform(50);
     }
 
-    IEnumerator SpawnMonstersAtRandomPos()
+   
+
+    public void SpawnPlatform(int count) 
     {
-
-        while (true)
+        for (int i = 0; i <= 10; i++)
         {
-                                      
-             GameObject spawnedObjects = Instantiate(platform, new Vector3(27.7f,-0.02f,0), platform.transform.rotation);
-           
-             yield return new WaitForSeconds(itemSpawnDelay);
-                                  
-        }
+            GameObject spawnedObjects = Instantiate(platform, transform.right * xSpawn + offset, plaformPoint.transform.rotation); ;
+            platformSize = spawnedObjects.GetComponent<BoxCollider2D>().size.x;
+            Debug.Log("platsize" + platformSize);
+            
+            xSpawn += platformSize;
 
+        }
 
     }
 }

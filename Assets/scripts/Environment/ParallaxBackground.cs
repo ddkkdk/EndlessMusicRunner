@@ -23,12 +23,14 @@ public class ParallaxBackground : MonoBehaviour
 
         if (transform.position.x < startPosition.x - repeatWidth) 
         {
-            transform.position = startPosition;
-        
+           // transform.position = startPosition;
+          //  Destroy(gameObject);
+
+
         }
 
-     
-        
+
+
     }
 }
   
