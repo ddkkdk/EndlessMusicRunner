@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour
         
         currentHealth -= damageAmount;
         SetHealthBar();
-        FlashFx.Instance.callFlash();
+       // FlashFx.Instance.callFlash();
         AudioManager.instance.PlayerHItSound();
     
     }

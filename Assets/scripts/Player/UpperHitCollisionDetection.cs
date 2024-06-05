@@ -14,6 +14,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     private Collider2D selfCollider;
     public int score;
     public int comboScore;
+    public float fadeDuration = 2.0f;
 
     [SpineAnimation]
     public string HitAnimation;
@@ -50,6 +51,8 @@ public class UpperHitCollisionDetection : MonoBehaviour
             {
                                
                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+                //Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
+               StartCoroutine (OpacityChange(perfectTxtObject));
                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                 HIttingEffects(other.gameObject, hitPoint);
                 
@@ -147,6 +150,34 @@ public class UpperHitCollisionDetection : MonoBehaviour
             Destroy(destroyEffects, 0.5f);
         }
 
+
+    }
+
+    public IEnumerator OpacityChange(GameObject obj) 
+    {
+         
+        Color currentColor = obj.GetComponent<SpriteRenderer>().color;
+
+        
+        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        {
+            
+            float normalizedTime = t / fadeDuration;
+
+            
+            currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
+
+            
+            obj.GetComponent<SpriteRenderer>().color = currentColor;
+
+            
+            yield return null;
+        }
+
+        
+        currentColor.a = 0;
+        obj.GetComponent<SpriteRenderer>().color = currentColor;
+        Destroy(obj);
 
     }
 

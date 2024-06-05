@@ -13,6 +13,7 @@ public class HitCollisionDetection : MonoBehaviour
     public GameObject perfectTxtEffect;
     public int score;
     public int comboScore;
+    public float fadeDuration = 2.0f;
 
     [SpineAnimation]
     public string HitAnimation;
@@ -50,6 +51,7 @@ public class HitCollisionDetection : MonoBehaviour
             {
               GameObject hitObject= Instantiate(hitEffect, hitPoint, Quaternion.identity);
               GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+              StartCoroutine(OpacityChange(perfectTxtObject));
 
               HIttingEffects(other.gameObject, hitPoint);
 
@@ -165,5 +167,31 @@ public class HitCollisionDetection : MonoBehaviour
 
     }
 
-   
+    public IEnumerator OpacityChange(GameObject obj)
+    {
+
+        Color currentColor = obj.GetComponent<SpriteRenderer>().color;
+
+
+        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        {
+
+            float normalizedTime = t / fadeDuration;
+
+
+            currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
+
+
+            obj.GetComponent<SpriteRenderer>().color = currentColor;
+
+
+            yield return null;
+        }
+
+
+        currentColor.a = 0;
+        obj.GetComponent<SpriteRenderer>().color = currentColor;
+        Destroy(obj);
+
+    }
 }
