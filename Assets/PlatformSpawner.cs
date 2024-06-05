@@ -39,7 +39,7 @@ public class PlatformSpawner : MonoBehaviour
         while (true)
         {
                                       
-             GameObject spawnedObjects = Instantiate(platform, spawnPoint.position, platform.transform.rotation);
+             GameObject spawnedObjects = Instantiate(platform, new Vector3(27.7f,-0.02f,0), platform.transform.rotation);
            
              yield return new WaitForSeconds(itemSpawnDelay);
                                   

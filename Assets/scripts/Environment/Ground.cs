@@ -16,7 +16,8 @@ public class Ground : MonoBehaviour
 
         if (transform.position.x < lastPosition)
         {
-            transform.position = newstartPosition;
+           // transform.position = newstartPosition;
+            Destroy(gameObject);
 
         }
 
