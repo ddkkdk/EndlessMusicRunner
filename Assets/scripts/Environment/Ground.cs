@@ -8,14 +8,7 @@ public class Ground : MonoBehaviour
     public float lastPosition;
 
     public float speed;
-    void Start()
-    {
-     
-
-       
-
-    }
-
+  
 
     void Update()
     {

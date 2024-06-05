@@ -115,7 +115,7 @@ public class PlayerController : Entity
     {
         transform.DOMoveX(-56, 2).SetEase(Ease.Flash).OnComplete(() =>
         {
-           // StartCoroutine(WatingTime());
+            StartCoroutine(WatingTime());
            
         });
     }
