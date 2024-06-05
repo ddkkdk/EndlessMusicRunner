@@ -104,7 +104,7 @@ public class HitCollisionDetection : MonoBehaviour
 
     public void MoveUPword(GameObject perfectTxtEffect, Vector2 hitPoint) 
     {
-        perfectTxtEffect.transform.DOMoveY(hitPoint.y+4, 0.1f);
+        perfectTxtEffect.transform.DOMoveY(hitPoint.y+2, 0.1f);
     
     }
 
@@ -119,6 +119,8 @@ public class HitCollisionDetection : MonoBehaviour
     {
         Debug.Log("fshfkshfkshfkshfsjkhfjwsk");
         int mNumber = other.GetComponent<MoveLeft>().monsterNumber;
+        Debug.Log("Monster number " + mNumber);
+
 
         if (mNumber == 0)
         {

@@ -105,6 +105,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     {
         Debug.Log("fshfkshfkshfkshfsjkhfjwsk");
         int mNumber = other.GetComponent<MoveLeft>().monsterNumber;
+        Debug.Log("Monster number " + mNumber);
 
         if (mNumber == 0)
         {

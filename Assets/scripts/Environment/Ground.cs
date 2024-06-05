@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-    private Vector3 startPosition;
-    private float repeatWidth;
+    public Vector3 newstartPosition;
+    public float lastPosition;
+
     public float speed;
     void Start()
     {
-        repeatWidth = GetComponent<BoxCollider2D>().size.x/2;
+     
 
-        startPosition = transform.position;
+       
 
     }
 
@@ -20,9 +21,9 @@ public class Ground : MonoBehaviour
     {
         transform.Translate(Vector3.left * Time.deltaTime * speed);
 
-        if (transform.position.x < startPosition.x - repeatWidth)
+        if (transform.position.x < lastPosition)
         {
-            transform.position = startPosition;
+            transform.position = newstartPosition;
 
         }
 

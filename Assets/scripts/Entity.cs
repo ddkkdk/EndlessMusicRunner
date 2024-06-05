@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Entity : MonoBehaviour
 {
     [Header("Collision Info")]
+    
     [SerializeField] protected float groundCheckDistance;
     [SerializeField] protected LayerMask whatIsGround;
     public Transform attackCheck;
