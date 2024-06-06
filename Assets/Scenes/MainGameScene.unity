@@ -16230,7 +16230,7 @@ MonoBehaviour:
   kickAnimation: Kick
   runningTimeScale: 1.9
   movingEffect: {fileID: 1494954703}
-  isStart: 1
+  isStart: 0
 --- !u!4 &1608568228
 Transform:
   m_ObjectHideFlags: 0
