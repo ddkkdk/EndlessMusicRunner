@@ -36,8 +36,10 @@ public class Entity : MonoBehaviour
     {
         isOnGround = true;
         
-    } 
- 
+    }
+
+  
+
     public virtual void Damage(int damageAmount) 
     {
         

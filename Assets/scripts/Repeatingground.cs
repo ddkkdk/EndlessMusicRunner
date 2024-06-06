@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ground : MonoBehaviour
+public class Repeatingground : MonoBehaviour
 {
     public float startPosition;
     public float lastPosition;
 
     public float speed;
-  
+
 
     void Update()
     {
@@ -16,16 +16,15 @@ public class Ground : MonoBehaviour
 
         if (transform.position.x <= lastPosition)
         {
-           /* Vector2 pos = new Vector2(startPosition, transform.position.x);
-            transform.position = pos;*/
-            Destroy(gameObject);
+            Vector2 pos = new Vector2(startPosition, transform.position.y);
+            transform.position = pos;
+            // Destroy(gameObject);
 
         }
 
-       
+
 
 
 
     }
 }
-    

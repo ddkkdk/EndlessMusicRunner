@@ -79,6 +79,7 @@ public class PlayerController : Entity
 
                    
     }
+ 
 
     public void ColliderDeactivate() 
     {
