@@ -10,6 +10,11 @@ using UnityEngine.UI;
 
 public class PlayerController : Entity
 {
+    [Header("Collision Info")]
+
+    [SerializeField] protected float groundCheckDistance;
+    [SerializeField] protected Transform groundCheck;
+    [SerializeField] protected LayerMask whatIsGround;
     private Rigidbody2D playerRb;
     public SkeletonAnimation playerSkeletonAnimation;
     public float jumpForce;
@@ -28,10 +33,10 @@ public class PlayerController : Entity
 
     public float runningTimeScale;
     public GameObject movingEffect;
-   
 
+    public bool isStart;
 
-
+  
     protected override void Start()
     {
         MoveAnimation();
@@ -41,7 +46,7 @@ public class PlayerController : Entity
 
         currentHealth = maxHealth;
 
-        //playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale = runningTimeScale;
+        
 
     }   
 
@@ -50,36 +55,28 @@ public class PlayerController : Entity
        if(isOnGround)
             movingEffect.SetActive(true);
 
-        if (Input.GetKeyDown(KeyCode.F) && isOnGround) 
+        if (Input.GetKeyDown(KeyCode.F) && isGroundDetected()) 
         {
-          
-            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-
+           
+            playerRb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
+            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale=7.5f;
             GameManager.instance.AnimationController(flyAnimation);
-
             GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
             Invoke("UpperColliderDeactivate", 0.5f);
             movingEffect.SetActive(false);
             isOnGround = false;
-
         
-
         }
 
         if (Input.GetKeyDown(KeyCode.J)) 
         {
-            
-            GameManager.instance.AnimationController(kickAnimation);          
+            playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false).TimeScale=2.5f;
             GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
             Invoke("LowerColliderDeactivate", 0.5f);
-           
 
         }
-
-                   
+                  
     }
- 
 
     public void ColliderDeactivate() 
     {
@@ -102,7 +99,7 @@ public class PlayerController : Entity
     {
         while (true) 
         {
-            if (isOnGround)
+            if (isGroundDetected())
             {
                 playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale= runningTimeScale;
             }
@@ -116,7 +113,8 @@ public class PlayerController : Entity
     {
         transform.DOMoveX(-56, 2).SetEase(Ease.Flash).OnComplete(() =>
         {
-            StartCoroutine(WatingTime());
+            if(isStart)
+              StartCoroutine(WatingTime());
            
         });
     }
@@ -129,7 +127,13 @@ public class PlayerController : Entity
 
     }
 
-   
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
+    }
+
+    public bool isGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+
 
 
 

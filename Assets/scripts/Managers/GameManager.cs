@@ -43,6 +43,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayerAllAnimation() 
+    {
+    
+    }
+
     public void AnimationController(string animationName) 
     {
       TrackEntry kickTrackEntry=  skeleton.AnimationState.SetAnimation(0, animationName, true);

@@ -28,16 +28,19 @@ public class FlashFx : MonoBehaviour
 
     public void callFlash() 
     {
-        StartCoroutine(FlashFxCor());
+        GameManager.instance.AnimationController("retire");
+       // StartCoroutine(FlashFxCor());
     
     }
 
     private IEnumerator FlashFxCor() 
     {
-        mesh.material = hitMat;
-        yield return new WaitForSeconds(0.2f);
-        mesh.material = orginalMat;
         GameManager.instance.AnimationController("retire");
+        yield return new WaitForSeconds(0.1f);
+        /*mesh.material = hitMat;
+     
+        mesh.material = orginalMat;*/
+
 
     }
 

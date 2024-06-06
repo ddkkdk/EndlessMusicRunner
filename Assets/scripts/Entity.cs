@@ -5,12 +5,8 @@ using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
 {
-    [Header("Collision Info")]
-    
-    [SerializeField] protected float groundCheckDistance;
-    [SerializeField] protected LayerMask whatIsGround;
-    public Transform attackCheck;
-    public float attackRadius;
+   
+  
     public float maxHealth;
     public float currentHealth;
     public Image fillAmount;
@@ -45,7 +41,7 @@ public class Entity : MonoBehaviour
         
         currentHealth -= damageAmount;
         SetHealthBar();
-       // FlashFx.Instance.callFlash();
+        FlashFx.Instance.callFlash();
         AudioManager.instance.PlayerHItSound();
     
     }

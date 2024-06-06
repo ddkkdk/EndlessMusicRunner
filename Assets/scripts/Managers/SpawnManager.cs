@@ -12,9 +12,7 @@ public class SpawnManager : MonoBehaviour
     public float setSpawnDelay ;
 
     public GameObject spawnObjects;
-
     public Transform spawnPoint_1;
-    public Transform spawnPoint_2;
     public Transform spawnPoint_3;
 
     private bool isSpawning = false;
@@ -70,21 +68,19 @@ public class SpawnManager : MonoBehaviour
                 MonsterItem currentSet = monster[setIndex];
 
                
-                if (setIndex == 1 || setIndex == 5)
+                if (setIndex == 0 || setIndex == 1||setIndex == 2 || setIndex == 5||setIndex == 6
+                    || setIndex == 7 || setIndex == 9 || setIndex == 10 || setIndex == 11 || setIndex == 12|| setIndex == 13)
                 {
                      spawnPoint = spawnPoint_1;
 
 
                 }
-                else if (setIndex == 7 || setIndex == 8 || setIndex == 9|| setIndex == 10 || setIndex == 11 || setIndex == 12 || setIndex == 13
-                    || setIndex == 14 || setIndex == 15 || setIndex == 16 || setIndex == 17) 
+                else if (setIndex == 3 || setIndex == 4 || setIndex == 8|| setIndex == 14 || setIndex == 15
+                    || setIndex == 16 || setIndex == 17) 
                 {
                      spawnPoint = spawnPoint_3;
                 }
-                else 
-                {
-                     spawnPoint = spawnPoint_2;
-                }
+               
 
                 for (int i = 0; i < currentSet.monster.Length; i++)
                 {

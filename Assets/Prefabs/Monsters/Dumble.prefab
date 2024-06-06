@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  monsterNumber: 2
+  monsterNumber: 5
 --- !u!114 &8021163278635577793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,12 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf14aa19107eee946b6e8380e33102ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckDistance: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
-  attackCheck: {fileID: 0}
-  attackRadius: 0
   maxHealth: 0
   currentHealth: 0
   fillAmount: {fileID: 0}

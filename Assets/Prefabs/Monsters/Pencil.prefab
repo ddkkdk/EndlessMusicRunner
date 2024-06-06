@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  monsterNumber: 7
+  monsterNumber: 12
 --- !u!114 &2376462067880542259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,15 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf14aa19107eee946b6e8380e33102ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckDistance: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
-  attackCheck: {fileID: 0}
-  attackRadius: 0
   maxHealth: 0
   currentHealth: 0
   fillAmount: {fileID: 0}
+  isOnGround: 1
   damageAmount: 5
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
 --- !u!70 &2376462067880542258
