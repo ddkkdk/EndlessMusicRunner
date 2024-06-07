@@ -7,7 +7,7 @@ public class Boss : MonoBehaviour
     int AttackIdx = 0;
     public int speed;
     public int Damage;
-
+    public int monsterMaxHp;
     public GameObject[] G_Pattern;
 
 
@@ -109,6 +109,14 @@ public class Boss : MonoBehaviour
             {
                 e_State = E_State.Hit;
                 //보스가 공격 받는거 추가
+                monsterMaxHp--;
+                Debug.Log(monsterMaxHp);
+                if (monsterMaxHp <= 0)
+                { 
+                    Destroy(gameObject);
+                    Debug.Log("몬스터 죽음");
+                }
+
                 return;
             }
             //유저 공격 받는 코드 추가
@@ -122,7 +130,7 @@ public class Boss : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.bossWaitPosition.position, speed * Time.deltaTime);
 
-        var dis = Vector3.Distance(transform.position, CreatePos);
+        var dis = Vector3.Distance(transform.position, GameManager.instance.bossWaitPosition.position);
 
         if (dis <= 0.1f)
         {

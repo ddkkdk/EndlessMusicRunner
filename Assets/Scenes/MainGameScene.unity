@@ -3573,8 +3573,6 @@ MonoBehaviour:
   spawnPoint_1: {fileID: 256112964}
   spawnPoint_3: {fileID: 962744005}
   startSpawn: 0
-  bossMonsterList:
-  - {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
 --- !u!4 &342117586
 Transform:
   m_ObjectHideFlags: 0
@@ -3975,6 +3973,7 @@ Transform:
   - {fileID: 256112964}
   - {fileID: 559855131}
   - {fileID: 962744005}
+  - {fileID: 774173652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &408166123
@@ -7813,6 +7812,37 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &774173651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774173652}
+  m_Layer: 0
+  m_Name: BossSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &774173652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774173651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -32.4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 407134107}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779471935
 GameObject:
   m_ObjectHideFlags: 0
@@ -8727,6 +8757,8 @@ MonoBehaviour:
   flyTimeScale: 8
   retireTimeScale: 1.2
   kickTimeScale: 2.5
+  player: {fileID: 1608568225}
+  bossWaitPosition: {fileID: 774173652}
   monsterAnimation: []
 --- !u!4 &827244270
 Transform:

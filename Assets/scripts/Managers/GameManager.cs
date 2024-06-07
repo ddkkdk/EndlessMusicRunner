@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
                 delay = test[i].Duration; // 애니메이션의 지속 시간을 딜레이로 설정
             }
         }
-        skeletonAnimation.AnimationState.SetAnimation(0, monsterAnimation[0], false);
+        //skeletonAnimation.AnimationState.SetAnimation(0, monsterAnimation[0], false);
         skeletonAnimation.AnimationState.AddAnimation(0, "idle", true, delay); // 딜레이 값을 AddAnimation에 적용
     }
 }

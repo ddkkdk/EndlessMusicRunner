@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: -7034009947147531928}
   - component: {fileID: 5983066574386384427}
   - component: {fileID: 709892467265065013}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Boss
-  m_TagString: Monster
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,5 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   Damage: 5
-  G_Pattern: []
+  monsterMaxHp: 20
+  G_Pattern:
+  - {fileID: 5151318159573600705, guid: b3c96dccf4d271449bff9d55fab4a903, type: 3}
+  - {fileID: 158793283704363192, guid: 0fca1f5f332f5944e8816ff6c76cd448, type: 3}
   bossAnimation: {fileID: 0}
