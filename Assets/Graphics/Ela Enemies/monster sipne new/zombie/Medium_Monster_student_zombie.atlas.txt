@@ -1,39 +1,46 @@
 Medium_Monster_student_zombie.png
-	size: 1283, 1283
+	size: 675, 675
 	filter: Linear, Linear
 	pma: true
+	scale: 0.5
 Bag
-	bounds: 412, 19, 407, 199
-	offsets: 0, 0, 409, 199
+	bounds: 295, 65, 204, 100
+	offsets: 0, 0, 205, 100
 	rotate: 90
 L_arm
-	bounds: 1111, 590, 170, 196
+	bounds: 583, 390, 85, 98
 R_arm
-	bounds: 858, 546, 251, 240
+	bounds: 397, 30, 126, 120
 bady
-	bounds: 957, 211, 302, 333
+	bounds: 409, 152, 151, 167
+	rotate: 90
 cap
-	bounds: 1015, 788, 493, 243
-	offsets: 0, 4, 493, 251
+	bounds: 2, 21, 239, 126
+	offsets: 4, 0, 247, 126
 	rotate: 90
 face
-	bounds: 2, 66, 408, 360
-	offsets: 0, 1, 408, 361
+	bounds: 492, 490, 183, 181
+	offsets: 6, 0, 204, 181
+	rotate: 90
 face_2
-	bounds: 555, 902, 458, 379
-	offsets: 5, 0, 468, 379
+	bounds: 280, 483, 210, 190
+	offsets: 4, 0, 234, 190
 face_3
-	bounds: 516, 492, 373, 340
-	offsets: 8, 0, 389, 340
+	bounds: 238, 271, 193, 169
+	offsets: 1, 1, 195, 170
 	rotate: 90
 face_4
-	bounds: 613, 139, 351, 342
-	offsets: 0, 1, 352, 344
+	bounds: 409, 305, 176, 172
 	rotate: 90
+feet_2
+	bounds: 583, 289, 56, 99
 hair
-	bounds: 957, 16, 248, 193
+	bounds: 525, 26, 124, 97
+	rotate: 90
 head
-	bounds: 2, 428, 512, 437
-	offsets: 1, 1, 515, 438
+	bounds: 2, 262, 234, 202
+	offsets: 13, 12, 258, 219
 pants
-	bounds: 2, 867, 551, 414
+	bounds: 2, 466, 276, 207
+pants_1
+	bounds: 130, 58, 163, 202
