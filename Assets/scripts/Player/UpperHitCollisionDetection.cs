@@ -12,7 +12,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     public GameObject[] destroyParticleEffects;
     public GameObject puffEffect;
     public GameObject perfectTxtEffect;
-    public GameObject goodTxtEffect;
+    public GameObject greatTxtEffect;
     private Collider2D selfCollider;
     public int score;
     public int comboScore;
@@ -58,19 +58,33 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
             if (hitEffect != null)
             {
-                Debug.Log($" UP : {other.gameObject.transform.position}");
+                var distance = Vector3.Distance(transform.position, other.gameObject.transform.position);
+                if (distance <= 0.8f)
+                {
+                    GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                    GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+                    StartCoroutine(OpacityChange(perfectTxtObject));
 
-                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-                Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
-                StartCoroutine(OpacityChange(perfectTxtObject));
-                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-                HIttingEffects(other.gameObject, hitPoint);
+                    HIttingEffects(other.gameObject, hitPoint);
 
-                MoveUPword(perfectTxtObject, hitPoint);
-                Destroy(perfectTxtObject, 0.8f);
+                    MoveUPword(perfectTxtObject, hitPoint);
 
-                Destroy(hitObject, 0.2f);
+                    Destroy(hitObject, 0.2f);
+                    Destroy(perfectTxtObject, 0.8f);
+                }
+                else
+                {
+                    GameObject greatObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                    GameObject greatTxtObject = Instantiate(greatTxtEffect, hitPoint, Quaternion.identity);
+                    StartCoroutine(OpacityChange(greatTxtObject));
 
+                    HIttingEffects(other.gameObject, hitPoint);
+
+                    MoveUPword(greatTxtObject, hitPoint);
+
+                    Destroy(greatObject, 0.2f);
+                    Destroy(greatTxtObject, 0.8f);
+                }
 
 
             }

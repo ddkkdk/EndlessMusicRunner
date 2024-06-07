@@ -35,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.12, y: -2.97, z: 0}
-  m_LocalScale: {x: 0.19808847, y: 0.19808847, z: 0.19808847}
+  m_LocalScale: {x: 1, y: 1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c479d78502d29e43a82f80f92719054, type: 2}
+  - {fileID: 2100000, guid: 65b88aef33039fc4d87a7494a8383d0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 6fd0c7d80f0075240ae8a896fb98ecb5, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 933f9dbbd5471f240bd63f6f0b29cfa8, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -162,9 +162,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.29, y: 5.49}
+  m_Offset: {x: 0, y: 2.5}
   serializedVersion: 2
-  m_Radius: 4.08
+  m_Radius: 2.5
 --- !u!114 &5927427790796393985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   monsterNumber: 17
+  SendBack: 0
+  OffSetX: 0
 --- !u!114 &5927427790796393986
 MonoBehaviour:
   m_ObjectHideFlags: 0
