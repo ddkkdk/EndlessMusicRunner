@@ -8,6 +8,7 @@ TagManager:
   - HittingCollider
   - Road
   - Boss
+  - LongNote
   layers:
   - Default
   - TransparentFX
