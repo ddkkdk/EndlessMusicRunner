@@ -1,65 +1,85 @@
 Character_Ella.png
-	size: 1408, 1408
+	size: 1545, 1545
 	filter: Linear, Linear
 	pma: true
 Ear
-	bounds: 213, 28, 164, 122
+	bounds: 1419, 842, 164, 122
 	offsets: 0, 109, 434, 262
 	rotate: 90
 Head
-	bounds: 437, 13, 399, 257
+	bounds: 639, 702, 399, 257
 	offsets: 35, 0, 434, 262
+	rotate: 90
 Head_Kick
-	bounds: 345, 839, 361, 273
+	bounds: 2, 3, 361, 273
 	offsets: 28, 0, 389, 273
+	rotate: 90
 Layer 1
-	bounds: 711, 1168, 638, 238
+	bounds: 544, 1305, 638, 238
 Left arm
-	bounds: 1253, 958, 145, 208
+	bounds: 1161, 576, 145, 208
 	offsets: 0, 0, 147, 208
+	rotate: 90
 Left leg
-	bounds: 1253, 600, 133, 179
+	bounds: 454, 7, 133, 179
+	rotate: 90
 Left leg_Kick
-	bounds: 2, 14, 178, 209
+	bounds: 872, 1125, 178, 209
 	offsets: 1, 0, 179, 209
 	rotate: 90
 Tail
-	bounds: 2, 912, 326, 200
+	bounds: 544, 1103, 326, 200
 Wing
-	bounds: 337, 29, 163, 98
+	bounds: 545, 222, 163, 98
 	rotate: 90
 body
-	bounds: 345, 557, 280, 347
+	bounds: 296, 387, 280, 347
 	offsets: 0, 16, 282, 363
 	rotate: 90
 body_fly
-	bounds: 2, 1114, 707, 292
+	bounds: 2, 366, 707, 292
+	rotate: 90
 face
-	bounds: 345, 272, 283, 256
+	bounds: 903, 555, 283, 256
+	rotate: 90
+face fire1
+	bounds: 645, 417, 283, 256
+	rotate: 90
+face fire2
+	bounds: 898, 840, 283, 256
 	rotate: 90
 face2
-	bounds: 603, 272, 283, 256
-	rotate: 90
+	bounds: 903, 297, 283, 256
 face3
-	bounds: 838, 14, 283, 256
+	bounds: 645, 132, 283, 256
+	rotate: 90
 face4
-	bounds: 1123, 342, 283, 256
+	bounds: 903, 39, 283, 256
+face5
+	bounds: 1156, 1008, 283, 256
 face_Kick
-	bounds: 1123, 90, 250, 277
+	bounds: 1188, 39, 250, 277
 	rotate: 90
 face_fly
-	bounds: 861, 453, 243, 247
+	bounds: 296, 142, 243, 247
 	rotate: 90
 face_retire
-	bounds: 2, 633, 324, 277
+	bounds: 1184, 1266, 324, 277
+fire1
+	bounds: 1161, 723, 283, 256
+	rotate: 90
+fire2
+	bounds: 1188, 291, 283, 256
+	rotate: 90
 right arm
-	bounds: 1253, 781, 138, 175
+	bounds: 277, 2, 138, 175
+	rotate: 90
 right leg
-	bounds: 861, 328, 123, 192
+	bounds: 635, 7, 123, 192
 	rotate: 90
 right leg_Kick
-	bounds: 2, 194, 404, 341
+	bounds: 296, 669, 404, 341
 	rotate: 90
 swing
-	bounds: 711, 698, 540, 468
+	bounds: 2, 1075, 540, 468
 	offsets: 4, 40, 548, 548

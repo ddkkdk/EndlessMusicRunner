@@ -10,17 +10,21 @@ public class GameManager : MonoBehaviour
     public SkeletonAnimation skeleton;
     public GameObject speaker_1;
     public GameObject speaker_2;
-    
+
     public float flyTimeScale;
     public float retireTimeScale;
     public float kickTimeScale;
+
+
+    public PlayerController player;
+    public Transform bossWaitPosition;
     void Start()
     {
         if (instance != null)
         {
             Destroy(this.gameObject);
         }
-        else 
+        else
         {
             instance = this;
         }
@@ -34,30 +38,30 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             speaker_1.gameObject.SetActive(true);
             speaker_2.gameObject.SetActive(true);
             Invoke("DeactivatSpeaker", 5f);
-        
+
         }
     }
 
-    public void PlayerAllAnimation() 
+    public void PlayerAllAnimation()
     {
-    
+
     }
 
-    public void AnimationController(string animationName) 
+    public void AnimationController(string animationName)
     {
-      TrackEntry kickTrackEntry=  skeleton.AnimationState.SetAnimation(0, animationName, true);
+        TrackEntry kickTrackEntry = skeleton.AnimationState.SetAnimation(0, animationName, true);
 
         if (animationName == "fly")
         {
             kickTrackEntry.TimeScale = flyTimeScale;
 
         }
-        else if (animationName == "retire") 
+        else if (animationName == "retire")
         {
             kickTrackEntry.TimeScale = retireTimeScale;
         }
@@ -71,14 +75,48 @@ public class GameManager : MonoBehaviour
             skeleton.AnimationState.SetAnimation(0, "Running", true);
 
         };
-        
+
 
     }
 
-    public void DeactivatSpeaker() 
+    public void DeactivatSpeaker()
     {
         speaker_1.gameObject.SetActive(false);
         speaker_2.gameObject.SetActive(false);
 
+    }
+
+    [SerializeField] private List<string> monsterAnimation = new List<string>();
+    public void PlayMonsterAnimation(SkeletonAnimation skeletonAnimation, string animationString = "Hit")
+    {
+        if (monsterAnimation.Count > 0)
+        {
+            monsterAnimation.Clear();
+        }
+        SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
+        SkeletonData skeletonData = skeletonDataAsset.GetSkeletonData(true);
+        var test = skeletonData.Animations.Items;
+        float delay = 0f;
+        for (int i = 0; i < test.Length; ++i)
+        {
+            if (test[i].Name.Contains(animationString))
+            {
+                monsterAnimation.Add(test[i].Name);
+                delay = test[i].Duration; // 애니메이션의 지속 시간을 딜레이로 설정
+            }
+        }
+        skeletonAnimation.AnimationState.SetAnimation(0, monsterAnimation[0], false);
+        //skeletonAnimation.AnimationState.AddAnimation(0, "idle", true, delay); // 딜레이 값을 AddAnimation에 적용
+    }
+
+    public void PlayAnimation(SkeletonAnimation skeletonAnimation, string animationString)
+    {
+        SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
+        SkeletonData skeletonData = skeletonDataAsset.GetSkeletonData(true);
+        var test = skeletonData.Animations.Items;
+        float delay = 0f;
+        delay = test[0].Duration; // 애니메이션의 지속 시간을 딜레이로 설정
+        skeletonAnimation.AnimationState.SetAnimation(0, animationString, false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "Walking", true, delay); // 딜레이 값을 AddAnimation에 적용
     }
 }

@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     public bool startSpawn = false;
 
     private Transform spawnPoint;
+
     void Start()
     {
         if (instance != null)
@@ -40,7 +41,10 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Boss.Create();
+        }
     }
 
     public void StartSpawningObjects(bool isSpawn) 
@@ -99,7 +103,7 @@ public class SpawnManager : MonoBehaviour
                 yield return new WaitForSeconds(setSpawnDelay);
             }
 
-
+            print("생성 완료");
         }
 
         

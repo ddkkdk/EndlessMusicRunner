@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Spine;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
                                
                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                 //Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
-               StartCoroutine (OpacityChange(perfectTxtObject));
+               //StartCoroutine (OpacityChange(perfectTxtObject));
                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                 HIttingEffects(other.gameObject, hitPoint);
                 
@@ -78,22 +79,29 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
             }
 
-            if (other.GetComponent<MoveLeft>().monsterNumber == 6)
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
+            #region AnimationSettin ↑
+            //if (other.GetComponent<MoveLeft>().monsterNumber == 4)
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            //}
+            //if (other.GetComponent<MoveLeft>().monsterNumber == 6)
+            //{
+            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            //}
+            //else if (other.GetComponent<MoveLeft>().monsterNumber == 7)
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
 
-            }
-            else if (other.GetComponent<MoveLeft>().monsterNumber == 7)
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+            //}
+            //else
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false); 
+            //}
 
-            }
-            else
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit_Fly_1", false);
-
-            }
-
+            #endregion 
 
         }
 
@@ -155,7 +163,8 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
     public IEnumerator OpacityChange(GameObject obj) 
     {
-         
+        
+
         Color currentColor = obj.GetComponent<SpriteRenderer>().color;
 
         
@@ -167,16 +176,18 @@ public class UpperHitCollisionDetection : MonoBehaviour
             
             currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
 
-            
-            obj.GetComponent<SpriteRenderer>().color = currentColor;
+            #region 에러발생
+            //obj.GetComponent<SpriteRenderer>().color = currentColor;
+            #endregion
 
-            
             yield return null;
         }
 
         
         currentColor.a = 0;
-        obj.GetComponent<SpriteRenderer>().color = currentColor;
+        #region 에러발생
+        //obj.GetComponent<SpriteRenderer>().color = currentColor;
+        #endregion
         Destroy(obj);
 
     }
