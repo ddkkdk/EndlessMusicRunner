@@ -41,7 +41,7 @@ public class HitCollisionDetection : MonoBehaviour
 
             var monster = other.gameObject.GetComponent<Monster>();
 
-            monster?.Damage(1);
+            monster?.MonsterDamage(1);
             //score++;
             //comboScore++;
 

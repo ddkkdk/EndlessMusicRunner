@@ -39,16 +39,19 @@ public class Entity : MonoBehaviour
 
     public virtual void Damage(int damageAmount)
     {
-
         currentHealth -= damageAmount;
-        var monster = this.gameObject.GetComponent<Monster>();
-        if (currentHealth <= 0 && monster == null)
+        if (currentHealth <= 0)
             SecenManager.LoadScene("UIScene");
 
         SetHealthBar();
         FlashFx.Instance.callFlash();
         AudioManager.instance.PlayerHItSound();
 
+    }
+
+    public void MonsterDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;
     }
 
     public void SetHealthBar()

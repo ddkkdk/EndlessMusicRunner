@@ -202,10 +202,15 @@ public class PlayerController : Entity
         //홀드키 땠을때
         if (Input.GetKeyUp(KeyCode.Z))
         {
-            GameManager.instance.PlayAnimation(playerSkeletonAnimation, "Walking", true);
+            if (Cur_HoldDelay >= HoldDelay)
+            {
+                GameManager.instance.PlayAnimation(playerSkeletonAnimation, "Walking", true);
+            }
             CheckHold = false;
             Cur_HoldDelay = 0;
             StartAniHold = false;
+
+
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {

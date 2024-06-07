@@ -42,7 +42,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
             var monster = other.gameObject.GetComponent<Monster>();
 
-            monster?.Damage(1);
+            monster?.MonsterDamage(1);
 
             AudioManager.instance.PlaySound();
 
