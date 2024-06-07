@@ -37,7 +37,7 @@ public class PlayerController : Entity
 
     public bool isStart;
 
-    //¾Æ·¡´Â Å×½ºÆ® ÁøÇàÀ» À§ÇÑ º¯¼öµéÀÓ -> ÃßÈÄ º¯°æ ¿¹Á¤
+    //ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [Header("TestInputKeyLog")]
     public TextMeshProUGUI testInputKey;
     public GameObject playerLimitJumpPosition;
@@ -48,6 +48,7 @@ public class PlayerController : Entity
     public float isDashTimeLimit = 1f;
     public bool isDashing= false;
     public List<KeyCode> playerMoveKeyCode;
+    public bool isAttack = false;
     protected override void Start()
     {
         testInputKey.gameObject.SetActive(false);
@@ -63,8 +64,8 @@ public class PlayerController : Entity
     }
     protected override void Update()
     {
-        #region ÇÃ·¹ÀÌ¾î Á¶ÀÛ Å×½ºÆ®Áß
-        //µðÅ×ÀÏ ÀÛ¾÷ÁøÇà ÇÊ¿äÇÔ.
+        #region ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®ï¿½ï¿½
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½.
         //if(isJumping)
         //{
         //    moveTime += Time.deltaTime;
@@ -72,7 +73,7 @@ public class PlayerController : Entity
         //    transform.position = Vector2.Lerp(transform.position,playerLimitJumpPosition.transform.position,t);
         //    if(t>=0.5f)
         //    {
-        //        Debug.Log("³¡");
+        //        Debug.Log("ï¿½ï¿½");
         //        isJumping = false;
         //        transform.position = playerLimitJumpPosition.transform.position;
         //    }
@@ -94,7 +95,7 @@ public class PlayerController : Entity
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGroundDetected())
         {
             //isJumping = true;
-            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //À§Ä¡°ª Lerp·Î ÇØ¼­ ±×ÀÌ»ó ¸ø³Ñ¾î°¡°Ô ¸·±â
+            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //ï¿½ï¿½Ä¡ï¿½ï¿½ Lerpï¿½ï¿½ ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale = 7.5f;
             GameManager.instance.AnimationController(flyAnimation);
             GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;

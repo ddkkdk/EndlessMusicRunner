@@ -99,7 +99,7 @@ public class SpawnManager : MonoBehaviour
                 yield return new WaitForSeconds(setSpawnDelay);
             }
 
-
+            print("생성 완료");
         }
 
         
