@@ -182,7 +182,7 @@ public class HitCollisionDetection : MonoBehaviour
             currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
 
 
-            obj.GetComponent<SpriteRenderer>().color = currentColor;
+            obj.GetComponent<SpriteRenderer>().color = currentColor; 
 
 
             yield return null;
