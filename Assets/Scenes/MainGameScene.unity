@@ -961,7 +961,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6546
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
   m_sharedMaterial: {fileID: -2765540932396252278, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
@@ -3156,7 +3156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &266942394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4644,7 +4644,7 @@ Transform:
   m_GameObject: {fileID: 456851597}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.145229, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0002, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4670,8 +4670,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2fb5759c1b65a48ae800813c45f2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: 477
-  lastPosition: -477
+  startPosition: 0
+  lastPosition: -400
   speed: 13
 --- !u!1 &460676734
 GameObject:
@@ -9534,7 +9534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6546
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
   m_sharedMaterial: {fileID: -2765540932396252278, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
@@ -21001,6 +21001,7 @@ MonoBehaviour:
   fillAmount: {fileID: 0}
   instructionPanelActivationTime: 1.5
   comboScore: 0
+  gameScore: 0
 --- !u!4 &1926204094
 Transform:
   m_ObjectHideFlags: 0

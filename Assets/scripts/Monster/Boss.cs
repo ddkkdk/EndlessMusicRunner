@@ -123,6 +123,7 @@ public class Boss : MonoBehaviour
             }
             //유저 공격 받는 코드 추가
             GameManager.instance.player.Damage(Damage);
+            UIManager.Instance.ResetComboScoreUpdater();
             e_State = E_State.Hit;
         }
     }
