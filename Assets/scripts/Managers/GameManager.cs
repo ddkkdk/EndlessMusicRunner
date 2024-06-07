@@ -69,6 +69,14 @@ public class GameManager : MonoBehaviour
         {
             kickTrackEntry.TimeScale = kickTimeScale;
         }
+        else if (animationName == "tail attack")
+        {
+            kickTrackEntry.TimeScale = kickTimeScale;
+        }
+        else if (animationName == "fire attack")
+        {
+            kickTrackEntry.TimeScale = kickTimeScale;
+        }
 
         kickTrackEntry.Complete += (TrackEntry trackEntry) =>
         {
@@ -111,12 +119,23 @@ public class GameManager : MonoBehaviour
 
     public void PlayAnimation(SkeletonAnimation skeletonAnimation, string animationString)
     {
+        skeletonAnimation.AnimationState.ClearTracks(); // 모든 애니메이션 트랙을 제거
         SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
         SkeletonData skeletonData = skeletonDataAsset.GetSkeletonData(true);
-        var test = skeletonData.Animations.Items;
+        var animations = skeletonData.Animations.Items;
         float delay = 0f;
-        delay = test[0].Duration; // 애니메이션의 지속 시간을 딜레이로 설정
+        // animationString에 해당하는 애니메이션의 Duration을 찾아 delay로 설정
+        foreach (var anim in animations)
+        {
+            if (anim.Name == animationString)
+            {
+                delay = anim.Duration;
+                break;
+            }
+        }
+
+
         skeletonAnimation.AnimationState.SetAnimation(0, animationString, false);
-        skeletonAnimation.AnimationState.AddAnimation(0, "Walking", true, delay); // 딜레이 값을 AddAnimation에 적용
+        skeletonAnimation.AnimationState.AddAnimation(0, "Walking", true, delay); // 찾은 딜레이 값을 AddAnimation에 적용
     }
 }

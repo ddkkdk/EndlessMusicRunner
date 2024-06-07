@@ -38,7 +38,7 @@ public class PlayerController : Entity
     public bool isStart;
     public bool isRunning;
 
-    //�Ʒ��� �׽�Ʈ ������ ���� �������� -> ���� ���� ����
+    //Ʒ ׽Ʈ ->
     [Header("TestInputKeyLog")]
     public TextMeshProUGUI testInputKey;
     public GameObject playerLimitJumpPosition;
@@ -50,12 +50,12 @@ public class PlayerController : Entity
     public bool isDashing = false;
     public List<KeyCode> playerMoveKeyCode;
     public bool isAttack = false;
+    float KickDealy;
     protected override void Start()
     {
         testInputKey.gameObject.SetActive(false);
         MoveAnimation();
         playerRb = GetComponent<Rigidbody2D>();
-        StartCoroutine(RunAnimation());
         Physics.gravity *= gravityModifier;
 
         currentHealth = maxHealth;
@@ -80,7 +80,6 @@ public class PlayerController : Entity
 
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale = 7.5f;
-            GameManager.instance.AnimationController(flyAnimation);
             GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
             Invoke("UpperColliderDeactivate", 0.5f);
             movingEffect.SetActive(false);
@@ -124,22 +123,6 @@ public class PlayerController : Entity
 
     }
 
-
-    IEnumerator RunAnimation()
-    {
-        while (true)
-        {
-            if (isGroundDetected())
-            {
-                playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale = runningTimeScale;
-            }
-
-            yield return new WaitForSeconds(0.5f);
-
-        }
-
-    }
-
     public void MoveAnimation()
     {
         transform.DOMoveX(-56, 2).SetEase(Ease.Flash).OnComplete(() =>
@@ -170,6 +153,7 @@ public class PlayerController : Entity
 
     private void PlayerMoveKey()
     {
+        KickDealy -= Time.deltaTime;
         if (isDashing)
         {
             if (Time.time >= isDashTime + isDashTimeLimit)
@@ -183,7 +167,6 @@ public class PlayerController : Entity
         {
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale = 7.5f;
-            GameManager.instance.AnimationController(flyAnimation);
             GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
             Invoke("UpperColliderDeactivate", 0.5f);
             movingEffect.SetActive(false);
@@ -214,10 +197,25 @@ public class PlayerController : Entity
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false).TimeScale = 2.5f;
+            if (!isGroundDetected())
+            {
+                playerSkeletonAnimation.AnimationState.SetAnimation(0, "fire attack", false).TimeScale = 2.5f;
+                GameManager.instance.PlayAnimation(playerSkeletonAnimation, "fire attack");
+                return;
+            }
+
+
+            if (KickDealy <= 0)
+            {
+                GameManager.instance.PlayAnimation(playerSkeletonAnimation, "Kick");
+            }
+            else
+            {
+                GameManager.instance.PlayAnimation(playerSkeletonAnimation, "tail attack");
+            }
             GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
             Invoke("LowerColliderDeactivate", 0.5f);
-
+            KickDealy = 1;
             testInputKey.text = "Kick And Skill 1";
         }
         if (Input.GetKeyDown(KeyCode.X))
@@ -236,6 +234,4 @@ public class PlayerController : Entity
             testInputKey.text = "Skill 4";
         }
     }
-
-
 }

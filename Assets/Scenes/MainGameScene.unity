@@ -17172,6 +17172,7 @@ MonoBehaviour:
   runningTimeScale: 1.9
   movingEffect: {fileID: 1494954703}
   isStart: 1
+  isRunning: 0
   testInputKey: {fileID: 1397985583}
   playerLimitJumpPosition: {fileID: 599341602}
   test: 1
@@ -20329,7 +20330,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: 
+  _animationName: Running
   loop: 1
   timeScale: 1
 --- !u!23 &1878545308
