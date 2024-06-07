@@ -12,6 +12,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     public GameObject[] destroyParticleEffects;
     public GameObject puffEffect;
     public GameObject perfectTxtEffect;
+    public GameObject goodTxtEffect;
     private Collider2D selfCollider;
     public int score;
     public int comboScore;
@@ -57,7 +58,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
             if (hitEffect != null)
             {
-                Debug.Log($" �� : {other.gameObject.transform.position}");
+                Debug.Log($" UP : {other.gameObject.transform.position}");
 
                 GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                 Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
