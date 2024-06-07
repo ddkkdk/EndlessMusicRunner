@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     public float flyTimeScale;
     public float retireTimeScale;
     public float kickTimeScale;
+
+
+    public PlayerController player;
+    public Transform bossWaitPosition;
     void Start()
     {
         if (instance != null)
@@ -83,7 +87,7 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private List<string> monsterAnimation = new List<string>();
-    public void PlayMonsterAnimation(SkeletonAnimation skeletonAnimation)
+    public void PlayMonsterAnimation(SkeletonAnimation skeletonAnimation, string animationString = "Hit")
     {
         if(monsterAnimation.Count > 0) 
         {
@@ -95,7 +99,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < test.Length; ++i)
         {
             
-            if(test[i].Name.Contains("Hit"))
+            if(test[i].Name.Contains(animationString))
             {
                 monsterAnimation.Add(test[i].Name);
             }

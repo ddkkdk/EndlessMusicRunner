@@ -3573,6 +3573,8 @@ MonoBehaviour:
   spawnPoint_1: {fileID: 256112964}
   spawnPoint_3: {fileID: 962744005}
   startSpawn: 0
+  bossMonsterList:
+  - {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
 --- !u!4 &342117586
 Transform:
   m_ObjectHideFlags: 0

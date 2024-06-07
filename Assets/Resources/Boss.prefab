@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5927427790796393986}
   - component: {fileID: -7034009947147531928}
   - component: {fileID: 5983066574386384427}
+  - component: {fileID: 709892467265065013}
   m_Layer: 8
   m_Name: Boss
   m_TagString: Monster
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fe3679b772d05c04b82befb5a8caec85, type: 2}
+  - {fileID: 2100000, guid: 9c479d78502d29e43a82f80f92719054, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5927427790796394008}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76197c701dba3554588f057ef2c81496, type: 3}
   m_Name: 
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5927427790796394008}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf14aa19107eee946b6e8380e33102ea, type: 3}
   m_Name: 
@@ -236,3 +237,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &709892467265065013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927427790796394008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d2c6ccbcb582a459dd4ad36467d6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  Damage: 5
+  G_Pattern: []
+  bossAnimation: {fileID: 0}
