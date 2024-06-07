@@ -69,21 +69,19 @@ public class HitCollisionDetection : MonoBehaviour
 
 
             }
-            if (!monster)
+            if (monster)
             {
                 if (monster.currentHealth > 0)
                 {
                     return;
                 }
             }
-            
+
             other.GetComponent<Collider2D>().enabled = false;
             other.GetComponent<Rigidbody2D>().isKinematic = false;
             other.GetComponent<MoveLeft>().speed = 0;
 
             float position = other.gameObject.transform.position.y;
-
-
 
             if (position > -8)
             {

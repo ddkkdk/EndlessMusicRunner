@@ -74,7 +74,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
             }
 
-            if (!monster)
+            if (monster)
             {
                 if (monster.currentHealth > 0)
                 {
