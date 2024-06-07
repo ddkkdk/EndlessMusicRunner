@@ -63,6 +63,14 @@ public class Boss : MonoBehaviour
     //패턴 공격
     void Pattern()
     {
+        //공격 패턴 실행
+        for(int i =0;i<G_Pattern.Length;++i)
+        {
+            var obj = Instantiate(G_Pattern[AttackIdx]);
+            Destroy(obj, 10);
+            AttackIdx++;
+        }
+        e_State = E_State.Wait;
         if (AttackIdx >= G_Pattern.Length)
         {
             //돌격 패턴
@@ -70,12 +78,6 @@ public class Boss : MonoBehaviour
             e_State = E_State.PlayerMove;
             return;
         }
-
-        //공격 패턴 실행
-        var obj = Instantiate(G_Pattern[AttackIdx]);
-        Destroy(obj, 10);
-        AttackIdx++;
-        e_State = E_State.Wait;
     }
 
     //대기 상태
@@ -86,7 +88,7 @@ public class Boss : MonoBehaviour
         //일정 시간 뒤 공격
         if (Cur_Delay >= Delay)
         {
-            e_State = E_State.Attack;
+            e_State = E_State.Attack ;
             Cur_Delay = 0;
             return;
         }
@@ -98,11 +100,11 @@ public class Boss : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.player.transform.position, speed * Time.deltaTime);
         var dis = Vector3.Distance(GameManager.instance.player.transform.position, transform.position);
         Debug.Log(dis);
-        if (dis <= 0.5f)
+        if (dis <= 3f)
         {
             //만약 플레이어가 공격 상태라면?
             var col = GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>();
-            var attackstate = col.enabled;
+           var attackstate = col.enabled;
 
             //몬스터가 공격받는 상태
             if (attackstate)
