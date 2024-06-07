@@ -54,8 +54,8 @@ public class UpperHitCollisionDetection : MonoBehaviour
             {
                                
                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-                //Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
-               //StartCoroutine (OpacityChange(perfectTxtObject));
+               Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
+               StartCoroutine (OpacityChange(perfectTxtObject));
                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                 HIttingEffects(other.gameObject, hitPoint);
                 
@@ -165,21 +165,23 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
     public IEnumerator OpacityChange(GameObject obj) 
     {
-        
-
+       
+        var color = obj.GetComponent<SpriteRenderer>();
         Color currentColor = obj.GetComponent<SpriteRenderer>().color;
 
-        
+
         for (float t = 0; t < fadeDuration; t += Time.deltaTime)
         {
+            if (obj == null || !obj.activeSelf)
+                yield break;
             
             float normalizedTime = t / fadeDuration;
 
-            
+
             currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
 
             #region 에러발생
-            //obj.GetComponent<SpriteRenderer>().color = currentColor;
+            color.color = currentColor;
             #endregion
 
             yield return null;
@@ -187,11 +189,11 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
         
         currentColor.a = 0;
-        #region 에러발생
+        color.color = currentColor;
         //obj.GetComponent<SpriteRenderer>().color = currentColor;
-        #endregion
-        Destroy(obj);
-
+        if (obj != null || obj.activeSelf)
+            Destroy(obj);
+        
     }
 
 

@@ -52,7 +52,7 @@ public class HitCollisionDetection : MonoBehaviour
             {
               GameObject hitObject= Instantiate(hitEffect, hitPoint, Quaternion.identity);
               GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-              //StartCoroutine(OpacityChange(perfectTxtObject));
+              StartCoroutine(OpacityChange(perfectTxtObject));
 
               HIttingEffects(other.gameObject, hitPoint);
 
@@ -74,7 +74,7 @@ public class HitCollisionDetection : MonoBehaviour
 
             if (position > -8)
             {
-                Debug.Log("Hit Upper");
+                //Debug.Log("Hit Upper");
                 other.GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
 
             }
@@ -175,12 +175,15 @@ public class HitCollisionDetection : MonoBehaviour
 
     public IEnumerator OpacityChange(GameObject obj)
     {
-
+        var color = obj.GetComponent<SpriteRenderer>();
         Color currentColor = obj.GetComponent<SpriteRenderer>().color;
 
 
         for (float t = 0; t < fadeDuration; t += Time.deltaTime)
         {
+
+            if (obj == null || !obj.activeSelf)
+                yield break;
 
             float normalizedTime = t / fadeDuration;
 
@@ -196,8 +199,9 @@ public class HitCollisionDetection : MonoBehaviour
 
 
         currentColor.a = 0;
-        obj.GetComponent<SpriteRenderer>().color = currentColor;
-        Destroy(obj);
+        color.color = currentColor;
+        if (obj != null || obj.activeSelf)
+            Destroy(obj);
 
     }
 }
