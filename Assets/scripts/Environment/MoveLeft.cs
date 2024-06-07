@@ -9,6 +9,7 @@ public class MoveLeft : MonoBehaviour
     public bool SendBack;
     public float OffSetX;
     float DelayTime = 3;
+    [SerializeField] float DestoryX;
 
     bool EndTimes;
     void Update()
@@ -41,7 +42,10 @@ public class MoveLeft : MonoBehaviour
                 EndTimes = true;
             }
         }
-        if (transform.position.x < -60)
+
+        var values = DestoryX == 0 ? -60 : DestoryX;
+
+        if (transform.position.x < values)
         {
             Destroy(this.gameObject);
         }
