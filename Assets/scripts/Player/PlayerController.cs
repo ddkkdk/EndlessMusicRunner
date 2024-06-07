@@ -19,10 +19,10 @@ public class PlayerController : Entity
     private Rigidbody2D playerRb;
     public SkeletonAnimation playerSkeletonAnimation;
     public float jumpForce;
- 
-    public bool isJump=false;
+
+    public bool isJump = false;
     public float gravityModifier;
-     
+
     [SpineAnimation]
     public string runAnimation;
 
@@ -46,7 +46,7 @@ public class PlayerController : Entity
     public float test = 10f;
     private float isDashTime;
     public float isDashTimeLimit = 1f;
-    public bool isDashing= false;
+    public bool isDashing = false;
     public List<KeyCode> playerMoveKeyCode;
     public bool isAttack = false;
     protected override void Start()
@@ -55,7 +55,7 @@ public class PlayerController : Entity
         MoveAnimation();
         playerRb = GetComponent<Rigidbody2D>();
         StartCoroutine(RunAnimation());
-        Physics.gravity*=gravityModifier;
+        Physics.gravity *= gravityModifier;
 
         currentHealth = maxHealth;
 
@@ -71,7 +71,7 @@ public class PlayerController : Entity
 
     protected override void FixedUpdate()
     {
-       if(isOnGround)
+        if (isOnGround)
             movingEffect.SetActive(true);
 
         #region OldPlayerController
@@ -99,7 +99,7 @@ public class PlayerController : Entity
 
     }
 
-    public void ColliderDeactivate() 
+    public void ColliderDeactivate()
     {
         GameObject.Find("AttackChecked").GetComponent<Collider2D>().enabled = false;
 
@@ -116,31 +116,31 @@ public class PlayerController : Entity
     }
 
 
-    IEnumerator RunAnimation() 
+    IEnumerator RunAnimation()
     {
-        while (true) 
+        while (true)
         {
             if (isGroundDetected())
             {
-                playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale= runningTimeScale;
+                playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale = runningTimeScale;
             }
             yield return new WaitForSeconds(0.5f);
 
         }
-    
+
     }
 
-    public void MoveAnimation() 
+    public void MoveAnimation()
     {
         transform.DOMoveX(-56, 2).SetEase(Ease.Flash).OnComplete(() =>
         {
-            if(isStart)
-              StartCoroutine(WatingTime());
-           
+            if (isStart)
+                StartCoroutine(WatingTime());
+
         });
     }
 
-    IEnumerator WatingTime() 
+    IEnumerator WatingTime()
     {
         yield return new WaitForSeconds(1.5f);
         UIManager.Instance.ActivatPanel(true);
@@ -179,16 +179,19 @@ public class PlayerController : Entity
             movingEffect.SetActive(false);
             isOnGround = false;
             testInputKey.text = "Jump";
+            GameManager.instance.PlayAnimation(playerSkeletonAnimation, "fly");
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             testInputKey.gameObject.SetActive(true);
             testInputKey.text = "Sit Down";
+            GameManager.instance.PlayAnimation(playerSkeletonAnimation, "fly");
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             testInputKey.gameObject.SetActive(true);
             testInputKey.text = "Sliding";
+            GameManager.instance.PlayAnimation(playerSkeletonAnimation, "fly");
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -197,6 +200,7 @@ public class PlayerController : Entity
             isDashing = true;
             isDashTime = Time.time;
             Time.timeScale = 1.5f;
+            GameManager.instance.PlayAnimation(playerSkeletonAnimation, "Running");
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {

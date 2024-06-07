@@ -108,4 +108,15 @@ public class GameManager : MonoBehaviour
         //skeletonAnimation.AnimationState.SetAnimation(0, monsterAnimation[0], false);
         skeletonAnimation.AnimationState.AddAnimation(0, "idle", true, delay); // 딜레이 값을 AddAnimation에 적용
     }
+
+    public void PlayAnimation(SkeletonAnimation skeletonAnimation, string animationString)
+    {
+        SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
+        SkeletonData skeletonData = skeletonDataAsset.GetSkeletonData(true);
+        var test = skeletonData.Animations.Items;
+        float delay = 0f;
+        delay = test[0].Duration; // 애니메이션의 지속 시간을 딜레이로 설정
+        skeletonAnimation.AnimationState.SetAnimation(0, animationString, false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "Walking", true, delay); // 딜레이 값을 AddAnimation에 적용
+    }
 }
