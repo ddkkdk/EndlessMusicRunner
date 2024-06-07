@@ -53,7 +53,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
                                
                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                 //Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
-               StartCoroutine (OpacityChange(perfectTxtObject));
+               //StartCoroutine (OpacityChange(perfectTxtObject));
                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                 HIttingEffects(other.gameObject, hitPoint);
                 
@@ -98,14 +98,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
                 other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
                 //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false); 
             }
-            var skeletonAnimation = other.GetComponent<SkeletonAnimation>();
-            SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
-            SkeletonData skeletonData = skeletonDataAsset.GetSkeletonData(true);
-            var test = skeletonData.Animations.Items;
-            for(int i =0;i<test.Length;++i)
-            {
-                Debug.Log(test[i].Name);
-            }
+           
             #endregion
 
         }
