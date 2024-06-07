@@ -75,25 +75,19 @@ public class PlayerController : Entity
         if (isOnGround)
             movingEffect.SetActive(true);
 
-<<<<<<< HEAD
-        if (Input.GetKeyDown(KeyCode.F) && isGroundDetected() && isRunning) 
+        if (Input.GetKeyDown(KeyCode.F) && isGroundDetected() && isRunning)
         {
-           
-            playerRb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale=7.5f;
+
+            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale = 7.5f;
             GameManager.instance.AnimationController(flyAnimation);
             GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
             Invoke("UpperColliderDeactivate", 0.5f);
             movingEffect.SetActive(false);
             isOnGround = false;
-            isRunning=false;
-        
+            isRunning = false;
+
         }
-=======
-        #region OldPlayerController
-        //if ((Input.GetKeyDown(KeyCode.F)) && isGroundDetected()) 
-        //{
->>>>>>> 24eead9eae9fed9839ad882f7becf5aabd5300c8
 
         //    playerRb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
         //    playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale=7.5f;
@@ -112,8 +106,6 @@ public class PlayerController : Entity
         //    Invoke("LowerColliderDeactivate", 0.5f);
 
         //}
-        #endregion
-
     }
 
     public void ColliderDeactivate()
