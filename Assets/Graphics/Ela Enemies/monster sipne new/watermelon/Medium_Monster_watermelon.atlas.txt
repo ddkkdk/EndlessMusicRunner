@@ -1,0 +1,33 @@
+Medium_Monster_watermelon.png
+	size: 1346, 1346
+	filter: Linear, Linear
+	pma: true
+watermelon/L_foot
+	bounds: 661, 302, 156, 103
+	offsets: 1, 1, 158, 105
+watermelon/L_hand
+	bounds: 1153, 1034, 171, 310
+watermelon/R_foot
+	bounds: 1153, 954, 143, 78
+	offsets: 1, 1, 145, 80
+watermelon/R_hand
+	bounds: 661, 407, 296, 171
+watermelon/bady
+	bounds: 2, 570, 600, 774
+watermelon/face
+	bounds: 604, 580, 355, 354
+	offsets: 5, 0, 366, 354
+	rotate: 90
+watermelon/face_1
+	bounds: 959, 30, 427, 336
+	offsets: 5, 0, 437, 336
+	rotate: 90
+watermelon/face_2
+	bounds: 661, 937, 490, 407
+	offsets: 2, 1, 495, 408
+watermelon/face_3
+	bounds: 960, 459, 384, 476
+	offsets: 12, 0, 408, 476
+watermelon/face_4
+	bounds: 2, 33, 657, 535
+	offsets: 1, 0, 660, 535
