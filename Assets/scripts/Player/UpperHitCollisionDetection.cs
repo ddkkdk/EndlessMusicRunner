@@ -52,6 +52,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
             if (hitEffect != null)
             {
+                Debug.Log($" ¾÷ : {other.gameObject.transform.position}");
                                
                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;

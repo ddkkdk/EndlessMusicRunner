@@ -111,7 +111,7 @@ public class SpawnManager : MonoBehaviour
                         GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
                         spawnedObjects.transform.SetParent(spawnObjects.transform);
                         CreatBossCounting++;
-                        Debug.Log($"몬스터 소환된 횟수 : {CreatBossCounting}");
+                        //Debug.Log($"몬스터 소환된 횟수 : {CreatBossCounting}");
                         yield return new WaitForSeconds(itemSpawnDelay);
                     }
                 }

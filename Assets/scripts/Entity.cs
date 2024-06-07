@@ -41,9 +41,10 @@ public class Entity : MonoBehaviour
     {
         
         currentHealth -= damageAmount;
-        SetHealthBar();
         if (currentHealth <= 0)
-            SceneManager.LoadScene("UIScene");
+            SecenManager.LoadScene("UIScene");
+        
+        SetHealthBar();
         FlashFx.Instance.callFlash();
         AudioManager.instance.PlayerHItSound();
     

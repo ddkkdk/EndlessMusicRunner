@@ -50,7 +50,9 @@ public class HitCollisionDetection : MonoBehaviour
 
             if (hitEffect != null) 
             {
-              GameObject hitObject= Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                Debug.Log($" ´Ù¿î : {other.gameObject.transform.position}");
+
+                GameObject hitObject= Instantiate(hitEffect, hitPoint, Quaternion.identity);
               GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
               StartCoroutine(OpacityChange(perfectTxtObject));
 
