@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public Image fillAmount;
     public float instructionPanelActivationTime;
     public int comboScore;
+    public int gameScore;
 
     private void Start()
     {
@@ -61,31 +62,33 @@ public class UIManager : MonoBehaviour
         SpawnManager.instance.StartSpawningObjects(true);
           
     }
-    public void ScoreUpdater(int score) 
+    public void ScoreUpdater(int score=0) 
     {
-        scoreTxt_1.text=score.ToString();
-        scoreTxt_2.text = score.ToString();
-
-         
+        gameScore++;
+        scoreTxt_2.text= gameScore.ToString();
+        scoreTxt_2.text = gameScore.ToString();
+    }
+    public void ResetComboScoreUpdater()
+    {
+        combo.gameObject.SetActive(false);
+        comboScore = 0;
     }
 
-    public void ComboScoreUpdater(int score)
+    public void ComboScoreUpdater(int score=0)
     {
-      
-        comboTxt_1.text = score.ToString();
-        comboTxt_2.text = score.ToString();
+        comboScore++;
+        comboTxt_1.text = comboScore.ToString();
+        comboTxt_2.text = comboScore.ToString();
 
-        if (score >= 5)
+        if (comboScore >= 5 && !combo.activeSelf)
         {
             combo.gameObject.SetActive(true);
-
-
         }
-        else if (score<=0) 
-        {
-            combo.gameObject.SetActive(false);
+        //else if (comboScore <= 0) 
+        //{
+        //    combo.gameObject.SetActive(false);
 
-        }
+        //}
 
     }
 

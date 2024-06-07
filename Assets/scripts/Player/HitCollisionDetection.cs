@@ -39,12 +39,13 @@ public class HitCollisionDetection : MonoBehaviour
         {
             AudioManager.instance.PlaySound();
 
-            score++;
-            comboScore++;
+            //score++;
+            //comboScore++;
 
-            UIManager.Instance.ScoreUpdater(score);
-            UIManager.Instance.ComboScoreUpdater(comboScore);
-            
+            //UIManager.Instance.ScoreUpdater(score);
+            //UIManager.Instance.ComboScoreUpdater(comboScore);
+            UIManager.Instance.ComboScoreUpdater();
+            UIManager.Instance.ScoreUpdater();
             Vector2 hitPoint = other.ClosestPoint(transform.position);
 
             if (hitEffect != null) 
@@ -124,9 +125,9 @@ public class HitCollisionDetection : MonoBehaviour
 
     public void HIttingEffects(GameObject other, Vector2 hitPoint) 
     {
-        Debug.Log("fshfkshfkshfkshfsjkhfjwsk");
+        //Debug.Log("fshfkshfkshfkshfsjkhfjwsk");
         int mNumber = other.GetComponent<MoveLeft>().monsterNumber;
-        Debug.Log("Monster number " + mNumber);
+        //Debug.Log("Monster number " + mNumber);
 
 
         if (mNumber == 0)
