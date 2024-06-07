@@ -64,87 +64,8 @@ public class PlayerController : Entity
     }
     protected override void Update()
     {
-        #region �÷��̾� ���� �׽�Ʈ��
-        //������ �۾����� �ʿ���.
-        //if(isJumping)
-        //{
-        //    moveTime += Time.deltaTime;
-        //    float t = moveTime / test;
-        //    transform.position = Vector2.Lerp(transform.position,playerLimitJumpPosition.transform.position,t);
-        //    if(t>=0.5f)
-        //    {
-        //        Debug.Log("��");
-        //        isJumping = false;
-        //        transform.position = playerLimitJumpPosition.transform.position;
-        //    }
-        //}
-        //if (Input.GetKeyDown(KeyCode.Return) )
-        //{
-        //    isJumping = true;
-        //}
-
-        if(isDashing)
-        {
-            if(Time.time >= isDashTime + isDashTimeLimit)
-            {
-                isDashing = false;
-                Time.timeScale = 1f;
-            }
-        }
-       
-        if (Input.GetKeyDown(KeyCode.UpArrow) && isGroundDetected())
-        {
-            //isJumping = true;
-            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); //��ġ�� Lerp�� �ؼ� ���̻� ���Ѿ�� ����
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale = 7.5f;
-            GameManager.instance.AnimationController(flyAnimation);
-            GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
-            Invoke("UpperColliderDeactivate", 0.5f);
-            movingEffect.SetActive(false);
-            isOnGround = false;
-            testInputKey.text = "Jump";
-        }
-        if(Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            testInputKey.gameObject.SetActive(true);
-            testInputKey.text = "Sit Down";
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            testInputKey.gameObject.SetActive(true);
-            testInputKey.text = "Sliding";
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            testInputKey.gameObject.SetActive(true);
-            testInputKey.text = "Dash";
-            isDashing = true;
-            isDashTime = Time.time;
-            Time.timeScale = 1.5f;
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false).TimeScale = 2.5f;
-            GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
-            Invoke("LowerColliderDeactivate", 0.5f);
-
-            testInputKey.text ="Kick And Skill 1";
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            testInputKey.gameObject.SetActive(true);
-            testInputKey.text = "Skill 2";
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            testInputKey.gameObject.SetActive(true);
-            testInputKey.text = "Skill 3";
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            testInputKey.gameObject.SetActive(true);
-            testInputKey.text = "Skill 4";
-        }
+        #region playerControllerAction Up/Sit down 
+        PlayerMoveKey();
         #endregion
     }
 
@@ -152,28 +73,30 @@ public class PlayerController : Entity
     {
        if(isOnGround)
             movingEffect.SetActive(true);
-       
-        if ((Input.GetKeyDown(KeyCode.F)) && isGroundDetected()) 
-        {
-           
-            playerRb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale=7.5f;
-            GameManager.instance.AnimationController(flyAnimation);
-            GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
-            Invoke("UpperColliderDeactivate", 0.5f);
-            movingEffect.SetActive(false);
-            isOnGround = false;
-        
-        }
 
-        if (Input.GetKeyDown(KeyCode.J)) 
-        {
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false).TimeScale=2.5f;
-            GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
-            Invoke("LowerColliderDeactivate", 0.5f);
+        #region OldPlayerController
+        //if ((Input.GetKeyDown(KeyCode.F)) && isGroundDetected()) 
+        //{
 
-        }
-                  
+        //    playerRb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
+        //    playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale=7.5f;
+        //    GameManager.instance.AnimationController(flyAnimation);
+        //    GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
+        //    Invoke("UpperColliderDeactivate", 0.5f);
+        //    movingEffect.SetActive(false);
+        //    isOnGround = false;
+
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.J)) 
+        //{
+        //    playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false).TimeScale=2.5f;
+        //    GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
+        //    Invoke("LowerColliderDeactivate", 0.5f);
+
+        //}
+        #endregion
+
     }
 
     public void ColliderDeactivate() 
@@ -236,8 +159,68 @@ public class PlayerController : Entity
 
 
     private void PlayerMoveKey()
-    { 
+    {
+        if (isDashing)
+        {
+            if (Time.time >= isDashTime + isDashTimeLimit)
+            {
+                isDashing = false;
+                Time.timeScale = 1f;
+            }
+        }
 
+        if (Input.GetKeyDown(playerMoveKeyCode[0]) && isGroundDetected())
+        {
+            playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale = 7.5f;
+            GameManager.instance.AnimationController(flyAnimation);
+            GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
+            Invoke("UpperColliderDeactivate", 0.5f);
+            movingEffect.SetActive(false);
+            isOnGround = false;
+            testInputKey.text = "Jump";
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            testInputKey.gameObject.SetActive(true);
+            testInputKey.text = "Sit Down";
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            testInputKey.gameObject.SetActive(true);
+            testInputKey.text = "Sliding";
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            testInputKey.gameObject.SetActive(true);
+            testInputKey.text = "Dash";
+            isDashing = true;
+            isDashTime = Time.time;
+            Time.timeScale = 1.5f;
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            playerSkeletonAnimation.AnimationState.SetAnimation(0, kickAnimation, false).TimeScale = 2.5f;
+            GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
+            Invoke("LowerColliderDeactivate", 0.5f);
+
+            testInputKey.text = "Kick And Skill 1";
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            testInputKey.gameObject.SetActive(true);
+            testInputKey.text = "Skill 2";
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            testInputKey.gameObject.SetActive(true);
+            testInputKey.text = "Skill 3";
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            testInputKey.gameObject.SetActive(true);
+            testInputKey.text = "Skill 4";
+        }
     }
 
 

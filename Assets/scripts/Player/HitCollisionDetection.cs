@@ -78,35 +78,35 @@ public class HitCollisionDetection : MonoBehaviour
 
             }
 
-           
 
 
+            GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
+            #region AnimationSetting ก่
+            //if (other.GetComponent<MoveLeft>().monsterNumber == 6)
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+            //}
+            //else if (other.GetComponent<MoveLeft>().monsterNumber == 7) 
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
 
-            if (other.GetComponent<MoveLeft>().monsterNumber == 6)
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
-                //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-            }
-            else if (other.GetComponent<MoveLeft>().monsterNumber == 7) 
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
-                //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-
-            }
-            else if(other.GetComponent<MoveLeft>().monsterNumber==5)
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-                //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit_Fly_1", false);
-            }
-            else
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-            }
-
+            //}
+            //else if(other.GetComponent<MoveLeft>().monsterNumber==5)
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit_Fly_1", false);
+            //}
+            //else
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+            //}
+            #endregion 
 
 
         }
-        
+
     }
 
     public void MoveUPword(GameObject perfectTxtEffect, Vector2 hitPoint) 

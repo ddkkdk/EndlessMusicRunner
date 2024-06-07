@@ -78,28 +78,30 @@ public class UpperHitCollisionDetection : MonoBehaviour
                 other.GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
 
             }
-            #region 에러 나옴 충돌에서 문제가 발생함
-            if (other.GetComponent<MoveLeft>().monsterNumber == 4)
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
-            }
-            if (other.GetComponent<MoveLeft>().monsterNumber == 6)
-            {
-                //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
-            }
-            else if (other.GetComponent<MoveLeft>().monsterNumber == 7)
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
 
-            }
-            else
-            {
-                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-                //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false); 
-            }
-           
-            #endregion
+            GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
+            #region AnimationSettin ↑
+            //if (other.GetComponent<MoveLeft>().monsterNumber == 4)
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            //}
+            //if (other.GetComponent<MoveLeft>().monsterNumber == 6)
+            //{
+            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            //}
+            //else if (other.GetComponent<MoveLeft>().monsterNumber == 7)
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+
+            //}
+            //else
+            //{
+            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false); 
+            //}
+
+            #endregion 
 
         }
 

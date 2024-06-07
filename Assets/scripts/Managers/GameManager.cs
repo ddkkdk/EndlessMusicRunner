@@ -94,10 +94,12 @@ public class GameManager : MonoBehaviour
         var test = skeletonData.Animations.Items;
         for (int i = 0; i < test.Length; ++i)
         {
-            if(test[i].Name.Contains("hit"))
+            
+            if(test[i].Name.Contains("Hit"))
             {
                 monsterAnimation.Add(test[i].Name);
             }
         }
+        skeletonAnimation.AnimationState.SetAnimation(0, monsterAnimation[0], false);
     }
 }
