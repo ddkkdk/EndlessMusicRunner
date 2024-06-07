@@ -11,6 +11,7 @@ public class HitCollisionDetection : MonoBehaviour
     public GameObject[] destroyParticleEffects;
     public GameObject puffEffect;
     public GameObject perfectTxtEffect;
+    public GameObject greatTxtEffect;
     public int score;
     public int comboScore;
     public float fadeDuration = 2.0f;
@@ -53,18 +54,35 @@ public class HitCollisionDetection : MonoBehaviour
 
             if (hitEffect != null)
             {
-                Debug.Log($" �ٿ� : {other.gameObject.transform.position}");
+                var distance = Vector3.Distance(transform.position, other.gameObject.transform.position);
+                Debug.Log($" Down : {distance}");
+                
+                if(distance <=0.25f)
+                {
+                    GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                    GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+                    StartCoroutine(OpacityChange(perfectTxtObject));
 
-                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-                StartCoroutine(OpacityChange(perfectTxtObject));
+                    HIttingEffects(other.gameObject, hitPoint);
 
-                HIttingEffects(other.gameObject, hitPoint);
+                    MoveUPword(perfectTxtObject, hitPoint);
 
-                MoveUPword(perfectTxtObject, hitPoint);
+                    Destroy(hitObject, 0.2f);
+                    Destroy(perfectTxtObject, 0.8f);
+                }
+               else
+                {
+                    GameObject greatObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                    GameObject greatTxtObject = Instantiate(greatTxtEffect, hitPoint, Quaternion.identity);
+                    StartCoroutine(OpacityChange(greatTxtObject));
 
-                Destroy(hitObject, 0.2f);
-                Destroy(perfectTxtObject, 0.8f);
+                    HIttingEffects(other.gameObject, hitPoint);
+
+                    MoveUPword(greatTxtObject, hitPoint);
+
+                    Destroy(greatObject, 0.2f);
+                    Destroy(greatTxtObject, 0.8f);
+                }
 
 
 

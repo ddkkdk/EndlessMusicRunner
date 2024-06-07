@@ -57,7 +57,7 @@ public class SpawnManager : MonoBehaviour
 
     public bool isBuildTestingRandomMonster = true;
     public int CreatBossCounting = 0;
-    public readonly int CreatBossCountingDuration = 5;
+    public readonly int CreatBossCountingDuration = 2;
     public bool isCreatBoss = false;
     IEnumerator SpawnMonstersAtRandomPos()
     {
@@ -109,19 +109,20 @@ public class SpawnManager : MonoBehaviour
                         }
                         if (i == 3)
                             spawnPoint = spawnPoint_3;
+
                         GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
                         spawnedObjects.transform.SetParent(spawnObjects.transform);
-                        CreatBossCounting++;
-                        if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
-                        {
-                            isCreatBoss = true;
-                            Boss.Create();
-                        }
+                        
                         //Debug.Log($"몬스터 소환된 횟수 : {CreatBossCounting}");
                         yield return new WaitForSeconds(itemSpawnDelay);
                     }
                 }
-
+                CreatBossCounting++;
+                if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
+                {
+                    isCreatBoss = true;
+                    Boss.Create();
+                }
                 yield return new WaitForSeconds(setSpawnDelay);
             }
 

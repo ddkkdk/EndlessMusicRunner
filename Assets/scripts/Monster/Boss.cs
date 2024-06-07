@@ -71,6 +71,7 @@ public class Boss : MonoBehaviour
             AttackIdx++;
         }
         e_State = E_State.Wait;
+        AttackIdx=G_Pattern.Length;
         if (AttackIdx >= G_Pattern.Length)
         {
             //돌격 패턴
