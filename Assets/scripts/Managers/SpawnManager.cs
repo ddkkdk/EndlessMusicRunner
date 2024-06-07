@@ -54,7 +54,11 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-  
+
+    public bool isBuildTestingRandomMonster = true;
+    public int CreatBossCounting = 0;
+    public readonly int CreatBossCountingDuration = 30;
+    public bool isCreatBoss = false;
     IEnumerator SpawnMonstersAtRandomPos()
     {
         
@@ -69,37 +73,53 @@ public class SpawnManager : MonoBehaviour
         {
             for (int setIndex = 0; setIndex < monster.Count; setIndex++)
             {
-                MonsterItem currentSet = monster[setIndex];
+                MonsterItem currentSet = monster[0];
 
                
-                if (setIndex == 0 || setIndex == 1||setIndex == 2 || setIndex == 5||setIndex == 6
-                    || setIndex == 7 || setIndex == 9 || setIndex == 10 || setIndex == 11 || setIndex == 12|| setIndex == 13)
+                if(!isBuildTestingRandomMonster)
                 {
-                     spawnPoint = spawnPoint_1;
+                    if (setIndex == 0 || setIndex == 1 || setIndex == 2 || setIndex == 5 || setIndex == 6
+                   || setIndex == 7 || setIndex == 9 || setIndex == 10 || setIndex == 11 || setIndex == 12 || setIndex == 13)
+                    {
+                        spawnPoint = spawnPoint_1;
 
+
+                    }
+                    else if (setIndex == 3 || setIndex == 4 || setIndex == 8 || setIndex == 14 || setIndex == 15
+                        || setIndex == 16 || setIndex == 17)
+                    {
+                        spawnPoint = spawnPoint_3;
+                    }
 
                 }
-                else if (setIndex == 3 || setIndex == 4 || setIndex == 8|| setIndex == 14 || setIndex == 15
-                    || setIndex == 16 || setIndex == 17) 
-                {
-                     spawnPoint = spawnPoint_3;
-                }
-               
-
                 for (int i = 0; i < currentSet.monster.Length; i++)
                 {
                     GameObject item = currentSet.monster[i];
                     if (item != null)
                     {
-                       
+                        if(isBuildTestingRandomMonster)
+                        {
+                            int random = Random.Range(0,2);
+                            if(random ==0)
+                            {
+                                spawnPoint = spawnPoint_1;
+                            }
+                            else
+                                spawnPoint = spawnPoint_3;
+                        }
 
-                        GameObject spawnedObjects =Instantiate(item, spawnPoint.position, item.transform.rotation) ;
+                        GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
                         spawnedObjects.transform.SetParent(spawnObjects.transform);
-
+                        CreatBossCounting++;
+                        Debug.Log($"몬스터 소환된 횟수 : {CreatBossCounting}");
                         yield return new WaitForSeconds(itemSpawnDelay);
                     }
                 }
-
+                if(CreatBossCounting >=CreatBossCountingDuration &&!isCreatBoss)
+                {
+                    isCreatBoss = true;
+                    Boss.Create();
+                }
                 yield return new WaitForSeconds(setSpawnDelay);
             }
 

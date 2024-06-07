@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
@@ -41,6 +42,8 @@ public class Entity : MonoBehaviour
         
         currentHealth -= damageAmount;
         SetHealthBar();
+        if (currentHealth <= 0)
+            SceneManager.LoadScene("UIScene");
         FlashFx.Instance.callFlash();
         AudioManager.instance.PlayerHItSound();
     
