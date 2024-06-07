@@ -44,7 +44,10 @@ public class PlayerController : Entity
     private bool isJumping = false;
     private float moveTime = 0f;
     public float test = 10f;
-
+    private float isDashTime;
+    public float isDashTimeLimit = 1f;
+    public bool isDashing= false;
+    public List<KeyCode> playerMoveKeyCode;
     protected override void Start()
     {
         testInputKey.gameObject.SetActive(false);
@@ -79,6 +82,15 @@ public class PlayerController : Entity
         //    isJumping = true;
         //}
 
+        if(isDashing)
+        {
+            if(Time.time >= isDashTime + isDashTimeLimit)
+            {
+                isDashing = false;
+                Time.timeScale = 1f;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGroundDetected())
         {
             //isJumping = true;
@@ -105,6 +117,9 @@ public class PlayerController : Entity
         {
             testInputKey.gameObject.SetActive(true);
             testInputKey.text = "Dash";
+            isDashing = true;
+            isDashTime = Time.time;
+            Time.timeScale = 1.5f;
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
