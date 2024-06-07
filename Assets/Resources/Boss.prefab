@@ -253,6 +253,5 @@ MonoBehaviour:
   Damage: 5
   monsterMaxHp: 20
   G_Pattern:
-  - {fileID: 5151318159573600705, guid: b3c96dccf4d271449bff9d55fab4a903, type: 3}
-  - {fileID: 158793283704363192, guid: 0fca1f5f332f5944e8816ff6c76cd448, type: 3}
+  - {fileID: 7521900882231757281, guid: 045212adcfef84d4aae7b7eb4e93bdba, type: 3}
   bossAnimation: {fileID: 0}
