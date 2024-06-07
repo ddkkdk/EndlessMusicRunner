@@ -107,7 +107,8 @@ public class SpawnManager : MonoBehaviour
                             else
                                 spawnPoint = spawnPoint_3;
                         }
-
+                        if (i == 3)
+                            spawnPoint = spawnPoint_3;
                         GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
                         spawnedObjects.transform.SetParent(spawnObjects.transform);
                         CreatBossCounting++;
