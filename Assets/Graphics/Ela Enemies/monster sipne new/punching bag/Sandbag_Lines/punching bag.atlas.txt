@@ -1,0 +1,27 @@
+punching bag.png
+	size: 902, 902
+	filter: Linear, Linear
+	pma: true
+	scale: 0.5
+Glove1
+	bounds: 2, 69, 295, 269
+	rotate: 90
+Glove2
+	bounds: 273, 64, 300, 243
+	offsets: 161, 38, 461, 281
+	rotate: 90
+face
+	bounds: 518, 334, 253, 190
+face2
+	bounds: 518, 79, 253, 190
+	rotate: 90
+face3
+	bounds: 710, 79, 253, 190
+	rotate: 90
+punching
+	bounds: 2, 366, 403, 534
+	offsets: 0, 0, 487, 553
+punching2
+	bounds: 407, 526, 374, 483
+	offsets: 0, 0, 374, 515
+	rotate: 90

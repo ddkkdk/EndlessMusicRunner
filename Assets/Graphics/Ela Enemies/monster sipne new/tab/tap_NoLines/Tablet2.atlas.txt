@@ -1,0 +1,37 @@
+Tablet2.png
+	size: 800, 800
+	filter: Linear, Linear
+	pma: true
+	scale: 0.5
+L_foot
+	bounds: 539, 139, 48, 72
+L_hand
+	bounds: 617, 208, 151, 116
+R_foot
+	bounds: 518, 213, 86, 42
+R_hand
+	bounds: 518, 257, 148, 97
+	rotate: 90
+bady
+	bounds: 2, 406, 312, 392
+	offsets: 94, 43, 502, 443
+bady_1
+	bounds: 316, 407, 310, 391
+	offsets: 0, 0, 323, 391
+bady_2
+	bounds: 2, 13, 311, 391
+	offsets: 0, 0, 323, 391
+face
+	bounds: 315, 38, 222, 136
+	offsets: 14, 0, 260, 149
+face1
+	bounds: 315, 176, 201, 228
+	offsets: 12, 1, 213, 230
+face2
+	bounds: 628, 543, 255, 170
+	offsets: 16, 14, 288, 196
+	rotate: 90
+face_1
+	bounds: 628, 326, 215, 168
+	offsets: 2, 0, 219, 168
+	rotate: 90
