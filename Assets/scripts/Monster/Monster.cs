@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,19 @@ public class Monster : Entity
 {
     public int damageAmount;
     public GameObject damageFx;
+    [SerializeField] bool Change;
+    [SerializeField] SkeletonDataAsset[] Sk;
+    [SerializeField] SkeletonAnimation My;
 
 
+    private void Start()
+    {
+        if (Change)
+        {
+            My.skeletonDataAsset = Sk[UI_Lobby.Type == false ? 0 : 1];
+            My.Initialize(true);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         ContactPoint2D contactPoint = other.contacts[0];
