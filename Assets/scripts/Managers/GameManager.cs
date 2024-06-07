@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         //skeletonAnimation.AnimationState.AddAnimation(0, "idle", true, delay); // 딜레이 값을 AddAnimation에 적용
     }
 
-    public void PlayAnimation(SkeletonAnimation skeletonAnimation, string animationString)
+    public void PlayAnimation(SkeletonAnimation skeletonAnimation, string animationString, bool loop = false)
     {
         skeletonAnimation.AnimationState.ClearTracks(); // 모든 애니메이션 트랙을 제거
         SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
@@ -134,8 +134,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        skeletonAnimation.skeleton.SetToSetupPose();
+        skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop);
 
-        skeletonAnimation.AnimationState.SetAnimation(0, animationString, false);
-        skeletonAnimation.AnimationState.AddAnimation(0, "Walking", true, delay); // 찾은 딜레이 값을 AddAnimation에 적용
+        if (loop == false)
+        {
+            skeletonAnimation.AnimationState.AddAnimation(0, "Walking", true, delay); // 찾은 딜레이 값을 AddAnimation에 적용
+        }
     }
 }

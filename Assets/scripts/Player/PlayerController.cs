@@ -51,6 +51,7 @@ public class PlayerController : Entity
     public List<KeyCode> playerMoveKeyCode;
     public bool isAttack = false;
     float KickDealy;
+    public static bool CheckHold;
     protected override void Start()
     {
         testInputKey.gameObject.SetActive(false);
@@ -149,7 +150,9 @@ public class PlayerController : Entity
     public bool isGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
 
 
-
+    float HoldDelay = 0.5f;
+    float Cur_HoldDelay = 0f;
+    bool StartAniHold = false;
 
     private void PlayerMoveKey()
     {
@@ -195,6 +198,15 @@ public class PlayerController : Entity
             Time.timeScale = 1.5f;
             GameManager.instance.PlayAnimation(playerSkeletonAnimation, "Running");
         }
+
+        //홀드키 땠을때
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            GameManager.instance.PlayAnimation(playerSkeletonAnimation, "Walking", true);
+            CheckHold = false;
+            Cur_HoldDelay = 0;
+            StartAniHold = false;
+        }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (!isGroundDetected())
@@ -218,6 +230,20 @@ public class PlayerController : Entity
             KickDealy = 1;
             testInputKey.text = "Kick And Skill 1";
         }
+        //홀드중 
+        if (Input.GetKey(KeyCode.Z))
+        {
+            CheckHold = true;
+
+            Cur_HoldDelay += Time.deltaTime;
+
+            if (Cur_HoldDelay >= HoldDelay && !StartAniHold)
+            {
+                GameManager.instance.PlayAnimation(playerSkeletonAnimation, "tail attack2", true);
+                StartAniHold = true;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.X))
         {
             testInputKey.gameObject.SetActive(true);
@@ -233,5 +259,8 @@ public class PlayerController : Entity
             testInputKey.gameObject.SetActive(true);
             testInputKey.text = "Skill 4";
         }
+
     }
+
+
 }

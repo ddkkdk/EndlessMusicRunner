@@ -39,6 +39,11 @@ public class UpperHitCollisionDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Monster")
         {
+
+            var monster = other.gameObject.GetComponent<Monster>();
+
+            monster?.Damage(1);
+
             AudioManager.instance.PlaySound();
 
             //score++;
@@ -52,21 +57,29 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
             if (hitEffect != null)
             {
-                Debug.Log($" ¾÷ : {other.gameObject.transform.position}");
-                               
-               GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-               Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
-               StartCoroutine (OpacityChange(perfectTxtObject));
-               GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                Debug.Log($" ï¿½ï¿½ : {other.gameObject.transform.position}");
+
+                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+                Color pColor = perfectTxtObject.GetComponent<SpriteRenderer>().color;
+                StartCoroutine(OpacityChange(perfectTxtObject));
+                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                 HIttingEffects(other.gameObject, hitPoint);
-                
-               MoveUPword(perfectTxtObject, hitPoint);
-               Destroy(perfectTxtObject, 0.8f);
-               
-               Destroy(hitObject, 0.2f);
-               
+
+                MoveUPword(perfectTxtObject, hitPoint);
+                Destroy(perfectTxtObject, 0.8f);
+
+                Destroy(hitObject, 0.2f);
 
 
+
+            }
+
+            if (!monster)
+            {
+                if (monster.currentHealth > 0)
+                {
+                    return;
+                }
             }
 
             other.GetComponent<Collider2D>().enabled = false;
@@ -83,7 +96,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
             }
 
             GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
-            #region AnimationSettin ¡è
+            #region AnimationSettin ï¿½ï¿½
             //if (other.GetComponent<MoveLeft>().monsterNumber == 4)
             //{
             //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
@@ -164,9 +177,9 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
     }
 
-    public IEnumerator OpacityChange(GameObject obj) 
+    public IEnumerator OpacityChange(GameObject obj)
     {
-       
+
         var color = obj.GetComponent<SpriteRenderer>();
         Color currentColor = obj.GetComponent<SpriteRenderer>().color;
 
@@ -175,26 +188,26 @@ public class UpperHitCollisionDetection : MonoBehaviour
         {
             if (obj == null || !obj.activeSelf)
                 yield break;
-            
+
             float normalizedTime = t / fadeDuration;
 
 
             currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
 
-            #region ¿¡·¯¹ß»ý
+            #region ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½
             color.color = currentColor;
             #endregion
 
             yield return null;
         }
 
-        
+
         currentColor.a = 0;
         color.color = currentColor;
         //obj.GetComponent<SpriteRenderer>().color = currentColor;
         if (obj != null || obj.activeSelf)
             Destroy(obj);
-        
+
     }
 
 
