@@ -26,17 +26,21 @@ public class HitCollisionDetection : MonoBehaviour
             Destroy(this.gameObject);
 
         }
-        else 
+        else
         {
             Instance = this;
         }
 
-        
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Monster") 
+        if (other.gameObject.tag == "Monster")
         {
+            var monster = other.GetComponent<Monster>();
+
+            monster.Damage(1);
+
             AudioManager.instance.PlaySound();
 
             //score++;
@@ -48,21 +52,32 @@ public class HitCollisionDetection : MonoBehaviour
             UIManager.Instance.ScoreUpdater();
             Vector2 hitPoint = other.ClosestPoint(transform.position);
 
-            if (hitEffect != null) 
+            if (hitEffect != null)
             {
-              GameObject hitObject= Instantiate(hitEffect, hitPoint, Quaternion.identity);
-              GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-              StartCoroutine(OpacityChange(perfectTxtObject));
+                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+                StartCoroutine(OpacityChange(perfectTxtObject));
 
-              HIttingEffects(other.gameObject, hitPoint);
+                HIttingEffects(other.gameObject, hitPoint);
 
-              MoveUPword(perfectTxtObject,hitPoint);
+                MoveUPword(perfectTxtObject, hitPoint);
 
-              Destroy(hitObject,0.2f);
-              Destroy(perfectTxtObject, 0.8f);
-             
+                Destroy(hitObject, 0.2f);
+                Destroy(perfectTxtObject, 0.8f);
 
 
+
+            }
+
+
+
+
+            if (monster)
+            {
+                if (monster.currentHealth > 0)
+                {
+                    return;
+                }
             }
 
             other.GetComponent<Collider2D>().enabled = false;
@@ -70,7 +85,7 @@ public class HitCollisionDetection : MonoBehaviour
             other.GetComponent<MoveLeft>().speed = 0;
 
             float position = other.gameObject.transform.position.y;
-            
+
 
             if (position > -8)
             {
@@ -82,7 +97,7 @@ public class HitCollisionDetection : MonoBehaviour
 
 
             GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
-            #region AnimationSetting ¡è
+            #region AnimationSetting ï¿½ï¿½
             //if (other.GetComponent<MoveLeft>().monsterNumber == 6)
             //{
             //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
@@ -110,20 +125,20 @@ public class HitCollisionDetection : MonoBehaviour
 
     }
 
-    public void MoveUPword(GameObject perfectTxtEffect, Vector2 hitPoint) 
+    public void MoveUPword(GameObject perfectTxtEffect, Vector2 hitPoint)
     {
-        perfectTxtEffect.transform.DOMoveY(hitPoint.y+2, 0.1f);
-    
+        perfectTxtEffect.transform.DOMoveY(hitPoint.y + 2, 0.1f);
+
     }
 
-    public IEnumerator MonsterDestroy(GameObject other) 
+    public IEnumerator MonsterDestroy(GameObject other)
     {
         yield return new WaitForSeconds(0.5f);
-     
+
 
     }
 
-    public void HIttingEffects(GameObject other, Vector2 hitPoint) 
+    public void HIttingEffects(GameObject other, Vector2 hitPoint)
     {
         //Debug.Log("fshfkshfkshfkshfsjkhfjwsk");
         int mNumber = other.GetComponent<MoveLeft>().monsterNumber;
@@ -136,7 +151,7 @@ public class HitCollisionDetection : MonoBehaviour
             Destroy(destroyEffects, 0.5f);
 
         }
-        else if (mNumber == 1) 
+        else if (mNumber == 1)
         {
             GameObject destroyEffects = Instantiate(destroyParticleEffects[1], hitPoint, Quaternion.identity);
             Destroy(destroyEffects, 0.5f);
@@ -169,7 +184,7 @@ public class HitCollisionDetection : MonoBehaviour
             GameObject destroyEffects = Instantiate(destroyParticleEffects[6], hitPoint, Quaternion.identity);
             Destroy(destroyEffects, 0.5f);
         }
-      
+
 
     }
 
@@ -191,7 +206,7 @@ public class HitCollisionDetection : MonoBehaviour
             currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
 
 
-            obj.GetComponent<SpriteRenderer>().color = currentColor; 
+            obj.GetComponent<SpriteRenderer>().color = currentColor;
 
 
             yield return null;
