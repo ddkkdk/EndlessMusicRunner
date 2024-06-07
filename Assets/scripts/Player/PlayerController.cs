@@ -35,6 +35,7 @@ public class PlayerController : Entity
     public GameObject movingEffect;
 
     public bool isStart;
+    public bool isRunning;
 
   
     protected override void Start()
@@ -55,7 +56,7 @@ public class PlayerController : Entity
        if(isOnGround)
             movingEffect.SetActive(true);
 
-        if (Input.GetKeyDown(KeyCode.F) && isGroundDetected()) 
+        if (Input.GetKeyDown(KeyCode.F) && isGroundDetected() && isRunning) 
         {
            
             playerRb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
@@ -65,6 +66,7 @@ public class PlayerController : Entity
             Invoke("UpperColliderDeactivate", 0.5f);
             movingEffect.SetActive(false);
             isOnGround = false;
+            isRunning=false;
         
         }
 
@@ -103,6 +105,7 @@ public class PlayerController : Entity
             {
                 playerSkeletonAnimation.AnimationState.SetAnimation(0, runAnimation, true).TimeScale= runningTimeScale;
             }
+
             yield return new WaitForSeconds(0.5f);
 
         }
