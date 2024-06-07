@@ -90,7 +90,7 @@ public class PlayerController : Entity
                 Time.timeScale = 1f;
             }
         }
-
+       
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGroundDetected())
         {
             //isJumping = true;
@@ -234,7 +234,10 @@ public class PlayerController : Entity
 
 
 
+    private void PlayerMoveKey()
+    { 
 
+    }
 
 
 }

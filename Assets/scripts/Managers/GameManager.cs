@@ -81,4 +81,23 @@ public class GameManager : MonoBehaviour
         speaker_2.gameObject.SetActive(false);
 
     }
+
+    [SerializeField] private List<string> monsterAnimation = new List<string>();
+    public void PlayMonsterAnimation(SkeletonAnimation skeletonAnimation)
+    {
+        if(monsterAnimation.Count > 0) 
+        {
+            monsterAnimation.Clear();
+        }
+        SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
+        SkeletonData skeletonData = skeletonDataAsset.GetSkeletonData(true);
+        var test = skeletonData.Animations.Items;
+        for (int i = 0; i < test.Length; ++i)
+        {
+            if(test[i].Name.Contains("hit"))
+            {
+                monsterAnimation.Add(test[i].Name);
+            }
+        }
+    }
 }

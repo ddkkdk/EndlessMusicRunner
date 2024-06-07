@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Spine;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
@@ -78,22 +79,33 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
             }
             #region 에러 나옴 충돌에서 문제가 발생함
-            //if (other.GetComponent<MoveLeft>().monsterNumber == 6)
-            //{
-            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            if (other.GetComponent<MoveLeft>().monsterNumber == 4)
+            {
+                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            }
+            if (other.GetComponent<MoveLeft>().monsterNumber == 6)
+            {
+                //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
+            }
+            else if (other.GetComponent<MoveLeft>().monsterNumber == 7)
+            {
+                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
 
-            //}
-            //else if (other.GetComponent<MoveLeft>().monsterNumber == 7)
-            //{
-            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-
-            //}
-            //else
-            //{
-            //    #region 에러 나옴 충돌에서 문제가 발생함
-            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
-            //    #endregion 
-            //}
+            }
+            else
+            {
+                other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
+                //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false); 
+            }
+            var skeletonAnimation = other.GetComponent<SkeletonAnimation>();
+            SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
+            SkeletonData skeletonData = skeletonDataAsset.GetSkeletonData(true);
+            var test = skeletonData.Animations.Items;
+            for(int i =0;i<test.Length;++i)
+            {
+                Debug.Log(test[i].Name);
+            }
             #endregion
 
         }

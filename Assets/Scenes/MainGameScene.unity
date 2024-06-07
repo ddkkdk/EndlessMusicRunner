@@ -8628,6 +8628,7 @@ MonoBehaviour:
   flyTimeScale: 8
   retireTimeScale: 1.2
   kickTimeScale: 2.5
+  monsterAnimation: []
 --- !u!4 &827244270
 Transform:
   m_ObjectHideFlags: 0
@@ -17043,6 +17044,9 @@ MonoBehaviour:
   testInputKey: {fileID: 1397985583}
   playerLimitJumpPosition: {fileID: 599341602}
   test: 1
+  isDashTimeLimit: 1
+  isDashing: 0
+  playerMoveKeyCode: 11010000120100001401000013010000
 --- !u!4 &1608568228
 Transform:
   m_ObjectHideFlags: 0
