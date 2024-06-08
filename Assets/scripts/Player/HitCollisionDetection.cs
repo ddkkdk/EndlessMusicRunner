@@ -55,9 +55,7 @@ public class HitCollisionDetection : MonoBehaviour
             if (hitEffect != null)
             {
                 var distance = Vector3.Distance(transform.position, other.gameObject.transform.position);
-                Debug.Log($" Down : {distance}");
-                
-                if(distance <=0.25f)
+                if(distance <=0.8f)
                 {
                     GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                     GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
@@ -83,9 +81,6 @@ public class HitCollisionDetection : MonoBehaviour
                     Destroy(greatObject, 0.2f);
                     Destroy(greatTxtObject, 0.8f);
                 }
-
-
-
             }
             if (monster)
             {
