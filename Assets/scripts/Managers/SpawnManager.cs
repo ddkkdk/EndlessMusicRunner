@@ -104,7 +104,7 @@ public class SpawnManager : MonoBehaviour
                             int random = Random.Range(0, 2);
                             if (random == 0 && itemNumber == 0 || itemNumber == 1 || itemNumber == 2 || itemNumber == 5 || itemNumber == 6
                                    || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
-                                   || itemNumber == 12 || itemNumber == 13)
+                                   || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
                             {
                                                                                          
                                   spawnPoint = spawnPoint_1;
