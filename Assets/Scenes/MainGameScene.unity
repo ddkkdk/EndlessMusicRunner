@@ -834,6 +834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   G_Pause: {fileID: 1937510962}
+  T_Type: {fileID: 0}
 --- !u!1 &58511435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3552,6 +3553,7 @@ MonoBehaviour:
     - {fileID: 2376462067880542252, guid: 42ade969904056a43b5e0e94b1d4963e, type: 3}
     - {fileID: 8655841565898487343, guid: 7ada345965a193c4d9233900fd0fa7ba, type: 3}
     - {fileID: 5927427790796394008, guid: 095ea0b4605735744972671e312f36a4, type: 3}
+    - {fileID: 5927427790796394008, guid: 07deae699534405428311ed97ec1cc13, type: 3}
   - monster:
     - {fileID: 5629541656628589791, guid: 02d7063ba6de34047a99b6b8b7c4e934, type: 3}
   - monster:
@@ -3592,6 +3594,7 @@ MonoBehaviour:
   spawnPoint_1: {fileID: 256112964}
   spawnPoint_3: {fileID: 962744005}
   startSpawn: 0
+  bossPrefab: {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
   isBuildTestingRandomMonster: 1
   CreatBossCounting: 0
   isCreatBoss: 0
@@ -17452,7 +17455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a2ac601e180c94c863e5d244e3d178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   currentHealth: 0
   fillAmount: {fileID: 605063367}
   isOnGround: 1

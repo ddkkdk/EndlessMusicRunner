@@ -181,6 +181,7 @@ MonoBehaviour:
   monsterNumber: 17
   SendBack: 0
   OffSetX: 0
+  DestoryX: 0
 --- !u!114 &5927427790796393986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +200,9 @@ MonoBehaviour:
   isOnGround: 1
   damageAmount: 10
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
+  Change: 0
+  Sk: []
+  My: {fileID: 0}
 --- !u!114 &-7034009947147531928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   Damage: 5
-  monsterMaxHp: 20
+  monsterMaxHp: 10
   G_Pattern:
   - {fileID: 7521900882231757281, guid: 045212adcfef84d4aae7b7eb4e93bdba, type: 3}
   - {fileID: 3039278384151857703, guid: d0ce6bbb5776e614ab3b1e6784ea39ff, type: 3}

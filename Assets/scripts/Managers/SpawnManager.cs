@@ -20,6 +20,7 @@ public class SpawnManager : MonoBehaviour
 
     private Transform spawnPoint;
 
+    public GameObject bossPrefab;
     void Start()
     {
         if (instance != null)
@@ -68,7 +69,12 @@ public class SpawnManager : MonoBehaviour
             yield break;
         }
 
+        if (!isCreatBoss)
+        {
+            isCreatBoss = true;
+            var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
 
+        }
         while (true)
         {
             for (int setIndex = 0; setIndex < monster.Count; setIndex++)
@@ -121,7 +127,8 @@ public class SpawnManager : MonoBehaviour
                 if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
                 {
                     isCreatBoss = true;
-                    Boss.Create();
+                    var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
+
                 }
                 yield return new WaitForSeconds(setSpawnDelay);
             }
