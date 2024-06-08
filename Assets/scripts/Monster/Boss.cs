@@ -20,7 +20,7 @@ public class Boss : MonoBehaviour
     }
 
     E_State e_State = E_State.Wait;
-    float Delay = 3;
+    float Delay = 10;
     float Cur_Delay = 0;
 
     public static Vector3 CreatePos;
@@ -100,8 +100,8 @@ public class Boss : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.player.transform.position, speed * Time.deltaTime);
         var dis = Vector3.Distance(GameManager.instance.player.transform.position, transform.position);
-        Debug.Log(dis);
-        if (dis <= 3f)
+        //Debug.Log(dis);
+        if (dis <= 5f)
         {
             //만약 플레이어가 공격 상태라면?
             var col = GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>();
@@ -118,6 +118,7 @@ public class Boss : MonoBehaviour
                 { 
                     Destroy(gameObject);
                     Debug.Log("몬스터 죽음");
+                    SecenManager.LoadScene("UIScene");
                 }
 
                 return;
