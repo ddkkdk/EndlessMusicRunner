@@ -73,7 +73,7 @@ public class SpawnManager : MonoBehaviour
         {
             for (int setIndex = 0; setIndex < monster.Count; setIndex++)
             {
-                MonsterItem currentSet = monster[0];
+                MonsterItem currentSet = monster[setIndex];
 
 
                 if (!isBuildTestingRandomMonster)
@@ -95,17 +95,24 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < currentSet.monster.Length; i++)
                 {
                     GameObject item = currentSet.monster[i];
+                    int itemNumber = item.GetComponent<MoveLeft>().monsterNumber;
+
                     if (item != null)
                     {
                         if (isBuildTestingRandomMonster)
                         {
                             int random = Random.Range(0, 2);
-                            if (random == 0)
+                            if (random == 0 && itemNumber == 0 || itemNumber == 1 || itemNumber == 2 || itemNumber == 5 || itemNumber == 6
+                                   || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
+                                   || itemNumber == 12 || itemNumber == 13)
                             {
-                                spawnPoint = spawnPoint_1;
+                                                                                         
+                                  spawnPoint = spawnPoint_1;
                             }
                             else
                                 spawnPoint = spawnPoint_3;
+                            
+                        
                         }
                         if (i == 3)
                             spawnPoint = spawnPoint_3;
