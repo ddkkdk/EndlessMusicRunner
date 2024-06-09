@@ -64,12 +64,14 @@ public class Boss : MonoBehaviour
     void Pattern()
     {
         //공격 패턴 실행
-        for(int i =0;i<G_Pattern.Length;++i)
-        {
-            var obj = Instantiate(G_Pattern[AttackIdx]);
-            Destroy(obj, 10);
-            AttackIdx++;
-        }
+        /* for(int i =0;i<G_Pattern.Length;++i)
+         {
+             GameObject spawnPoint = GameObject.Find("SpawnPoint_3");
+             var obj = Instantiate(G_Pattern[AttackIdx], spawnPoint.transform.position,Quaternion.identity);
+             Destroy(obj, 10);
+             AttackIdx++;
+         }*/
+        StartCoroutine(spawnObjects());
         e_State = E_State.Wait;
         AttackIdx=G_Pattern.Length;
         if (AttackIdx >= G_Pattern.Length)
@@ -143,5 +145,22 @@ public class Boss : MonoBehaviour
             e_State = E_State.Wait;
             return;
         }
+    }
+
+    IEnumerator spawnObjects() 
+    {
+      
+        for (int i = 0; i < G_Pattern.Length; ++i)
+        {
+            yield return new WaitForSeconds(0.1f);
+            GameObject spawnPoint = GameObject.Find("SpawnPoint_2");
+           // GameObject sPoint = GameObject.Find("SpawnPoint_3");
+            //sPoint.SetActive(false);
+            var obj = Instantiate(G_Pattern[AttackIdx], spawnPoint.transform.position, Quaternion.identity);
+            Destroy(obj, 10);
+            AttackIdx++;
+        }
+
+
     }
 }
