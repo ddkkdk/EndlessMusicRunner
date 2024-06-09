@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d2c6ccbcb582a459dd4ad36467d6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 50
   Damage: 5
   monsterMaxHp: 10
   G_Pattern:
