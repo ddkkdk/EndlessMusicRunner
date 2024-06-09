@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
         }
         else if (animationString == "tail attack2") 
         {
-            skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = 2.5f;
+            skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = 15f;
         }
         else
         {

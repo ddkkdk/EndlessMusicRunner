@@ -152,7 +152,7 @@ public class Boss : MonoBehaviour
       
         for (int i = 0; i < G_Pattern.Length; ++i)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
 
            
             GameObject spawnPoint = GameObject.Find("SpawnPoint_2");

@@ -79,7 +79,7 @@ public class SpawnManager : MonoBehaviour
         {
             for (int setIndex = 0; setIndex < monster.Count; setIndex++)
             {
-                MonsterItem currentSet = monster[setIndex];
+                MonsterItem currentSet = monster[0];
 
 
                 if (!isBuildTestingRandomMonster)
