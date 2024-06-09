@@ -39,7 +39,7 @@ public class Boss : MonoBehaviour
         if (bossAnimation == null)
             bossAnimation = GetComponent<SkeletonAnimation>();
 
-        GameManager.instance.PlayMonsterAnimation(bossAnimation, "Hit");
+       // GameManager.instance.PlayMonsterAnimation(bossAnimation, "Hit");
     }
     private void Update()
     {
@@ -98,6 +98,7 @@ public class Boss : MonoBehaviour
     //플레이어에게 돌격
     void CrushPlayer()
     {
+        
         transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.player.transform.position, speed * Time.deltaTime);
         var dis = Vector3.Distance(GameManager.instance.player.transform.position, transform.position);
         //Debug.Log(dis);
@@ -133,8 +134,8 @@ public class Boss : MonoBehaviour
     void Hit()
     {
 
-        transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.bossWaitPosition.position, speed * Time.deltaTime);
-
+       
+        transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.bossWaitPosition.position, speed * Time.deltaTime);        
         var dis = Vector3.Distance(transform.position, GameManager.instance.bossWaitPosition.position);
 
         if (dis <= 0.1f)

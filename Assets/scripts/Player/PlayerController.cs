@@ -38,6 +38,12 @@ public class PlayerController : Entity
     public bool isStart;
     public bool isRunning;
 
+    public int comboCounter;
+    public float lastTimeAttack;
+    public float comboWindow = 3;
+    public float combowDelay;
+
+
     //Ʒ ׽Ʈ ->
     [Header("TestInputKeyLog")]
     public TextMeshProUGUI testInputKey;
@@ -66,9 +72,18 @@ public class PlayerController : Entity
     }
     protected override void Update()
     {
+        combowDelay -= Time.deltaTime;
+
         #region playerControllerAction Up/Sit down 
         PlayerMoveKey();
         #endregion
+        if (comboCounter >= 3 || Time.time >= lastTimeAttack + comboWindow || combowDelay <= 0) 
+        {
+            comboCounter = 0;
+            combowDelay = 1.95f;
+
+        }
+           
     }
 
     protected override void FixedUpdate()
@@ -169,7 +184,7 @@ public class PlayerController : Entity
         if (Input.GetKeyDown(playerMoveKeyCode[0]) && isGroundDetected())
         {
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale = 7.5f;
+           // playerSkeletonAnimation.AnimationState.SetAnimation(0, flyAnimation, false).TimeScale = 7.5f;
             GameObject.Find("AttackPoint_Up").GetComponent<Collider2D>().enabled = true;
             Invoke("UpperColliderDeactivate", 0.5f);
             movingEffect.SetActive(false);
@@ -212,23 +227,32 @@ public class PlayerController : Entity
 
 
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.J))
         {
+            comboCounter++;
+            lastTimeAttack=Time.time;
+
+         
+
             if (!isGroundDetected())
             {
-                playerSkeletonAnimation.AnimationState.SetAnimation(0, "fire attack", false).TimeScale = 2.5f;
+              
                 GameManager.instance.PlayAnimation(playerSkeletonAnimation, "fire attack");
                 return;
             }
 
 
-            if (KickDealy <= 0)
+            if (KickDealy <= 0 && comboCounter == 1)
             {
                 GameManager.instance.PlayAnimation(playerSkeletonAnimation, "Kick");
             }
-            else
+            if (comboCounter == 2)
             {
                 GameManager.instance.PlayAnimation(playerSkeletonAnimation, "tail attack");
+            }
+            if(comboCounter==3)
+            {
+                GameManager.instance.PlayAnimation(playerSkeletonAnimation, "tail attack2");
             }
             GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
             Invoke("LowerColliderDeactivate", 0.5f);
@@ -236,15 +260,20 @@ public class PlayerController : Entity
             testInputKey.text = "Kick And Skill 1";
         }
         //홀드중 
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.J))
         {
             CheckHold = true;
+            GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>().enabled = true;
+          
 
             Cur_HoldDelay += Time.deltaTime;
+           
 
             if (Cur_HoldDelay >= HoldDelay && !StartAniHold)
             {
-                GameManager.instance.PlayAnimation(playerSkeletonAnimation, "tail attack2", true);
+                LowerColliderDeactivate();
+
+                GameManager.instance.PlayAnimation(playerSkeletonAnimation, "tail attack2", false);
                 StartAniHold = true;
             }
         }

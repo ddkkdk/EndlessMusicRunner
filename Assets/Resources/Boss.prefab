@@ -126,7 +126,7 @@ MonoBehaviour:
     materialsOutsideMask: []
   disableRenderingOnOverride: 1
   updateTiming: 1
-  unscaledTime: 0
+  unscaledTime: 1
   _animationName: idle
   loop: 1
   timeScale: 1
@@ -262,4 +262,4 @@ MonoBehaviour:
   - {fileID: 7521900882231757281, guid: 045212adcfef84d4aae7b7eb4e93bdba, type: 3}
   - {fileID: 3039278384151857703, guid: d0ce6bbb5776e614ab3b1e6784ea39ff, type: 3}
   - {fileID: 3407833401898422260, guid: a9ef26df57a6a1346a47956e8d54f671, type: 3}
-  bossAnimation: {fileID: 0}
+  bossAnimation: {fileID: 5927427790796394015}

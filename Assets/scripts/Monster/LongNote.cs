@@ -5,6 +5,9 @@ public class LongNote : MonoBehaviour
     [SerializeField] Transform Tr;
     [SerializeField] GameObject G_Effect;
     [SerializeField] GameObject G_End;
+    [SerializeField] Transform start_1;
+    [SerializeField] Transform start_2;
+    [SerializeField] GameObject lowecollision;
 
     GameObject Effect;
 
@@ -15,6 +18,7 @@ public class LongNote : MonoBehaviour
         {
             return;
         }
+       
 
         if (PlayerController.CheckHold)
         {
@@ -27,9 +31,11 @@ public class LongNote : MonoBehaviour
 
             if (Effect == null)
             {
-                var createpos = GameManager.instance.skeleton.transform.position;
-                createpos.x += 1;
-                createpos.y = 0;
+                //var createpos = GameManager.instance.skeleton.transform.position;
+                var createpos = GameManager.instance.lowerAttackPoint.transform.position;
+               
+               // createpos.x += 1;
+                //createpos.y = 0;
                 Effect = Instantiate(G_Effect, createpos, default, null);
             }
 
@@ -53,6 +59,8 @@ public class LongNote : MonoBehaviour
         if (Effect)
         {
             Destroy(Effect);
+            
+            
         }
 
         var box = Tr.GetComponent<BoxCollider2D>();

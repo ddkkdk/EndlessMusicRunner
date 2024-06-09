@@ -13,11 +13,15 @@ public class GameManager : MonoBehaviour
 
     public float flyTimeScale;
     public float retireTimeScale;
+    public float TailAttackTimeScale;
     public float kickTimeScale;
+    public float fireAttackTimeScale;
 
 
     public PlayerController player;
     public Transform bossWaitPosition;
+
+    public Transform lowerAttackPoint;
     void Start()
     {
         if (instance != null)
@@ -135,11 +139,36 @@ public class GameManager : MonoBehaviour
         }
 
         skeletonAnimation.skeleton.SetToSetupPose();
-        skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop);
+        if (animationString == "fly")
+        {
+            skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = flyTimeScale;
+
+        }
+        else if (animationString == "tail attack")
+        {
+            skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = TailAttackTimeScale;
+
+        }
+        else if (animationString == "fire attack")
+        {
+            skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = fireAttackTimeScale;
+
+        }
+        else if (animationString == "tail attack2") 
+        {
+            skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = 2.5f;
+        }
+        else
+        {
+            skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = kickTimeScale;
+
+
+        }
+
 
         if (loop == false)
         {
-            skeletonAnimation.AnimationState.AddAnimation(0, "Walking", true, delay); // 찾은 딜레이 값을 AddAnimation에 적용
+            skeletonAnimation.AnimationState.AddAnimation(0, "Running", true, delay); // 찾은 딜레이 값을 AddAnimation에 적용
         }
     }
 }

@@ -8924,11 +8924,14 @@ MonoBehaviour:
   skeleton: {fileID: 1878545307}
   speaker_1: {fileID: 1881881561}
   speaker_2: {fileID: 753292737}
-  flyTimeScale: 8
-  retireTimeScale: 1.2
+  flyTimeScale: 6.5
+  retireTimeScale: 8
+  TailAttackTimeScale: 2.5
   kickTimeScale: 2.5
+  fireAttackTimeScale: 2.5
   player: {fileID: 1608568225}
   bossWaitPosition: {fileID: 774173652}
+  lowerAttackPoint: {fileID: 514379562}
   monsterAnimation: []
 --- !u!4 &827244270
 Transform:
@@ -17475,12 +17478,16 @@ MonoBehaviour:
   movingEffect: {fileID: 1494954703}
   isStart: 1
   isRunning: 0
+  comboCounter: 0
+  lastTimeAttack: 0
+  comboWindow: 3
+  combowDelay: 0.5
   testInputKey: {fileID: 1397985583}
   playerLimitJumpPosition: {fileID: 599341602}
   test: 1
   isDashTimeLimit: 1
   isDashing: 0
-  playerMoveKeyCode: 11010000120100001401000013010000
+  playerMoveKeyCode: 66000000120100001401000013010000
   isAttack: 0
 --- !u!4 &1608568228
 Transform:

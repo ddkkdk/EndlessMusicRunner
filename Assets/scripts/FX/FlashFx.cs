@@ -29,6 +29,7 @@ public class FlashFx : MonoBehaviour
     public void callFlash() 
     {
         GameManager.instance.AnimationController("retire");
+        //GameManager.instance.PlayAnimation(playerSkeletonAnimation, "tail attack2", true);
        // StartCoroutine(FlashFxCor());
     
     }
