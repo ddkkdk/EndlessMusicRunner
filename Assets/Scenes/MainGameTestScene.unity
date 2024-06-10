@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3308,6 +3308,7 @@ MonoBehaviour:
   - {fileID: 3355147322530775092, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
   puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
   perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
+  greatTxtEffect: {fileID: 0}
   score: 0
   comboScore: 0
   fadeDuration: 2
@@ -3384,6 +3385,10 @@ MonoBehaviour:
   spawnPoint_1: {fileID: 256112964}
   spawnPoint_3: {fileID: 962744005}
   startSpawn: 0
+  bossPrefab: {fileID: 0}
+  isBuildTestingRandomMonster: 1
+  CreatBossCounting: 0
+  isCreatBoss: 0
 --- !u!4 &342117586
 Transform:
   m_ObjectHideFlags: 0
@@ -5449,6 +5454,7 @@ MonoBehaviour:
   - {fileID: 1142193931700624, guid: f26c13dc7e2f44749ad7ead993a862f0, type: 3}
   puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
   perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
+  greatTxtEffect: {fileID: 0}
   score: 0
   comboScore: 0
   fadeDuration: 2
@@ -7375,6 +7381,8 @@ MonoBehaviour:
   clap_1: {fileID: 8300000, guid: 2d84add459c89fd43927672f1486827b, type: 3}
   clap_2: {fileID: 8300000, guid: 8f45f6d2f3aedc545a567482f23b0f7a, type: 3}
   ouch_1: {fileID: 8300000, guid: f4684ca5a03e3b94684f0d8f69680689, type: 3}
+  Audio_BackGround: {fileID: 0}
+  BackSound: []
 --- !u!1 &753292737
 GameObject:
   m_ObjectHideFlags: 0
@@ -8503,7 +8511,13 @@ MonoBehaviour:
   speaker_2: {fileID: 753292737}
   flyTimeScale: 8
   retireTimeScale: 1.2
+  TailAttackTimeScale: 0
   kickTimeScale: 2.5
+  fireAttackTimeScale: 0
+  player: {fileID: 0}
+  bossWaitPosition: {fileID: 0}
+  lowerAttackPoint: {fileID: 0}
+  monsterAnimation: []
 --- !u!4 &827244270
 Transform:
   m_ObjectHideFlags: 0
@@ -16782,6 +16796,18 @@ MonoBehaviour:
   runningTimeScale: 1.9
   movingEffect: {fileID: 1494954703}
   isStart: 0
+  isRunning: 0
+  comboCounter: 0
+  lastTimeAttack: 0
+  comboWindow: 3
+  combowDelay: 0
+  testInputKey: {fileID: 0}
+  playerLimitJumpPosition: {fileID: 0}
+  test: 10
+  isDashTimeLimit: 1
+  isDashing: 0
+  playerMoveKeyCode: 
+  isAttack: 0
 --- !u!4 &1608568228
 Transform:
   m_ObjectHideFlags: 0
@@ -18235,7 +18261,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -52.09188}
-  m_SizeDelta: {x: 637.3993, y: 371.8163}
+  m_SizeDelta: {x: 637.3993, y: 637.3993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1744640700
 MonoBehaviour:
@@ -20593,6 +20619,7 @@ MonoBehaviour:
   fillAmount: {fileID: 0}
   instructionPanelActivationTime: 1.5
   comboScore: 0
+  gameScore: 0
 --- !u!4 &1926204094
 Transform:
   m_ObjectHideFlags: 0
@@ -21384,6 +21411,7 @@ MonoBehaviour:
   - {fileID: 1142193931700624, guid: f26c13dc7e2f44749ad7ead993a862f0, type: 3}
   puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
   perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
+  greatTxtEffect: {fileID: 0}
   score: 0
   comboScore: 0
   fadeDuration: 2
