@@ -7754,6 +7754,9 @@ MonoBehaviour:
   clap_1: {fileID: 8300000, guid: 2d84add459c89fd43927672f1486827b, type: 3}
   clap_2: {fileID: 8300000, guid: 8f45f6d2f3aedc545a567482f23b0f7a, type: 3}
   ouch_1: {fileID: 8300000, guid: f4684ca5a03e3b94684f0d8f69680689, type: 3}
+  Audio_BackGround: {fileID: 108821246}
+  BackSound:
+  - {fileID: 8300000, guid: a2abdeff1338aa0419b0d09eaf30b841, type: 3}
 --- !u!1 &753292737
 GameObject:
   m_ObjectHideFlags: 0

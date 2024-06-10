@@ -31,6 +31,7 @@ public class UI_Lobby : MonoBehaviour
     public void Btn_Exit()
     {
         Time.timeScale = 1;
+        AudioListener.pause = false;
         SecenManager.LoadScene("UIScene");
     }
 
