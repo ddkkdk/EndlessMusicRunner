@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class UpperHitCollisionDetection : MonoBehaviour
 {
+    public ParticleSystem ParticleSystem;
     public static UpperHitCollisionDetection Instance;
     public GameObject hitEffect;
     public GameObject[] destroyParticleEffects;
@@ -40,6 +41,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Monster")
         {
+            
 
             var monster = other.gameObject.GetComponent<Monster>();
 
@@ -61,7 +63,8 @@ public class UpperHitCollisionDetection : MonoBehaviour
                 var distance = Vector3.Distance(transform.position, monsterPosition);
                 if (distance <= 0.8f)
                 {
-                    GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                    ParticleSystem.Play();
+                    //GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                     GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                     StartCoroutine(OpacityChange(perfectTxtObject));
 
@@ -69,8 +72,8 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
                     MoveUPword(perfectTxtObject, hitPoint);
 
-                    Destroy(hitObject, 0.2f);
-                    Destroy(perfectTxtObject, 0.8f);
+                    //Destroy(hitObject, 0.2f);
+                    //Destroy(perfectTxtObject, 0.8f);
                 }
                 else
                 {
@@ -222,7 +225,6 @@ public class UpperHitCollisionDetection : MonoBehaviour
         //obj.GetComponent<SpriteRenderer>().color = currentColor;
         if (obj != null || obj.activeSelf)
             Destroy(obj);
-
     }
 
 
