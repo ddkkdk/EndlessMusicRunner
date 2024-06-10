@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class UpperHitCollisionDetection : MonoBehaviour
 {
-    public ParticleSystem ParticleSystem;
     public static UpperHitCollisionDetection Instance;
     public GameObject hitEffect;
     public GameObject[] destroyParticleEffects;
@@ -17,6 +16,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     private Collider2D selfCollider;
     public int score;
     public int comboScore;
+    [Range(0.2f, 10f)]
     public float fadeDuration = 2.0f;
 
     [SpineAnimation]
@@ -63,8 +63,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
                 var distance = Vector3.Distance(transform.position, monsterPosition);
                 if (distance <= 0.8f)
                 {
-                    ParticleSystem.Play();
-                    //GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                    GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                     GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                     StartCoroutine(OpacityChange(perfectTxtObject));
 
@@ -85,8 +84,8 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
                     MoveUPword(greatTxtObject, hitPoint);
 
-                    Destroy(greatObject, 0.2f);
-                    Destroy(greatTxtObject, 0.8f);
+                    //Destroy(greatObject, 0.2f);
+                    //Destroy(greatTxtObject, 0.8f);
                 }
 
 
@@ -204,6 +203,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
         for (float t = 0; t < fadeDuration; t += Time.deltaTime)
         {
+
             if (obj == null || !obj.activeSelf)
                 yield break;
 
@@ -211,27 +211,21 @@ public class UpperHitCollisionDetection : MonoBehaviour
 
 
             currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
+            if (currentColor.a <= 0.1f)
+            {
+                currentColor.a = 0;
+                color.color = currentColor;
+                Destroy(obj);
 
-            #region �����߻�
-            color.color = currentColor;
-            #endregion
+                yield break;
+            }
+
+            if (obj != null)
+                obj.GetComponent<SpriteRenderer>().color = currentColor;
+
 
             yield return null;
         }
 
-
-        currentColor.a = 0;
-        color.color = currentColor;
-        //obj.GetComponent<SpriteRenderer>().color = currentColor;
-        if (obj != null || obj.activeSelf)
-        {
-            print("제거 + " + " / " + obj.name);
-
-            Destroy(obj);
-        }
-
     }
-
-
-
 }

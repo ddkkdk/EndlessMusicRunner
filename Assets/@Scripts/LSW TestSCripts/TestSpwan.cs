@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class TestSpwan : MonoBehaviour
 {
-    public GameObject sendBack;
-    public GameObject Boss;
-    void Start()
-    {
-        
-    }
+    private float time = 0f;
+    public float fadeDuration = 2f;
+    Color prevColor;
+    SpriteRenderer sprite;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) 
+        prevColor = GetComponent<SpriteRenderer>().color;
+        sprite = GetComponent<SpriteRenderer>();    
+    }
+    private void Update()
+    {
+        Color currentColor = GetComponent<SpriteRenderer>().color;
+
+        float normalizedTime = time / fadeDuration;
+        currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
+        if (currentColor.a <= 0.1f)
         {
-            Instantiate(sendBack,Vector3.zero,Quaternion.identity);
+            currentColor.a = 1f;
+            prevColor = currentColor;
+            //gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
-        if(Input.GetKey(KeyCode.Alpha2))
-        {
-            Instantiate(Boss, Vector3.zero, Quaternion.identity);
-        }
+        sprite.color = currentColor;
+        time += Time.time;
     }
 }

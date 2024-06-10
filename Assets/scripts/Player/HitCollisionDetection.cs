@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class HitCollisionDetection : MonoBehaviour
 {
-    public ParticleSystem ParticleSystem;
     public static HitCollisionDetection Instance;
     public GameObject hitEffect;
     public GameObject[] destroyParticleEffects;
@@ -16,6 +16,7 @@ public class HitCollisionDetection : MonoBehaviour
     public GameObject greatTxtEffect;
     public int score;
     public int comboScore;
+    [Range(0.2f, 10f)]
     public float fadeDuration = 2.0f;
 
     [SpineAnimation]
@@ -56,9 +57,8 @@ public class HitCollisionDetection : MonoBehaviour
             var monsterPosition = other.gameObject.transform.position;
             if (hitEffect != null)
             {
-                //ParticleSystem.Play();
                 var distance = Vector3.Distance(transform.position, monsterPosition);
-                if(distance <=0.8f && distance>=-0.2f)
+                if (distance <= 0.8f && distance >= -0.2f)
                 {
                     GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                     GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
@@ -68,10 +68,11 @@ public class HitCollisionDetection : MonoBehaviour
 
                     MoveUPword(perfectTxtObject, hitPoint);
 
-                    Destroy(hitObject, 0.2f);
-                    Destroy(perfectTxtObject, 0.8f);
+
+                    //Destroy(hitObject, 0.2f);
+                    //Destroy(perfectTxtObject, 0.8f);
                 }
-               else
+                else
                 {
                     GameObject greatObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                     GameObject greatTxtObject = Instantiate(greatTxtEffect, hitPoint, Quaternion.identity);
@@ -81,8 +82,8 @@ public class HitCollisionDetection : MonoBehaviour
 
                     MoveUPword(greatTxtObject, hitPoint);
 
-                    Destroy(greatObject, 0.2f);
-                    Destroy(greatTxtObject, 0.8f);
+                    //Destroy(greatObject, 0.2f);
+                    //Destroy(greatTxtObject, 0.8f);
                 }
             }
             if (monster)
@@ -220,20 +221,26 @@ public class HitCollisionDetection : MonoBehaviour
             {
                 currentColor.a = 0;
                 color.color = currentColor;
-                if (obj != null || obj.activeSelf)
-                    Destroy(obj);
+                Destroy(obj);
 
                 yield break;
             }
 
-            obj.GetComponent<SpriteRenderer>().color = currentColor;
+            if(obj !=null)
+                obj.GetComponent<SpriteRenderer>().color = currentColor;
 
 
             yield return null;
         }
 
+        //currentColor.a = 0;
+        //color.color = currentColor;
+        ////obj.GetComponent<SpriteRenderer>().color = currentColor;
+        //if (obj != null || obj.activeSelf)
+        //{
+        //    print("제거 + " + " / " + obj.name);
 
-       
-
+        //    Destroy(obj);
+        //}
     }
 }

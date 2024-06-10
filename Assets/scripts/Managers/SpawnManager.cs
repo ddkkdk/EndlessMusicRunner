@@ -81,15 +81,6 @@ public class SpawnManager : MonoBehaviour
             for (int setIndex = 0; setIndex < monster.Count; setIndex++)
             {
                 MonsterItem currentSet = monster[0];
-
-                if (!isBuildTestingRandomMonster)
-                {
-                    var item = currentSet.monster[i];
-                    spawnPoint = spawnPoint_3;
-                    var spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
-                    spawnedObjects.transform.SetParent(spawnObjects.transform);
-                    yield return new WaitForSeconds(itemSpawnDelay);
-                }
                 for (int i = 0; i < currentSet.monster.Length; i++)
                 {
                     GameObject item = currentSet.monster[i];
@@ -122,13 +113,13 @@ public class SpawnManager : MonoBehaviour
                         yield return new WaitForSeconds(itemSpawnDelay);
                     }
                 }
-                //CreatBossCounting++;
-                //if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
-                //{
-                //    isCreatBoss = true;
-                //    var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
+                CreatBossCounting++;
+                if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
+                {
+                    isCreatBoss = true;
+                    var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
 
-                //}
+                }
                 yield return new WaitForSeconds(setSpawnDelay);
             }
 

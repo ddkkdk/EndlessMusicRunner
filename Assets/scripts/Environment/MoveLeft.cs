@@ -22,8 +22,6 @@ public class MoveLeft : MonoBehaviour
             // EndTimes가 true이면 속도를 20으로 설정하고 종료
             if (EndTimes)
             {
-                pos.x += -100;
-                transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
                 speed = 20;
                 return;
             }
@@ -61,6 +59,4 @@ public class MoveLeft : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-
 }

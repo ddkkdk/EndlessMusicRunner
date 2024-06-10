@@ -20,7 +20,7 @@ public class Boss : MonoBehaviour
     }
 
     E_State e_State = E_State.Wait;
-    float Delay = 10;
+    float Delay = 5;
     float Cur_Delay = 0;
 
     public static Vector3 CreatePos;
