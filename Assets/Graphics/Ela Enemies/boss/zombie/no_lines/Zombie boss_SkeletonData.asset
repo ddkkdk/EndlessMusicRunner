@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Zombie boss_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 97f392bb010e858468c5dab46358ec53, type: 2}
+  - {fileID: 11400000, guid: 4cc70dd7590d6e64a9c5491c12221b6e, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: e946809fda148a04c916db86f0bbcff1, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 2e9ac1f6ee328c34e8c711a576c50ad4, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
