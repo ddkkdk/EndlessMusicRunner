@@ -56,11 +56,11 @@ public class HitCollisionDetection : MonoBehaviour
             var monsterPosition = other.gameObject.transform.position;
             if (hitEffect != null)
             {
-                ParticleSystem.Play();
+                //ParticleSystem.Play();
                 var distance = Vector3.Distance(transform.position, monsterPosition);
                 if(distance <=0.8f && distance>=-0.2f)
                 {
-                    //GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                    GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                     GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                     StartCoroutine(OpacityChange(perfectTxtObject));
 
@@ -68,8 +68,8 @@ public class HitCollisionDetection : MonoBehaviour
 
                     MoveUPword(perfectTxtObject, hitPoint);
 
-                    //Destroy(hitObject, 0.2f);
-                    //Destroy(perfectTxtObject, 0.8f);
+                    Destroy(hitObject, 0.2f);
+                    Destroy(perfectTxtObject, 0.8f);
                 }
                else
                 {

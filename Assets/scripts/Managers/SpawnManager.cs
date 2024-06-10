@@ -88,7 +88,7 @@ public class SpawnManager : MonoBehaviour
                     spawnPoint = spawnPoint_3;
                     var spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
                     spawnedObjects.transform.SetParent(spawnObjects.transform);
-                    //yield return new WaitForSeconds(itemSpawnDelay);
+                    yield return new WaitForSeconds(itemSpawnDelay);
                 }
 
                 //if (!isBuildTestingRandomMonster)
