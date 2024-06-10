@@ -8,6 +8,9 @@ public class LevelDesign
     public int[] M_ID;
     public int[] Stage_Info;
     public int[] MonsterInfo; // -> MonsterTable 코드로 변경해야함.
+    public float Spwan_CoolTime;
+    public float Spwan_PositionX;
+    public float Spwan_PositionY;
 }
 public class C_LevelDesign
 {
