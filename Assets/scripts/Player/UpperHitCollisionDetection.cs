@@ -41,7 +41,7 @@ public class UpperHitCollisionDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Monster")
         {
-            
+
 
             var monster = other.gameObject.GetComponent<Monster>();
 
@@ -224,7 +224,12 @@ public class UpperHitCollisionDetection : MonoBehaviour
         color.color = currentColor;
         //obj.GetComponent<SpriteRenderer>().color = currentColor;
         if (obj != null || obj.activeSelf)
+        {
+            print("제거 + " + " / " + obj.name);
+
             Destroy(obj);
+        }
+
     }
 
 

@@ -39,7 +39,7 @@ public class Boss : MonoBehaviour
         if (bossAnimation == null)
             bossAnimation = GetComponent<SkeletonAnimation>();
 
-       // GameManager.instance.PlayMonsterAnimation(bossAnimation, "Hit");
+        // GameManager.instance.PlayMonsterAnimation(bossAnimation, "Hit");
     }
     private void Update()
     {
@@ -73,7 +73,7 @@ public class Boss : MonoBehaviour
          }*/
         StartCoroutine(spawnObjects());
         e_State = E_State.Wait;
-        AttackIdx=G_Pattern.Length;
+        AttackIdx = G_Pattern.Length;
         if (AttackIdx >= G_Pattern.Length)
         {
             //돌격 패턴
@@ -91,7 +91,7 @@ public class Boss : MonoBehaviour
         //일정 시간 뒤 공격
         if (Cur_Delay >= Delay)
         {
-            e_State = E_State.Attack ;
+            e_State = E_State.Attack;
             Cur_Delay = 0;
             return;
         }
@@ -100,7 +100,7 @@ public class Boss : MonoBehaviour
     //플레이어에게 돌격
     void CrushPlayer()
     {
-        
+
         transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.player.transform.position, speed * Time.deltaTime);
         var dis = Vector3.Distance(GameManager.instance.player.transform.position, transform.position);
         //Debug.Log(dis);
@@ -108,7 +108,7 @@ public class Boss : MonoBehaviour
         {
             //만약 플레이어가 공격 상태라면?
             var col = GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>();
-           var attackstate = col.enabled;
+            var attackstate = col.enabled;
 
             //몬스터가 공격받는 상태
             if (attackstate)
@@ -118,7 +118,7 @@ public class Boss : MonoBehaviour
                 monsterMaxHp--;
                 Debug.Log(monsterMaxHp);
                 if (monsterMaxHp <= 0)
-                { 
+                {
                     Destroy(gameObject);
                     Debug.Log("몬스터 죽음");
                     SecenManager.LoadScene("UIScene");
@@ -136,8 +136,8 @@ public class Boss : MonoBehaviour
     void Hit()
     {
 
-       
-        transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.bossWaitPosition.position, speed * Time.deltaTime);        
+
+        transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.bossWaitPosition.position, speed * Time.deltaTime);
         var dis = Vector3.Distance(transform.position, GameManager.instance.bossWaitPosition.position);
 
         if (dis <= 0.1f)
@@ -147,18 +147,19 @@ public class Boss : MonoBehaviour
         }
     }
 
-    IEnumerator spawnObjects() 
+    IEnumerator spawnObjects()
     {
-      
+
         for (int i = 0; i < G_Pattern.Length; ++i)
         {
             yield return new WaitForSeconds(0.5f);
 
-           
+
             GameObject spawnPoint = GameObject.Find("SpawnPoint_2");
-           // GameObject sPoint = GameObject.Find("SpawnPoint_3");
+            // GameObject sPoint = GameObject.Find("SpawnPoint_3");
             //sPoint.SetActive(false);
             var obj = Instantiate(G_Pattern[AttackIdx], spawnPoint.transform.position, Quaternion.identity);
+            print("제거" + " / " + obj.name);
             Destroy(obj, 10);
             AttackIdx++;
         }

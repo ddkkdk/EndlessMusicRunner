@@ -81,7 +81,6 @@ public class SpawnManager : MonoBehaviour
             {
                 MonsterItem currentSet = monster[0];
 
-
                 if (!isBuildTestingRandomMonster)
                 {
                     if (setIndex == 0 || setIndex == 1 || setIndex == 2 || setIndex == 5 || setIndex == 6
@@ -101,6 +100,7 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < currentSet.monster.Length; i++)
                 {
                     GameObject item = currentSet.monster[i];
+                    print(item.name);
                     int itemNumber = item.GetComponent<MoveLeft>().monsterNumber;
 
                     if (item != null)
@@ -112,20 +112,20 @@ public class SpawnManager : MonoBehaviour
                                    || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
                                    || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
                             {
-                                                                                         
-                                  spawnPoint = spawnPoint_1;
+
+                                spawnPoint = spawnPoint_1;
                             }
                             else
                                 spawnPoint = spawnPoint_3;
-                            
-                        
+
+
                         }
                         if (i == 3)
                             spawnPoint = spawnPoint_3;
 
                         GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
                         spawnedObjects.transform.SetParent(spawnObjects.transform);
-                        
+
                         yield return new WaitForSeconds(itemSpawnDelay);
                     }
                 }

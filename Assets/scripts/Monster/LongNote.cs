@@ -18,7 +18,7 @@ public class LongNote : MonoBehaviour
         {
             return;
         }
-       
+
 
         if (PlayerController.CheckHold)
         {
@@ -33,8 +33,8 @@ public class LongNote : MonoBehaviour
             {
                 //var createpos = GameManager.instance.skeleton.transform.position;
                 var createpos = GameManager.instance.lowerAttackPoint.transform.position;
-               
-               // createpos.x += 1;
+
+                // createpos.x += 1;
                 //createpos.y = 0;
                 Effect = Instantiate(G_Effect, createpos, default, null);
             }
@@ -46,6 +46,7 @@ public class LongNote : MonoBehaviour
 
             if (Tr.localScale.x <= 0)
             {
+                print("제거 + " + " / " + gameObject.name);
                 Destroy(this.gameObject);
                 Destroy(Effect);
                 var createpos = GameManager.instance.skeleton.transform.position;
@@ -58,9 +59,10 @@ public class LongNote : MonoBehaviour
         }
         if (Effect)
         {
+            print("제거 + " + " / " + Effect.name);
             Destroy(Effect);
-            
-            
+
+
         }
 
         var box = Tr.GetComponent<BoxCollider2D>();
