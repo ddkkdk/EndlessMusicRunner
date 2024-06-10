@@ -2,10 +2,12 @@ using DG.Tweening;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HitCollisionDetection : MonoBehaviour
 {
+    public ParticleSystem ParticleSystem;
     public static HitCollisionDetection Instance;
     public GameObject hitEffect;
     public GameObject[] destroyParticleEffects;
@@ -54,10 +56,11 @@ public class HitCollisionDetection : MonoBehaviour
             var monsterPosition = other.gameObject.transform.position;
             if (hitEffect != null)
             {
+                ParticleSystem.Play();
                 var distance = Vector3.Distance(transform.position, monsterPosition);
                 if(distance <=0.8f && distance>=-0.2f)
                 {
-                    GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                    //GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                     GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                     StartCoroutine(OpacityChange(perfectTxtObject));
 
@@ -65,8 +68,8 @@ public class HitCollisionDetection : MonoBehaviour
 
                     MoveUPword(perfectTxtObject, hitPoint);
 
-                    Destroy(hitObject, 0.2f);
-                    Destroy(perfectTxtObject, 0.8f);
+                    //Destroy(hitObject, 0.2f);
+                    //Destroy(perfectTxtObject, 0.8f);
                 }
                else
                 {
@@ -213,7 +216,15 @@ public class HitCollisionDetection : MonoBehaviour
 
 
             currentColor.a = Mathf.Lerp(1, 0, normalizedTime);
+            if (currentColor.a <= 0.1f)
+            {
+                currentColor.a = 0;
+                color.color = currentColor;
+                if (obj != null || obj.activeSelf)
+                    Destroy(obj);
 
+                yield break;
+            }
 
             obj.GetComponent<SpriteRenderer>().color = currentColor;
 
@@ -222,10 +233,7 @@ public class HitCollisionDetection : MonoBehaviour
         }
 
 
-        currentColor.a = 0;
-        color.color = currentColor;
-        if (obj != null || obj.activeSelf)
-            Destroy(obj);
+       
 
     }
 }
