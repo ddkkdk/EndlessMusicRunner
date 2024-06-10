@@ -281,6 +281,17 @@ MonoBehaviour:
   start_1: {fileID: 197550552013003805}
   start_2: {fileID: 5376406611007889728}
   lowecollision: {fileID: 0}
+  myNoteSprite:
+  - {fileID: 1142758815197647577}
+  - {fileID: 6680587262851187798}
+  myLongSprrite: {fileID: 8638809886076962384}
+  Change: 1
+  noteSprites:
+  - {fileID: 21300000, guid: d95cab45084d59b4da7fdeb32b07a151, type: 3}
+  - {fileID: 21300000, guid: bdd2278017ca661458369946576ab743, type: 3}
+  longSprites:
+  - {fileID: 21300000, guid: ba130ccb03c626b4badd6da1878f2966, type: 3}
+  - {fileID: 21300000, guid: 28c1c9aa5da2dea41b80c6bdf6c80c71, type: 3}
 --- !u!1 &8420669311012735088
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8755797267905834417}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.20409937, y: 0.20409937, z: 0.20409937}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6655994068727629832
 MeshFilter:
@@ -146,6 +146,11 @@ MonoBehaviour:
   isOnGround: 1
   damageAmount: 3
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
+  Change: 1
+  Sk:
+  - {fileID: 11400000, guid: a87bfec27a82e8945815bba905e13dd5, type: 2}
+  - {fileID: 11400000, guid: 9de1e107479c173498eb9da6f6a62937, type: 2}
+  My: {fileID: 5043854484392693777}
 --- !u!114 &8209945473938468765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   monsterNumber: 15
+  SendBack: 0
+  OffSetX: 0
+  DestoryX: 0
 --- !u!58 &7529112082843205451
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,6 +178,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -193,6 +220,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1

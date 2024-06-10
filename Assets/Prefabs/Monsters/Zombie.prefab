@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c479d78502d29e43a82f80f92719054, type: 2}
+  - {fileID: 2100000, guid: a1283023602eae64094e5f070983bc06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -199,9 +199,11 @@ MonoBehaviour:
   isOnGround: 1
   damageAmount: 10
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
-  Change: 0
-  Sk: []
-  My: {fileID: 0}
+  Change: 1
+  Sk:
+  - {fileID: 11400000, guid: 077fcd47029a1ed418ef4d87bdad0dc5, type: 2}
+  - {fileID: 11400000, guid: 6fd0c7d80f0075240ae8a896fb98ecb5, type: 2}
+  My: {fileID: 5927427790796394015}
 --- !u!114 &-7034009947147531928
 MonoBehaviour:
   m_ObjectHideFlags: 0

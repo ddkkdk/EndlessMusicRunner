@@ -321,7 +321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5927427790796394012
 Transform:
   m_ObjectHideFlags: 0
@@ -451,6 +451,12 @@ MonoBehaviour:
   G_End: {fileID: 8400117977535812919, guid: 146594d094c8c0c4a8d026ede7cc5cc7, type: 3}
   start_1: {fileID: 1328843869205324284}
   start_2: {fileID: 5222083643892702101}
+  lowecollision: {fileID: 0}
+  myNoteSprite: []
+  myLongSprrite: {fileID: 0}
+  Change: 0
+  noteSprites: []
+  longSprites: []
 --- !u!1 &7052408563663069741
 GameObject:
   m_ObjectHideFlags: 0

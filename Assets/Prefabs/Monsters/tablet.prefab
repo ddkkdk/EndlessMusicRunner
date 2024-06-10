@@ -30,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027002376000927764}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.18249936, y: 0.18249936, z: 0.18249936}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7206040220617114410
 MeshFilter:
@@ -142,6 +142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   monsterNumber: 14
+  SendBack: 0
+  OffSetX: 0
+  DestoryX: 0
 --- !u!114 &1586732273323951856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +163,11 @@ MonoBehaviour:
   isOnGround: 1
   damageAmount: 1
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
+  Change: 1
+  Sk:
+  - {fileID: 11400000, guid: 3371ecad1dbd1de4a99dca8813c4bdad, type: 2}
+  - {fileID: 11400000, guid: 9c77fcd226f1521478cec4d77d698718, type: 2}
+  My: {fileID: 4657798026399190861}
 --- !u!61 &2249227629863875094
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -170,6 +178,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -203,6 +230,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
