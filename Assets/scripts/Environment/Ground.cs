@@ -16,16 +16,12 @@ public class Ground : MonoBehaviour
 
         if (transform.position.x <= lastPosition)
         {
-           /* Vector2 pos = new Vector2(startPosition, transform.position.x);
-            transform.position = pos;*/
+            /* Vector2 pos = new Vector2(startPosition, transform.position.x);
+             transform.position = pos;*/
+            print("Á¦°Å??" + " / " + gameObject.name);
             Destroy(gameObject);
 
         }
-
-       
-
-
-
     }
 }
     

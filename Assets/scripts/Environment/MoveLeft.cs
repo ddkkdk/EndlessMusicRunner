@@ -14,49 +14,53 @@ public class MoveLeft : MonoBehaviour
     bool EndTimes;
     void Update()
     {
+        // 오브젝트를 왼쪽으로 이동
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
         if (SendBack)
         {
-            var pos = GameManager.instance.player.transform.position;
-            pos.y = this.transform.position.y;
+            // EndTimes가 true이면 속도를 20으로 설정하고 종료
             if (EndTimes)
             {
                 pos.x += -100;
                 transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
-                var valuesSendBack = DestoryX == 0 ? -60 : DestoryX;
-
-                if (transform.position.x < valuesSendBack)
-                {
-                    Destroy(this.gameObject);
-                }
-                
+                speed = 20;
                 return;
             }
 
+            // 플레이어 위치를 가져와서 오프셋을 적용
+            var pos = GameManager.instance.player.transform.position;
+            pos.y = this.transform.position.y;
             pos.x += OffSetX;
-            transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, pos) < 0.1f)
+            // 현재 위치가 pos에 도달했는지 확인
+            float distance = Vector3.Distance(transform.position, pos);
+
+            if (distance < 0.5f)
             {
+                speed = 0;
                 DelayTime -= Time.deltaTime;
 
+                // DelayTime이 0보다 크거나 같으면 리턴
                 if (DelayTime >= 0)
                 {
                     return;
                 }
 
+                // DelayTime이 0보다 작아지면 EndTimes를 true로 설정
                 EndTimes = true;
             }
         }
 
+        // DestoryX 값이 0이면 -60, 아니면 DestoryX 사용
         var values = DestoryX == 0 ? -60 : DestoryX;
 
+        // 오브젝트가 특정 위치를 벗어나면 파괴
         if (transform.position.x < values)
         {
             Destroy(this.gameObject);
         }
-        else if (transform.position.y >= 20f || transform.position.y <= -20f)
-            Destroy(this.gameObject);
     }
+
+
 }

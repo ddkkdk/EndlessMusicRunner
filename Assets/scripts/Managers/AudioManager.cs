@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip clap_1;
     public AudioClip clap_2;
     public AudioClip ouch_1;
+    [SerializeField] AudioSource Audio_BackGround;
+    [SerializeField] AudioClip[] BackSound;
 
     void Start()
     {
@@ -21,10 +23,15 @@ public class AudioManager : MonoBehaviour
         else
         {
             instance = this;
-
         }
+        SetBG();
     }
 
+    void SetBG()
+    {
+        //Audio_BackGround.clip = BackSound[DiskRotator.ChoseBG];
+        Audio_BackGround.clip = BackSound[0];
+    }
 
     public void PlaySound()
     {

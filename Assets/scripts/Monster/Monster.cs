@@ -2,6 +2,7 @@ using DG.Tweening;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Android;
 using UnityEngine;
 
 public class Monster : Entity
@@ -45,8 +46,4 @@ public class Monster : Entity
     {
         hitFx.transform.DOMoveY(hitPoint.y + 5, 0.5f).SetEase(Ease.OutBounce);
     }
-
-
-
-
 }
