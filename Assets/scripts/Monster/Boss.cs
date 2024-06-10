@@ -10,7 +10,9 @@ public class Boss : MonoBehaviour
     public int monsterMaxHp;
     public GameObject[] G_Pattern;
 
-
+    [SerializeField] bool Change;
+    [SerializeField] SkeletonDataAsset[] Sk;
+    [SerializeField] SkeletonAnimation My;
     public enum E_State
     {
         Hit,
@@ -39,6 +41,11 @@ public class Boss : MonoBehaviour
         if (bossAnimation == null)
             bossAnimation = GetComponent<SkeletonAnimation>();
 
+        if (Change)
+        {
+            My.skeletonDataAsset = Sk[UI_Lobby.Type == false ? 0 : 1];
+            My.Initialize(true);
+        }
         // GameManager.instance.PlayMonsterAnimation(bossAnimation, "Hit");
     }
     private void Update()
