@@ -51,11 +51,11 @@ public class HitCollisionDetection : MonoBehaviour
             UIManager.Instance.ComboScoreUpdater();
             UIManager.Instance.ScoreUpdater();
             Vector2 hitPoint = other.ClosestPoint(transform.position);
-
+            var monsterPosition = other.gameObject.transform.position;
             if (hitEffect != null)
             {
-                var distance = Vector3.Distance(transform.position, other.gameObject.transform.position);
-                if(distance <=0.8f)
+                var distance = Vector3.Distance(transform.position, monsterPosition);
+                if(distance <=0.8f && distance>=-0.2f)
                 {
                     GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                     GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);

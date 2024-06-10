@@ -55,10 +55,10 @@ public class UpperHitCollisionDetection : MonoBehaviour
             UIManager.Instance.ComboScoreUpdater();
             UIManager.Instance.ScoreUpdater();
             Vector2 hitPoint = other.ClosestPoint(transform.position);
-
+            var monsterPosition = other.gameObject.transform.position;
             if (hitEffect != null)
             {
-                var distance = Vector3.Distance(transform.position, other.gameObject.transform.position);
+                var distance = Vector3.Distance(transform.position, monsterPosition);
                 if (distance <= 0.8f)
                 {
                     GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);

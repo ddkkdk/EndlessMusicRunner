@@ -834,6 +834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   G_Pause: {fileID: 1937510962}
+  T_Type: {fileID: 0}
 --- !u!1 &58511435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3512,6 +3513,7 @@ MonoBehaviour:
   - {fileID: 3355147322530775092, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
   puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
   perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
+  greatTxtEffect: {fileID: 0}
   score: 0
   comboScore: 0
   fadeDuration: 2
@@ -3550,6 +3552,23 @@ MonoBehaviour:
     - {fileID: 2027002376000927764, guid: 37a0495d3ad7e244f96b67c01c410aad, type: 3}
     - {fileID: 2376462067880542252, guid: 42ade969904056a43b5e0e94b1d4963e, type: 3}
     - {fileID: 8655841565898487343, guid: 7ada345965a193c4d9233900fd0fa7ba, type: 3}
+    - {fileID: 5927427790796394008, guid: 095ea0b4605735744972671e312f36a4, type: 3}
+    - {fileID: 5927427790796394008, guid: 07deae699534405428311ed97ec1cc13, type: 3}
+    - {fileID: 5388534414444513884, guid: 69717752b388bf24d8065e9429ccfdcf, type: 3}
+    - {fileID: 24179194683735109, guid: 2d4e438a961c7c2418a9eb309e2c94d7, type: 3}
+    - {fileID: 158793283704363192, guid: 0fca1f5f332f5944e8816ff6c76cd448, type: 3}
+    - {fileID: 1450675091563296711, guid: 052c6b7c7af29e44c9809e5269231bd9, type: 3}
+    - {fileID: 1768767069754803484, guid: b7e08521cfea5a24299fca6ffdda9979, type: 3}
+    - {fileID: 5629541656628589791, guid: 02d7063ba6de34047a99b6b8b7c4e934, type: 3}
+    - {fileID: 5151318159573600705, guid: b3c96dccf4d271449bff9d55fab4a903, type: 3}
+    - {fileID: 3909550831714088322, guid: b7a19ede863c3b2468abaae2938cf17d, type: 3}
+    - {fileID: 2819491545882889420, guid: 2e4ac1c67731fda44810669ec7c3ac1a, type: 3}
+    - {fileID: 4017503350375869807, guid: 629fcae51ee2b3347b2a68971eec23b6, type: 3}
+    - {fileID: 5388534414444513884, guid: 69717752b388bf24d8065e9429ccfdcf, type: 3}
+    - {fileID: 5807613031276573903, guid: 1c5ebf5ef15ed784592e5104f463b8ae, type: 3}
+    - {fileID: 5927427790796394008, guid: 25fa8bc59d16fb3479cc86d751515cc7, type: 3}
+    - {fileID: 5156434469478692734, guid: 4f284eb3ac29a2649b230369f4177e3a, type: 3}
+    - {fileID: 8755797267905834417, guid: c6a094e62acc8374c882212de40ab6a8, type: 3}
   - monster:
     - {fileID: 5629541656628589791, guid: 02d7063ba6de34047a99b6b8b7c4e934, type: 3}
   - monster:
@@ -3590,6 +3609,7 @@ MonoBehaviour:
   spawnPoint_1: {fileID: 256112964}
   spawnPoint_3: {fileID: 962744005}
   startSpawn: 0
+  bossPrefab: {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
   isBuildTestingRandomMonster: 1
   CreatBossCounting: 0
   isCreatBoss: 0
@@ -5623,7 +5643,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.01475617, y: -0.008852972}
   serializedVersion: 2
-  m_Radius: 0.35913762
+  m_Radius: 1
 --- !u!114 &514379566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5660,6 +5680,7 @@ MonoBehaviour:
   - {fileID: 1142193931700624, guid: f26c13dc7e2f44749ad7ead993a862f0, type: 3}
   puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
   perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
+  greatTxtEffect: {fileID: 8220573634043099456, guid: a1ed6f22b3d10c0499a06d458a4021ab, type: 3}
   score: 0
   comboScore: 0
   fadeDuration: 2
@@ -6229,7 +6250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &559855131
 Transform:
   m_ObjectHideFlags: 0
@@ -6239,7 +6260,7 @@ Transform:
   m_GameObject: {fileID: 559855130}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.89, y: -1.58, z: 0.41666585}
+  m_LocalPosition: {x: -17.439999, y: -1.1, z: 0.41666585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8918,11 +8939,14 @@ MonoBehaviour:
   skeleton: {fileID: 1878545307}
   speaker_1: {fileID: 1881881561}
   speaker_2: {fileID: 753292737}
-  flyTimeScale: 8
-  retireTimeScale: 1.2
+  flyTimeScale: 6.5
+  retireTimeScale: 8
+  TailAttackTimeScale: 2.5
   kickTimeScale: 2.5
+  fireAttackTimeScale: 2.5
   player: {fileID: 1608568225}
   bossWaitPosition: {fileID: 774173652}
+  lowerAttackPoint: {fileID: 514379562}
   monsterAnimation: []
 --- !u!4 &827244270
 Transform:
@@ -12054,7 +12078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1154104143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17449,7 +17473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a2ac601e180c94c863e5d244e3d178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   currentHealth: 0
   fillAmount: {fileID: 605063367}
   isOnGround: 1
@@ -17469,12 +17493,16 @@ MonoBehaviour:
   movingEffect: {fileID: 1494954703}
   isStart: 1
   isRunning: 0
+  comboCounter: 0
+  lastTimeAttack: 0
+  comboWindow: 3
+  combowDelay: 0.5
   testInputKey: {fileID: 1397985583}
   playerLimitJumpPosition: {fileID: 599341602}
   test: 1
   isDashTimeLimit: 1
   isDashing: 0
-  playerMoveKeyCode: 11010000120100001401000013010000
+  playerMoveKeyCode: 66000000120100001401000013010000
   isAttack: 0
 --- !u!4 &1608568228
 Transform:
@@ -22130,7 +22158,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.018043863, y: -0.017662223}
   serializedVersion: 2
-  m_Radius: 0.34852618
+  m_Radius: 1
 --- !u!114 &2046699419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22167,6 +22195,7 @@ MonoBehaviour:
   - {fileID: 1142193931700624, guid: f26c13dc7e2f44749ad7ead993a862f0, type: 3}
   puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
   perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
+  greatTxtEffect: {fileID: 8220573634043099456, guid: a1ed6f22b3d10c0499a06d458a4021ab, type: 3}
   score: 0
   comboScore: 0
   fadeDuration: 2

@@ -107,7 +107,7 @@ public class SpawnManager : MonoBehaviour
                     {
                         if (isBuildTestingRandomMonster)
                         {
-                            int random = Random.Range(0, 2);
+                            int random = Random.Range(0, currentSet.monster.Length);
                             if (random == 0 && itemNumber == 0 || itemNumber == 1 || itemNumber == 2 || itemNumber == 5 || itemNumber == 6
                                    || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
                                    || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
@@ -126,7 +126,6 @@ public class SpawnManager : MonoBehaviour
                         GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
                         spawnedObjects.transform.SetParent(spawnObjects.transform);
                         
-                        //Debug.Log($"몬스터 소환된 횟수 : {CreatBossCounting}");
                         yield return new WaitForSeconds(itemSpawnDelay);
                     }
                 }
