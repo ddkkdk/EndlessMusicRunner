@@ -24,6 +24,13 @@ public class MoveLeft : MonoBehaviour
             {
                 pos.x += -100;
                 transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
+                var valuesSendBack = DestoryX == 0 ? -60 : DestoryX;
+
+                if (transform.position.x < valuesSendBack)
+                {
+                    Destroy(this.gameObject);
+                }
+                
                 return;
             }
 
@@ -49,6 +56,7 @@ public class MoveLeft : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
+        else if (transform.position.y >= 20f || transform.position.y <= -20f)
+            Destroy(this.gameObject);
     }
 }
