@@ -104,74 +104,31 @@ public class Boss : MonoBehaviour
         }
     }
 
+    //맞았을때
+    public void SetHit(bool perfact)
+    {
+        e_State = E_State.Hit;
+        HitCollisionDetection.Instance.SetHit(this.gameObject, perfact);
+    }
+
+
     //플레이어에게 돌격
     void CrushPlayer()
     {
         var direction = GameManager.instance.player.transform.position;
         var playerPosition = direction;
-        direction.y =transform.position.y;
+        direction.y = transform.position.y;
         playerPosition.y = transform.position.y;
         transform.position = Vector3.MoveTowards(transform.position, direction, speed * Time.deltaTime);
         var dis = Vector3.Distance(playerPosition, transform.position);
-        //Debug.Log(dis);
-        //만약 플레이어가 공격 상태라면?
-        var hitObject = GameObject.Find("AttackPoint_Down");
-        var col = GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>();
-        var attackstate = col.enabled;
 
-      
-        
-        //몬스터가 공격받는 상태
-        if (attackstate)
+        if (e_State == E_State.Hit)
         {
-            var hitPosition = hitObject.transform.position;
-            float distance = Vector3.Distance(hitPosition, transform.position);
-            //Debug.Log(distance);
-            if (distance <= 1.9f && distance >=1.6f)
-            {
-                Debug.Log(distance);
-                Debug.Log("Perfect");
-                var scripts = hitObject.GetComponent<HitCollisionDetection>();
-                scripts.DrawEffect(gameObject, true);
-                e_State = E_State.Hit;
-                //보스가 공격 받는거 추가
-                monsterMaxHp--;
-                if (monsterMaxHp <= 0)
-                {
-                    Destroy(gameObject);
-                    Debug.Log("몬스터 죽음");
-                    SecenManager.LoadScene("UIScene");
-                }
-                UIManager.Instance.ComboScoreUpdater();
-                UIManager.Instance.ScoreUpdater();
-                e_State = E_State.Hit;
-                return;
-            }
-            else if(distance>=1.91 && distance<=2.0f)
-            {
-                Debug.Log(distance);
-                Debug.Log("Great");
-                e_State = E_State.Hit;
-                var scripts = hitObject.GetComponent<HitCollisionDetection>();
-                scripts.DrawEffect(gameObject, false);
-                //보스가 공격 받는거 추가
-                monsterMaxHp--;
-                if (monsterMaxHp <= 0)
-                {
-                    Destroy(gameObject);
-                    Debug.Log("몬스터 죽음");
-                    SecenManager.LoadScene("UIScene");
-                }
-                UIManager.Instance.ComboScoreUpdater();
-                UIManager.Instance.ScoreUpdater();
-                e_State = E_State.Hit;
-                return;
-            }
+            return;
         }
 
         if (dis <= 1f)
         {
-            
             //유저 공격 받는 코드 추가
             GameManager.instance.player.Damage(Damage);
             UIManager.Instance.ResetComboScoreUpdater();
@@ -181,8 +138,6 @@ public class Boss : MonoBehaviour
 
     void Hit()
     {
-
-
         transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.bossWaitPosition.position, speed * Time.deltaTime);
         var dis = Vector3.Distance(transform.position, GameManager.instance.bossWaitPosition.position);
 
@@ -192,6 +147,7 @@ public class Boss : MonoBehaviour
             return;
         }
     }
+
 
     IEnumerator spawnObjects()
     {

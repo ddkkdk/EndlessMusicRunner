@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public float fireAttackTimeScale;
 
 
-    public PlayerController player;
+    public PlayerSystem player;
     public Transform bossWaitPosition;
 
     public Transform lowerAttackPoint;
@@ -49,11 +49,6 @@ public class GameManager : MonoBehaviour
             Invoke("DeactivatSpeaker", 5f);
 
         }
-    }
-
-    public void PlayerAllAnimation()
-    {
-
     }
 
     public void AnimationController(string animationName)
@@ -154,7 +149,7 @@ public class GameManager : MonoBehaviour
             skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = fireAttackTimeScale;
 
         }
-        else if (animationString == "tail attack2") 
+        else if (animationString == "tail attack2")
         {
             skeletonAnimation.AnimationState.SetAnimation(0, animationString, loop).TimeScale = 15f;
         }

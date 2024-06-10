@@ -1,11 +1,7 @@
 using DG.Tweening;
 using Spine.Unity;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 public class HitCollisionDetection : MonoBehaviour
 {
@@ -38,118 +34,81 @@ public class HitCollisionDetection : MonoBehaviour
 
 
     }
-    private void OnTriggerEnter2D(Collider2D other)
+
+    void SetMontser(GameObject obj, bool perfect)
     {
-        if (other.gameObject.tag == "Monster")
+        var monster = obj.GetComponent<Monster>();
+        monster?.MonsterDamage(1);
+
+        //콤보
+        SetEffect(obj, perfect);
+
+        if (monster.currentHealth > 0)
         {
-            AudioManager.instance.PlaySound();
+            return;
+        }
 
-            var monster = other.gameObject.GetComponent<Monster>();
+        obj.GetComponent<Collider2D>().enabled = false;
+        obj.GetComponent<Rigidbody2D>().isKinematic = false;
+        obj.GetComponent<MoveLeft>().speed = 0;
 
-            monster?.MonsterDamage(1);
-            //score++;
-            //comboScore++;
+        float position = obj.transform.position.y;
 
-            //UIManager.Instance.ScoreUpdater(score);
-            //UIManager.Instance.ComboScoreUpdater(comboScore);
-            UIManager.Instance.ComboScoreUpdater();
-            UIManager.Instance.ScoreUpdater();
-            Vector2 hitPoint = other.ClosestPoint(transform.position);
-            var monsterPosition = other.gameObject.transform.position;
-            if (hitEffect != null)
-            {
-                Debug.Log(hitPoint);
-                var distance = Vector3.Distance(transform.position, monsterPosition);
-                if (distance <= 0.8f && distance >= -0.2f)
-                {
-                    GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-                    GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-                    StartCoroutine(OpacityChange(perfectTxtObject));
-
-                   
-                    HIttingEffects(other.gameObject, hitPoint);
-
-                    MoveUPword(perfectTxtObject, hitPoint);
-
-
-                    //Destroy(hitObject, 0.2f);
-                    //Destroy(perfectTxtObject, 0.8f);
-                }
-                else
-                {
-                    GameObject greatObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-                    GameObject greatTxtObject = Instantiate(greatTxtEffect, hitPoint, Quaternion.identity);
-                    StartCoroutine(OpacityChange(greatTxtObject));
-
-                    HIttingEffects(other.gameObject, hitPoint);
-
-                    MoveUPword(greatTxtObject, hitPoint);
-
-                    //Destroy(greatObject, 0.2f);
-                    //Destroy(greatTxtObject, 0.8f);
-                }
-            }
-            if (monster)
-            {
-                if (monster.currentHealth > 0)
-                {
-                    return;
-                }
-            }
-
-            other.GetComponent<Collider2D>().enabled = false;
-            other.GetComponent<Rigidbody2D>().isKinematic = false;
-            other.GetComponent<MoveLeft>().speed = 0;
-
-            float position = other.gameObject.transform.position.y;
-
-            if (position > -8)
-            {
-                //Debug.Log("Hit Upper");
-                other.GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
-
-            }
-
-
-
-            GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
-            #region AnimationSetting ��
-            //if (other.GetComponent<MoveLeft>().monsterNumber == 6)
-            //{
-            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
-            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-            //}
-            //else if (other.GetComponent<MoveLeft>().monsterNumber == 7) 
-            //{
-            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "hit_fly_1", false);
-            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-
-            //}
-            //else if(other.GetComponent<MoveLeft>().monsterNumber==5)
-            //{
-            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-            //    //other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit_Fly_1", false);
-            //}
-            //else
-            //{
-            //    other.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Hit", false);
-            //}
-            #endregion 
-
-
+        if (position > -8)
+        {
+            //Debug.Log("Hit Upper");
+            obj.GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
         }
     }
+
+    void SetBoss(GameObject obj, bool perfect)
+    {
+        SetEffect(obj, perfect);
+    }
+
+    void SetEffect(GameObject obj, bool perfect)
+    {
+        AudioManager.instance.PlaySound();
+        UIManager.Instance.ComboScoreUpdater();
+        UIManager.Instance.ScoreUpdater();
+
+        var txteffects = greatTxtEffect;
+
+        if (perfect)
+        {
+            txteffects = perfectTxtEffect;
+        }
+
+        var hitPoint = obj.transform.position;
+
+        GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+        GameObject txtobject = Instantiate(txteffects, hitPoint, Quaternion.identity);
+
+        StartCoroutine(OpacityChange(txtobject));
+
+        HIttingEffects(obj, hitPoint);
+
+        MoveUPword(txtobject, hitPoint);
+    }
+
+    public void SetHit(GameObject obj, bool perfact)
+    {
+        var tag = obj.tag;
+
+        if (obj.tag == "Monster")
+        {
+            SetMontser(obj, perfact);
+        }
+        else if (obj.tag == "Boss")
+        {
+            SetBoss(obj, perfact);
+        }
+    }
+
 
     public void MoveUPword(GameObject perfectTxtEffect, Vector2 hitPoint)
     {
         perfectTxtEffect.transform.DOMoveY(hitPoint.y + 2, 0.1f);
-
-    }
-
-    public IEnumerator MonsterDestroy(GameObject other)
-    {
-        yield return new WaitForSeconds(0.5f);
-
 
     }
 
@@ -228,57 +187,11 @@ public class HitCollisionDetection : MonoBehaviour
                 yield break;
             }
 
-            if(obj !=null)
+            if (obj != null)
                 obj.GetComponent<SpriteRenderer>().color = currentColor;
 
 
             yield return null;
         }
-
-        //currentColor.a = 0;
-        //color.color = currentColor;
-        ////obj.GetComponent<SpriteRenderer>().color = currentColor;
-        //if (obj != null || obj.activeSelf)
-        //{
-        //    print("제거 + " + " / " + obj.name);
-
-        //    Destroy(obj);
-        //}
-    }
-
-    public void DrawEffect(GameObject other, bool condition)
-    {
-        AudioManager.instance.PlaySound();
-
-        UIManager.Instance.ComboScoreUpdater();
-        UIManager.Instance.ScoreUpdater();
-        Vector2 hitPoint = other.GetComponent<CircleCollider2D>().ClosestPoint(transform.position);
-        var monsterPosition = other.gameObject.transform.position;
-        if (hitEffect != null)
-        {
-            var distance = Vector3.Distance(transform.position, monsterPosition);
-            if (condition)
-            {
-                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
-                StartCoroutine(OpacityChange(perfectTxtObject));
-
-                HIttingEffects(other.gameObject, hitPoint);
-
-                MoveUPword(perfectTxtObject, hitPoint);
-            }
-            else
-            {
-                GameObject greatObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-                GameObject greatTxtObject = Instantiate(greatTxtEffect, hitPoint, Quaternion.identity);
-                StartCoroutine(OpacityChange(greatTxtObject));
-
-                HIttingEffects(other.gameObject, hitPoint);
-
-                MoveUPword(greatTxtObject, hitPoint);
-            }
-        }
-        GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
-     
     }
 }
