@@ -34,10 +34,6 @@ public class SpawnManager : MonoBehaviour
 
         }
 
-        // itemSpawnDelay = Random.Range(0.1f, 0.5f);
-        //setSpawnDelay = Random.Range(0.1f, 0.75f);
-
-
     }
 
     private void Update()

@@ -15,7 +15,16 @@ public class LongNote : MonoBehaviour
     [SerializeField] bool Change;
     [SerializeField] Sprite[] noteSprites;
     [SerializeField] Sprite[] longSprites;
+    [SerializeField] Vector3 BoxSize;
+    [SerializeField] LayerMask layerMask;
 
+    [SerializeField] float Star_X;
+    [SerializeField] float Scale_X;
+
+    GameObject Effect;
+    float Dealy = 0f;
+
+    public int AttackHold = 0;
 
     private void Start()
     {
@@ -28,67 +37,88 @@ public class LongNote : MonoBehaviour
                 myNoteSprite[i].sprite = noteSprites[type];
             }
             myLongSprrite.sprite = longSprites[type];
-
         }
     }
 
-    GameObject Effect;
-
-    float Dealy = 0f;
-    private void OnTriggerStay2D(Collider2D other)
+    private void Update()
     {
-        if (other.gameObject.tag != "Player")
+        SetCheck();
+    }
+
+    void SetCheck()
+    {
+        if (AttackHold == 0 || AttackHold == 2)
         {
             return;
         }
 
+        var player = GameManager.instance.player;
+        print(player.AttackState);
 
-        if (PlayerController.CheckHold)
+        if (player.AttackState == PlayerSystem.E_AttackState.Hold)
         {
-            Dealy -= Time.deltaTime;
-            if (Dealy <= 0)
-            {
-                AudioManager.instance.PlaySound();
-                Dealy = 0.1f;
-            }
-
-            if (Effect == null)
-            {
-                //var createpos = GameManager.instance.skeleton.transform.position;
-                var createpos = GameManager.instance.lowerAttackPoint.transform.position;
-
-                // createpos.x += 1;
-                //createpos.y = 0;
-                Effect = Instantiate(G_Effect, createpos, default, null);
-            }
-
-            var scale = Tr.localScale;
-            scale.x -= 0.14f;
-
-            Tr.localScale = scale;
-
-            if (Tr.localScale.x <= 0)
-            {
-                print("제거 + " + " / " + gameObject.name);
-                Destroy(this.gameObject);
-                Destroy(Effect);
-                var createpos = GameManager.instance.skeleton.transform.position;
-                createpos.x += 1;
-                createpos.y = 0;
-                var end = Instantiate(G_End, createpos, default, null);
-                Destroy(end, 1f);
-            }
             return;
         }
+
+        AttackHold = 2;
         if (Effect)
         {
-            print("제거 + " + " / " + Effect.name);
             Destroy(Effect);
+        }
+    }
 
-
+    public void SetAttack()
+    {
+        if (AttackHold == 0)
+        {
+            AttackHold = 1;
+            return;
         }
 
-        var box = Tr.GetComponent<BoxCollider2D>();
-        box.enabled = false;
+        if (AttackHold == 2)
+        {
+            return;
+        }
+
+        if (Effect == null)
+        {
+            var createposr = GameManager.instance.lowerAttackPoint.transform.position;
+            Effect = Instantiate(G_Effect, createposr, default, null);
+        }
+
+        var scale = Tr.localScale;
+        scale.x -= Scale_X;
+
+        var pos = myNoteSprite[1].transform.position;
+        pos.x += Star_X;
+        myNoteSprite[1].transform.position = pos;
+
+        Tr.localScale = scale;
+
+        Dealy -= Time.deltaTime;
+
+        if (Dealy > 0)
+        {
+            AudioManager.instance.PlaySound();
+            Dealy = 0.1f;
+            AttackHold = 1;
+        }
+
+
+
+        if (Tr.localScale.x > 0)
+        {
+            return;
+        }
+
+
+        Destroy(this.gameObject);
+        Destroy(Effect);
+        var createpos = GameManager.instance.skeleton.transform.position;
+        createpos.x += 1;
+        createpos.y = 0;
+        var end = Instantiate(G_End, createpos, default, null);
+        Destroy(end, 1f);
+
     }
 }

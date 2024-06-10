@@ -12,6 +12,7 @@ public class Monster : Entity
     [SerializeField] SkeletonDataAsset[] Sk;
     [SerializeField] SkeletonAnimation My;
 
+    bool _Attack;
 
     private void Start()
     {
@@ -21,26 +22,42 @@ public class Monster : Entity
             My.Initialize(true);
         }
     }
-    private void OnCollisionEnter2D(Collision2D other)
+
+    private void Update()
     {
-        ContactPoint2D contactPoint = other.contacts[0];
-        Vector2 hitPoint = contactPoint.point;
+        SetAttack();
+    }
 
-        if (other.gameObject.tag == "Player")
+    void SetAttack()
+    {
+        if (_Attack)
         {
-            other.gameObject.GetComponent<PlayerController>().Damage(damageAmount);
-            GameObject opsFx = Instantiate(damageFx, hitPoint, Quaternion.identity);
-
-            //UpperHitCollisionDetection.Instance.comboScore = 0;
-            //HitCollisionDetection.Instance.comboScore = 0;
-            //UIManager.Instance.ComboScoreUpdater(0);
-            UIManager.Instance.ResetComboScoreUpdater();
-            HitMoveAnimation(opsFx, hitPoint);
-            Destroy(opsFx, 0.2f);
-
+            return;
         }
 
+        var player = GameManager.instance.player;
+
+        var targetpos = player.transform.position;
+
+        if (targetpos.x < transform.position.x)
+        {
+            return;
+        }
+        _Attack = true;
+        player.Damage(damageAmount);
+        GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
+        UIManager.Instance.ResetComboScoreUpdater();
+        HitMoveAnimation(opsFx, transform.position);
+        Destroy(opsFx, 0.2f);
     }
+
+    public void SetHit(bool perfect)
+    {
+        _Attack = true;
+        HitCollisionDetection.Instance.SetHit(this.gameObject, perfect);
+    }
+
+
     public void HitMoveAnimation(GameObject hitFx, Vector2 hitPoint)
     {
         hitFx.transform.DOMoveY(hitPoint.y + 5, 0.5f).SetEase(Ease.OutBounce);

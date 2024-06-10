@@ -23,49 +23,48 @@ public class UIManager : MonoBehaviour
     public float instructionPanelActivationTime;
     public int comboScore;
     public int gameScore;
-
-    private void Start()
+    
+    private void Awake()
     {
         if (Instance != null)
         {
             Destroy(this.gameObject);
 
         }
-        else 
+        else
         {
             Instance = this;
-        
         }
     }
-    public void ActivatPanel(bool activate) 
+    public void ActivatPanel(bool activate)
     {
         instructionPanel.SetActive(activate);
         StartCoroutine(DeactivatePanel());
-    
+
     }
     public void UpperPanelActive(bool activate)
     {
         UpperPanel.gameObject.SetActive(true);
         LowerPanelActivate(true);
-        
+
 
     }
-    public void LowerPanelActivate(bool activate) 
+    public void LowerPanelActivate(bool activate)
     {
         lowerPanel.gameObject.SetActive(true);
     }
-    IEnumerator DeactivatePanel() 
+    IEnumerator DeactivatePanel()
     {
         yield return new WaitForSeconds(instructionPanelActivationTime);
         instructionPanel.SetActive(false);
         UpperPanelActive(true);
         SpawnManager.instance.StartSpawningObjects(true);
-          
+
     }
-    public void ScoreUpdater(int score=0) 
+    public void ScoreUpdater(int score = 0)
     {
         gameScore++;
-        scoreTxt_2.text= gameScore.ToString();
+        scoreTxt_2.text = gameScore.ToString();
         scoreTxt_2.text = gameScore.ToString();
     }
     public void ResetComboScoreUpdater()
@@ -74,7 +73,7 @@ public class UIManager : MonoBehaviour
         comboScore = 0;
     }
 
-    public void ComboScoreUpdater(int score=0)
+    public void ComboScoreUpdater(int score = 0)
     {
         comboScore++;
         comboTxt_1.text = comboScore.ToString();
