@@ -120,7 +120,7 @@ public class Boss : MonoBehaviour
             var hitPosition = hitObject.transform.position;
             float distance = Vector3.Distance(hitPosition, transform.position);
             //Debug.Log(distance);
-            if (distance <= 0.8f && distance >= -0.2f)
+            if (distance <= 1.9f && distance >=1.6f)
             {
                 Debug.Log(distance);
                 Debug.Log("Perfect");
@@ -138,7 +138,7 @@ public class Boss : MonoBehaviour
                 e_State = E_State.Hit;
                 return;
             }
-            else if(distance>=0.8f && distance<=2.0f)
+            else if(distance>=1.91 && distance<=2.0f)
             {
                 Debug.Log(distance);
                 Debug.Log("Great");
@@ -158,7 +158,7 @@ public class Boss : MonoBehaviour
             }
         }
 
-        if (dis <= 3f)
+        if (dis <= 1f)
         {
             
             //유저 공격 받는 코드 추가

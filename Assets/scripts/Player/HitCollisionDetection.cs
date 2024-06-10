@@ -242,4 +242,67 @@ public class HitCollisionDetection : MonoBehaviour
         //    Destroy(obj);
         //}
     }
+
+    public void DrawEffect(GameObject other)
+    {
+        AudioManager.instance.PlaySound();
+
+        var monster = other.gameObject.GetComponent<Monster>();
+
+        monster?.MonsterDamage(1);
+
+        UIManager.Instance.ComboScoreUpdater();
+        UIManager.Instance.ScoreUpdater();
+        Vector2 hitPoint = other.GetComponent<CircleCollider2D>().ClosestPoint(transform.position);
+        var monsterPosition = other.gameObject.transform.position;
+        if (hitEffect != null)
+        {
+            var distance = Vector3.Distance(transform.position, monsterPosition);
+            if (distance <= 0.8f && distance >= -0.2f)
+            {
+                GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
+                StartCoroutine(OpacityChange(perfectTxtObject));
+
+                HIttingEffects(other.gameObject, hitPoint);
+
+                MoveUPword(perfectTxtObject, hitPoint);
+            }
+            else
+            {
+                GameObject greatObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+                GameObject greatTxtObject = Instantiate(greatTxtEffect, hitPoint, Quaternion.identity);
+                StartCoroutine(OpacityChange(greatTxtObject));
+
+                HIttingEffects(other.gameObject, hitPoint);
+
+                MoveUPword(greatTxtObject, hitPoint);
+            }
+        }
+        if (monster)
+        {
+            if (monster.currentHealth > 0)
+            {
+                return;
+            }
+        }
+
+        other.GetComponent<Collider2D>().enabled = false;
+        other.GetComponent<Rigidbody2D>().isKinematic = false;
+        other.GetComponent<MoveLeft>().speed = 0;
+
+        float position = other.gameObject.transform.position.y;
+
+        if (position > -8)
+        {
+            //Debug.Log("Hit Upper");
+            other.GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
+
+        }
+
+
+
+        GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
+     
+    }
 }
