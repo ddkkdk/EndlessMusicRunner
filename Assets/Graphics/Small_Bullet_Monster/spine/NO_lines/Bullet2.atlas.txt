@@ -4,33 +4,33 @@ Bullet2.png
 	pma: true
 	scale: 0.5
 Bomb
-	bounds: 2, 258, 282, 204
+	bounds: 2, 258, 282, 205
 	offsets: 0, 0, 282, 215
 	rotate: 90
 Can
 	bounds: 2, 2, 254, 188
 	rotate: 90
 Dumbbell
-	bounds: 208, 199, 281, 153
+	bounds: 209, 199, 281, 153
 	offsets: 0, 30, 282, 215
 Watermelon
-	bounds: 480, 393, 263, 147
+	bounds: 481, 393, 263, 147
 egg
 	bounds: 546, 589, 204, 168
 ham
 	bounds: 2, 542, 273, 215
 pencil
-	bounds: 616, 114, 277, 114
+	bounds: 617, 114, 277, 114
 	offsets: 0, 3, 286, 123
 	rotate: 90
 pencil2
-	bounds: 491, 105, 286, 123
+	bounds: 492, 105, 286, 123
 	rotate: 90
 small donut
 	bounds: 277, 542, 267, 215
 	offsets: 4, 0, 282, 215
 small note
-	bounds: 208, 354, 270, 186
+	bounds: 209, 354, 270, 186
 	offsets: 4, 7, 282, 215
 white bird
 	bounds: 192, 47, 273, 150
