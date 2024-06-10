@@ -3,6 +3,7 @@ using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -243,13 +244,9 @@ public class HitCollisionDetection : MonoBehaviour
         //}
     }
 
-    public void DrawEffect(GameObject other)
+    public void DrawEffect(GameObject other, bool condition)
     {
         AudioManager.instance.PlaySound();
-
-        var monster = other.gameObject.GetComponent<Monster>();
-
-        monster?.MonsterDamage(1);
 
         UIManager.Instance.ComboScoreUpdater();
         UIManager.Instance.ScoreUpdater();
@@ -258,7 +255,7 @@ public class HitCollisionDetection : MonoBehaviour
         if (hitEffect != null)
         {
             var distance = Vector3.Distance(transform.position, monsterPosition);
-            if (distance <= 0.8f && distance >= -0.2f)
+            if (condition)
             {
                 GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
                 GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
@@ -279,29 +276,6 @@ public class HitCollisionDetection : MonoBehaviour
                 MoveUPword(greatTxtObject, hitPoint);
             }
         }
-        if (monster)
-        {
-            if (monster.currentHealth > 0)
-            {
-                return;
-            }
-        }
-
-        other.GetComponent<Collider2D>().enabled = false;
-        other.GetComponent<Rigidbody2D>().isKinematic = false;
-        other.GetComponent<MoveLeft>().speed = 0;
-
-        float position = other.gameObject.transform.position.y;
-
-        if (position > -8)
-        {
-            //Debug.Log("Hit Upper");
-            other.GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
-
-        }
-
-
-
         GameManager.instance.PlayMonsterAnimation(other.GetComponent<SkeletonAnimation>());
      
     }

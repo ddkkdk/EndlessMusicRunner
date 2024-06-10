@@ -124,6 +124,8 @@ public class Boss : MonoBehaviour
             {
                 Debug.Log(distance);
                 Debug.Log("Perfect");
+                var scripts = hitObject.GetComponent<HitCollisionDetection>();
+                scripts.DrawEffect(gameObject, true);
                 e_State = E_State.Hit;
                 //보스가 공격 받는거 추가
                 monsterMaxHp--;
@@ -143,6 +145,8 @@ public class Boss : MonoBehaviour
                 Debug.Log(distance);
                 Debug.Log("Great");
                 e_State = E_State.Hit;
+                var scripts = hitObject.GetComponent<HitCollisionDetection>();
+                scripts.DrawEffect(gameObject, false);
                 //보스가 공격 받는거 추가
                 monsterMaxHp--;
                 if (monsterMaxHp <= 0)
