@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 933f9dbbd5471f240bd63f6f0b29cfa8, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 2ae2e3660f3192d49a36eb4aa76fd62d, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -248,4 +248,9 @@ MonoBehaviour:
   - {fileID: 2376462067880542252, guid: 42ade969904056a43b5e0e94b1d4963e, type: 3}
   - {fileID: 2027002376000927764, guid: 37a0495d3ad7e244f96b67c01c410aad, type: 3}
   - {fileID: 5927427790796394008, guid: 25fa8bc59d16fb3479cc86d751515cc7, type: 3}
+  Change: 1
+  Sk:
+  - {fileID: 11400000, guid: 2ae2e3660f3192d49a36eb4aa76fd62d, type: 2}
+  - {fileID: 11400000, guid: 933f9dbbd5471f240bd63f6f0b29cfa8, type: 2}
+  My: {fileID: 5927427790796394015}
   bossAnimation: {fileID: 5927427790796394015}

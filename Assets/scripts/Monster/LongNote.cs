@@ -1,3 +1,4 @@
+using Spine.Unity;
 using UnityEngine;
 
 public class LongNote : MonoBehaviour
@@ -8,6 +9,28 @@ public class LongNote : MonoBehaviour
     [SerializeField] Transform start_1;
     [SerializeField] Transform start_2;
     [SerializeField] GameObject lowecollision;
+
+    public SpriteRenderer[] myNoteSprite;
+    public SpriteRenderer myLongSprrite;
+    [SerializeField] bool Change;
+    [SerializeField] Sprite[] noteSprites;
+    [SerializeField] Sprite[] longSprites;
+
+
+    private void Start()
+    {
+        if (Change)
+        {
+            var type = UI_Lobby.Type == false ? 0 : 1;
+
+            for (int i = 0; i < myNoteSprite.Length; ++i)
+            {
+                myNoteSprite[i].sprite = noteSprites[type];
+            }
+            myLongSprrite.sprite = longSprites[type];
+
+        }
+    }
 
     GameObject Effect;
 

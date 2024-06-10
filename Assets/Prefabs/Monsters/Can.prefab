@@ -143,6 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   monsterNumber: 3
+  SendBack: 0
+  OffSetX: 0
+  DestoryX: 0
 --- !u!114 &345578015453725092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +164,11 @@ MonoBehaviour:
   isOnGround: 1
   damageAmount: 2
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
+  Change: 1
+  Sk:
+  - {fileID: 11400000, guid: cbd81e36774e1344aa41414036206d96, type: 2}
+  - {fileID: 11400000, guid: 0ed707407aa0980479d0f5811245833d, type: 2}
+  My: {fileID: 3559200930569774025}
 --- !u!58 &98197925962513228
 CircleCollider2D:
   m_ObjectHideFlags: 0
