@@ -280,6 +280,7 @@ MonoBehaviour:
   G_End: {fileID: 8946561951230704596, guid: 251037608b1bd6d4e9d7b4536292b2d7, type: 3}
   start_1: {fileID: 197550552013003805}
   start_2: {fileID: 5376406611007889728}
+  lowecollision: {fileID: 0}
 --- !u!1 &8420669311012735088
 GameObject:
   m_ObjectHideFlags: 0

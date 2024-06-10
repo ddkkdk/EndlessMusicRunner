@@ -3300,6 +3300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParticleSystem: {fileID: 0}
   hitEffect: {fileID: 3247441007696276540, guid: 5ddfde0f3c51e7f47ae4e0dd604a670c, type: 3}
   destroyParticleEffects:
   - {fileID: 8946561951230704596, guid: 251037608b1bd6d4e9d7b4536292b2d7, type: 3}
@@ -5443,6 +5444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParticleSystem: {fileID: 0}
   hitEffect: {fileID: 181478, guid: 4f7e2db9e95811a4ead0ef5a15d02e2e, type: 3}
   destroyParticleEffects:
   - {fileID: 1563634094512642, guid: a11f5f52bd76689408d6bf7a6c2fcdd2, type: 3}
@@ -21400,6 +21402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f74fe0a7c861bc4db87aad6883c46d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParticleSystem: {fileID: 0}
   hitEffect: {fileID: 181478, guid: 4f7e2db9e95811a4ead0ef5a15d02e2e, type: 3}
   destroyParticleEffects:
   - {fileID: 1563634094512642, guid: a11f5f52bd76689408d6bf7a6c2fcdd2, type: 3}
