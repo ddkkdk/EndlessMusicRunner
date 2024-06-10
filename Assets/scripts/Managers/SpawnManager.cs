@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < currentSet.monster.Length; i++)
                 {
                     GameObject item = currentSet.monster[i];
-                    print(item.name);
+                    //print(item.name);
                     int itemNumber = item.GetComponent<MoveLeft>().monsterNumber;
 
                     if (item != null)

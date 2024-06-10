@@ -58,6 +58,7 @@ public class HitCollisionDetection : MonoBehaviour
             var monsterPosition = other.gameObject.transform.position;
             if (hitEffect != null)
             {
+                Debug.Log(hitPoint);
                 var distance = Vector3.Distance(transform.position, monsterPosition);
                 if (distance <= 0.8f && distance >= -0.2f)
                 {
@@ -65,6 +66,7 @@ public class HitCollisionDetection : MonoBehaviour
                     GameObject perfectTxtObject = Instantiate(perfectTxtEffect, hitPoint, Quaternion.identity);
                     StartCoroutine(OpacityChange(perfectTxtObject));
 
+                   
                     HIttingEffects(other.gameObject, hitPoint);
 
                     MoveUPword(perfectTxtObject, hitPoint);
