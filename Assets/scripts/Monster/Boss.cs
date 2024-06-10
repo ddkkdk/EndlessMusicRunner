@@ -100,32 +100,67 @@ public class Boss : MonoBehaviour
     //플레이어에게 돌격
     void CrushPlayer()
     {
-
-        transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.player.transform.position, speed * Time.deltaTime);
-        var dis = Vector3.Distance(GameManager.instance.player.transform.position, transform.position);
+        var direction = GameManager.instance.player.transform.position;
+        var playerPosition = direction;
+        direction.y =transform.position.y;
+        playerPosition.y = transform.position.y;
+        transform.position = Vector3.MoveTowards(transform.position, direction, speed * Time.deltaTime);
+        var dis = Vector3.Distance(playerPosition, transform.position);
         //Debug.Log(dis);
-        if (dis <= 5f)
-        {
-            //만약 플레이어가 공격 상태라면?
-            var col = GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>();
-            var attackstate = col.enabled;
+        //만약 플레이어가 공격 상태라면?
+        var hitObject = GameObject.Find("AttackPoint_Down");
+        var col = GameObject.Find("AttackPoint_Down").GetComponent<Collider2D>();
+        var attackstate = col.enabled;
 
-            //몬스터가 공격받는 상태
-            if (attackstate)
+      
+        
+        //몬스터가 공격받는 상태
+        if (attackstate)
+        {
+            var hitPosition = hitObject.transform.position;
+            float distance = Vector3.Distance(hitPosition, transform.position);
+            //Debug.Log(distance);
+            if (distance <= 0.8f && distance >= -0.2f)
             {
+                Debug.Log(distance);
+                Debug.Log("Perfect");
                 e_State = E_State.Hit;
                 //보스가 공격 받는거 추가
                 monsterMaxHp--;
-                Debug.Log(monsterMaxHp);
                 if (monsterMaxHp <= 0)
                 {
                     Destroy(gameObject);
                     Debug.Log("몬스터 죽음");
                     SecenManager.LoadScene("UIScene");
                 }
-
+                UIManager.Instance.ComboScoreUpdater();
+                UIManager.Instance.ScoreUpdater();
+                e_State = E_State.Hit;
                 return;
             }
+            else if(distance>=0.8f && distance<=2.0f)
+            {
+                Debug.Log(distance);
+                Debug.Log("Great");
+                e_State = E_State.Hit;
+                //보스가 공격 받는거 추가
+                monsterMaxHp--;
+                if (monsterMaxHp <= 0)
+                {
+                    Destroy(gameObject);
+                    Debug.Log("몬스터 죽음");
+                    SecenManager.LoadScene("UIScene");
+                }
+                UIManager.Instance.ComboScoreUpdater();
+                UIManager.Instance.ScoreUpdater();
+                e_State = E_State.Hit;
+                return;
+            }
+        }
+
+        if (dis <= 3f)
+        {
+            
             //유저 공격 받는 코드 추가
             GameManager.instance.player.Damage(Damage);
             UIManager.Instance.ResetComboScoreUpdater();
@@ -165,5 +200,9 @@ public class Boss : MonoBehaviour
         }
 
 
+    }
+    public void BossDamaged(int damage)
+    {
+        monsterMaxHp -= damage;
     }
 }

@@ -135,7 +135,6 @@ public class HitCollisionDetection : MonoBehaviour
 
 
         }
-
     }
 
     public void MoveUPword(GameObject perfectTxtEffect, Vector2 hitPoint)
