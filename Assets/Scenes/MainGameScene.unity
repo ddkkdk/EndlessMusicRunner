@@ -3603,7 +3603,7 @@ MonoBehaviour:
   - monster:
     - {fileID: 5927427790796394008, guid: 25fa8bc59d16fb3479cc86d751515cc7, type: 3}
   itemSpawnDelay: 0.5
-  setSpawnDelay: 0.75
+  setSpawnDelay: 1.5
   spawnObjects: {fileID: 342545453}
   spawnPoint_1: {fileID: 256112964}
   spawnPoint_3: {fileID: 962744005}
