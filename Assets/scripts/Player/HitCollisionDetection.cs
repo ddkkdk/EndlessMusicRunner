@@ -44,8 +44,8 @@ public class HitCollisionDetection : MonoBehaviour
     void SetEffect(GameObject obj, bool perfect)
     {
         AudioManager.instance.PlaySound();
-        UIManager.Instance.ComboScoreUpdater();
-        UIManager.Instance.ScoreUpdater();
+        ScoreManager.instance.SetCombo_Add();
+        ScoreManager.instance.SetCurrentScore();
 
         var txteffects = greatTxtEffect;
 

@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public GameObject instructionPanel;
-    public GameObject attackPoints;
+
     public TextMeshProUGUI scoreTxt_1;
     public TextMeshProUGUI scoreTxt_2;
     public GameObject combo;
@@ -18,12 +18,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI comboTxt_2;
     public GameObject UpperPanel;
     public GameObject lowerPanel;
-    public float upperPosition;
-    public Image fillAmount;
     public float instructionPanelActivationTime;
-    public int comboScore;
-    public int gameScore;
-    
+
     private void Awake()
     {
         if (Instance != null)
@@ -59,39 +55,22 @@ public class UIManager : MonoBehaviour
         instructionPanel.SetActive(false);
         UpperPanelActive(true);
         SpawnManager.instance.StartSpawningObjects(true);
-
     }
-    public void ScoreUpdater(int score = 0)
+    
+    public void ScoreUpdater(int score)
     {
-        gameScore++;
-        scoreTxt_2.text = gameScore.ToString();
-        scoreTxt_2.text = gameScore.ToString();
+        scoreTxt_2.text = score.ToString();
     }
+
     public void ResetComboScoreUpdater()
     {
         combo.gameObject.SetActive(false);
-        comboScore = 0;
     }
 
-    public void ComboScoreUpdater(int score = 0)
+    public void ComboScoreUpdater(int score)
     {
-        comboScore++;
-        comboTxt_1.text = comboScore.ToString();
-        comboTxt_2.text = comboScore.ToString();
-
-        if (comboScore >= 5 && !combo.activeSelf)
-        {
-            combo.gameObject.SetActive(true);
-        }
-        //else if (comboScore <= 0) 
-        //{
-        //    combo.gameObject.SetActive(false);
-
-        //}
-
+        comboTxt_1.text = score.ToString();
+        comboTxt_2.text = score.ToString();
+        combo.gameObject.SetActive(true);
     }
-
-
-
-
 }

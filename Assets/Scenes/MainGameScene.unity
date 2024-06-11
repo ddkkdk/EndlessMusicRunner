@@ -8713,15 +8713,9 @@ MonoBehaviour:
   skeleton: {fileID: 1878545307}
   speaker_1: {fileID: 1881881561}
   speaker_2: {fileID: 753292737}
-  flyTimeScale: 6.5
-  retireTimeScale: 8
-  TailAttackTimeScale: 2.5
-  kickTimeScale: 2.5
-  fireAttackTimeScale: 2.5
   player: {fileID: 1608568235}
   bossWaitPosition: {fileID: 774173652}
   lowerAttackPoint: {fileID: 514379562}
-  monsterAnimation: []
 --- !u!4 &827244270
 Transform:
   m_ObjectHideFlags: 0
@@ -21201,7 +21195,7 @@ GameObject:
   - component: {fileID: 1937510965}
   - component: {fileID: 1937510964}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

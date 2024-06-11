@@ -37,6 +37,7 @@ public class Entity : MonoBehaviour
 
     public virtual void Damage(int damageAmount)
     {
+        ScoreManager.instance.SetBestCombo_Reset();
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
             SecenManager.LoadScene("UIScene");

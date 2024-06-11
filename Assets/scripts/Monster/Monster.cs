@@ -48,7 +48,6 @@ public class Monster : Entity
         _Attack = true;
         player.Damage(damageAmount);
         GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
-        UIManager.Instance.ResetComboScoreUpdater();
         HitMoveAnimation(opsFx, transform.position);
         Destroy(opsFx, 0.2f);
     }
