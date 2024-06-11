@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance;
+    public static ScoreManager _instance;
+    public static ScoreManager instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                var add = GameObject.CreatePrimitive(default).AddComponent<ScoreManager>();
+                _instance = add;
+            }
+            return _instance;
+        }
+    }
     public int CurrentScore;
     public int BestScore;
     public int CurrentCombo;
@@ -19,10 +31,6 @@ public class ScoreManager : MonoBehaviour
         Late,
         Pass,
         Miss
-    }
-    private void Awake()
-    {
-        instance = this;
     }
 
     //최고 콤보 가져오기

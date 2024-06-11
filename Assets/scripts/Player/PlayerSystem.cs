@@ -8,11 +8,13 @@ public class PlayerSystem : Entity
     [SerializeField] SkeletonAnimation M_SkeletonAnimation;
     [SerializeField] Transform[] BoxCol;
     [SerializeField] LayerMask layerMask;
-    [SerializeField] Vector3 BoxSize;
-    [SerializeField] Vector3 BoxSize_Perfect;
+    [SerializeField] Vector3[] BoxSize;
     [SerializeField] Transform[] Tr_Pos;
     [SerializeField] float Speed;
+    [SerializeField] float EarlyX;
+    [SerializeField] float LateX;
     public static PlayerSystem playerSystem;
+    const float OffSetX_value = 1.3f;
 
     public enum E_AniType
     {
@@ -48,7 +50,7 @@ public class PlayerSystem : Entity
         "tail attack",
         "fire attack",
         "tail attack2",
-        "Hit",
+        "retire",
     };
 
     int AttackCount = 0;
@@ -221,27 +223,71 @@ public class PlayerSystem : Entity
     }
 
 
-    (Collider2D[], bool) SetHit(int idx)
+    (Collider2D[], ScoreManager.E_ScoreState) SetHit(int idx)
     {
-        var col = Physics2D.OverlapBoxAll(BoxCol[idx].position, BoxSize_Perfect, default, layerMask);
+        var col = Physics2D.OverlapBoxAll(BoxCol[idx].position, BoxSize[(int)ScoreManager.E_ScoreState.Perfect], default, layerMask);
 
         if (col != null && col.Length > 0)
         {
-            return (col, true);
+            return (col, ScoreManager.E_ScoreState.Perfect);
         }
 
-        col = Physics2D.OverlapBoxAll(BoxCol[idx].position, BoxSize, default, layerMask);
+        col = Physics2D.OverlapBoxAll(BoxCol[idx].position, BoxSize[(int)ScoreManager.E_ScoreState.Great], default, layerMask);
 
         if (col != null && col.Length > 0)
         {
-            return (col, false);
+            return (col, ScoreManager.E_ScoreState.Great);
         }
 
-        return (null, false);
+        var earlypos = BoxCol[idx].position;
+        earlypos.x += OffSetX_value;
+        col = Physics2D.OverlapBoxAll(earlypos, BoxSize[(int)ScoreManager.E_ScoreState.Early], default, layerMask);
+
+        if (col != null && col.Length > 0)
+        {
+            return (col, ScoreManager.E_ScoreState.Early);
+        }
+
+
+        var latepos = BoxCol[idx].position;
+        latepos.x += -OffSetX_value;
+        col = Physics2D.OverlapBoxAll(latepos, BoxSize[(int)ScoreManager.E_ScoreState.Late], default, layerMask);
+
+        if (col != null && col.Length > 0)
+        {
+            return (col, ScoreManager.E_ScoreState.Late);
+        }
+
+        return (null, ScoreManager.E_ScoreState.Miss);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (BoxCol == null || BoxSize == null) return;
+
+        for (int i = 0; i < BoxCol.Length; i++)
+        {
+            DrawOverlapBox(BoxCol[i].position, BoxSize[(int)ScoreManager.E_ScoreState.Perfect], Color.green);
+            DrawOverlapBox(BoxCol[i].position, BoxSize[(int)ScoreManager.E_ScoreState.Great], Color.blue);
+
+            var earlypos = BoxCol[i].position;
+            earlypos.x += OffSetX_value;
+            DrawOverlapBox(earlypos, BoxSize[(int)ScoreManager.E_ScoreState.Early], Color.yellow);
+
+            var latepos = BoxCol[i].position;
+            latepos.x += -OffSetX_value;
+            DrawOverlapBox(latepos, BoxSize[(int)ScoreManager.E_ScoreState.Late], Color.red);
+        }
+    }
+
+    void DrawOverlapBox(Vector2 position, Vector2 size, Color color)
+    {
+        Gizmos.color = color;
+        Gizmos.DrawWireCube(position, size);
     }
 
 
-    bool SetMonster(Monster monster, bool perfect)
+    bool SetMonster(Monster monster, ScoreManager.E_ScoreState perfect)
     {
         if (monster == null)
         {
@@ -251,7 +297,7 @@ public class PlayerSystem : Entity
         return true;
     }
 
-    bool SetBoss(Boss boss, bool perfect)
+    bool SetBoss(Boss boss, ScoreManager.E_ScoreState perfect)
     {
         if (boss == null)
         {
@@ -261,7 +307,7 @@ public class PlayerSystem : Entity
         return true;
     }
 
-    bool SetLongNote(LongNote longnote, bool perfect)
+    bool SetLongNote(LongNote longnote, ScoreManager.E_ScoreState perfect)
     {
         if (longnote == null)
         {

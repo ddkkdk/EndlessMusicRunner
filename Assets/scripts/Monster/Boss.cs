@@ -105,7 +105,7 @@ public class Boss : MonoBehaviour
     }
 
     //맞았을때
-    public void SetHit(bool perfact)
+    public void SetHit(ScoreManager.E_ScoreState  perfact)
     {
         e_State = E_State.Hit;
         HitCollisionDetection.Instance.SetHit(this.gameObject, perfact);

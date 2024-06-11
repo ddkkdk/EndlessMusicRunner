@@ -8753,8 +8753,12 @@ MonoBehaviour:
   - {fileID: 1142193931700624, guid: c5251d511df730c4eb4877ca02b0beca, type: 3}
   - {fileID: 1142193931700624, guid: f26c13dc7e2f44749ad7ead993a862f0, type: 3}
   puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
-  perfectTxtEffect: {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
-  greatTxtEffect: {fileID: 8220573634043099456, guid: a1ed6f22b3d10c0499a06d458a4021ab, type: 3}
+  ScroeStateList:
+  - {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
+  - {fileID: 8220573634043099456, guid: a1ed6f22b3d10c0499a06d458a4021ab, type: 3}
+  - {fileID: 8220573634043099456, guid: a1ed6f22b3d10c0499a06d458a4021ab, type: 3}
+  - {fileID: 8220573634043099456, guid: a1ed6f22b3d10c0499a06d458a4021ab, type: 3}
+  - {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
   score: 0
   comboScore: 0
   fadeDuration: 2
@@ -17165,13 +17169,18 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4352
-  BoxSize: {x: 3, y: 3, z: 3}
-  BoxSize_Perfect: {x: 0.1, y: 0.1, z: 0.1}
+  BoxSize:
+  - {x: 1, y: 1, z: 1}
+  - {x: 1.5, y: 1.5, z: 1}
+  - {x: 1, y: 1, z: 0}
+  - {x: 1, y: 1, z: 0}
   Tr_Pos:
   - {fileID: 514379562}
   - {fileID: 2046699415}
   - {fileID: 581278213}
   Speed: 100
+  EarlyX: 1.3
+  LateX: -1.3
   AttackState: 3
 --- !u!1 &1618182508
 GameObject:
@@ -20912,7 +20921,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionPanel: {fileID: 878702052}
-  attackPoints: {fileID: 383832944}
   scoreTxt_1: {fileID: 820386160}
   scoreTxt_2: {fileID: 1730673837}
   combo: {fileID: 1744640698}
@@ -20920,11 +20928,7 @@ MonoBehaviour:
   comboTxt_2: {fileID: 889040488}
   UpperPanel: {fileID: 1534680385}
   lowerPanel: {fileID: 715426368}
-  upperPosition: -50
-  fillAmount: {fileID: 0}
   instructionPanelActivationTime: 1.5
-  comboScore: 0
-  gameScore: 0
 --- !u!4 &1926204094
 Transform:
   m_ObjectHideFlags: 0

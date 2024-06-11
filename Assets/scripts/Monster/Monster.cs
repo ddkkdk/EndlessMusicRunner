@@ -66,7 +66,7 @@ public class Monster : Entity
         Destroy(opsFx, 0.2f);
     }
 
-    public void SetHit(bool perfect)
+    public void SetHit(ScoreManager.E_ScoreState perfect)
     {
         Ac_Hit?.Invoke();
         MonsterDamage(1);

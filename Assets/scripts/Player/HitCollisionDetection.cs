@@ -9,8 +9,7 @@ public class HitCollisionDetection : MonoBehaviour
     public GameObject hitEffect;
     public GameObject[] destroyParticleEffects;
     public GameObject puffEffect;
-    public GameObject perfectTxtEffect;
-    public GameObject greatTxtEffect;
+    public GameObject[] ScroeStateList;
     public int score;
     public int comboScore;
     [Range(0.2f, 10f)]
@@ -36,24 +35,18 @@ public class HitCollisionDetection : MonoBehaviour
     }
 
 
-    void SetBoss(GameObject obj, bool perfect)
+    void SetBoss(GameObject obj, ScoreManager.E_ScoreState perfect)
     {
         SetEffect(obj, perfect);
     }
 
-    void SetEffect(GameObject obj, bool perfect)
+    void SetEffect(GameObject obj, ScoreManager.E_ScoreState perfect)
     {
         AudioManager.instance.PlaySound();
         ScoreManager.instance.SetCombo_Add();
         ScoreManager.instance.SetCurrentScore();
-
-        var txteffects = greatTxtEffect;
-
-        if (perfect)
-        {
-            txteffects = perfectTxtEffect;
-        }
-
+    
+        var txteffects = ScroeStateList[(int)perfect];
         var hitPoint = obj.transform.position;
 
         GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
@@ -66,17 +59,17 @@ public class HitCollisionDetection : MonoBehaviour
         MoveUPword(txtobject, hitPoint);
     }
 
-    public void SetHit(GameObject obj, bool perfact)
+    public void SetHit(GameObject obj, ScoreManager.E_ScoreState state)
     {
         var tag = obj.tag;
-
+        ScoreManager.instance.SetScoreState(state);
         if (obj.tag == "Monster")
         {
-            SetEffect(obj, perfact);
+            SetEffect(obj, state);
         }
         else if (obj.tag == "Boss")
         {
-            SetBoss(obj, perfact);
+            SetBoss(obj, state);
         }
     }
 
