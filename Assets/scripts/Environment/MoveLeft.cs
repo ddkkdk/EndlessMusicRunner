@@ -11,13 +11,15 @@ public class MoveLeft : MonoBehaviour
     float DelayTime = 3;
     [SerializeField] float DestoryX;
 
+    public UniqMonster uniqMonster;
+
     bool EndTimes;
     void Update()
     {
         // 오브젝트를 왼쪽으로 이동
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
-        if (SendBack)
+        if (SendBack || uniqMonster == UniqMonster.SendBack)
         {
             // EndTimes가 true이면 속도를 20으로 설정하고 종료
             if (EndTimes)

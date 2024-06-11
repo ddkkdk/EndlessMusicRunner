@@ -1,0 +1,7 @@
+{
+  "MID":[0,0,0],
+  "MonsterInfo":[0,1,0],
+  "MonsterSpwanCount":[5,2,3],
+  "CoolTime":[0.5,0.7,1.25],
+  "Spwan_Position":[0,1,2]
+}

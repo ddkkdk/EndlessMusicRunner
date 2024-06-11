@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public Transform bossWaitPosition;
 
     public Transform lowerAttackPoint;
-    void Start()
+    void Awake()
     {
         if (instance != null)
         {
