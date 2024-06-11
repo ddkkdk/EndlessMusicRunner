@@ -161,7 +161,6 @@ public class Boss : MonoBehaviour
             // GameObject sPoint = GameObject.Find("SpawnPoint_3");
             //sPoint.SetActive(false);
             var obj = Instantiate(G_Pattern[AttackIdx], spawnPoint.transform.position, Quaternion.identity);
-            print("제거" + " / " + obj.name);
             Destroy(obj, 10);
             AttackIdx++;
         }

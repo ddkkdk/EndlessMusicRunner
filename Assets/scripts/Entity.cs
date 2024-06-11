@@ -35,8 +35,6 @@ public class Entity : MonoBehaviour
 
     }
 
-
-
     public virtual void Damage(int damageAmount)
     {
         currentHealth -= damageAmount;
@@ -44,14 +42,14 @@ public class Entity : MonoBehaviour
             SecenManager.LoadScene("UIScene");
 
         SetHealthBar();
-        FlashFx.Instance.callFlash();
+        PlayerSystem.SetPlayerAni(PlayerSystem.E_AniType.Hit);
         AudioManager.instance.PlayerHItSound();
-
     }
 
-    public void MonsterDamage(int damageAmount)
+    public bool MonsterDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        return currentHealth <= 0;
     }
 
     public void SetHealthBar()

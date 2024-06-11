@@ -35,31 +35,6 @@ public class HitCollisionDetection : MonoBehaviour
 
     }
 
-    void SetMontser(GameObject obj, bool perfect)
-    {
-        var monster = obj.GetComponent<Monster>();
-        monster?.MonsterDamage(1);
-
-        //콤보
-        SetEffect(obj, perfect);
-
-        if (monster.currentHealth > 0)
-        {
-            return;
-        }
-
-        obj.GetComponent<Collider2D>().enabled = false;
-        obj.GetComponent<Rigidbody2D>().isKinematic = false;
-        obj.GetComponent<MoveLeft>().speed = 0;
-
-        float position = obj.transform.position.y;
-
-        if (position > -8)
-        {
-            //Debug.Log("Hit Upper");
-            obj.GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
-        }
-    }
 
     void SetBoss(GameObject obj, bool perfect)
     {
@@ -97,7 +72,7 @@ public class HitCollisionDetection : MonoBehaviour
 
         if (obj.tag == "Monster")
         {
-            SetMontser(obj, perfact);
+            SetEffect(obj, perfact);
         }
         else if (obj.tag == "Boss")
         {

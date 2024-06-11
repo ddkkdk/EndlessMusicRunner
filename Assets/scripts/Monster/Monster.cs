@@ -11,9 +11,10 @@ public class Monster : Entity
     [SerializeField] bool Change;
     [SerializeField] SkeletonDataAsset[] Sk;
     [SerializeField] SkeletonAnimation My;
-
     bool _Attack;
 
+    public System.Action Ac_Hit;
+    public System.Action Ac_Die;
     private void Start()
     {
         if (Change)
@@ -43,6 +44,7 @@ public class Monster : Entity
         {
             return;
         }
+
         _Attack = true;
         player.Damage(damageAmount);
         GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
@@ -53,10 +55,39 @@ public class Monster : Entity
 
     public void SetHit(bool perfect)
     {
+        Ac_Hit?.Invoke();
+        MonsterDamage(1);
         _Attack = true;
         HitCollisionDetection.Instance.SetHit(this.gameObject, perfect);
+        SetDie(currentHealth <= 0);
     }
 
+    public void SetDie(bool checkdie)
+    {
+        if (!checkdie)
+        {
+            return;
+        }
+        Ac_Die?.Invoke();
+
+        SetNoneAttack();
+        GetComponent<Rigidbody2D>().isKinematic = false;
+        GetComponent<MoveLeft>().speed = 0;
+        float position = transform.position.y;
+
+        if (position > -8)
+        {
+            //Debug.Log("Hit Upper");
+            GetComponent<Rigidbody2D>().AddForce(-transform.up * 50, ForceMode2D.Impulse);
+        }
+
+        Destroy(this.gameObject, 1f);
+    }
+
+    public void SetNoneAttack()
+    {
+        GetComponent<Collider2D>().enabled = false;
+    }
 
     public void HitMoveAnimation(GameObject hitFx, Vector2 hitPoint)
     {

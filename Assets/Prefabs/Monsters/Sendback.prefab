@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5927427790796393986}
   - component: {fileID: 5983066574386384427}
   - component: {fileID: -801326969565561563}
+  - component: {fileID: 8021584260136955554}
   m_Layer: 8
   m_Name: Sendback
   m_TagString: Monster
@@ -227,6 +228,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   monsterNumber: 17
-  SendBack: 1
-  OffSetX: 3
   DestoryX: 0
+--- !u!114 &8021584260136955554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927427790796394008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a52f293ea4ab06459dfdf2ab9db6919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  M_MoveLeft: {fileID: -801326969565561563}
+  monster: {fileID: 5927427790796393986}
+  OffSetX: 3

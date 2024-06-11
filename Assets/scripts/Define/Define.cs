@@ -27,7 +27,12 @@ public static class Define
 
         if (loop == false)
         {
-            skeletonAnimation.AnimationState.AddAnimation(0, "Running", true, delay); // 찾은 딜레이 값을 AddAnimation에 적용
+            var ani = "Running";
+            if (animationString == "fire attack")
+            {
+                ani = "fly";
+            }
+            skeletonAnimation.AnimationState.AddAnimation(0, ani, true, delay); // 찾은 딜레이 값을 AddAnimation에 적용
         }
     }
 }

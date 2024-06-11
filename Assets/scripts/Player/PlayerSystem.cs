@@ -22,6 +22,7 @@ public class PlayerSystem : Entity
         Tail_Attack,
         Fire_Attack,
         Hold_Attack,
+        Hit,
     }
 
     public enum E_AttackState
@@ -32,6 +33,13 @@ public class PlayerSystem : Entity
         Attack_Re//다시 공격 가능 상태
     }
 
+    public enum E_AttackPoint
+    {
+        Down,
+        Up,
+        Middle
+    }
+
     List<string> L_AniStr = new List<string>()
     {
         "Running",
@@ -40,11 +48,12 @@ public class PlayerSystem : Entity
         "tail attack",
         "fire attack",
         "tail attack2",
+        "Hit",
     };
 
     int AttackCount = 0;
     public E_AttackState AttackState = E_AttackState.None;
-    int MoveIdx = 0;
+    E_AttackPoint MoveIdx = 0;
     int CheckAttackF_J = 0;
     float Delay = 2f;
     float DownDelay = 1f;
@@ -68,7 +77,6 @@ public class PlayerSystem : Entity
         HoldDelay -= Time.deltaTime;
         if (Input.GetKey(KeyCode.F) && CheckAttackState())
         {
-
             SetAttack_Idx(1, 0);
             AttackState = SetAttack(1);
 
@@ -114,9 +122,17 @@ public class PlayerSystem : Entity
             AttackCount = 0;
         }
         CheckAttackF_J = idx;
-        MoveIdx = idx;
         Delay = 2;
         DownDelay = 1;
+        if (MoveIdx != E_AttackPoint.Middle)
+        {
+            SetDirectMoveIdx((E_AttackPoint)idx);
+        }
+    }
+
+    public void SetDirectMoveIdx(E_AttackPoint idx)
+    {
+        MoveIdx = idx;
     }
 
     void Reset()
@@ -130,12 +146,12 @@ public class PlayerSystem : Entity
         if (DownDelay <= 0)
         {
             DownDelay = 1;
-            MoveIdx = 0;
+            SetDirectMoveIdx(E_AttackPoint.Down);
             SetAni(E_AniType.Running);
         }
 
         // 목표 위치 가져오기
-        var targetPos = Tr_Pos[MoveIdx];
+        var targetPos = Tr_Pos[(int)MoveIdx];
         var targetY = targetPos.position.y;
         var targetZ = targetPos.position.z;
 
@@ -158,7 +174,6 @@ public class PlayerSystem : Entity
     //Attack
     E_AttackState SetAttack(int idx)
     {
-
         var result_hit = SetHit(idx);
 
         var col = result_hit.Item1;
@@ -172,7 +187,6 @@ public class PlayerSystem : Entity
 
         foreach (var item in col)
         {
-            print(item.gameObject.name);
             //몬스터 일때 처리
             var monster = item.GetComponent<Monster>();
             var result = SetMonster(monster, perfect);
@@ -233,7 +247,6 @@ public class PlayerSystem : Entity
         {
             return false;
         }
-        print("몬스터 공격");
         monster.SetHit(perfect);
         return true;
     }
@@ -244,7 +257,6 @@ public class PlayerSystem : Entity
         {
             return false;
         }
-        print("보스 공격");
         boss.SetHit(perfect);
         return true;
     }
@@ -255,7 +267,6 @@ public class PlayerSystem : Entity
         {
             return false;
         }
-        print("롱노트 공격");
         longnote.SetAttack();
         return true;
     }
