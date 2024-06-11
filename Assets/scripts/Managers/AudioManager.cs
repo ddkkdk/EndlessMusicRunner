@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
-        DisplayBackgroundMusicTime();
+       
     }
     private void DisplayBackgroundMusicTime()
     {
@@ -55,5 +55,10 @@ public class AudioManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(currentTime / 60);
         int seconds = Mathf.FloorToInt(currentTime % 60);
         Debug.Log($"Background music playing for {minutes}:{seconds:00}");
+    }
+
+    public void StopMusic()
+    {
+       Audio_BackGround.Stop();
     }
 }

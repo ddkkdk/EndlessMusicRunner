@@ -45,9 +45,15 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        if (isCompletedSpawn )
         {
-            Boss.Create();
+            gameOverTime += Time.deltaTime;
+
+            if(gameOverTime >=2.5f)
+            {
+                AudioManager.instance.StopMusic();
+                UI_GameOver.Create();
+            }    
         }
     }
 
@@ -65,14 +71,16 @@ public class SpawnManager : MonoBehaviour
     public bool isCreatBoss = false;
 
     public bool isTestTableSpawn = false;
+    bool isCompletedSpawn = false;
+    float gameOverTime = 0f;
     IEnumerator SpawnMonstersAtRandomPos()
     {
 
-        if (monster.Count == 0)
-        {
+        //if (monster.Count == 0)
+        //{
 
-            yield break;
-        }
+        //    yield break;
+        //}
 
         //if (!isCreatBoss)
         //{
@@ -149,13 +157,17 @@ public class SpawnManager : MonoBehaviour
                 }
                 idx++;
             }
-            var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
+            var bossPosition = Vector3.zero;
+            bossPosition.x = -40;
+            
             counting++;
             Debug.Log($"몬스터재시작 {counting}");
             if(counting ==2)
             {
+                isCompletedSpawn = true;
                 yield break;
             }
+            var obj = Instantiate(bossPrefab, bossPosition, Quaternion.identity);
         }
 
     }
