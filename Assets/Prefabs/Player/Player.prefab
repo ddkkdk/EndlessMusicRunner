@@ -375,7 +375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skin_Names:
-  - default
   - skin0
   - skin1
   - skin2

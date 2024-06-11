@@ -54,15 +54,13 @@ public class UI_Lobby : MonoBehaviour
     }
     public void SetSkin()
     {
-        int temp = skinDropDown.value;
-        temp++;
-        playerSkinType = (PlayerSkinType)temp;
+        playerSkinType = (PlayerSkinType)skinDropDown.value;
     }
 }
 
 
 public enum PlayerSkinType
 {
-    None,Skin0,Skin1,Skin2,Skin3,
+    Skin0,Skin1,Skin2,Skin3,
     Skin4,Skin5,Skin6,skin7
 }
