@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -21,6 +22,10 @@ public class SpawnManager : MonoBehaviour
     private Transform spawnPoint;
 
     public GameObject bossPrefab;
+
+
+    public List<GameObject> monsterOBjects = new List<GameObject>();
+    public List<GameObject> bossObjects = new List<GameObject>();
     void Start()
     {
         if (instance != null)
@@ -71,58 +76,102 @@ public class SpawnManager : MonoBehaviour
         //    var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
 
         //}
+
+        #region Old MonsterSpwan
+        //while (true)
+        //{
+        //    for (int setIndex = 0; setIndex < monster.Count; setIndex++)
+        //    {
+        //        MonsterItem currentSet = monster[0];
+        //        for (int i = 0; i < currentSet.monster.Length; i++)
+        //        {
+        //            GameObject item = currentSet.monster[i];
+        //            //print(item.name);
+        //            int itemNumber = item.GetComponent<MoveLeft>().monsterNumber;
+
+        //            if (item != null)
+        //            {
+        //                if (isBuildTestingRandomMonster)
+        //                {
+        //                    int random = Random.Range(0, currentSet.monster.Length);
+        //                    if (random == 0 && itemNumber == 0 || itemNumber == 1 || itemNumber == 2 || itemNumber == 5 || itemNumber == 6
+        //                           || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
+        //                           || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
+        //                    {
+
+        //                        spawnPoint = spawnPoint_1;
+        //                    }
+        //                    else
+        //                        spawnPoint = spawnPoint_3;
+
+
+        //                }
+        //                if (i == 3)
+        //                    spawnPoint = spawnPoint_3;
+
+        //                GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
+        //                spawnedObjects.transform.SetParent(spawnObjects.transform);
+
+        //                yield return new WaitForSeconds(itemSpawnDelay);
+        //            }
+        //        }
+        //        CreatBossCounting++;
+        //        if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
+        //        {
+        //            isCreatBoss = true;
+        //            var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
+
+        //        }
+        //        yield return new WaitForSeconds(setSpawnDelay);
+        //    }
+
+        //    print("생성 완료");
+        //}
+        #endregion
+        Debug.Log("몬스터 시작");
         while (true)
         {
-            for (int setIndex = 0; setIndex < monster.Count; setIndex++)
+            var level = GameData.Data.LevelDesigin[StageInfo];
+            int idx = 0;
+            for(int i =0;i<level.Count;i++)
             {
-                MonsterItem currentSet = monster[0];
-                for (int i = 0; i < currentSet.monster.Length; i++)
+                var monsterInfo = GameData.Data.MonsterTable[level[idx].MonsterInfo];
+                for(int j = 0; j < level[idx].MonsterSpwanCount;++j)
                 {
-                    GameObject item = currentSet.monster[i];
-                    //print(item.name);
-                    int itemNumber = item.GetComponent<MoveLeft>().monsterNumber;
+                    MonsterSpwan(monsterInfo, (MonsterSpwanPosition)level[idx].Spwan_Position);
 
-                    if (item != null)
-                    {
-                        if (isBuildTestingRandomMonster)
-                        {
-                            int random = Random.Range(0, currentSet.monster.Length);
-                            if (random == 0 && itemNumber == 0 || itemNumber == 1 || itemNumber == 2 || itemNumber == 5 || itemNumber == 6
-                                   || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
-                                   || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
-                            {
-
-                                spawnPoint = spawnPoint_1;
-                            }
-                            else
-                                spawnPoint = spawnPoint_3;
-
-
-                        }
-                        if (i == 3)
-                            spawnPoint = spawnPoint_3;
-
-                        GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
-                        spawnedObjects.transform.SetParent(spawnObjects.transform);
-
-                        yield return new WaitForSeconds(itemSpawnDelay);
-                    }
+                    yield return new WaitForSeconds(level[idx].CoolTime);
                 }
-                CreatBossCounting++;
-                if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
-                {
-                    isCreatBoss = true;
-                    var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
-
-                }
-                yield return new WaitForSeconds(setSpawnDelay);
+                idx++;
             }
-
-            print("생성 완료");
+            Debug.Log("몬스터 끝");
+            yield break;
         }
 
-
-
     }
+    public int StageInfo = 0;
+    public void MonsterSpwan(C_MonsterTable t, MonsterSpwanPosition spwanPosition)
+    {
+        //var t = GameData.Data.MonsterTable[idx];
+        string prefab = string.Empty;
+        if (t.monsterType == Monster_Type.Normal)
+            prefab = monsterOBjects[t.PrefabName].name;
+        else if (t.monsterType == Monster_Type.Boss)
+            prefab = bossObjects[t.PrefabName].name;
 
+        var MySpwanPoint = spawnPoint_1;
+        switch(spwanPosition)
+        {
+            case MonsterSpwanPosition.Down:
+                MySpwanPoint = spawnPoint_3;
+                break;
+            case MonsterSpwanPosition.Random:
+                int random = Random.Range(0, 2);
+                if (random == 1)
+                    MySpwanPoint = spawnPoint_3;
+                break;
+        }
+        Monster.Create("Monster", prefab, MySpwanPoint, t.MaxHp, t.Speed, t.Uniq_MonsterType);
+    }
 }
+

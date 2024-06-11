@@ -1,0 +1,11 @@
+{
+  "M_ID":[0,1],
+  "Monster_Type":[0,0],
+  "PrefabName":[0,1],
+  "Uniq_MonsterType":[0,0],
+  "MaxHp":[1,1],
+  "Damage":[5,5],
+  "Speed":[20,20],
+  "Skill_1":[0,0],
+  "Skill_2":[0,0]
+}

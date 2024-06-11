@@ -7,7 +7,7 @@ public class UI_Lobby : MonoBehaviour
     [SerializeField] GameObject G_Pause;
     [SerializeField] TextMeshProUGUI T_Type;
     public static bool Type;
-    public static PlayerSkinType playerSkinType = PlayerSkinType.Skin1;
+    public static PlayerSkinType playerSkinType = PlayerSkinType.Skin0;
 
     private void Start()
     {

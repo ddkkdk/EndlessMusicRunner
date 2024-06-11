@@ -20206,7 +20206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 8323912bc1ad603498b7fd4c39dc4cc8, type: 2}
-  initialSkinName: skin6
+  initialSkinName: skin0
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0

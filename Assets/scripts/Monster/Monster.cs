@@ -3,6 +3,7 @@ using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Monster : Entity
 {
@@ -12,6 +13,19 @@ public class Monster : Entity
     [SerializeField] SkeletonDataAsset[] Sk;
     [SerializeField] SkeletonAnimation My;
     bool _Attack;
+    public static void Create(string folderName,string name,Transform CreatePos,int hp,int speed, UniqMonster Uniq_MonsterType)
+    {
+        string path = $"{folderName}/{name}";
+        var load = Resources.Load<GameObject>(path);
+        var monster = Instantiate<GameObject>(load);
+        var monsterValue = monster.GetComponent<Monster>();
+        monsterValue.maxHealth = hp;
+        var monsterValue2 = monster.GetComponent<MoveLeft>(); 
+        monsterValue2.speed = speed;
+        monsterValue2.uniqMonster = Uniq_MonsterType;
+        monster.transform.position = CreatePos.position;
+       
+    }
 
     public System.Action Ac_Hit;
     public System.Action Ac_Die;
@@ -92,4 +106,13 @@ public class Monster : Entity
     {
         hitFx.transform.DOMoveY(hitPoint.y + 5, 0.5f).SetEase(Ease.OutBounce);
     }
+}
+
+public enum UniqMonster
+{
+    Normal,SendBack,
+}
+public enum Monster_Type
+{
+    Normal,Boss
 }
