@@ -833,6 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c217aad23221e8459726eec99d0de71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinDropDown: {fileID: 0}
   G_Pause: {fileID: 1937510962}
   T_Type: {fileID: 0}
 --- !u!1 &58511435
@@ -20553,6 +20554,7 @@ GameObject:
   - component: {fileID: 1878545309}
   - component: {fileID: 1878545308}
   - component: {fileID: 1878545307}
+  - component: {fileID: 1878545310}
   m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
@@ -20590,8 +20592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 4d6dbdb187e6adc4abe6ccda624a70fe, type: 2}
-  initialSkinName: 
+  skeletonDataAsset: {fileID: 11400000, guid: 8323912bc1ad603498b7fd4c39dc4cc8, type: 2}
+  initialSkinName: skin6
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0
@@ -20638,7 +20640,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 43dd2022f8d213e4e9e71f3426b98925, type: 2}
+  - {fileID: 2100000, guid: b79ed8437041daa46955e382ae9b39c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20668,6 +20670,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878545305}
   m_Mesh: {fileID: 0}
+--- !u!114 &1878545310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878545305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f8caf96117b642b39ab58708b5eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin_Names:
+  - default
+  - skin0
+  - skin1
+  - skin2
+  - skin3
+  - skin4
+  - skin5
+  - skin6
+  - skin7
 --- !u!1 &1879288861
 GameObject:
   m_ObjectHideFlags: 0
