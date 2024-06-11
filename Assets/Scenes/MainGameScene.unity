@@ -3447,9 +3447,16 @@ MonoBehaviour:
   spawnPoint_3: {fileID: 962744005}
   startSpawn: 0
   bossPrefab: {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
+  monsterOBjects:
+  - {fileID: 1768767069754803484, guid: aadad9fd2c648c648984fa1ae2bdca51, type: 3}
+  - {fileID: 5629541656628589791, guid: c457964665b6f994496a2e5b317fa8e3, type: 3}
+  bossObjects:
+  - {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
   isBuildTestingRandomMonster: 1
   CreatBossCounting: 0
-  isCreatBoss: 0
+  isCreatBoss: 1
+  isTestTableSpawn: 1
+  StageInfo: 0
 --- !u!4 &342117586
 Transform:
   m_ObjectHideFlags: 0
@@ -8691,6 +8698,7 @@ GameObject:
   - component: {fileID: 827244270}
   - component: {fileID: 827244269}
   - component: {fileID: 827244272}
+  - component: {fileID: 827244273}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8763,6 +8771,18 @@ MonoBehaviour:
   comboScore: 0
   fadeDuration: 2
   HitAnimation: 
+--- !u!114 &827244273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827244268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5a373287ed0ac44a8bbf34b169f8d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &827777708
 GameObject:
   m_ObjectHideFlags: 0
