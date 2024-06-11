@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class UI_Lobby : MonoBehaviour
 {
+    [SerializeField] TMP_Dropdown skinDropDown;
     [SerializeField] GameObject G_Pause;
     [SerializeField] TextMeshProUGUI T_Type;
     public static bool Type;
+    public static PlayerSkinType playerSkinType = PlayerSkinType.Skin1;
 
     private void Start()
     {
@@ -50,6 +52,17 @@ public class UI_Lobby : MonoBehaviour
         }
         T_Type.text = text;
     }
-
+    public void SetSkin()
+    {
+        int temp = skinDropDown.value;
+        temp++;
+        playerSkinType = (PlayerSkinType)temp;
+    }
 }
 
+
+public enum PlayerSkinType
+{
+    None,Skin0,Skin1,Skin2,Skin3,
+    Skin4,Skin5,Skin6,skin7
+}
