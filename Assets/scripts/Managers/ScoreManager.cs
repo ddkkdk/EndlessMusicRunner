@@ -33,6 +33,27 @@ public class ScoreManager : MonoBehaviour
         Miss
     }
 
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(this.gameObject);
+
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
+
+    public void ScoreReset()
+    {
+        CurrentScore = 0;
+        CurrentCombo = 0;
+        BestCombo = 0;
+    }
+
     //최고 콤보 가져오기
     public int GetBestCombo()
     {
@@ -80,13 +101,14 @@ public class ScoreManager : MonoBehaviour
     }
 
     //최고 점수 바꾸기
-    public void SetBestScore()
+    public bool SetBestScore()
     {
         if (CurrentScore < BestScore)
         {
-            return;
+            return false;
         }
         BestScore = CurrentScore;
+        return true;
     }
 
     //각 상태별 횟수 가져오기
