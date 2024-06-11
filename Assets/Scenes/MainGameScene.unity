@@ -3388,7 +3388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monster:
   - monster:
-    - {fileID: 1768767069754803484, guid: b7e08521cfea5a24299fca6ffdda9979, type: 3}
+    - {fileID: 5927427790796394008, guid: 07deae699534405428311ed97ec1cc13, type: 3}
     - {fileID: 5629541656628589791, guid: 02d7063ba6de34047a99b6b8b7c4e934, type: 3}
     - {fileID: 5151318159573600705, guid: b3c96dccf4d271449bff9d55fab4a903, type: 3}
     - {fileID: 1450675091563296711, guid: 052c6b7c7af29e44c9809e5269231bd9, type: 3}
@@ -22458,9 +22458,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: fillAmount
       value: 
       objectReference: {fileID: 605063367}
+    - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: BoxCol.Array.data[0]
       value: 
