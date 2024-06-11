@@ -39,12 +39,13 @@ public class Entity : MonoBehaviour
     {
         ScoreManager.instance.SetBestCombo_Reset();
         currentHealth -= damageAmount;
-        if (currentHealth <= 0)
-            SecenManager.LoadScene("UIScene");
-
         SetHealthBar();
         PlayerSystem.SetPlayerAni(PlayerSystem.E_AniType.Hit);
         AudioManager.instance.PlayerHItSound();
+        if (currentHealth <= 0)
+        {
+            UI_GameOver.Create();
+        }
     }
 
     public bool MonsterDamage(int damageAmount)

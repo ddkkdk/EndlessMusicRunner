@@ -4,9 +4,14 @@ using UnityEngine.UI;
 
 public class UI_GameOver : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI[] T_TextList;
-    [SerializeField] GameObject[] Raring;
+    const string Name = "GameOver/@UI_GameOver";
+    public static void Create()
+    {
+        var obj = Resources.Load<GameObject>(Name);
+        Instantiate<GameObject>(obj);
+    }
 
+    [SerializeField] TextMeshProUGUI[] T_TextList;
     private void Start()
     {
         SetName();
@@ -36,27 +41,27 @@ public class UI_GameOver : MonoBehaviour
 
         var accuracy = (float)maxcount / (float)count;
 
-        T_TextList[3].text = accuracy.ToString();
+        T_TextList[3].text = "정확도 : " + accuracy.ToString();
     }
 
     void SetBestCombo()
     {
-        T_TextList[4].text = ScoreManager.instance.GetBestCombo().ToString();
+        T_TextList[4].text = "최고 콤보수\n" + ScoreManager.instance.GetBestCombo().ToString();
     }
 
     void SetScoreState()
     {
-        T_TextList[5].text = ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Perfect).ToString();
-        T_TextList[6].text = ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Great).ToString();
-        T_TextList[7].text = ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Early).ToString();
-        T_TextList[8].text = ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Late).ToString();
-        T_TextList[9].text = ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Pass).ToString();
-        T_TextList[10].text = ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Miss).ToString();
+        T_TextList[5].text = "PERFECT : " + ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Perfect).ToString();
+        T_TextList[6].text = "GREAT : " + ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Great).ToString();
+        T_TextList[7].text = "EARLY : " + ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Early).ToString();
+        T_TextList[8].text = "LATE : " + ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Late).ToString();
+        T_TextList[9].text = "PASS : " + ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Pass).ToString();
+        T_TextList[10].text = "MISS : " + ScoreManager.instance.GetScoreState_Count(ScoreManager.E_ScoreState.Miss).ToString();
     }
 
     void SetRating()
     {
-        Raring[0].SetActive(true);
+        T_TextList[11].text = "S";
     }
 
     public void Btn_Exit()

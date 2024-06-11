@@ -494,8 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6999f0b967a573468f50aec485f76b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  currentHealth: 200
+  maxHealth: 1
+  currentHealth: 1
   fillAmount: {fileID: 0}
   isOnGround: 1
   M_SkeletonAnimation: {fileID: 1236657713761570640}
