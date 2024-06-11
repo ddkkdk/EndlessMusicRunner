@@ -61,6 +61,8 @@ public class SpawnManager : MonoBehaviour
     public int CreatBossCounting = 0;
     public readonly int CreatBossCountingDuration = 2;
     public bool isCreatBoss = false;
+
+    public bool isTestTableSpawn = false;
     IEnumerator SpawnMonstersAtRandomPos()
     {
 
@@ -78,58 +80,58 @@ public class SpawnManager : MonoBehaviour
         //}
 
         #region Old MonsterSpwan
-        //while (true)
-        //{
-        //    for (int setIndex = 0; setIndex < monster.Count; setIndex++)
-        //    {
-        //        MonsterItem currentSet = monster[0];
-        //        for (int i = 0; i < currentSet.monster.Length; i++)
-        //        {
-        //            GameObject item = currentSet.monster[i];
-        //            //print(item.name);
-        //            int itemNumber = item.GetComponent<MoveLeft>().monsterNumber;
+        while (true && !isTestTableSpawn)
+        {
+            for (int setIndex = 0; setIndex < monster.Count; setIndex++)
+            {
+                MonsterItem currentSet = monster[0];
+                for (int i = 0; i < currentSet.monster.Length; i++)
+                {
+                    GameObject item = currentSet.monster[i];
+                    //print(item.name);
+                    int itemNumber = item.GetComponent<MoveLeft>().monsterNumber;
 
-        //            if (item != null)
-        //            {
-        //                if (isBuildTestingRandomMonster)
-        //                {
-        //                    int random = Random.Range(0, currentSet.monster.Length);
-        //                    if (random == 0 && itemNumber == 0 || itemNumber == 1 || itemNumber == 2 || itemNumber == 5 || itemNumber == 6
-        //                           || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
-        //                           || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
-        //                    {
+                    if (item != null)
+                    {
+                        if (isBuildTestingRandomMonster)
+                        {
+                            int random = Random.Range(0, currentSet.monster.Length);
+                            if (random == 0 && itemNumber == 0 || itemNumber == 1 || itemNumber == 2 || itemNumber == 5 || itemNumber == 6
+                                   || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
+                                   || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
+                            {
 
-        //                        spawnPoint = spawnPoint_1;
-        //                    }
-        //                    else
-        //                        spawnPoint = spawnPoint_3;
+                                spawnPoint = spawnPoint_1;
+                            }
+                            else
+                                spawnPoint = spawnPoint_3;
 
 
-        //                }
-        //                if (i == 3)
-        //                    spawnPoint = spawnPoint_3;
+                        }
+                        if (i == 3)
+                            spawnPoint = spawnPoint_3;
 
-        //                GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
-        //                spawnedObjects.transform.SetParent(spawnObjects.transform);
+                        GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
+                        spawnedObjects.transform.SetParent(spawnObjects.transform);
 
-        //                yield return new WaitForSeconds(itemSpawnDelay);
-        //            }
-        //        }
-        //        CreatBossCounting++;
-        //        if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
-        //        {
-        //            isCreatBoss = true;
-        //            var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
+                        yield return new WaitForSeconds(itemSpawnDelay);
+                    }
+                }
+                CreatBossCounting++;
+                if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
+                {
+                    isCreatBoss = true;
+                    var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
 
-        //        }
-        //        yield return new WaitForSeconds(setSpawnDelay);
-        //    }
+                }
+                yield return new WaitForSeconds(setSpawnDelay);
+            }
 
-        //    print("생성 완료");
-        //}
+            print("생성 완료");
+        }
         #endregion
         Debug.Log("몬스터 시작");
-        while (true)
+        while (true && isTestTableSpawn)
         {
             var level = GameData.Data.LevelDesigin[StageInfo];
             int idx = 0;
