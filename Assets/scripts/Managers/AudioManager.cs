@@ -45,4 +45,15 @@ public class AudioManager : MonoBehaviour
 
         audioSource.PlayOneShot(ouch_1, 0.1f);
     }
+    private void Update()
+    {
+        DisplayBackgroundMusicTime();
+    }
+    private void DisplayBackgroundMusicTime()
+    {
+        float currentTime = Audio_BackGround.time;
+        int minutes = Mathf.FloorToInt(currentTime / 60);
+        int seconds = Mathf.FloorToInt(currentTime % 60);
+        Debug.Log($"Background music playing for {minutes}:{seconds:00}");
+    }
 }

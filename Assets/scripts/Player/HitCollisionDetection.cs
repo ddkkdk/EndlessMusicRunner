@@ -54,7 +54,8 @@ public class HitCollisionDetection : MonoBehaviour
 
         StartCoroutine(OpacityChange(txtobject));
 
-        HIttingEffects(obj, hitPoint);
+        if(!obj.name.Contains("Boss"))
+            HIttingEffects(obj, hitPoint);
 
         MoveUPword(txtobject, hitPoint);
     }

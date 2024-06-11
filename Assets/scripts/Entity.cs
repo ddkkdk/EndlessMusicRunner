@@ -44,6 +44,7 @@ public class Entity : MonoBehaviour
         AudioManager.instance.PlayerHItSound();
         if (currentHealth <= 0)
         {
+            SpawnManager.instance.StopAllCoroutines();
             UI_GameOver.Create();
         }
     }

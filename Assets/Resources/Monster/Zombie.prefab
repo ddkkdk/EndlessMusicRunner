@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 5927427790796394014}
   - component: {fileID: 5927427790796394015}
   - component: {fileID: 5927427790796393987}
+  - component: {fileID: 5927427790796393985}
   - component: {fileID: 5927427790796393986}
+  - component: {fileID: -7034009947147531928}
   - component: {fileID: 5983066574386384427}
-  - component: {fileID: -801326969565561563}
-  - component: {fileID: 8021584260136955554}
   m_Layer: 8
-  m_Name: Sendback
+  m_Name: Zombie
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 5927427790796394008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.19808847}
+  m_LocalPosition: {x: 3.12, y: -2.97, z: 0}
+  m_LocalScale: {x: 0.19808847, y: 0.19808847, z: 0.19808847}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3a8ff05d85016964484e2f64b0077e59, type: 2}
+  - {fileID: 2100000, guid: a1283023602eae64094e5f070983bc06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: d88db6dd076665a4fb1f08c7137ad370, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 077fcd47029a1ed418ef4d87bdad0dc5, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -161,9 +161,26 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 4.74}
+  m_Offset: {x: -1.29, y: 5.49}
   serializedVersion: 2
   m_Radius: 4.08
+--- !u!114 &5927427790796393985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927427790796394008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76197c701dba3554588f057ef2c81496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  monsterNumber: 17
+  SendBack: 0
+  OffSetX: 0
+  DestoryX: 0
 --- !u!114 &5927427790796393986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,17 +193,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf14aa19107eee946b6e8380e33102ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  currentHealth: 5
+  maxHealth: 0
+  currentHealth: 0
   fillAmount: {fileID: 0}
   isOnGround: 1
   damageAmount: 10
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
   Change: 1
   Sk:
-  - {fileID: 11400000, guid: d88db6dd076665a4fb1f08c7137ad370, type: 2}
-  - {fileID: 11400000, guid: c251158bf1edc6e4fa4948f9a2aca768, type: 2}
+  - {fileID: 11400000, guid: 077fcd47029a1ed418ef4d87bdad0dc5, type: 2}
+  - {fileID: 11400000, guid: 6fd0c7d80f0075240ae8a896fb98ecb5, type: 2}
   My: {fileID: 5927427790796394015}
+--- !u!114 &-7034009947147531928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927427790796394008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6895d7b20e027314489d15257b93cbc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioNumber: 2
 --- !u!50 &5983066574386384427
 Rigidbody2D:
   serializedVersion: 4
@@ -214,34 +244,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &-801326969565561563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927427790796394008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76197c701dba3554588f057ef2c81496, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  monsterNumber: 17
-  DestoryX: 0
-  uniqMonster: 0
---- !u!114 &8021584260136955554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927427790796394008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a52f293ea4ab06459dfdf2ab9db6919, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  M_MoveLeft: {fileID: -801326969565561563}
-  monster: {fileID: 5927427790796393986}
-  OffSetX: 3

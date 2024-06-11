@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 5927427790796394014}
   - component: {fileID: 5927427790796394015}
   - component: {fileID: 5927427790796393987}
-  - component: {fileID: 5927427790796393985}
-  - component: {fileID: 5927427790796393986}
   - component: {fileID: 5983066574386384427}
   - component: {fileID: 709892467265065013}
   m_Layer: 12
@@ -67,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 65b88aef33039fc4d87a7494a8383d0a, type: 2}
+  - {fileID: 2100000, guid: 5b28db700a003364e85801d796104eab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,47 +159,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.5}
+  m_Offset: {x: 0, y: 1.5}
   serializedVersion: 2
-  m_Radius: 2.5
---- !u!114 &5927427790796393985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927427790796394008}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76197c701dba3554588f057ef2c81496, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  monsterNumber: 17
-  SendBack: 0
-  OffSetX: 0
-  DestoryX: 0
---- !u!114 &5927427790796393986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5927427790796394008}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf14aa19107eee946b6e8380e33102ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  fillAmount: {fileID: 0}
-  isOnGround: 1
-  damageAmount: 10
-  damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
-  Change: 0
-  Sk: []
-  My: {fileID: 0}
+  m_Radius: 3
 --- !u!50 &5983066574386384427
 Rigidbody2D:
   serializedVersion: 4
@@ -244,10 +204,7 @@ MonoBehaviour:
   speed: 50
   Damage: 5
   monsterMaxHp: 10
-  G_Pattern:
-  - {fileID: 2376462067880542252, guid: 42ade969904056a43b5e0e94b1d4963e, type: 3}
-  - {fileID: 2027002376000927764, guid: 37a0495d3ad7e244f96b67c01c410aad, type: 3}
-  - {fileID: 5927427790796394008, guid: 25fa8bc59d16fb3479cc86d751515cc7, type: 3}
+  G_Pattern: []
   Change: 1
   Sk:
   - {fileID: 11400000, guid: 2ae2e3660f3192d49a36eb4aa76fd62d, type: 2}

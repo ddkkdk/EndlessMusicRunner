@@ -3387,25 +3387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster:
-  - monster:
-    - {fileID: 1768767069754803484, guid: b7e08521cfea5a24299fca6ffdda9979, type: 3}
-    - {fileID: 5629541656628589791, guid: 02d7063ba6de34047a99b6b8b7c4e934, type: 3}
-    - {fileID: 5151318159573600705, guid: b3c96dccf4d271449bff9d55fab4a903, type: 3}
-    - {fileID: 1450675091563296711, guid: 052c6b7c7af29e44c9809e5269231bd9, type: 3}
-    - {fileID: 3909550831714088322, guid: b7a19ede863c3b2468abaae2938cf17d, type: 3}
-    - {fileID: 2819491545882889420, guid: 2e4ac1c67731fda44810669ec7c3ac1a, type: 3}
-    - {fileID: 4017503350375869807, guid: 629fcae51ee2b3347b2a68971eec23b6, type: 3}
-    - {fileID: 24179194683735109, guid: 2d4e438a961c7c2418a9eb309e2c94d7, type: 3}
-    - {fileID: 5388534414444513884, guid: 69717752b388bf24d8065e9429ccfdcf, type: 3}
-    - {fileID: 5807613031276573903, guid: 1c5ebf5ef15ed784592e5104f463b8ae, type: 3}
-    - {fileID: 1679112057939430794, guid: c980e77ed95b70749a83c231682b5cd5, type: 3}
-    - {fileID: 2376462067880542252, guid: 42ade969904056a43b5e0e94b1d4963e, type: 3}
-    - {fileID: 8655841565898487343, guid: 7ada345965a193c4d9233900fd0fa7ba, type: 3}
-    - {fileID: 5927427790796394008, guid: 095ea0b4605735744972671e312f36a4, type: 3}
-    - {fileID: 8755797267905834417, guid: c6a094e62acc8374c882212de40ab6a8, type: 3}
-    - {fileID: 5156434469478692734, guid: 4f284eb3ac29a2649b230369f4177e3a, type: 3}
-    - {fileID: 5927427790796394008, guid: 25fa8bc59d16fb3479cc86d751515cc7, type: 3}
-    - {fileID: 2027002376000927764, guid: 37a0495d3ad7e244f96b67c01c410aad, type: 3}
+  - monster: []
   - monster:
     - {fileID: 5629541656628589791, guid: 02d7063ba6de34047a99b6b8b7c4e934, type: 3}
   - monster:
@@ -3444,18 +3426,38 @@ MonoBehaviour:
   setSpawnDelay: 1.5
   spawnObjects: {fileID: 342545453}
   spawnPoint_1: {fileID: 256112964}
+  spwanPoint_2: {fileID: 559855131}
   spawnPoint_3: {fileID: 962744005}
+  bossSpawnPoint: {fileID: 774173652}
   startSpawn: 0
   bossPrefab: {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
   monsterOBjects:
   - {fileID: 1768767069754803484, guid: aadad9fd2c648c648984fa1ae2bdca51, type: 3}
   - {fileID: 5629541656628589791, guid: c457964665b6f994496a2e5b317fa8e3, type: 3}
+  - {fileID: 5151318159573600705, guid: b3c96dccf4d271449bff9d55fab4a903, type: 3}
+  - {fileID: 1450675091563296711, guid: 052c6b7c7af29e44c9809e5269231bd9, type: 3}
+  - {fileID: 3909550831714088322, guid: b7a19ede863c3b2468abaae2938cf17d, type: 3}
+  - {fileID: 2819491545882889420, guid: 2e4ac1c67731fda44810669ec7c3ac1a, type: 3}
+  - {fileID: 158793283704363192, guid: 0fca1f5f332f5944e8816ff6c76cd448, type: 3}
+  - {fileID: 4017503350375869807, guid: 629fcae51ee2b3347b2a68971eec23b6, type: 3}
+  - {fileID: 24179194683735109, guid: 2d4e438a961c7c2418a9eb309e2c94d7, type: 3}
+  - {fileID: 5388534414444513884, guid: 69717752b388bf24d8065e9429ccfdcf, type: 3}
+  - {fileID: 5807613031276573903, guid: 1c5ebf5ef15ed784592e5104f463b8ae, type: 3}
+  - {fileID: 1679112057939430794, guid: c980e77ed95b70749a83c231682b5cd5, type: 3}
+  - {fileID: 2376462067880542252, guid: 42ade969904056a43b5e0e94b1d4963e, type: 3}
+  - {fileID: 8655841565898487343, guid: 7ada345965a193c4d9233900fd0fa7ba, type: 3}
+  - {fileID: 5927427790796394008, guid: 095ea0b4605735744972671e312f36a4, type: 3}
+  - {fileID: 2027002376000927764, guid: 37a0495d3ad7e244f96b67c01c410aad, type: 3}
+  - {fileID: 8755797267905834417, guid: c6a094e62acc8374c882212de40ab6a8, type: 3}
+  - {fileID: 5156434469478692734, guid: 4f284eb3ac29a2649b230369f4177e3a, type: 3}
+  - {fileID: 5927427790796394008, guid: 70574aac563509242a337322ba25918a, type: 3}
+  - {fileID: 5927427790796394008, guid: 07deae699534405428311ed97ec1cc13, type: 3}
   bossObjects:
   - {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
   isBuildTestingRandomMonster: 1
   CreatBossCounting: 0
-  isCreatBoss: 1
-  isTestTableSpawn: 1
+  isCreatBoss: 0
+  isTestTableSpawn: 0
   StageInfo: 0
 --- !u!4 &342117586
 Transform:
@@ -3858,6 +3860,7 @@ Transform:
   - {fileID: 559855131}
   - {fileID: 962744005}
   - {fileID: 774173652}
+  - {fileID: 1477529791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &408166123
@@ -5955,7 +5958,7 @@ Transform:
   m_GameObject: {fileID: 559855130}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.439999, y: -1.1, z: 0.41666585}
+  m_LocalPosition: {x: -17.439999, y: -1.3, z: 0.41666585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15486,6 +15489,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1477529790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477529791}
+  m_Layer: 0
+  m_Name: BossSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1477529791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477529790}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -17.868574, y: -1.52, z: 0}
+  m_LocalScale: {x: 1.0002, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 407134107}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1486048678
 GameObject:
   m_ObjectHideFlags: 0
@@ -20354,7 +20388,7 @@ MonoBehaviour:
   comboTxt_2: {fileID: 889040488}
   UpperPanel: {fileID: 1534680385}
   lowerPanel: {fileID: 715426368}
-  instructionPanelActivationTime: 1.5
+  instructionPanelActivationTime: 7
 --- !u!4 &1926204094
 Transform:
   m_ObjectHideFlags: 0
@@ -22458,9 +22492,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: fillAmount
       value: 
       objectReference: {fileID: 605063367}
+    - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: BoxCol.Array.data[0]
       value: 

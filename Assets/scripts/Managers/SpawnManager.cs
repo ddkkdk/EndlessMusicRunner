@@ -14,7 +14,9 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject spawnObjects;
     public Transform spawnPoint_1;
+    public Transform spwanPoint_2;
     public Transform spawnPoint_3;
+    public Transform bossSpawnPoint;
 
     private bool isSpawning = false;
     public bool startSpawn = false;
@@ -147,6 +149,7 @@ public class SpawnManager : MonoBehaviour
                 idx++;
             }
             Debug.Log("몬스터 끝");
+            var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
             yield break;
         }
 
@@ -160,7 +163,12 @@ public class SpawnManager : MonoBehaviour
             prefab = monsterOBjects[t.PrefabName].name;
         else if (t.monsterType == Monster_Type.Boss)
             prefab = bossObjects[t.PrefabName].name;
-
+        
+        if(t.Uniq_MonsterType == UniqMonster.SendBack)
+        {
+            Monster.Create("Monster", prefab, spwanPoint_2, t.MaxHp, t.Speed, t.Uniq_MonsterType);
+            return;
+        }
         var MySpwanPoint = spawnPoint_1;
         switch(spwanPosition)
         {
