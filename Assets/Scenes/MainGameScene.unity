@@ -3456,8 +3456,8 @@ MonoBehaviour:
   - {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
   isBuildTestingRandomMonster: 1
   CreatBossCounting: 0
-  isCreatBoss: 0
-  isTestTableSpawn: 0
+  isCreatBoss: 1
+  isTestTableSpawn: 1
   StageInfo: 0
 --- !u!4 &342117586
 Transform:

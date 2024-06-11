@@ -22,7 +22,7 @@ public class Boss : MonoBehaviour
     }
 
     E_State e_State = E_State.Wait;
-    float Delay = 5;
+    public float Delay = 1;
     float Cur_Delay = 0;
 
     public static Vector3 CreatePos;
@@ -89,7 +89,6 @@ public class Boss : MonoBehaviour
             return;
         }
     }
-
     //대기 상태
     void Wait()
     {
@@ -107,6 +106,7 @@ public class Boss : MonoBehaviour
     //맞았을때
     public void SetHit(ScoreManager.E_ScoreState  perfact)
     {
+        BossDamaged(1);
         e_State = E_State.Hit;
         HitCollisionDetection.Instance.SetHit(this.gameObject, perfact);
     }
@@ -169,5 +169,9 @@ public class Boss : MonoBehaviour
     public void BossDamaged(int damage)
     {
         monsterMaxHp -= damage;
+        if(monsterMaxHp<=0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
