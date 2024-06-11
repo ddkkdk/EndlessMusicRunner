@@ -2,6 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class LevelDesignMonsterCount
+{
+    private static Dictionary<int,int> stage_MonsterCounting = new Dictionary<int,int>();
+
+    public static void Push(int id,int monsterCount)
+    {
+        if(stage_MonsterCounting.ContainsKey(id))
+        {
+            stage_MonsterCounting[id] += monsterCount;
+        }
+        else stage_MonsterCounting.Add(id, monsterCount);
+    }
+    public static int GetMonsterCount(int id)
+    {
+        return stage_MonsterCounting[id];   
+    }
+}
 [System.Serializable]
 public class LevelDesign
 {
@@ -26,10 +43,12 @@ public class LevelDesign
                 List<C_LevelDesign> C_LevelDesignList = new();
                 C_LevelDesignList.Add(levelDesign);
                 datas.Add(MID[i], C_LevelDesignList);
+                LevelDesignMonsterCount.Push(MID[i], MonsterSpwanCount[i]);
             }
             else
             {
                 datas[MID[i]].Add(levelDesign);
+                LevelDesignMonsterCount.Push(MID[i], MonsterSpwanCount[i]);
             }
         }
 

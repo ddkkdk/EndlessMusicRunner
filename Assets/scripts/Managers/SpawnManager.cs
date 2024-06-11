@@ -165,6 +165,7 @@ public class SpawnManager : MonoBehaviour
             if(counting ==2)
             {
                 isCompletedSpawn = true;
+                Debug.Log($"최종 몬스터 수 :{LevelDesignMonsterCount.GetMonsterCount(0)}");
                 yield break;
             }
             var obj = Instantiate(bossPrefab, bossPosition, Quaternion.identity);
