@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ChangePlayerSkin : MonoBehaviour
 {
-   public List<string> skin_Names = new List<string>();
+    public List<string> skin_Names = new List<string>();
     SkeletonAnimation skeletonAnimation;
     public void Awake()
     {

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5983066574386384427}
   - component: {fileID: -801326969565561563}
   - component: {fileID: 8021584260136955554}
+  - component: {fileID: 4113643433495560643}
   m_Layer: 8
   m_Name: Sendback
   m_TagString: Monster
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3a8ff05d85016964484e2f64b0077e59, type: 2}
+  - {fileID: 2100000, guid: 34389f5b9cf423c4c9b1bc6df93d4093, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: d88db6dd076665a4fb1f08c7137ad370, type: 2}
-  initialSkinName: 
+  skeletonDataAsset: {fileID: 11400000, guid: 010215204d15b8f4eb570d8a0f3e6c49, type: 2}
+  initialSkinName: skin1
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0
@@ -182,7 +183,7 @@ MonoBehaviour:
   isOnGround: 1
   damageAmount: 10
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
-  Change: 1
+  Change: 0
   Sk:
   - {fileID: 11400000, guid: d88db6dd076665a4fb1f08c7137ad370, type: 2}
   - {fileID: 11400000, guid: c251158bf1edc6e4fa4948f9a2aca768, type: 2}
@@ -245,3 +246,25 @@ MonoBehaviour:
   M_MoveLeft: {fileID: -801326969565561563}
   monster: {fileID: 5927427790796393986}
   OffSetX: 3
+--- !u!114 &4113643433495560643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927427790796394008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f8caf96117b642b39ab58708b5eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin_Names:
+  - default
+  - skin0
+  - skin1
+  - skin2
+  - skin3
+  - skin4
+  - skin5
+  - skin6
+  - skin7
