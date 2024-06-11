@@ -7,7 +7,7 @@ public static class Define
     public static void SetAni(this SkeletonAnimation skeletonAnimation, string animationString, bool loop = false)
     {
         var currentTrackEntry = skeletonAnimation.AnimationState.GetCurrent(0);
-        if (currentTrackEntry != null && currentTrackEntry.Animation.Name == "Running")
+        if(animationString ==  "Running" && currentTrackEntry.Animation.Name == "Running")
         {
             return;
         }
