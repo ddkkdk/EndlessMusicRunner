@@ -6,6 +6,12 @@ public static class Define
 {
     public static void SetAni(this SkeletonAnimation skeletonAnimation, string animationString, bool loop = false)
     {
+        var currentTrackEntry = skeletonAnimation.AnimationState.GetCurrent(0);
+        if (currentTrackEntry != null && currentTrackEntry.Animation.Name == "Running")
+        {
+            return;
+        }
+
         skeletonAnimation.AnimationState.ClearTracks(); // 모든 애니메이션 트랙을 제거
         SkeletonDataAsset skeletonDataAsset = skeletonAnimation.SkeletonDataAsset;
 
