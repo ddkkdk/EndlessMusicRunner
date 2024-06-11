@@ -12,6 +12,7 @@ public class UI_GameOver : MonoBehaviour
     }
 
     [SerializeField] TextMeshProUGUI[] T_TextList;
+    [SerializeField] GameObject G_BestText;
     private void Start()
     {
         SetName();
@@ -30,8 +31,9 @@ public class UI_GameOver : MonoBehaviour
     void SetScore()
     {
         T_TextList[1].text = ScoreManager.instance.GetCurrentScore().ToString();
-        T_TextList[2].text = ScoreManager.instance.GetBestScore().ToString();
-        ScoreManager.instance.SetBestScore();
+        T_TextList[2].text = "BEST : " + ScoreManager.instance.GetBestScore().ToString();
+        var best = ScoreManager.instance.SetBestScore();
+        G_BestText.SetActive(best);
     }
 
     void SetAccuracy()
@@ -39,9 +41,9 @@ public class UI_GameOver : MonoBehaviour
         var maxcount = ScoreManager.instance.GetMaxState();
         var count = ScoreManager.instance.GetAccuracy();
 
-        var accuracy = (float)maxcount / (float)count;
+        var accuracy = (float)count + (float)maxcount;
 
-        T_TextList[3].text = "정확도 : " + accuracy.ToString();
+        T_TextList[3].text = "정확도 : " + accuracy + "%";
     }
 
     void SetBestCombo()

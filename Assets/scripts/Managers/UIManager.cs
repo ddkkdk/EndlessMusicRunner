@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     }
     public void ActivatPanel(bool activate)
     {
+        ScoreManager.instance.ScoreReset();
         instructionPanel.SetActive(activate);
         StartCoroutine(DeactivatePanel());
 
@@ -56,7 +57,7 @@ public class UIManager : MonoBehaviour
         UpperPanelActive(true);
         SpawnManager.instance.StartSpawningObjects(true);
     }
-    
+
     public void ScoreUpdater(int score)
     {
         scoreTxt_2.text = score.ToString();
