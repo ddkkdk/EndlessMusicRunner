@@ -37,6 +37,7 @@ public class Entity : MonoBehaviour
 
     public virtual void Damage(int damageAmount)
     {
+        ScoreManager.instance.SetScoreState(ScoreManager.E_ScoreState.Miss);
         ScoreManager.instance.SetBestCombo_Reset();
         currentHealth -= damageAmount;
         SetHealthBar();

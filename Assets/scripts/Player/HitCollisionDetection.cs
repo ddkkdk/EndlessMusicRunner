@@ -45,7 +45,12 @@ public class HitCollisionDetection : MonoBehaviour
         AudioManager.instance.PlaySound();
         ScoreManager.instance.SetCombo_Add();
         ScoreManager.instance.SetCurrentScore();
-    
+
+        if (perfect == ScoreManager.E_ScoreState.Late || perfect == ScoreManager.E_ScoreState.Early)
+        {
+            return;
+        }
+
         var txteffects = ScroeStateList[(int)perfect];
         var hitPoint = obj.transform.position;
 
