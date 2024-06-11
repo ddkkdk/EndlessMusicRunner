@@ -81,6 +81,7 @@ public class Boss : MonoBehaviour
         StartCoroutine(spawnObjects());
         e_State = E_State.Wait;
         AttackIdx = G_Pattern.Length;
+
         if (AttackIdx >= G_Pattern.Length)
         {
             //돌격 패턴
@@ -92,6 +93,7 @@ public class Boss : MonoBehaviour
     //대기 상태
     void Wait()
     {
+        return;
         Cur_Delay += Time.deltaTime;
 
         //일정 시간 뒤 공격

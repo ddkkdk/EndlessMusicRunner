@@ -133,6 +133,7 @@ public class SpawnManager : MonoBehaviour
         }
         #endregion
         Debug.Log("몬스터 시작");
+        int counting = 0;
         while (true && isTestTableSpawn)
         {
             var level = GameData.Data.LevelDesigin[StageInfo];
@@ -148,9 +149,13 @@ public class SpawnManager : MonoBehaviour
                 }
                 idx++;
             }
-            Debug.Log("몬스터 끝");
             var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
-            yield break;
+            counting++;
+            Debug.Log($"몬스터재시작 {counting}");
+            if(counting ==2)
+            {
+                yield break;
+            }
         }
 
     }
