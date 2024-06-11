@@ -46,20 +46,20 @@ public class HitCollisionDetection : MonoBehaviour
         ScoreManager.instance.SetCombo_Add();
         ScoreManager.instance.SetCurrentScore();
 
+        var hitPoint = obj.transform.position;
+        GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+
         if (perfect == ScoreManager.E_ScoreState.Late || perfect == ScoreManager.E_ScoreState.Early)
         {
             return;
         }
 
         var txteffects = ScroeStateList[(int)perfect];
-        var hitPoint = obj.transform.position;
-
-        GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
         GameObject txtobject = Instantiate(txteffects, hitPoint, Quaternion.identity);
 
         StartCoroutine(OpacityChange(txtobject));
 
-        if(!obj.name.Contains("Boss"))
+        if (!obj.name.Contains("Boss"))
             HIttingEffects(obj, hitPoint);
 
         MoveUPword(txtobject, hitPoint);
