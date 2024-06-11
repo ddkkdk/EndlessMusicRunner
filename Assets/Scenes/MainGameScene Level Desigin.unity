@@ -3591,9 +3591,16 @@ MonoBehaviour:
   spawnPoint_3: {fileID: 962744005}
   startSpawn: 0
   bossPrefab: {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
+  monsterOBjects:
+  - {fileID: 1768767069754803484, guid: aadad9fd2c648c648984fa1ae2bdca51, type: 3}
+  - {fileID: 5629541656628589791, guid: c457964665b6f994496a2e5b317fa8e3, type: 3}
+  bossObjects:
+  - {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
   isBuildTestingRandomMonster: 1
   CreatBossCounting: 0
   isCreatBoss: 1
+  isTestTableSpawn: 1
+  StageInfo: 0
 --- !u!4 &342117586
 Transform:
   m_ObjectHideFlags: 0
@@ -8874,15 +8881,9 @@ MonoBehaviour:
   skeleton: {fileID: 1878545307}
   speaker_1: {fileID: 1881881561}
   speaker_2: {fileID: 753292737}
-  flyTimeScale: 6.5
-  retireTimeScale: 8
-  TailAttackTimeScale: 2.5
-  kickTimeScale: 2.5
-  fireAttackTimeScale: 2.5
   player: {fileID: 1608568235}
   bossWaitPosition: {fileID: 774173652}
   lowerAttackPoint: {fileID: 514379562}
-  monsterAnimation: []
 --- !u!4 &827244270
 Transform:
   m_ObjectHideFlags: 0
@@ -19016,7 +19017,8 @@ MonoBehaviour:
   - {fileID: 1768767069754803484, guid: b7e08521cfea5a24299fca6ffdda9979, type: 3}
   - {fileID: 5629541656628589791, guid: 02d7063ba6de34047a99b6b8b7c4e934, type: 3}
   bossObjects: []
-  monsterSpwanPosition: {fileID: 962744005}
+  spwanUp: {fileID: 0}
+  spwanDown: {fileID: 0}
 --- !u!4 &1736956994
 Transform:
   m_ObjectHideFlags: 0
@@ -21358,7 +21360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionPanel: {fileID: 878702052}
-  attackPoints: {fileID: 383832944}
   scoreTxt_1: {fileID: 820386160}
   scoreTxt_2: {fileID: 1730673837}
   combo: {fileID: 1744640698}
@@ -21366,11 +21367,7 @@ MonoBehaviour:
   comboTxt_2: {fileID: 889040488}
   UpperPanel: {fileID: 1534680385}
   lowerPanel: {fileID: 715426368}
-  upperPosition: -50
-  fillAmount: {fileID: 0}
   instructionPanelActivationTime: 1.5
-  comboScore: 0
-  gameScore: 0
 --- !u!4 &1926204094
 Transform:
   m_ObjectHideFlags: 0
