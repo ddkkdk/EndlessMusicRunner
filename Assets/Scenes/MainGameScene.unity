@@ -22494,7 +22494,7 @@ PrefabInstance:
     - target: {fileID: 1236657713761570640, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: skeletonDataAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 5f35f49f777911c4f9733b6c57322487, type: 2}
+      objectReference: {fileID: 11400000, guid: 8323912bc1ad603498b7fd4c39dc4cc8, type: 2}
     - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: maxHealth
       value: 100
@@ -22530,7 +22530,7 @@ PrefabInstance:
     - target: {fileID: 3527403828648216229, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1200be6d566af014ab4057e6ed33c8cd, type: 2}
+      objectReference: {fileID: 2100000, guid: b79ed8437041daa46955e382ae9b39c4, type: 2}
     - target: {fileID: 4823724451177025718, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: m_Mesh
       value: 
