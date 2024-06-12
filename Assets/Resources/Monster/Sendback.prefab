@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 010215204d15b8f4eb570d8a0f3e6c49, type: 2}
-  initialSkinName: skin1
+  initialSkinName: skin7
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0

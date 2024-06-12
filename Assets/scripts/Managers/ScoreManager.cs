@@ -82,9 +82,9 @@ public class ScoreManager : MonoBehaviour
     }
 
     //점수 높이기
-    public void SetCurrentScore()
+    public void SetCurrentScore(int vlaue)
     {
-        CurrentScore++;
+        CurrentScore += vlaue;
         UIManager.Instance.ScoreUpdater(CurrentScore);
     }
 

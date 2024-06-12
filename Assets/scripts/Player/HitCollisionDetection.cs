@@ -43,16 +43,30 @@ public class HitCollisionDetection : MonoBehaviour
     void SetEffect(GameObject obj, ScoreManager.E_ScoreState perfect)
     {
         AudioManager.instance.PlaySound();
+        //Perfect / Great일때만 점수 주게 변경 -> 이승우
+        var score = 0;
+        if (perfect == ScoreManager.E_ScoreState.Perfect)
+        {
+            score = 3;
+        }
+        else if (perfect == ScoreManager.E_ScoreState.Great)
+        {
+            score = 1;
+        }
         ScoreManager.instance.SetCombo_Add();
-        ScoreManager.instance.SetCurrentScore();
+        ScoreManager.instance.SetCurrentScore(score);
+
+        if (perfect == ScoreManager.E_ScoreState.Late || perfect == ScoreManager.E_ScoreState.Early)
+        {
+            // 콤보 리셋해주는 코드 추가
+
+            return;
+        }
 
         var hitPoint = obj.transform.position;
         GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
 
-        if (perfect == ScoreManager.E_ScoreState.Late || perfect == ScoreManager.E_ScoreState.Early)
-        {
-            return;
-        }
+        
 
         var txteffects = ScroeStateList[(int)perfect];
         GameObject txtobject = Instantiate(txteffects, hitPoint, Quaternion.identity);
