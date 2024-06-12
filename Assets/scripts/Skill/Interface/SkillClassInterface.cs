@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public interface ISkillClass
 {
     IComboChecker ComboChecker { get; set; }

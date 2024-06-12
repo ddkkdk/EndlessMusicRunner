@@ -41,4 +41,10 @@ public class SkillSystem : MonoBehaviour
         St_Skill st_Skill = new St_Skill(0, 2, 0, 0);
         Healing.Create(st_Skill, 100);
     }
+
+    public void SetShield()
+    {
+        St_Skill st_Skill = new St_Skill(0, 2, 0, 0);
+        ShieldBuster.Create(st_Skill);
+    }
 }

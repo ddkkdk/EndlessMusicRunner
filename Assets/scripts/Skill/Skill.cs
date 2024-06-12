@@ -52,6 +52,7 @@ public class Skill : MonoBehaviour
         _activeTime = activetime;
         skillClass.CoolTimeChecker.SetCoolTime(cooltime);
         skillClass.ActiveChecker.SetActive(true);
+        print("온");
     }
 
     //지속시간 확인
@@ -69,5 +70,6 @@ public class Skill : MonoBehaviour
     private void OnDestroy()
     {
         skillClass.ActiveChecker.SetActive(false);
+        print("오프");
     }
 }
