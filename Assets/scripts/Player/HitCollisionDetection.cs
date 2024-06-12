@@ -6,6 +6,7 @@ using UnityEngine;
 public class HitCollisionDetection : MonoBehaviour
 {
     public static HitCollisionDetection Instance;
+    public GameObject upHitEffect;
     public GameObject hitEffect;
     public GameObject[] destroyParticleEffects;
     public GameObject puffEffect;
@@ -65,7 +66,15 @@ public class HitCollisionDetection : MonoBehaviour
         }
 
         var hitPoint = obj.transform.position;
-        GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+        // 상단 이펙트 하단이펙트 구분
+        if (hitPoint.y > 0)
+        {
+            GameObject hitObject = Instantiate(upHitEffect, hitPoint, Quaternion.identity);
+        }
+        else
+        {
+            GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+        }
         
         
         var txteffects = ScroeStateList[(int)perfect];
