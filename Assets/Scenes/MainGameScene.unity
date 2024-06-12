@@ -1727,12 +1727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7aefd071c11bf4491820de4ed73ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera_main: {fileID: 108821244}
-  orginPos: {x: -44.5, y: 3.05, z: -26.1}
-  orginSize: 9
-  ZoomInPos: {x: -48, y: 3.05, z: -26.1}
-  ZoomInSize: 7
-  Up_Down_Szie: 0.2
 --- !u!1 &127863636
 GameObject:
   m_ObjectHideFlags: 0
