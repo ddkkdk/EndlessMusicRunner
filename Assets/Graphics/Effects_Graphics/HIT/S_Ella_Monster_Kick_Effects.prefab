@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 19825358}
   - component: {fileID: 19952246}
   m_Layer: 9
-  m_Name: B_Ella_Monster_Kick_Effects
+  m_Name: S_Ella_Monster_Kick_Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1467,8 +1467,8 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
-    tilesX: 6
-    tilesY: 1
+    tilesX: 4
+    tilesY: 2
     animationType: 0
     rowIndex: 0
     cycles: 1
@@ -4777,7 +4777,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d3a79e5ef2da9874cbf568b43e2871f6, type: 2}
+  - {fileID: 2100000, guid: 4d2f827e3ccf1f141b0ce512e23ca399, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4795,8 +4795,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1427589545
-  m_SortingLayer: 3
+  m_SortingLayerID: -1265792321
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 4
   m_MeshDistribution: 1
@@ -5017,7 +5017,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.2980392, g: 0.80564964, b: 1, a: 1}
+      maxColor: {r: 0.98292446, g: 1, b: 0.5518868, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9804,15 +9804,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3355147322548860196, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.9813695
+      value: 0.48584908
       objectReference: {fileID: 0}
     - target: {fileID: 3355147322548860196, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 1
+      value: 0.9506169
       objectReference: {fileID: 0}
     - target: {fileID: 3355147322548860196, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3355147322548860196, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
@@ -9824,7 +9824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3355147322548860196, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3355147322548894112, guid: cd6c5fcfa47f9864e867f185f044345e, type: 3}
       propertyPath: lengthInSec
