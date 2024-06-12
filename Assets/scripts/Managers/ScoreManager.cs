@@ -84,7 +84,8 @@ public class ScoreManager : MonoBehaviour
     //점수 높이기
     public void SetCurrentScore(int vlaue)
     {
-        CurrentScore += vlaue;
+        var totalvalue = FerverTimeSystem.SetFeverScore(vlaue);
+        CurrentScore += totalvalue;
         UIManager.Instance.ScoreUpdater(CurrentScore);
     }
 
