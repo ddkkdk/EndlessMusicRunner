@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  m_GroupName: Shield
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 2c862823db7587a40934455d3e27ec98
+  m_SerializeEntries:
+  - m_GUID: 82e5302e8c407e34a980cbc28f46243b
+    m_Address: ShieldBuster_0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b214fa91656b7524e8bf0480a7228281, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 33e56ae9e5152d44ebb32b5ac1b6de3c, type: 2}
+    - {fileID: 11400000, guid: aff6d0707d86e3a4293735e98337a107, type: 2}

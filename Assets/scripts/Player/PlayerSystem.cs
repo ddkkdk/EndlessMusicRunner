@@ -110,6 +110,10 @@ public class PlayerSystem : Entity
         {
             SkillSystem.instance.SetHealing();
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SkillSystem.instance.SetShield();
+        }
 
         if (AttackState == E_AttackState.Hold)
         {
