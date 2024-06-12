@@ -100,7 +100,7 @@ public class PlayerSystem : Entity
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            SkillSystem.instance.SetFeverTime();
+
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
