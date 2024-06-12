@@ -3,6 +3,9 @@ using UnityEngine;
 public class SkillSystem : MonoBehaviour
 {
     public static SkillSystem instance;
+
+    System.Action Ac_CoolTime;
+
     private void Awake()
     {
         instance = this;
@@ -10,17 +13,32 @@ public class SkillSystem : MonoBehaviour
 
     private void Update()
     {
-        //피버 쿨타임
-        FerverTimeSystem.SetCooltime();
+        Ac_CoolTime?.Invoke();
+    }
+
+    //쿨타임 적용
+    public void SetCoolTime(System.Action action)
+    {
+        Ac_CoolTime += action;
     }
 
     //피버타임
     public void SetFeverTime()
     {
-        var combo = 0;
-        var activetime = 5;
-        var cooltime = 30;
-        var feverbacknum = 0;
-        FerverTimeSystem.Create(combo, activetime, cooltime, feverbacknum);
+        St_Skill st_Skill = new St_Skill(0, 10, 10, 0);
+        FerverTimeSystem.Create(st_Skill);
+    }
+
+    //스코어부스터
+    public void SetScoreBooster()
+    {
+        St_Skill st_Skill = new St_Skill(0, 2, 10, 0);
+        ScoreBooster.Create(st_Skill, 1000);
+    }
+
+    public void SetHealing()
+    {
+        St_Skill st_Skill = new St_Skill(0, 2, 0, 0);
+        Healing.Create(st_Skill, 100);
     }
 }

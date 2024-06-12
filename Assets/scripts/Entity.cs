@@ -35,11 +35,17 @@ public class Entity : MonoBehaviour
 
     }
 
-    public virtual void Damage(int damageAmount)
+    public virtual void SetHP(int damageAmount)
     {
         ScoreManager.instance.SetScoreState(ScoreManager.E_ScoreState.Miss);
         ScoreManager.instance.SetBestCombo_Reset();
-        currentHealth -= damageAmount;
+
+        currentHealth += damageAmount;
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
         SetHealthBar();
         PlayerSystem.SetPlayerAni(PlayerSystem.E_AniType.Hit);
         AudioManager.instance.PlayerHItSound();
@@ -51,9 +57,15 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public bool MonsterDamage(int damageAmount)
+    public bool SetMonsterHp(int damageAmount)
     {
-        currentHealth -= damageAmount;
+        currentHealth += damageAmount;
+
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
         return currentHealth <= 0;
     }
 
