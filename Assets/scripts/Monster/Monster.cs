@@ -60,11 +60,17 @@ public class Monster : Entity
         }
 
         _Attack = true;
+
         //몬스터와 플레이어의 Y포지션으로 위치잡아서 플레이어게 데미지전달
-        float playerYPosUpperBound = 0.5f;
-        float playerYPosLowerBound = -0.5f;
+        float playerYPosSpare = 0.5f;
         var monsterPositionY = transform.position.y;
-        if(targetpos.y >= monsterPositionY + playerYPosUpperBound && targetpos.y<= monsterPositionY - playerYPosLowerBound)
+        var monsterType = GetComponent<MoveLeft>().uniqMonster;
+        //샌드백 일경우 플레이어를 지나감
+        //일반 몬스터는 통용적으로 가능함
+        bool isMonsterAttackingPlayer = 
+            (targetpos.y + playerYPosSpare >= monsterPositionY && targetpos.y - playerYPosSpare <= monsterPositionY);
+        bool isSendBack = monsterType == UniqMonster.SendBack;
+        if (isSendBack || isMonsterAttackingPlayer)
         {
             player.Damage(damageAmount);
             GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
@@ -72,10 +78,10 @@ public class Monster : Entity
             Destroy(opsFx, 0.2f);
         }
         // 뮤즈대쉬 처럼 몬스터가 플레이어 그냥 지나칠때 콤보 초기화
-        //else if(targetpos.x >=transform.position.x)
-        //{
-        //    ScoreManager.instance.SetBestCombo_Reset();
-        //}
+        else if (targetpos.x >= transform.position.x)
+        {
+            ScoreManager.instance.SetBestCombo_Reset();
+        }
     }
 
     public void SetHit(ScoreManager.E_ScoreState perfect)
