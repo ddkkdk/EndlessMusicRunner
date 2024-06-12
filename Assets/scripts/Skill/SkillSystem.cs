@@ -25,26 +25,26 @@ public class SkillSystem : MonoBehaviour
     //피버타임
     public void SetFeverTime()
     {
-        St_Skill st_Skill = new St_Skill(0, 10, 10, 0);
+        St_Skill st_Skill = new St_Skill(50, 10, 30, 0);
         FerverTimeSystem.Create(st_Skill);
     }
 
     //스코어부스터
     public void SetScoreBooster()
     {
-        St_Skill st_Skill = new St_Skill(0, 2, 10, 0);
+        St_Skill st_Skill = new St_Skill(300, 1, 30, 0);
         ScoreBooster.Create(st_Skill, 1000);
     }
 
     public void SetHealing()
     {
-        St_Skill st_Skill = new St_Skill(0, 2, 0, 0);
+        St_Skill st_Skill = new St_Skill(200, 2, 0, 0);
         Healing.Create(st_Skill, 100);
     }
 
     public void SetShield()
     {
-        St_Skill st_Skill = new St_Skill(0, 2, 0, 0);
+        St_Skill st_Skill = new St_Skill(150, 2, 90, 0);
         ShieldBuster.Create(st_Skill);
     }
 }
