@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -7,11 +6,15 @@ public class FerverTimeSystem : Skill
     const string Name = "FeverTime_{0}";
     public static ISkillClass _skillClass;
 
-    public static async void Create(St_Skill st_Skill)
+    public static async void Create(SkillData st_Skill)
     {
         _skillClass = SkillClass.CreateClass(_skillClass);
-        var name = string.Format(Name, st_Skill.objnum);
-        await Skill.Create<FerverTimeSystem>(st_Skill, name, _skillClass);
+        var name = string.Format(Name, st_Skill.Objnum);
+        var result = await Skill.Create<FerverTimeSystem>(st_Skill, name, _skillClass);
+        if (result == null)
+        {
+            return;
+        }
     }
 
     //피버타임 발동 시 스코어 두배
@@ -23,5 +26,15 @@ public class FerverTimeSystem : Skill
         }
 
         return _skillClass.ActiveChecker.CheckActive() ? currentScore * 2 : currentScore;
+    }
+}
+
+public struct St_AddFever
+{
+    public bool ActiveFever;
+
+    public St_AddFever(bool ActiveFever)
+    {
+        this.ActiveFever = ActiveFever;
     }
 }

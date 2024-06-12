@@ -67,9 +67,9 @@ public class ScoreManager : MonoBehaviour
         //현재 콤보가 5이상일때만 오브젝트 활성화 시키기
         if (CurrentCombo >= 5)
             UIManager.Instance.ComboScoreUpdater(CurrentCombo);
-        
+
         //피버타임 체크
-        SkillSystem.instance.SetFeverTime();
+        SkillSystem.instance.ActivePassiveSkill(SkillSystem.E_Trigger.Combo);
 
         //현재 콤보가 베스트 보다 큰지 확인
         if (CurrentCombo < BestCombo)

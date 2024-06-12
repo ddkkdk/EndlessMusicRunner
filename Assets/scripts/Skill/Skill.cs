@@ -1,35 +1,19 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public struct St_Skill
-{
-    public int combo;
-    public float activetime;
-    public float cooltime;
-    public int objnum;
-
-    public St_Skill(int combo, float activetime, float cooltime, int objnum)
-    {
-        this.combo = combo;
-        this.activetime = activetime;
-        this.cooltime = cooltime;
-        this.objnum = objnum;
-    }
-}
-
 public class Skill : MonoBehaviour
 {
     //생성 코드
-    public static async Task<T> Create<T>(St_Skill sk, string key,ISkillClass skillclass) where T : Object
+    public static async Task<T> Create<T>(SkillData sk, string key, ISkillClass skillclass) where T : Object
     {
         skillclass.SetClass();
-        if (!skillclass.ComboChecker.CheckComboCondition(sk.combo) || !skillclass.CoolTimeChecker.CheckCoolTime())
+        if (!skillclass.ComboChecker.CheckComboCondition(sk.Combo) || !skillclass.CoolTimeChecker.CheckCoolTime())
         {
             return null;
         }
         var result = await key.CreateOBJ<Skill>();
-        result.Setup(sk.activetime, sk.cooltime, skillclass);
-
+        result.Setup(sk.Activetime, sk.Cooltime, skillclass);
+        SkillSystem.instance.SetSkillICONCoolTime(sk.SkillID, skillclass);
         return result.GetComponent<T>();
     }
 

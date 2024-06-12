@@ -5,12 +5,16 @@ public class ScoreBooster : Skill
 {
     const string Name = "ScoreBootser_{0}";
     public static ISkillClass _skillClass;
-    public static async void Create(St_Skill st_Skill, int addscore)
+    public static async void Create(SkillData st_Skill)
     {
         _skillClass = SkillClass.CreateClass(_skillClass);
-        var name = string.Format(Name, st_Skill.objnum);
+        var name = string.Format(Name, st_Skill.Objnum);
         var result = await Skill.Create<ScoreBooster>(st_Skill, name, _skillClass);
-        result?.SetAddScore(addscore);
+        if (result == null)
+        {
+            return;
+        }
+        result?.SetAddScore(st_Skill.st_AddScore.Addscore);
     }
 
     [SerializeField] TextMeshProUGUI T_AddScore;
@@ -20,5 +24,17 @@ public class ScoreBooster : Skill
     {
         T_AddScore.text = "+" + addscore;
         ScoreManager.instance.SetCurrentScore(addscore, true);
+    }
+}
+
+public struct St_AddScore
+{
+    public bool ActiveAddScore;
+    public int Addscore;
+
+    public St_AddScore(bool ActiveAddScore, int addscore)
+    {
+        this.ActiveAddScore = ActiveAddScore;
+        Addscore = addscore;
     }
 }

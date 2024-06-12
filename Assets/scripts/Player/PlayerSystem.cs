@@ -98,23 +98,6 @@ public class PlayerSystem : Entity
                 SetAni(AttackState == E_AttackState.Hold ? E_AniType.Hold_Attack : type);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            SkillSystem.instance.SetScoreBooster();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SkillSystem.instance.SetHealing();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SkillSystem.instance.SetShield();
-        }
-
         if (AttackState == E_AttackState.Hold)
         {
             HoldDelay = 0.2f;
