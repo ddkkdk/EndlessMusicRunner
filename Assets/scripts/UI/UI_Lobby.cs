@@ -62,5 +62,5 @@ public class UI_Lobby : MonoBehaviour
 public enum PlayerSkinType
 {
     Skin0,Skin1,Skin2,Skin3,
-    Skin4,Skin5,Skin6,skin7
+    Skin4,Skin5,Skin6,skin7,Count
 }

@@ -1,4 +1,5 @@
 using Spine.Unity;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class LongNote : MonoBehaviour
@@ -24,15 +25,15 @@ public class LongNote : MonoBehaviour
     GameObject Effect;
     float Dealy = 0f;
 
-    private float getScoreTimer = 0f;
+    private float GetScoreTime = 0f;
 
     public int AttackHold = 0;
     public static void Create(string folderName, string name, Transform CreatePos, int speed)
     {
         string path = $"{folderName}/{name}";
         var load = Resources.Load<GameObject>(path);
-        var monster = Instantiate<GameObject>(load);
-        monster.transform.position = CreatePos.position;
+        var note = Instantiate<GameObject>(load);
+        note.transform.position = CreatePos.position;
 
     }
     private void Start()
@@ -40,10 +41,17 @@ public class LongNote : MonoBehaviour
         if (Change)
         {
             var type = UI_Lobby.Type == false ? 0 : 1;
-
+            // 이미지 변경 추가
             for (int i = 0; i < myNoteSprite.Length; ++i)
             {
-                myNoteSprite[i].sprite = noteSprites[type];
+                var idx = (int)PlayerSkinType.Count;
+                int spriteIndex = (int)UI_Lobby.playerSkinType % idx;
+                if (type == 1)
+                    spriteIndex += (int)PlayerSkinType.Count;
+                
+                myNoteSprite[i].sprite = noteSprites[spriteIndex];
+                //사이즈가 1로나와서 0.5로 수동으로 조절
+                myNoteSprite[i].gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             myLongSprrite.sprite = longSprites[type];
         }
@@ -58,6 +66,14 @@ public class LongNote : MonoBehaviour
     {
         if (AttackHold == 0 || AttackHold == 2)
         {
+            // 판정 도중에 멈추거나 실패했을때 
+            var targetPosition = GameManager.instance.player.transform.position;
+            if (transform.position.x <= targetPosition.x)
+            {
+                GameManager.instance.player.SetHP(-5);
+                ScoreManager.instance.SetBestCombo_Reset();
+                Destroy(gameObject);
+            }
             return;
         }
 
@@ -65,7 +81,14 @@ public class LongNote : MonoBehaviour
         print(player.AttackState);
         if (player.AttackState == PlayerSystem.E_AttackState.Hold)
         {
-          
+            //점수추가
+            if (GetScoreTime + 0.1f <= Time.time)
+            {
+                GetScoreTime = Time.time;
+                var score = 1;
+                Debug.Log(score);
+                ScoreManager.instance.SetCurrentScore(score);
+            }
             return;
         }
         AttackHold = 2;
@@ -86,7 +109,6 @@ public class LongNote : MonoBehaviour
 
         if (AttackHold == 2)
         {
-            ScoreManager.instance.SetCombo_Add(); // 콤보추가
             return;
         }
 
@@ -112,10 +134,6 @@ public class LongNote : MonoBehaviour
             AudioManager.instance.PlaySound();
             Dealy = 0.1f;
             AttackHold = 1;
-
-            //점수추가
-            var score = 1;
-            ScoreManager.instance.SetCurrentScore(score);
         }
 
 
@@ -125,7 +143,7 @@ public class LongNote : MonoBehaviour
             return;
         }
 
-
+        ScoreManager.instance.SetCombo_Add(); // 콤보추가
         Destroy(this.gameObject);
         Destroy(Effect);
         var createpos = GameManager.instance.skeleton.transform.position;

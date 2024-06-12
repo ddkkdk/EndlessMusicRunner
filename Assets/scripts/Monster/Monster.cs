@@ -72,7 +72,7 @@ public class Monster : Entity
         bool isSendBack = monsterType == UniqMonster.SendBack;
         if (isSendBack || isMonsterAttackingPlayer)
         {
-            player.SetHP(damageAmount);
+            player.SetHP(damageAmount *-1);
             GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
             HitMoveAnimation(opsFx, transform.position);
             Destroy(opsFx, 0.2f);

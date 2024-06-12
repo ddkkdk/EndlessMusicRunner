@@ -188,9 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   monsterNumber: 17
-  SendBack: 0
-  OffSetX: 0
   DestoryX: -300
+  uniqMonster: 0
 --- !u!50 &5983066574386384427
 Rigidbody2D:
   serializedVersion: 4
@@ -242,8 +241,22 @@ MonoBehaviour:
   myLongSprrite: {fileID: 8638809886076962384}
   Change: 1
   noteSprites:
-  - {fileID: 21300000, guid: d95cab45084d59b4da7fdeb32b07a151, type: 3}
-  - {fileID: 21300000, guid: bdd2278017ca661458369946576ab743, type: 3}
+  - {fileID: 21300000, guid: 4cb47c4e48bf4d047985b5dcddfdfd9f, type: 3}
+  - {fileID: 21300000, guid: c86e3a43277473b429486608a9fa1b68, type: 3}
+  - {fileID: 21300000, guid: a2745bff44e14024abbb4ba57c0e4e61, type: 3}
+  - {fileID: 21300000, guid: 0cfef58bea7fba24caa57b29fb6ef1ff, type: 3}
+  - {fileID: 21300000, guid: 69682fef0637fb44e8144465c42e0bb9, type: 3}
+  - {fileID: 21300000, guid: b4eaf31ba3544d04ca48dbfa30c1dfb2, type: 3}
+  - {fileID: 21300000, guid: c2cbb5abb27996e45a1cb553fa1c0d6c, type: 3}
+  - {fileID: 21300000, guid: 2036fbf178f41b148ae6870d1788d1bf, type: 3}
+  - {fileID: 21300000, guid: 3cb8b6efe37c7c94bac9b598ce8e2889, type: 3}
+  - {fileID: 21300000, guid: 91eca617e60d31b4e94e393a4b057828, type: 3}
+  - {fileID: 21300000, guid: 5a52b7150e1d32a48a543895f7d12d27, type: 3}
+  - {fileID: 21300000, guid: 153a3dfd96030644fbb2ef9bbb1c5b5f, type: 3}
+  - {fileID: 21300000, guid: e02b298e11af59549bacadf25b9b1723, type: 3}
+  - {fileID: 21300000, guid: 8d5d21161167a194eb32ba4e508eb3af, type: 3}
+  - {fileID: 21300000, guid: d2cd94cca3eaddd4a9af644c1518e3b5, type: 3}
+  - {fileID: 21300000, guid: 81c166414bf185446a10f72b0dd315ab, type: 3}
   longSprites:
   - {fileID: 21300000, guid: ba130ccb03c626b4badd6da1878f2966, type: 3}
   - {fileID: 21300000, guid: 28c1c9aa5da2dea41b80c6bdf6c80c71, type: 3}
