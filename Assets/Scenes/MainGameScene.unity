@@ -8755,6 +8755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upHitEffect: {fileID: 181478, guid: 13a6fe769bfe41f48be29d1efb86874c, type: 3}
   hitEffect: {fileID: 181478, guid: 4f7e2db9e95811a4ead0ef5a15d02e2e, type: 3}
   destroyParticleEffects:
   - {fileID: 1563634094512642, guid: a11f5f52bd76689408d6bf7a6c2fcdd2, type: 3}

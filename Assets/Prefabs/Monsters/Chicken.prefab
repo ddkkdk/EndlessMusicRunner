@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3909550831714088347}
   - component: {fileID: 3909550831714088348}
   - component: {fileID: 519227151299903132}
+  - component: {fileID: -4690950548443168719}
   m_Layer: 8
   m_Name: Chicken
   m_TagString: Monster
@@ -200,7 +201,7 @@ MonoBehaviour:
   Change: 1
   Sk:
   - {fileID: 11400000, guid: 46834918750682f4d9403ebe477a0602, type: 2}
-  - {fileID: 11400000, guid: 2332f83bd416d184aa98c072c1df07b2, type: 2}
+  - {fileID: 0}
   My: {fileID: 3909550831714088321}
 --- !u!50 &519227151299903132
 Rigidbody2D:
@@ -229,3 +230,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &-4690950548443168719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909550831714088322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f8caf96117b642b39ab58708b5eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin_Names:
+  - skin0
+  - skin1
+  - skin2
+  - skin3
+  - skin4
+  - skin5
+  - skin6
+  - skin7
