@@ -212,5 +212,8 @@ public class HitCollisionDetection : MonoBehaviour
         }
         GameObject txtobject = Instantiate(txteffects, effectPosition, Quaternion.identity);
         StartCoroutine(OpacityChange(txtobject));
+
+
+        MoveUPword(txtobject, effectPosition);
     }
 }
