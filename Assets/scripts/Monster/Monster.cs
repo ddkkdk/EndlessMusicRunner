@@ -61,23 +61,23 @@ public class Monster : Entity
 
         _Attack = true;
 
-        //¸ó½ºÅÍ¿Í ÇÃ·¹ÀÌ¾îÀÇ YÆ÷Áö¼ÇÀ¸·Î À§Ä¡Àâ¾Æ¼­ ÇÃ·¹ÀÌ¾î°Ô µ¥¹ÌÁöÀü´Þ
+        //ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½Æ¼ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         float playerYPosSpare = 0.5f;
         var monsterPositionY = transform.position.y;
         var monsterType = GetComponent<MoveLeft>().uniqMonster;
-        //»÷µå¹é ÀÏ°æ¿ì ÇÃ·¹ÀÌ¾î¸¦ Áö³ª°¨
-        //ÀÏ¹Ý ¸ó½ºÅÍ´Â Åë¿ëÀûÀ¸·Î °¡´ÉÇÔ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½Í´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         bool isMonsterAttackingPlayer =
             (targetpos.y + playerYPosSpare >= monsterPositionY && targetpos.y - playerYPosSpare <= monsterPositionY);
         bool isSendBack = monsterType == UniqMonster.SendBack;
         if (isSendBack || isMonsterAttackingPlayer)
         {
-            player.SetHP(damageAmount *-1);
+            player.SetHP(-damageAmount);
             GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
             HitMoveAnimation(opsFx, transform.position);
             Destroy(opsFx, 0.2f);
         }
-        // ¹ÂÁî´ë½¬ Ã³·³ ¸ó½ºÅÍ°¡ ÇÃ·¹ÀÌ¾î ±×³É Áö³ªÄ¥¶§ ÄÞº¸ ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ë½¬ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¥ï¿½ï¿½ ï¿½Þºï¿½ ï¿½Ê±ï¿½È­
         else if (targetpos.x >= transform.position.x)
         {
             ScoreManager.instance.SetBestCombo_Reset();
