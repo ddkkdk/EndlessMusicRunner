@@ -53,6 +53,7 @@ public class SpawnManager : MonoBehaviour
             {
                 AudioManager.instance.StopMusic();
                 UI_GameOver.Create();
+                isCompletedSpawn = false;
             }    
         }
     }
@@ -130,6 +131,7 @@ public class SpawnManager : MonoBehaviour
         #endregion
         Debug.Log("몬스터 시작");
         int counting = 0;
+        bool isNewCreatBoss = false; // 보스생성했는가에 대한 변수
         while (true && isTestTableSpawn)
         {
             var level = GameData.Data.LevelDesigin[StageInfo];
@@ -151,7 +153,15 @@ public class SpawnManager : MonoBehaviour
                 {
                     for (int j = 0; j < level[idx].MonsterSpwanCount; ++j)
                     {
+                        //보스 한번 생성했는지검사
+                        bool isBoss = monsterInfo.monsterType == Monster_Type.Boss;
+                        //보스 한번생성한적이 있다면 보스생성하지않고 돌아오는형태
+                        if (isBoss && isNewCreatBoss) continue;
+
                         MonsterSpawn(monsterInfo, (MonsterSpwanPosition)level[idx].Spwan_Position);
+
+                        if (isBoss)
+                            isNewCreatBoss = true;
 
                         yield return new WaitForSeconds(level[idx].CoolTime);
                     }
@@ -170,15 +180,15 @@ public class SpawnManager : MonoBehaviour
                 Debug.Log($"최종 몬스터 수 :{LevelDesignMonsterCount.GetMonsterCount(0)}");
                 yield break;
             }
-            var obj = Instantiate(bossPrefab, bossPosition, Quaternion.identity);
         }
 
     }
     public int StageInfo = 0;
-    public void MonsterSpawn(C_MonsterTable t, MonsterSpwanPosition spwanPosition)
+    public void MonsterSpawn(C_MonsterTable t, MonsterSpwanPosition spwanPosition,bool CreatBoss = false)
     {
         //var t = GameData.Data.MonsterTable[idx];
         string prefab = string.Empty;
+        bool isMonster = t.monsterType == Monster_Type.Normal;
         if (t.monsterType == Monster_Type.Normal)
             prefab = monsterOBjects[t.PrefabName].name;
         else if (t.monsterType == Monster_Type.Boss)
@@ -201,7 +211,12 @@ public class SpawnManager : MonoBehaviour
                     MySpwanPoint = spawnPoint_3;
                 break;
         }
-        Monster.Create("Monster", prefab, MySpwanPoint, t.MaxHp, t.Speed, t.Uniq_MonsterType);
+        if(isMonster)
+            Monster.Create("Monster", prefab, MySpwanPoint, t.MaxHp, t.Speed, t.Uniq_MonsterType);
+        else if(!isMonster)
+        {
+            Boss.Create(bossSpawnPoint.position);
+        }
     }
 
     public void LongNoteSpawn(C_MonsterTable t, MonsterSpwanPosition spwanPosition)
