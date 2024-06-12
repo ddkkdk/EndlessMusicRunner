@@ -106,7 +106,10 @@ public class PlayerSystem : Entity
         {
             SkillSystem.instance.SetScoreBooster();
         }
-
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SkillSystem.instance.SetHealing();
+        }
 
         if (AttackState == E_AttackState.Hold)
         {
