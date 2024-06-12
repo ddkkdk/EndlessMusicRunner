@@ -61,12 +61,10 @@ public class Monster : Entity
 
         _Attack = true;
 
-        //���Ϳ� �÷��̾��� Y���������� ��ġ��Ƽ� �÷��̾�� ����������
+        //몬스터 플레이어 공격기준 
         float playerYPosSpare = 0.5f;
         var monsterPositionY = transform.position.y;
         var monsterType = GetComponent<MoveLeft>().uniqMonster;
-        //����� �ϰ�� �÷��̾ ������
-        //�Ϲ� ���ʹ� ��������� ������
         bool isMonsterAttackingPlayer =
             (targetpos.y + playerYPosSpare >= monsterPositionY && targetpos.y - playerYPosSpare <= monsterPositionY);
         bool isSendBack = monsterType == UniqMonster.SendBack;
@@ -77,7 +75,7 @@ public class Monster : Entity
             HitMoveAnimation(opsFx, transform.position);
             Destroy(opsFx, 0.2f);
         }
-        // ����뽬 ó�� ���Ͱ� �÷��̾� �׳� ����ĥ�� �޺� �ʱ�ȭ
+        //플레이어 지나갈때때
         else if (targetpos.x >= transform.position.x)
         {
             ScoreManager.instance.SetBestCombo_Reset();

@@ -28,13 +28,14 @@ public class LongNote : MonoBehaviour
     private float GetScoreTime = 0f;
 
     public int AttackHold = 0;
+    //롱노트 만들기
     public static void Create(string folderName, string name, Transform CreatePos, int speed)
     {
         string path = $"{folderName}/{name}";
         var load = Resources.Load<GameObject>(path);
         var note = Instantiate<GameObject>(load);
         note.transform.position = CreatePos.position;
-
+        note.GetComponent<MoveLeft>().speed = 20;
     }
     private void Start()
     {

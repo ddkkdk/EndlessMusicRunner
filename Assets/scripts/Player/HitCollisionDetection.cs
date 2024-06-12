@@ -18,7 +18,10 @@ public class HitCollisionDetection : MonoBehaviour
     [SpineAnimation]
     public string HitAnimation;
 
-
+    //이펙트 생성위치
+    public Transform downHitPoint;
+    public Transform upHitPoint;
+    public float effectUpPositionY;
     private void Start()
     {
         if (Instance != null)
@@ -63,18 +66,16 @@ public class HitCollisionDetection : MonoBehaviour
 
         var hitPoint = obj.transform.position;
         GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
-
         
-
+        
         var txteffects = ScroeStateList[(int)perfect];
-        GameObject txtobject = Instantiate(txteffects, hitPoint, Quaternion.identity);
-
-        StartCoroutine(OpacityChange(txtobject));
+        //이펙트 위치고정 코드로 변경 
+        CreatEffect(obj, hitPoint, txteffects, effectUpPositionY);
 
         if (!obj.name.Contains("Boss"))
             HIttingEffects(obj, hitPoint);
 
-        MoveUPword(txtobject, hitPoint);
+        //MoveUPword(txtobject, hitPoint);
     }
 
     public void SetHit(GameObject obj, ScoreManager.E_ScoreState state)
@@ -179,5 +180,28 @@ public class HitCollisionDetection : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private void CreatEffect(GameObject monster,Vector3 hitPoint,GameObject txteffects  ,float effectUpPositionY )
+    {
+        var monsterType = monster.GetComponent<MoveLeft>().uniqMonster;
+        var effectPosition = Vector3.zero;
+        if (hitPoint.y > 0 && monsterType == UniqMonster.Normal)
+        {
+            effectPosition = upHitPoint.position;
+            effectPosition.y += effectUpPositionY;
+        }
+        else if (hitPoint.y > 0 && monsterType == UniqMonster.SendBack)
+        {
+            effectPosition = upHitPoint.position;
+            effectPosition.y += effectUpPositionY;
+        }
+        else if (hitPoint.y < 0)
+        {
+            effectPosition = downHitPoint.position;
+            effectPosition.y += effectUpPositionY;
+        }
+        GameObject txtobject = Instantiate(txteffects, effectPosition, Quaternion.identity);
+        StartCoroutine(OpacityChange(txtobject));
     }
 }

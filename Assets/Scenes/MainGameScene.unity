@@ -8773,8 +8773,11 @@ MonoBehaviour:
   - {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
   score: 0
   comboScore: 0
-  fadeDuration: 2
+  fadeDuration: 0.75
   HitAnimation: 
+  downHitPoint: {fileID: 514379562}
+  upHitPoint: {fileID: 2046699415}
+  effectUpPositionY: 3
 --- !u!114 &827244273
 MonoBehaviour:
   m_ObjectHideFlags: 0
