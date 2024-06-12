@@ -90,6 +90,12 @@ public class ScoreManager : MonoBehaviour
         CurrentScore += totalvalue;
         UIManager.Instance.ScoreUpdater(CurrentScore);
     }
+    //스킬 영향 없이 획득
+    public void SetCurrentScore(int vlaue, bool noneadd)
+    {
+        CurrentScore += vlaue;
+        UIManager.Instance.ScoreUpdater(CurrentScore);
+    }
 
     //현재 점수 가져오기
     public int GetCurrentScore()

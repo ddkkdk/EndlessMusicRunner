@@ -13,18 +13,18 @@ public class Monster : Entity
     [SerializeField] SkeletonDataAsset[] Sk;
     [SerializeField] SkeletonAnimation My;
     bool _Attack;
-    public static void Create(string folderName,string name,Transform CreatePos,int hp,int speed, UniqMonster Uniq_MonsterType)
+    public static void Create(string folderName, string name, Transform CreatePos, int hp, int speed, UniqMonster Uniq_MonsterType)
     {
         string path = $"{folderName}/{name}";
         var load = Resources.Load<GameObject>(path);
         var monster = Instantiate<GameObject>(load);
         var monsterValue = monster.GetComponent<Monster>();
         monsterValue.maxHealth = hp;
-        var monsterValue2 = monster.GetComponent<MoveLeft>(); 
+        var monsterValue2 = monster.GetComponent<MoveLeft>();
         monsterValue2.speed = speed;
         monsterValue2.uniqMonster = Uniq_MonsterType;
         monster.transform.position = CreatePos.position;
-       
+
     }
 
     public System.Action Ac_Hit;
@@ -67,12 +67,12 @@ public class Monster : Entity
         var monsterType = GetComponent<MoveLeft>().uniqMonster;
         //샌드백 일경우 플레이어를 지나감
         //일반 몬스터는 통용적으로 가능함
-        bool isMonsterAttackingPlayer = 
+        bool isMonsterAttackingPlayer =
             (targetpos.y + playerYPosSpare >= monsterPositionY && targetpos.y - playerYPosSpare <= monsterPositionY);
         bool isSendBack = monsterType == UniqMonster.SendBack;
         if (isSendBack || isMonsterAttackingPlayer)
         {
-            player.Damage(damageAmount);
+            player.SetHP(damageAmount);
             GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
             HitMoveAnimation(opsFx, transform.position);
             Destroy(opsFx, 0.2f);
@@ -87,7 +87,7 @@ public class Monster : Entity
     public void SetHit(ScoreManager.E_ScoreState perfect)
     {
         Ac_Hit?.Invoke();
-        MonsterDamage(1);
+        SetMonsterHp(-1);
         _Attack = true;
         HitCollisionDetection.Instance.SetHit(this.gameObject, perfect);
         SetDie(currentHealth <= 0);
@@ -128,9 +128,9 @@ public class Monster : Entity
 
 public enum UniqMonster
 {
-    Normal,SendBack,
+    Normal, SendBack,
 }
 public enum Monster_Type
 {
-    Normal,Boss
+    Normal, Boss
 }

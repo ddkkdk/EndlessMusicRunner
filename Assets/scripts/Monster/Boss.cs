@@ -132,7 +132,7 @@ public class Boss : MonoBehaviour
         if (dis <= 1f)
         {
             //유저 공격 받는 코드 추가
-            GameManager.instance.player.Damage(Damage);
+            GameManager.instance.player.SetHP(-Damage);
             e_State = E_State.Hit;
         }
     }
