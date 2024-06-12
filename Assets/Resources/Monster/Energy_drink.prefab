@@ -25,6 +25,10 @@ PrefabInstance:
       value: 3.16
       objectReference: {fileID: 0}
     - target: {fileID: 6347022832362483638, guid: aadad9fd2c648c648984fa1ae2bdca51, type: 3}
+      propertyPath: _animationName
+      value: animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347022832362483638, guid: aadad9fd2c648c648984fa1ae2bdca51, type: 3}
       propertyPath: initialSkinName
       value: skin0
       objectReference: {fileID: 0}
@@ -83,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 7947461849755390228, guid: aadad9fd2c648c648984fa1ae2bdca51, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 070457a956c13e548983132b48399993, type: 2}
+      objectReference: {fileID: 2100000, guid: 703c011f80a6dce43b692049e56f5439, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
