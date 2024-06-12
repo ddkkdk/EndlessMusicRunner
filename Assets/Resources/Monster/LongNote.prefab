@@ -264,8 +264,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2176
-  Star_X: 0.085
-  Scale_X: 0.03
+  Star_X: 0.12
+  Scale_X: 0.045
   AttackHold: 0
 --- !u!61 &5426800999059403691
 BoxCollider2D:

@@ -35,7 +35,7 @@ public class LongNote : MonoBehaviour
         var load = Resources.Load<GameObject>(path);
         var note = Instantiate<GameObject>(load);
         note.transform.position = CreatePos.position;
-        note.GetComponent<MoveLeft>().speed = 20;
+        note.GetComponent<MoveLeft>().speed = speed;
     }
     private void Start()
     {
@@ -90,6 +90,16 @@ public class LongNote : MonoBehaviour
                 Debug.Log(score);
                 ScoreManager.instance.SetCurrentScore(score);
             }
+            // 빌드 버전을 위한 노트 테스트
+            var scale = Tr.localScale;
+            scale.x -= Scale_X;
+
+            var pos = myNoteSprite[1].transform.position;
+            pos.x += Star_X;
+            myNoteSprite[1].transform.position = pos;
+
+            Tr.localScale = scale;
+            //
             return;
         }
         AttackHold = 2;
