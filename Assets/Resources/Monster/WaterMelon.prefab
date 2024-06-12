@@ -65,8 +65,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 64360a295a152ee4f9f406677c17111a, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: a87bfec27a82e8945815bba905e13dd5, type: 2}
-  initialSkinName: 
+  initialSkinName: skin0
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0
@@ -125,7 +124,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: idle
+  _animationName: Idle
   loop: 1
   timeScale: 1
 --- !u!114 &3407263268091767538
@@ -165,9 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   monsterNumber: 15
-  SendBack: 0
-  OffSetX: 0
   DestoryX: 0
+  uniqMonster: 0
 --- !u!58 &7529112082843205451
 CircleCollider2D:
   m_ObjectHideFlags: 0
