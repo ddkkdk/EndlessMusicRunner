@@ -1,0 +1,261 @@
+Medium_Monster_Grenade.png
+	size: 2852, 2852
+	filter: Linear, Linear
+	pma: true
+skin0/L_foot
+	bounds: 944, 464, 156, 103
+	offsets: 1, 1, 158, 105
+skin1/L_foot
+	bounds: 944, 464, 156, 103
+	offsets: 1, 1, 158, 105
+skin2/L_foot
+	bounds: 944, 464, 156, 103
+	offsets: 1, 1, 158, 105
+skin3/L_foot
+	bounds: 944, 464, 156, 103
+	offsets: 1, 1, 158, 105
+skin0/L_hand
+	bounds: 2086, 438, 171, 310
+	rotate: 90
+skin1/L_hand
+	bounds: 2086, 438, 171, 310
+	rotate: 90
+skin2/L_hand
+	bounds: 2086, 438, 171, 310
+	rotate: 90
+skin3/L_hand
+	bounds: 2086, 438, 171, 310
+	rotate: 90
+skin0/R_foot
+	bounds: 2, 15, 143, 78
+	offsets: 1, 1, 145, 80
+skin1/R_foot
+	bounds: 2, 15, 143, 78
+	offsets: 1, 1, 145, 80
+skin2/R_foot
+	bounds: 2, 15, 143, 78
+	offsets: 1, 1, 145, 80
+skin3/R_foot
+	bounds: 2, 15, 143, 78
+	offsets: 1, 1, 145, 80
+skin0/R_hand
+	bounds: 645, 2036, 296, 171
+skin1/R_hand
+	bounds: 645, 2036, 296, 171
+skin2/R_hand
+	bounds: 645, 2036, 296, 171
+skin3/R_hand
+	bounds: 645, 2036, 296, 171
+skin0/bady
+	bounds: 2, 2209, 816, 641
+	offsets: 0, 18, 822, 682
+skin0/face
+	bounds: 2, 95, 471, 313
+	rotate: 90
+skin0/face_1
+	bounds: 2410, 1206, 428, 336
+	offsets: 4, 0, 437, 336
+skin0/face_2
+	bounds: 2405, 796, 445, 408
+	offsets: 44, 0, 495, 408
+skin0/face_3
+	bounds: 944, 2, 408, 454
+	offsets: 0, 11, 408, 476
+skin0/face_4
+	bounds: 1762, 1808, 646, 399
+	offsets: 7, 136, 660, 535
+skin1/bady
+	bounds: 820, 2209, 816, 641
+	offsets: 0, 18, 822, 682
+skin1/face
+	bounds: 317, 95, 471, 313
+	rotate: 90
+skin2/face
+	bounds: 317, 95, 471, 313
+	rotate: 90
+skin3/face
+	bounds: 317, 95, 471, 313
+	rotate: 90
+skin5/face
+	bounds: 317, 95, 471, 313
+	rotate: 90
+skin1/face_1
+	bounds: 2405, 458, 428, 336
+	offsets: 4, 0, 437, 336
+skin2/face_1
+	bounds: 2405, 458, 428, 336
+	offsets: 4, 0, 437, 336
+skin3/face_1
+	bounds: 2405, 458, 428, 336
+	offsets: 4, 0, 437, 336
+skin5/face_1
+	bounds: 2405, 458, 428, 336
+	offsets: 4, 0, 437, 336
+skin1/face_2
+	bounds: 1354, 37, 416, 364
+	offsets: 44, 15, 495, 408
+	rotate: 90
+skin2/face_2
+	bounds: 1354, 37, 416, 364
+	offsets: 44, 15, 495, 408
+	rotate: 90
+skin3/face_2
+	bounds: 1354, 37, 416, 364
+	offsets: 44, 15, 495, 408
+	rotate: 90
+skin4/face_2
+	bounds: 1354, 37, 416, 364
+	offsets: 44, 15, 495, 408
+	rotate: 90
+skin5/face_2
+	bounds: 1354, 37, 416, 364
+	offsets: 44, 15, 495, 408
+	rotate: 90
+skin1/face_3
+	bounds: 645, 569, 352, 399
+	offsets: 28, 40, 408, 476
+	rotate: 90
+skin2/face_3
+	bounds: 645, 569, 352, 399
+	offsets: 28, 40, 408, 476
+	rotate: 90
+skin3/face_3
+	bounds: 645, 569, 352, 399
+	offsets: 28, 40, 408, 476
+	rotate: 90
+skin4/face_3
+	bounds: 645, 569, 352, 399
+	offsets: 28, 40, 408, 476
+	rotate: 90
+skin5/face_3
+	bounds: 645, 569, 352, 399
+	offsets: 28, 40, 408, 476
+	rotate: 90
+skin7/face_3
+	bounds: 645, 569, 352, 399
+	offsets: 28, 40, 408, 476
+	rotate: 90
+skin1/face_4
+	bounds: 2456, 2204, 646, 377
+	offsets: 7, 136, 660, 535
+	rotate: 90
+skin2/face_4
+	bounds: 2456, 2204, 646, 377
+	offsets: 7, 136, 660, 535
+	rotate: 90
+skin3/face_4
+	bounds: 2456, 2204, 646, 377
+	offsets: 7, 136, 660, 535
+	rotate: 90
+skin4/face_4
+	bounds: 2456, 2204, 646, 377
+	offsets: 7, 136, 660, 535
+	rotate: 90
+skin5/face_4
+	bounds: 2456, 2204, 646, 377
+	offsets: 7, 136, 660, 535
+	rotate: 90
+skin7/face_4
+	bounds: 2456, 2204, 646, 377
+	offsets: 7, 136, 660, 535
+	rotate: 90
+skin2/bady
+	bounds: 1638, 2209, 816, 641
+	offsets: 0, 18, 822, 682
+skin3/bady
+	bounds: 2, 1386, 816, 641
+	offsets: 0, 18, 822, 682
+	rotate: 90
+skin4/L_foot
+	bounds: 1260, 464, 155, 103
+	offsets: 0, 2, 158, 105
+skin7/L_foot
+	bounds: 1260, 464, 155, 103
+	offsets: 0, 2, 158, 105
+skin4/L_hand
+	bounds: 2452, 285, 171, 310
+	rotate: 90
+skin7/L_hand
+	bounds: 2452, 285, 171, 310
+	rotate: 90
+skin4/R_foot
+	bounds: 292, 17, 145, 76
+	offsets: 0, 4, 145, 80
+skin7/R_foot
+	bounds: 292, 17, 145, 76
+	offsets: 0, 4, 145, 80
+skin4/R_hand
+	bounds: 645, 1863, 296, 171
+skin7/R_hand
+	bounds: 645, 1863, 296, 171
+skin4/bady
+	bounds: 2, 568, 816, 641
+	offsets: 0, 18, 822, 682
+	rotate: 90
+skin4/face
+	bounds: 632, 100, 466, 310
+	offsets: 5, 0, 471, 313
+	rotate: 90
+skin7/face
+	bounds: 632, 100, 466, 310
+	offsets: 5, 0, 471, 313
+	rotate: 90
+skin4/face_1
+	bounds: 2410, 1874, 437, 328
+	offsets: 0, 0, 437, 336
+skin7/face_1
+	bounds: 2410, 1874, 437, 328
+	offsets: 0, 0, 437, 336
+skin5/L_foot
+	bounds: 1102, 464, 156, 103
+	offsets: 1, 1, 158, 105
+skin5/L_hand
+	bounds: 2452, 112, 171, 310
+	rotate: 90
+skin5/R_foot
+	bounds: 147, 15, 143, 78
+	offsets: 1, 1, 145, 80
+skin5/R_hand
+	bounds: 645, 1690, 296, 171
+skin5/bady
+	bounds: 944, 1566, 816, 641
+	offsets: 0, 18, 822, 682
+skin6/L_foot
+	bounds: 1759, 506, 155, 103
+	offsets: 0, 2, 158, 105
+skin6/L_hand
+	bounds: 645, 1205, 171, 310
+skin6/R_foot
+	bounds: 439, 17, 145, 76
+	offsets: 0, 4, 145, 80
+skin6/R_hand
+	bounds: 645, 1517, 296, 171
+skin6/bady
+	bounds: 944, 923, 816, 641
+	offsets: 0, 18, 822, 682
+skin6/face
+	bounds: 1447, 455, 466, 310
+	offsets: 5, 0, 471, 313
+	rotate: 90
+skin6/face_1
+	bounds: 2410, 1544, 437, 328
+	offsets: 0, 0, 437, 336
+skin6/face_2
+	bounds: 1720, 37, 416, 364
+	offsets: 44, 15, 495, 408
+	rotate: 90
+skin6/face_3
+	bounds: 1046, 569, 352, 399
+	offsets: 28, 40, 408, 476
+	rotate: 90
+skin6/face_4
+	bounds: 1762, 1429, 646, 377
+	offsets: 7, 136, 660, 535
+skin7/bady
+	bounds: 1762, 611, 816, 641
+	offsets: 0, 18, 822, 682
+	rotate: 90
+skin7/face_2
+	bounds: 2086, 20, 416, 364
+	offsets: 44, 15, 495, 408
+	rotate: 90

@@ -8778,7 +8778,7 @@ MonoBehaviour:
   HitAnimation: 
   downHitPoint: {fileID: 514379562}
   upHitPoint: {fileID: 2046699415}
-  effectUpPositionY: 3
+  effectUpPositionY: 1
 --- !u!114 &827244273
 MonoBehaviour:
   m_ObjectHideFlags: 0
