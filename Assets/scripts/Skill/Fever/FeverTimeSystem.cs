@@ -12,8 +12,14 @@ public class FerverTimeSystem : Skill
         await Skill.Create<FerverTimeSystem>(st_Skill, name, _skillClass);
     }
 
+    //피버타임 발동 시 스코어 두배
     public static int SetFeverScore(int currentScore)
     {
+        if (_skillClass == null || _skillClass.ActiveChecker == null)
+        {
+            return currentScore;
+        }
+
         return _skillClass.ActiveChecker.CheckActive() ? currentScore * 2 : currentScore;
     }
 }
