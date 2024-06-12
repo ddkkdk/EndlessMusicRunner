@@ -60,10 +60,22 @@ public class Monster : Entity
         }
 
         _Attack = true;
-        player.Damage(damageAmount);
-        GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
-        HitMoveAnimation(opsFx, transform.position);
-        Destroy(opsFx, 0.2f);
+        //몬스터와 플레이어의 Y포지션으로 위치잡아서 플레이어게 데미지전달
+        float playerYPosUpperBound = 0.5f;
+        float playerYPosLowerBound = -0.5f;
+        var monsterPositionY = transform.position.y;
+        if(targetpos.y >= monsterPositionY + playerYPosUpperBound && targetpos.y<= monsterPositionY - playerYPosLowerBound)
+        {
+            player.Damage(damageAmount);
+            GameObject opsFx = Instantiate(damageFx, transform.position, Quaternion.identity);
+            HitMoveAnimation(opsFx, transform.position);
+            Destroy(opsFx, 0.2f);
+        }
+        // 뮤즈대쉬 처럼 몬스터가 플레이어 그냥 지나칠때 콤보 초기화
+        //else if(targetpos.x >=transform.position.x)
+        //{
+        //    ScoreManager.instance.SetBestCombo_Reset();
+        //}
     }
 
     public void SetHit(ScoreManager.E_ScoreState perfect)

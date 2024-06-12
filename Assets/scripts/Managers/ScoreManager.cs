@@ -64,7 +64,9 @@ public class ScoreManager : MonoBehaviour
     public void SetCombo_Add()
     {
         CurrentCombo++;
-        UIManager.Instance.ComboScoreUpdater(CurrentCombo);
+        //현재 콤보가 5이상일때만 오브젝트 활성화 시키기
+        if(CurrentCombo >= 5 )
+            UIManager.Instance.ComboScoreUpdater(CurrentCombo);
 
         //현재 콤보가 베스트 보다 큰지 확인
         if (CurrentCombo < BestCombo)

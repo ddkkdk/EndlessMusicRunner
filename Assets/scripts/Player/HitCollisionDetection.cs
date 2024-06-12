@@ -43,7 +43,7 @@ public class HitCollisionDetection : MonoBehaviour
     void SetEffect(GameObject obj, ScoreManager.E_ScoreState perfect)
     {
         AudioManager.instance.PlaySound();
-        //Perfect / Great일때만 점수 주게 변경 -> 이승우
+        //Perfect / Great일때만 점수 주게 변경 
         var score = 0;
         if (perfect == ScoreManager.E_ScoreState.Perfect)
         {
@@ -58,8 +58,6 @@ public class HitCollisionDetection : MonoBehaviour
 
         if (perfect == ScoreManager.E_ScoreState.Late || perfect == ScoreManager.E_ScoreState.Early)
         {
-            // 콤보 리셋해주는 코드 추가
-
             return;
         }
 
