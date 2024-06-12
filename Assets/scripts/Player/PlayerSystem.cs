@@ -102,6 +102,10 @@ public class PlayerSystem : Entity
         {
             SkillSystem.instance.SetFeverTime();
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            SkillSystem.instance.SetScoreBooster();
+        }
 
 
         if (AttackState == E_AttackState.Hold)

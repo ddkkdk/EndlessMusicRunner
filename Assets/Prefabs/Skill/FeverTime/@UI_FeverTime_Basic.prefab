@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 1427221258321401590}
   - component: {fileID: 7330852557708989338}
   m_Layer: 0
-  m_Name: '@UI_FeverTime_Ella'
+  m_Name: '@UI_FeverTime_Basic'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
