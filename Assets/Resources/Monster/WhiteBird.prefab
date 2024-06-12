@@ -198,7 +198,7 @@ MonoBehaviour:
   isOnGround: 1
   damageAmount: 5
   damageFx: {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
-  Change: 1
+  Change: 0
   Sk:
   - {fileID: 11400000, guid: cb489ab4ca0330b47b98c61b82dec0b3, type: 2}
   - {fileID: 11400000, guid: 02d452726c9435d48a5cfcab96832fa2, type: 2}
