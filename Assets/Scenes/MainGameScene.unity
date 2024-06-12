@@ -3452,6 +3452,9 @@ MonoBehaviour:
   - {fileID: 5156434469478692734, guid: 8249f2eee7aea7f4cabef9475a173571, type: 3}
   - {fileID: 5927427790796394008, guid: 70574aac563509242a337322ba25918a, type: 3}
   - {fileID: 5927427790796394008, guid: 84a56c4dea908054199747d2cce488b5, type: 3}
+  - {fileID: 8821321151596255113, guid: 09b21e11486d1de4ebe16a74154064be, type: 3}
+  - {fileID: 8821321151596255113, guid: ecd51a4f4472c454bb247e6ca7d4b81a, type: 3}
+  - {fileID: 8821321151596255113, guid: 0eadad63813328445b1dab927b7c1d6a, type: 3}
   bossObjects:
   - {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
   isBuildTestingRandomMonster: 1
