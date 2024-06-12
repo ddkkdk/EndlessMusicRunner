@@ -24,8 +24,17 @@ public class LongNote : MonoBehaviour
     GameObject Effect;
     float Dealy = 0f;
 
-    public int AttackHold = 0;
+    private float getScoreTimer = 0f;
 
+    public int AttackHold = 0;
+    public static void Create(string folderName, string name, Transform CreatePos, int speed)
+    {
+        string path = $"{folderName}/{name}";
+        var load = Resources.Load<GameObject>(path);
+        var monster = Instantiate<GameObject>(load);
+        monster.transform.position = CreatePos.position;
+
+    }
     private void Start()
     {
         if (Change)
@@ -54,12 +63,11 @@ public class LongNote : MonoBehaviour
 
         var player = GameManager.instance.player;
         print(player.AttackState);
-
         if (player.AttackState == PlayerSystem.E_AttackState.Hold)
         {
+          
             return;
         }
-
         AttackHold = 2;
         if (Effect)
         {
@@ -72,11 +80,13 @@ public class LongNote : MonoBehaviour
         if (AttackHold == 0)
         {
             AttackHold = 1;
+            ScoreManager.instance.SetCombo_Add(); // 콤보추가
             return;
         }
 
         if (AttackHold == 2)
         {
+            ScoreManager.instance.SetCombo_Add(); // 콤보추가
             return;
         }
 
@@ -102,6 +112,10 @@ public class LongNote : MonoBehaviour
             AudioManager.instance.PlaySound();
             Dealy = 0.1f;
             AttackHold = 1;
+
+            //점수추가
+            var score = 1;
+            ScoreManager.instance.SetCurrentScore(score);
         }
 
 

@@ -76,18 +76,6 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnMonstersAtRandomPos()
     {
 
-        //if (monster.Count == 0)
-        //{
-
-        //    yield break;
-        //}
-
-        //if (!isCreatBoss)
-        //{
-        //    isCreatBoss = true;
-        //    var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
-
-        //}
 
         #region Old MonsterSpwan
         while (true && !isTestTableSpawn)
@@ -149,12 +137,26 @@ public class SpawnManager : MonoBehaviour
             for(int i =0;i<level.Count;i++)
             {
                 var monsterInfo = GameData.Data.MonsterTable[level[idx].MonsterInfo];
-                for(int j = 0; j < level[idx].MonsterSpwanCount;++j)
-                {
-                    MonsterSpwan(monsterInfo, (MonsterSpwanPosition)level[idx].Spwan_Position);
 
-                    yield return new WaitForSeconds(level[idx].CoolTime);
+                if (level[idx].MonsterInfo / 1000 ==1 )
+                {
+                    for (int j = 0; j < level[idx].MonsterSpwanCount; ++j)
+                    {
+                        LongNoteSpawn(monsterInfo, (MonsterSpwanPosition)level[idx].Spwan_Position);
+
+                        yield return new WaitForSeconds(level[idx].CoolTime);
+                    }
                 }
+                else
+                {
+                    for (int j = 0; j < level[idx].MonsterSpwanCount; ++j)
+                    {
+                        MonsterSpawn(monsterInfo, (MonsterSpwanPosition)level[idx].Spwan_Position);
+
+                        yield return new WaitForSeconds(level[idx].CoolTime);
+                    }
+                }
+               
                 idx++;
             }
             var bossPosition = Vector3.zero;
@@ -173,7 +175,7 @@ public class SpawnManager : MonoBehaviour
 
     }
     public int StageInfo = 0;
-    public void MonsterSpwan(C_MonsterTable t, MonsterSpwanPosition spwanPosition)
+    public void MonsterSpawn(C_MonsterTable t, MonsterSpwanPosition spwanPosition)
     {
         //var t = GameData.Data.MonsterTable[idx];
         string prefab = string.Empty;
@@ -200,6 +202,26 @@ public class SpawnManager : MonoBehaviour
                 break;
         }
         Monster.Create("Monster", prefab, MySpwanPoint, t.MaxHp, t.Speed, t.Uniq_MonsterType);
+    }
+
+    public void LongNoteSpawn(C_MonsterTable t, MonsterSpwanPosition spwanPosition)
+    {
+        string prefab = string.Empty;
+        prefab = monsterOBjects[t.PrefabName].name;
+
+        var MySpwanPoint = spawnPoint_1;
+        switch (spwanPosition)
+        {
+            case MonsterSpwanPosition.Down:
+                MySpwanPoint = spawnPoint_3;
+                break;
+            case MonsterSpwanPosition.Random:
+                int random = Random.Range(0, 2);
+                if (random == 1)
+                    MySpwanPoint = spawnPoint_3;
+                break;
+        }
+        LongNote.Create("Monster", prefab, MySpwanPoint,t.Speed);
     }
 }
 
