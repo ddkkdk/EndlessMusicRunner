@@ -98,6 +98,11 @@ public class PlayerSystem : Entity
                 SetAni(AttackState == E_AttackState.Hold ? E_AniType.Hold_Attack : type);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SkillSystem.instance.SetFeverTime();
+        }
+
 
         if (AttackState == E_AttackState.Hold)
         {
@@ -267,6 +272,10 @@ public class PlayerSystem : Entity
 
         for (int i = 0; i < BoxCol.Length; i++)
         {
+            if (BoxCol[i] == null)
+            {
+                return;
+            }
             DrawOverlapBox(BoxCol[i].position, BoxSize[(int)ScoreManager.E_ScoreState.Perfect], Color.green);
             DrawOverlapBox(BoxCol[i].position, BoxSize[(int)ScoreManager.E_ScoreState.Great], Color.blue);
 

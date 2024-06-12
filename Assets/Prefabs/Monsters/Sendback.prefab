@@ -67,7 +67,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 34389f5b9cf423c4c9b1bc6df93d4093, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,7 +127,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: idle
+  _animationName: Idle
   loop: 1
   timeScale: 1
 --- !u!58 &5927427790796393987
@@ -161,7 +162,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 4.74}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4.08
 --- !u!114 &5927427790796393986
