@@ -65,7 +65,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 64360a295a152ee4f9f406677c17111a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -198,7 +199,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.28990775, y: 3.637057}
+  m_Offset: {x: -0.28990775, y: 4.51}
   serializedVersion: 2
   m_Radius: 3.0985394
 --- !u!50 &-9049287886348220912
