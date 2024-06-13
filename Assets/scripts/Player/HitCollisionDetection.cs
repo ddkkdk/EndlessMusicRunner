@@ -11,15 +11,14 @@ public class HitCollisionDetection : MonoBehaviour
     public GameObject[] destroyParticleEffects;
     public GameObject puffEffect;
     public GameObject[] ScroeStateList;
-    public int score;
-    public int comboScore;
+
     [Range(0.2f, 10f)]
     public float fadeDuration = 2.0f;
 
     [SpineAnimation]
     public string HitAnimation;
 
-    //ÀÌÆåÆ® »ý¼ºÀ§Ä¡
+    //ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡
     public Transform downHitPoint;
     public Transform upHitPoint;
     public float effectUpPositionY;
@@ -47,7 +46,7 @@ public class HitCollisionDetection : MonoBehaviour
     void SetEffect(GameObject obj, ScoreManager.E_ScoreState perfect)
     {
         AudioManager.instance.PlaySound();
-        //Perfect / GreatÀÏ¶§¸¸ Á¡¼ö ÁÖ°Ô º¯°æ 
+        //Perfect / Greatï¿½Ï¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ 
         var score = 0;
         if (perfect == ScoreManager.E_ScoreState.Perfect)
         {
@@ -66,7 +65,7 @@ public class HitCollisionDetection : MonoBehaviour
         }
 
         var hitPoint = obj.transform.position;
-        // »ó´Ü ÀÌÆåÆ® ÇÏ´ÜÀÌÆåÆ® ±¸ºÐ
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         if (hitPoint.y > 0)
         {
             GameObject hitObject = Instantiate(upHitEffect, hitPoint, Quaternion.identity);
@@ -78,7 +77,7 @@ public class HitCollisionDetection : MonoBehaviour
         
         
         var txteffects = ScroeStateList[(int)perfect];
-        //ÀÌÆåÆ® À§Ä¡°íÁ¤ ÄÚµå·Î º¯°æ 
+        //ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
         CreatEffect(obj, hitPoint, txteffects, effectUpPositionY);
 
         if (!obj.name.Contains("Boss"))
@@ -110,10 +109,7 @@ public class HitCollisionDetection : MonoBehaviour
 
     public void HIttingEffects(GameObject other, Vector2 hitPoint)
     {
-        //Debug.Log("fshfkshfkshfkshfsjkhfjwsk");
         int mNumber = other.GetComponent<MoveLeft>().monsterNumber;
-        //Debug.Log("Monster number " + mNumber);
-
 
         if (mNumber == 0)
         {

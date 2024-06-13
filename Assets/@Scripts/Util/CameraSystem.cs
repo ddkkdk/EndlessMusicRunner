@@ -21,14 +21,24 @@ public class CameraSystem : MonoBehaviour
     Vector3 target;
 
     //카메라
-    Camera camera_main;
+    Camera _camera_main;
+    Camera camera_main
+    {
+        get
+        {
+            if (_camera_main == null)
+            {
+                _camera_main = Camera.main;
+            }
+            return _camera_main;
+        }
+    }
 
     private void Awake()
     {
         cameraSystem = this;
         targetSize = orginSize;
         target = this.transform.position;
-        camera_main = Camera.main;
     }
 
     private void Update()

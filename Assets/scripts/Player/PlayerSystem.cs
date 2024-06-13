@@ -1,20 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using Spine.Unity;
 using UnityEngine;
 
 public class PlayerSystem : Entity
 {
-    [SerializeField] SkeletonAnimation M_SkeletonAnimation;
-    [SerializeField] Transform[] BoxCol;
-    [SerializeField] LayerMask layerMask;
-    [SerializeField] Vector3[] BoxSize;
-    [SerializeField] Transform[] Tr_Pos;
-    [SerializeField] float Speed;
-    [SerializeField] float EarlyX;
-    [SerializeField] float LateX;
     public static PlayerSystem playerSystem;
+
+    //X값 오프셋
     const float OffSetX_value = 1.3f;
+
+    //움직임 속도
+    const float MiddleMoveSpeed = 100;
 
     public enum E_AniType
     {
@@ -37,11 +35,35 @@ public class PlayerSystem : Entity
 
     public enum E_AttackPoint
     {
+        None = -1,
         Down,
         Up,
         Middle
     }
 
+    [SerializeField] SkeletonAnimation M_SkeletonAnimation;
+
+    //피격박스 사이즈
+    List<Vector3> BoxSize = new List<Vector3>()
+    {
+        new Vector3(1, 1, 1),
+        new Vector3(1.5f, 1.5f, 1),
+        new Vector3(1,1,1),
+        new Vector3(1,1,1)
+    };
+
+    //위치
+    List<Vector3> Tr_AttackVector = new List<Vector3>()
+    {
+        new Vector3(-5, -3.5f, 0),
+        new Vector3(-5, 0, 0),
+        new Vector3(-5, 3.5f, 0)
+    };
+
+    //공격 상태
+    E_AttackState AttackState = E_AttackState.None;
+
+    //애니메이션 리스트
     List<string> L_AniStr = new List<string>()
     {
         "Running",
@@ -53,12 +75,19 @@ public class PlayerSystem : Entity
         "retire",
     };
 
+    //현재 공격 위치
+    E_AttackPoint AttackPoint = E_AttackPoint.Down;
+
+    //공격 카운트 수정
+    float AttackDelay = 2f;
+
+    //현재 공격 횟수
     int AttackCount = 0;
-    public E_AttackState AttackState = E_AttackState.None;
-    E_AttackPoint MoveIdx = 0;
-    int CheckAttackF_J = 0;
-    float Delay = 2f;
+
+    //내려가기 딜레이
     float DownDelay = 1f;
+
+    //홀딩 딜레이
     float HoldDelay = 0.2f;
 
     private void Awake()
@@ -74,12 +103,12 @@ public class PlayerSystem : Entity
 
     private void Update()
     {
-        Delay -= Time.deltaTime;
+        AttackDelay -= Time.deltaTime;
         DownDelay -= Time.deltaTime;
         HoldDelay -= Time.deltaTime;
         if (Input.GetKey(KeyCode.F) && CheckAttackState())
         {
-            SetAttack_Idx(1, 0);
+            SetAttack_Idx(E_AttackPoint.Up, E_AttackPoint.Down);
             AttackState = SetAttack(1);
 
             if (HoldDelay <= 0)
@@ -89,7 +118,7 @@ public class PlayerSystem : Entity
         }
         if (Input.GetKey(KeyCode.J) && CheckAttackState())
         {
-            SetAttack_Idx(0, 1);
+            SetAttack_Idx(E_AttackPoint.Down, E_AttackPoint.Up);
             AttackState = SetAttack(0);
 
             if (HoldDelay <= 0)
@@ -110,38 +139,55 @@ public class PlayerSystem : Entity
         Move();
     }
 
+    //상태 비교 체크
+    public bool GetAttackState(E_AttackState state)
+    {
+        return AttackState == state;
+    }
+
+    //공격 가능 상태 체크
     bool CheckAttackState()
     {
         return AttackState == E_AttackState.Hold || AttackState == E_AttackState.Attack_Re; ;
     }
 
-    void SetAttack_Idx(int idx, int checkidx)
+    //공격 상태 변경
+    void SetAttack_Idx(E_AttackPoint nextpoint, E_AttackPoint checkpoint)
     {
         AttackCount++;
-        if (CheckAttackF_J == checkidx || Delay <= 0)
+        if (CheckAttackPoin(checkpoint) || AttackDelay <= 0)
         {
             AttackCount = 0;
         }
-        CheckAttackF_J = idx;
-        Delay = 2;
+        AttackDelay = 2;
         DownDelay = 1;
-        if (MoveIdx != E_AttackPoint.Middle)
+        if (CheckAttackPoin(E_AttackPoint.Middle))
         {
-            SetDirectMoveIdx((E_AttackPoint)idx);
+            SetDirectMoveIdx(nextpoint);
         }
     }
 
-    public void SetDirectMoveIdx(E_AttackPoint idx)
+
+    //상태 비교 체크
+    public bool CheckAttackPoin(E_AttackPoint state)
     {
-        MoveIdx = idx;
+        return AttackPoint == state;
     }
 
+    //공격 위치 셋팅
+    public void SetDirectMoveIdx(E_AttackPoint idx)
+    {
+        AttackPoint = idx;
+    }
+
+    //리셋
     void Reset()
     {
         DownDelay = 1;
         AttackState = E_AttackState.Attack_Re;
     }
 
+    //움직임 함수
     void Move()
     {
         if (DownDelay <= 0)
@@ -152,15 +198,15 @@ public class PlayerSystem : Entity
         }
 
         // 목표 위치 가져오기
-        var targetPos = Tr_Pos[(int)MoveIdx];
-        var targetY = targetPos.position.y;
-        var targetZ = targetPos.position.z;
+        var targetPos = Tr_AttackVector[(int)AttackPoint];
+        var targetY = targetPos.y;
+        var targetZ = targetPos.z;
 
         // 현재 위치 가져오기
         var currentPosition = transform.position;
 
         // 새로운 위치 계산 (x는 고정)
-        var newPos = new Vector3(currentPosition.x, Mathf.Lerp(currentPosition.y, targetY, Time.deltaTime * Speed), Mathf.Lerp(currentPosition.z, targetZ, Time.deltaTime * Speed));
+        var newPos = new Vector3(currentPosition.x, Mathf.Lerp(currentPosition.y, targetY, Time.deltaTime * MiddleMoveSpeed), Mathf.Lerp(currentPosition.z, targetZ, Time.deltaTime * MiddleMoveSpeed));
 
         // 이동
         transform.position = newPos;
@@ -172,7 +218,7 @@ public class PlayerSystem : Entity
         }
     }
 
-    //Attack
+    //공격 함수
     E_AttackState SetAttack(int idx)
     {
         var result_hit = SetHit(idx);
@@ -221,36 +267,39 @@ public class PlayerSystem : Entity
         return E_AttackState.None;
     }
 
-
+    //히트 판정
     (Collider2D[], ScoreManager.E_ScoreState) SetHit(int idx)
     {
-        var col = Physics2D.OverlapBoxAll(BoxCol[idx].position, BoxSize[(int)ScoreManager.E_ScoreState.Perfect], default, layerMask);
+        //퍼펙트 체크
+        var col = Physics2D.OverlapBoxAll(Tr_AttackVector[idx], BoxSize[(int)ScoreManager.E_ScoreState.Perfect], default);
 
         if (col != null && col.Length > 0)
         {
             return (col, ScoreManager.E_ScoreState.Perfect);
         }
 
-        col = Physics2D.OverlapBoxAll(BoxCol[idx].position, BoxSize[(int)ScoreManager.E_ScoreState.Great], default, layerMask);
+        //그레이트 체크
+        col = Physics2D.OverlapBoxAll(Tr_AttackVector[idx], BoxSize[(int)ScoreManager.E_ScoreState.Great], default);
 
         if (col != null && col.Length > 0)
         {
             return (col, ScoreManager.E_ScoreState.Great);
         }
 
-        var earlypos = BoxCol[idx].position;
+        //얼리 체크
+        var earlypos = Tr_AttackVector[idx];
         earlypos.x += OffSetX_value;
-        col = Physics2D.OverlapBoxAll(earlypos, BoxSize[(int)ScoreManager.E_ScoreState.Early], default, layerMask);
+        col = Physics2D.OverlapBoxAll(earlypos, BoxSize[(int)ScoreManager.E_ScoreState.Early], default);
 
         if (col != null && col.Length > 0)
         {
             return (col, ScoreManager.E_ScoreState.Early);
         }
 
-
-        var latepos = BoxCol[idx].position;
+        //늦음 체크
+        var latepos = Tr_AttackVector[idx];
         latepos.x += -OffSetX_value;
-        col = Physics2D.OverlapBoxAll(latepos, BoxSize[(int)ScoreManager.E_ScoreState.Late], default, layerMask);
+        col = Physics2D.OverlapBoxAll(latepos, BoxSize[(int)ScoreManager.E_ScoreState.Late], default);
 
         if (col != null && col.Length > 0)
         {
@@ -260,36 +309,36 @@ public class PlayerSystem : Entity
         return (null, ScoreManager.E_ScoreState.Miss);
     }
 
+    //그림
     private void OnDrawGizmos()
     {
-        if (BoxCol == null || BoxSize == null) return;
+        if (Tr_AttackVector == null || BoxSize == null) return;
 
-        for (int i = 0; i < BoxCol.Length; i++)
+        for (int i = 0; i < Tr_AttackVector.Count; i++)
         {
-            if (BoxCol[i] == null)
+            if (Tr_AttackVector[i] == null)
             {
                 return;
             }
-            DrawOverlapBox(BoxCol[i].position, BoxSize[(int)ScoreManager.E_ScoreState.Perfect], Color.green);
-            DrawOverlapBox(BoxCol[i].position, BoxSize[(int)ScoreManager.E_ScoreState.Great], Color.blue);
+            DrawOverlapBox(Tr_AttackVector[i], BoxSize[(int)ScoreManager.E_ScoreState.Perfect], Color.green);
+            DrawOverlapBox(Tr_AttackVector[i], BoxSize[(int)ScoreManager.E_ScoreState.Great], Color.blue);
 
-            var earlypos = BoxCol[i].position;
+            var earlypos = Tr_AttackVector[i];
             earlypos.x += OffSetX_value;
             DrawOverlapBox(earlypos, BoxSize[(int)ScoreManager.E_ScoreState.Early], Color.yellow);
 
-            var latepos = BoxCol[i].position;
+            var latepos = Tr_AttackVector[i];
             latepos.x += -OffSetX_value;
             DrawOverlapBox(latepos, BoxSize[(int)ScoreManager.E_ScoreState.Late], Color.red);
         }
     }
-
     void DrawOverlapBox(Vector2 position, Vector2 size, Color color)
     {
         Gizmos.color = color;
         Gizmos.DrawWireCube(position, size);
     }
 
-
+    //몬스터 공격 세팅
     bool SetMonster(Monster monster, ScoreManager.E_ScoreState perfect)
     {
         if (monster == null)
@@ -300,6 +349,7 @@ public class PlayerSystem : Entity
         return true;
     }
 
+    //보스 공격 셋팅
     bool SetBoss(Boss boss, ScoreManager.E_ScoreState perfect)
     {
         if (boss == null)
@@ -310,6 +360,7 @@ public class PlayerSystem : Entity
         return true;
     }
 
+    //롱노트 셋팅
     bool SetLongNote(LongNote longnote, ScoreManager.E_ScoreState perfect)
     {
         if (longnote == null)
@@ -320,6 +371,7 @@ public class PlayerSystem : Entity
         return true;
     }
 
+    //애니메이션 셋팅
     public void SetAni(E_AniType name)
     {
         M_SkeletonAnimation.SetAni(L_AniStr[(int)name], name == E_AniType.Fly || name == E_AniType.Running);

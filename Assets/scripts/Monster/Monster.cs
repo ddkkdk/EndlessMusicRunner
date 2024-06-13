@@ -13,7 +13,7 @@ public class Monster : Entity
     [SerializeField] SkeletonDataAsset[] Sk;
     [SerializeField] SkeletonAnimation My;
     bool _Attack;
-    public static void Create(string folderName, string name, Transform CreatePos, int hp, int speed, UniqMonster Uniq_MonsterType)
+    public static void Create(string folderName, string name, Vector3 CreatePos, int hp, int speed, UniqMonster Uniq_MonsterType)
     {
         string path = $"{folderName}/{name}";
         var load = Resources.Load<GameObject>(path);
@@ -23,7 +23,7 @@ public class Monster : Entity
         var monsterValue2 = monster.GetComponent<MoveLeft>();
         monsterValue2.speed = speed;
         monsterValue2.uniqMonster = Uniq_MonsterType;
-        monster.transform.position = CreatePos.position;
+        monster.transform.position = CreatePos;
 
     }
 

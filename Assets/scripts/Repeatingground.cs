@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Repeatingground : MonoBehaviour
 {
-    public float startPosition;
-    public float lastPosition;
+    [SerializeField] float speed;
+    float startPosition;
+    float lastPosition = 250;
+    Vector3 pos;
 
-    public float speed;
-
+    private void Start()
+    {
+        pos = new Vector3(startPosition, transform.position.y);
+    }
 
     void Update()
     {
@@ -16,15 +20,7 @@ public class Repeatingground : MonoBehaviour
 
         if (transform.position.x <= lastPosition)
         {
-            Vector2 pos = new Vector2(startPosition, transform.position.y);
             transform.position = pos;
-            // Destroy(gameObject);
-
         }
-
-
-
-
-
     }
 }

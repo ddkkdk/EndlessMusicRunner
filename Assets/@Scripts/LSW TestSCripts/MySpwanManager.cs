@@ -8,7 +8,7 @@ public class MySpwanManager : MonoBehaviour
 {
 
     #region Change Addressables Code
-    public List<string> AddressableGroups = new List<string>(); //MonsterTable²¨ °¡Á®¿Ã ¿¹Á¤
+    public List<string> AddressableGroups = new List<string>(); //MonsterTableï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public List<GameObject> monsterOBjects=new List<GameObject>();
     public List<GameObject> bossObjects = new List<GameObject>();
     #endregion
@@ -48,7 +48,7 @@ public class MySpwanManager : MonoBehaviour
             prefab = monsterOBjects[t.PrefabName].name;
         else if (t.monsterType == Monster_Type.Boss)
             prefab = bossObjects[t.PrefabName].name;
-        Monster.Create("Monster", prefab, spwanDown, t.MaxHp,t.Speed,t.Uniq_MonsterType);
+        Monster.Create("Monster", prefab, spwanDown.position, t.MaxHp,t.Speed,t.Uniq_MonsterType);
     }
 
 }

@@ -28,13 +28,13 @@ public class LongNote : MonoBehaviour
     private float GetScoreTime = 0f;
 
     public int AttackHold = 0;
-    //·Õ³ëÆ® ¸¸µé±â
-    public static void Create(string folderName, string name, Transform CreatePos, int speed)
+    //ï¿½Õ³ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½
+    public static void Create(string folderName, string name, Vector3 CreatePos, int speed)
     {
         string path = $"{folderName}/{name}";
         var load = Resources.Load<GameObject>(path);
         var note = Instantiate<GameObject>(load);
-        note.transform.position = CreatePos.position;
+        note.transform.position = CreatePos;
         note.GetComponent<MoveLeft>().speed = speed;
     }
     private void Start()
@@ -42,7 +42,7 @@ public class LongNote : MonoBehaviour
         if (Change)
         {
             var type = UI_Lobby.Type == false ? 0 : 1;
-            // ÀÌ¹ÌÁö º¯°æ Ãß°¡
+            // ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
             for (int i = 0; i < myNoteSprite.Length; ++i)
             {
                 var idx = (int)PlayerSkinType.Count;
@@ -51,7 +51,7 @@ public class LongNote : MonoBehaviour
                     spriteIndex += (int)PlayerSkinType.Count;
                 
                 myNoteSprite[i].sprite = noteSprites[spriteIndex];
-                //»çÀÌÁî°¡ 1·Î³ª¿Í¼­ 0.5·Î ¼öµ¿À¸·Î Á¶Àý
+                //ï¿½ï¿½ï¿½ï¿½ï¿½î°¡ 1ï¿½Î³ï¿½ï¿½Í¼ï¿½ 0.5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 myNoteSprite[i].gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             myLongSprrite.sprite = longSprites[type];
@@ -67,7 +67,7 @@ public class LongNote : MonoBehaviour
     {
         if (AttackHold == 0 || AttackHold == 2)
         {
-            // ÆÇÁ¤ µµÁß¿¡ ¸ØÃß°Å³ª ½ÇÆÐÇßÀ»¶§ 
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ß°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
             var targetPosition = GameManager.instance.player.transform.position;
             if (transform.position.x <= targetPosition.x)
             {
@@ -79,10 +79,9 @@ public class LongNote : MonoBehaviour
         }
 
         var player = GameManager.instance.player;
-        print(player.AttackState);
-        if (player.AttackState == PlayerSystem.E_AttackState.Hold)
+        if (player.GetAttackState(PlayerSystem.E_AttackState.Hold))
         {
-            //Á¡¼öÃß°¡
+            //ë”œë ˆì´ ì‹œê°„
             if (GetScoreTime + 0.1f <= Time.time)
             {
                 GetScoreTime = Time.time;
@@ -90,7 +89,8 @@ public class LongNote : MonoBehaviour
                 Debug.Log(score);
                 ScoreManager.instance.SetCurrentScore(score);
             }
-            // ºôµå ¹öÀüÀ» À§ÇÑ ³ëÆ® Å×½ºÆ®
+
+            //ìŠ¤ì¼€ì¼ ì¤„ì´ê¸°
             var scale = Tr.localScale;
             scale.x -= Scale_X;
 
@@ -114,7 +114,7 @@ public class LongNote : MonoBehaviour
         if (AttackHold == 0)
         {
             AttackHold = 1;
-            ScoreManager.instance.SetCombo_Add(); // ÄÞº¸Ãß°¡
+            ScoreManager.instance.SetCombo_Add(); // ï¿½Þºï¿½ï¿½ß°ï¿½
             return;
         }
 
@@ -154,7 +154,7 @@ public class LongNote : MonoBehaviour
             return;
         }
 
-        ScoreManager.instance.SetCombo_Add(); // ÄÞº¸Ãß°¡
+        ScoreManager.instance.SetCombo_Add(); // ï¿½Þºï¿½ï¿½ß°ï¿½
         Destroy(this.gameObject);
         Destroy(Effect);
         var createpos = GameManager.instance.skeleton.transform.position;

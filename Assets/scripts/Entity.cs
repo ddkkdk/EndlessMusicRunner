@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
 {
-
-
-    public float maxHealth;
+     public float maxHealth;
     public float currentHealth;
     public Image fillAmount;
-    public bool isOnGround = true;
+
     protected virtual void Awake()
     {
 
@@ -31,7 +29,6 @@ public class Entity : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isOnGround = true;
 
     }
 

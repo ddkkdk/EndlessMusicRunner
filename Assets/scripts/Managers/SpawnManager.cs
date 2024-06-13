@@ -12,19 +12,21 @@ public class SpawnManager : MonoBehaviour
     public float itemSpawnDelay;
     public float setSpawnDelay;
 
-    public GameObject spawnObjects;
-    public Transform spawnPoint_1;
-    public Transform spwanPoint_2;
-    public Transform spawnPoint_3;
-    public Transform bossSpawnPoint;
 
-    private bool isSpawning = false;
-    public bool startSpawn = false;
+    public enum E_SpawnPoint
+    {
+        Low,
+        Middle,
+        Hight
+    }
 
-    private Transform spawnPoint;
-
+    List<Vector3> L_SpawnPoint = new List<Vector3>()
+    {
+        new Vector3(20, -3.5f, 0),
+        new Vector3(20, 0, 0),
+        new Vector3(20, 3.5f, 0)
+    };
     public GameObject bossPrefab;
-
 
     public List<GameObject> monsterOBjects = new List<GameObject>();
     public List<GameObject> bossObjects = new List<GameObject>();
@@ -45,16 +47,16 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (isCompletedSpawn )
+        if (isCompletedSpawn)
         {
             gameOverTime += Time.deltaTime;
 
-            if(gameOverTime >=2.5f)
+            if (gameOverTime >= 2.5f)
             {
                 AudioManager.instance.StopMusic();
                 UI_GameOver.Create();
                 isCompletedSpawn = false;
-            }    
+            }
         }
     }
 
@@ -92,6 +94,7 @@ public class SpawnManager : MonoBehaviour
 
                     if (item != null)
                     {
+                        var pos = L_SpawnPoint[(int)E_SpawnPoint.Low];
                         if (isBuildTestingRandomMonster)
                         {
                             int random = Random.Range(0, currentSet.monster.Length);
@@ -99,19 +102,13 @@ public class SpawnManager : MonoBehaviour
                                    || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
                                    || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
                             {
-
-                                spawnPoint = spawnPoint_1;
+                                pos = L_SpawnPoint[(int)E_SpawnPoint.Hight];
                             }
-                            else
-                                spawnPoint = spawnPoint_3;
-
-
                         }
                         if (i == 3)
-                            spawnPoint = spawnPoint_3;
+                            pos = L_SpawnPoint[(int)E_SpawnPoint.Low];
 
-                        GameObject spawnedObjects = Instantiate(item, spawnPoint.position, item.transform.rotation);
-                        spawnedObjects.transform.SetParent(spawnObjects.transform);
+                        GameObject spawnedObjects = Instantiate(item, L_SpawnPoint[(int)E_SpawnPoint.Hight], item.transform.rotation);
 
                         yield return new WaitForSeconds(itemSpawnDelay);
                     }
@@ -136,11 +133,11 @@ public class SpawnManager : MonoBehaviour
         {
             var level = GameData.Data.LevelDesigin[StageInfo];
             int idx = 0;
-            for(int i =0;i<level.Count;i++)
+            for (int i = 0; i < level.Count; i++)
             {
                 var monsterInfo = GameData.Data.MonsterTable[level[idx].MonsterInfo];
 
-                if (level[idx].MonsterInfo / 1000 ==1 )
+                if (level[idx].MonsterInfo / 1000 == 1)
                 {
                     for (int j = 0; j < level[idx].MonsterSpwanCount; ++j)
                     {
@@ -166,15 +163,15 @@ public class SpawnManager : MonoBehaviour
                         yield return new WaitForSeconds(level[idx].CoolTime);
                     }
                 }
-               
+
                 idx++;
             }
             var bossPosition = Vector3.zero;
             bossPosition.x = -40;
-            
+
             counting++;
             Debug.Log($"몬스터재시작 {counting}");
-            if(counting ==2)
+            if (counting == 2)
             {
                 isCompletedSpawn = true;
                 Debug.Log($"최종 몬스터 수 :{LevelDesignMonsterCount.GetMonsterCount(0)}");
@@ -184,7 +181,7 @@ public class SpawnManager : MonoBehaviour
 
     }
     public int StageInfo = 0;
-    public void MonsterSpawn(C_MonsterTable t, MonsterSpwanPosition spwanPosition,bool CreatBoss = false)
+    public void MonsterSpawn(C_MonsterTable t, MonsterSpwanPosition spwanPosition, bool CreatBoss = false)
     {
         //var t = GameData.Data.MonsterTable[idx];
         string prefab = string.Empty;
@@ -193,29 +190,29 @@ public class SpawnManager : MonoBehaviour
             prefab = monsterOBjects[t.PrefabName].name;
         else if (t.monsterType == Monster_Type.Boss)
             prefab = bossObjects[t.PrefabName].name;
-        
-        if(t.Uniq_MonsterType == UniqMonster.SendBack)
+
+        if (t.Uniq_MonsterType == UniqMonster.SendBack)
         {
-            Monster.Create("Monster", prefab, spwanPoint_2, t.MaxHp, t.Speed, t.Uniq_MonsterType);
+            Monster.Create("Monster", prefab, L_SpawnPoint[(int)E_SpawnPoint.Middle], t.MaxHp, t.Speed, t.Uniq_MonsterType);
             return;
         }
-        var MySpwanPoint = spawnPoint_1;
-        switch(spwanPosition)
+        var MySpwanPoint = L_SpawnPoint[(int)E_SpawnPoint.Hight];
+        switch (spwanPosition)
         {
             case MonsterSpwanPosition.Down:
-                MySpwanPoint = spawnPoint_3;
+                MySpwanPoint = L_SpawnPoint[(int)E_SpawnPoint.Low];
                 break;
             case MonsterSpwanPosition.Random:
                 int random = Random.Range(0, 2);
                 if (random == 1)
-                    MySpwanPoint = spawnPoint_3;
+                    MySpwanPoint = L_SpawnPoint[(int)E_SpawnPoint.Low];
                 break;
         }
-        if(isMonster)
+        if (isMonster)
             Monster.Create("Monster", prefab, MySpwanPoint, t.MaxHp, t.Speed, t.Uniq_MonsterType);
-        else if(!isMonster)
+        else if (!isMonster)
         {
-            Boss.Create(bossSpawnPoint.position);
+            Boss.Create(L_SpawnPoint[(int)E_SpawnPoint.Middle]);
         }
     }
 
@@ -224,19 +221,19 @@ public class SpawnManager : MonoBehaviour
         string prefab = string.Empty;
         prefab = monsterOBjects[t.PrefabName].name;
 
-        var MySpwanPoint = spawnPoint_1;
+        var MySpwanPoint = L_SpawnPoint[(int)E_SpawnPoint.Hight];
         switch (spwanPosition)
         {
             case MonsterSpwanPosition.Down:
-                MySpwanPoint = spawnPoint_3;
+                MySpwanPoint = L_SpawnPoint[(int)E_SpawnPoint.Low];
                 break;
             case MonsterSpwanPosition.Random:
                 int random = Random.Range(0, 2);
                 if (random == 1)
-                    MySpwanPoint = spawnPoint_3;
+                    MySpwanPoint = L_SpawnPoint[(int)E_SpawnPoint.Low];
                 break;
         }
-        LongNote.Create("Monster", prefab, MySpwanPoint,t.Speed);
+        LongNote.Create("Monster", prefab, MySpwanPoint, t.Speed);
     }
 }
 
