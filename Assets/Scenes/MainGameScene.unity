@@ -3068,7 +3068,7 @@ Transform:
   m_GameObject: {fileID: 1274530504}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5254,6 +5254,18 @@ PrefabInstance:
       propertyPath: fillAmount
       value: 
       objectReference: {fileID: 605063367}
+    - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
+      propertyPath: Tr_AttackVector.Array.data[0].x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
+      propertyPath: Tr_AttackVector.Array.data[1].x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634369252569677922, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
+      propertyPath: Tr_AttackVector.Array.data[2].x
+      value: -7
+      objectReference: {fileID: 0}
     - target: {fileID: 4823724451177025718, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -5268,7 +5280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8885203604464587095, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8885203604464587095, guid: ebf406e66866c174fb3254da9cfb93ea, type: 3}
       propertyPath: m_LocalPosition.z
