@@ -68,7 +68,7 @@ public class UI_GameOver : MonoBehaviour
 
     public void Btn_Exit()
     {
-        SecenManager.LoadScene("UIScene");
+        SecenManager.LoadScene("Lobby");
     }
 
     public void Btn_RePlay()

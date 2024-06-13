@@ -19,6 +19,6 @@ public class UI_Pause : MonoBehaviour
     {
         Time.timeScale = 1;
         AudioListener.pause = false;
-        SecenManager.LoadScene("UIScene");
+        SecenManager.LoadScene("Lobby");
     }
 }

@@ -1,3 +1,5 @@
+using Spine.Unity;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +10,11 @@ public class UI_Lobby : MonoBehaviour
     public static bool Type;
     public static PlayerSkinType playerSkinType = PlayerSkinType.Skin0;
 
+    public SkeletonGraphic playerUiGraphic;
+    private List<string> skin_Names = new()
+    {
+        "skin0","skin1","skin2","skin3","skin4","skin5","skin6","skin7"
+    };
     private void Start()
     {
         if (T_Type == null)
@@ -33,6 +40,13 @@ public class UI_Lobby : MonoBehaviour
     public void SetSkin()
     {
         playerSkinType = (PlayerSkinType)skinDropDown.value;
+    }
+    public void ChangePlayerUiGraphics()
+    {
+
+        playerUiGraphic.Skeleton.SetSkin(skin_Names[(int)UI_Lobby.playerSkinType]);
+        playerUiGraphic.Skeleton.SetSlotsToSetupPose();
+        playerUiGraphic.AnimationState.Apply(playerUiGraphic.Skeleton);
     }
 
     public void ExitButton()
