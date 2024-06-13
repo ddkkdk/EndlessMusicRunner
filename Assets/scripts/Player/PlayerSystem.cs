@@ -109,18 +109,19 @@ public class PlayerSystem : Entity
         HoldDelay -= Time.deltaTime;
         if (Input.GetKey(KeyCode.F) && CheckAttackState())
         {
-            SetAttack_Idx(E_AttackPoint.Up, E_AttackPoint.Down);
-            AttackState = SetAttack(1);
+            var idx = SetAttack_Idx(E_AttackPoint.Up, E_AttackPoint.Down);
+            AttackState = SetAttack(idx);
 
             if (HoldDelay <= 0)
             {
                 SetAni(AttackState == E_AttackState.None ? E_AniType.Fly : E_AniType.Fire_Attack);
             }
         }
+
         if (Input.GetKey(KeyCode.J) && CheckAttackState())
         {
-            SetAttack_Idx(E_AttackPoint.Down, E_AttackPoint.Up);
-            AttackState = SetAttack(0);
+            var idx = SetAttack_Idx(E_AttackPoint.Down, E_AttackPoint.Up);
+            AttackState = SetAttack(idx);
 
             if (HoldDelay <= 0)
             {
@@ -153,7 +154,7 @@ public class PlayerSystem : Entity
     }
 
     //공격 상태 변경
-    void SetAttack_Idx(E_AttackPoint nextpoint, E_AttackPoint checkpoint)
+    E_AttackPoint SetAttack_Idx(E_AttackPoint nextpoint, E_AttackPoint checkpoint)
     {
         AttackCount++;
         if (CheckAttackPoin(checkpoint) || AttackDelay <= 0)
@@ -165,9 +166,10 @@ public class PlayerSystem : Entity
         // 검사해야할 조건을추가하여 다음 위치로 가게 만듬 
         if (CheckAttackPoin(E_AttackPoint.Middle))
         {
-            return;
+            return E_AttackPoint.Middle;
         }
         SetDirectMoveIdx(nextpoint);
+        return nextpoint;
     }
 
 
@@ -222,9 +224,9 @@ public class PlayerSystem : Entity
     }
 
     //공격 함수
-    E_AttackState SetAttack(int idx)
+    E_AttackState SetAttack(E_AttackPoint idx)
     {
-        var result_hit = SetHit(idx);
+        var result_hit = SetHit((int)idx);
 
         var col = result_hit.Item1;
         var perfect = result_hit.Item2;
