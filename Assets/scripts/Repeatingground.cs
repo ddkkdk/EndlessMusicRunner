@@ -6,7 +6,7 @@ public class Repeatingground : MonoBehaviour
 {
     [SerializeField] float speed;
     float startPosition;
-    float lastPosition = 250;
+    float lastPosition = -250;
     Vector3 pos;
 
     private void Start()
