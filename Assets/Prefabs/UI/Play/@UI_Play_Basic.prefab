@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8391497326644839256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1860,6 +1860,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e990bc3564c06cf4c9c9e7c77fc915c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Key_Explain: {fileID: 7549932907469600241}
+  combo: {fileID: 3057752624113839}
+  scoreTxt: {fileID: 3759502843663463978}
+  comboTxt: {fileID: 8295100676557159550}
 --- !u!1 &7112212536706347668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,7 +2138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}
   m_sharedMaterial: {fileID: -2765540932396252278, guid: 4ce5ab5dc2586c14786c5fbd044c87df, type: 2}

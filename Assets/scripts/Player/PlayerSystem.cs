@@ -98,7 +98,7 @@ public class PlayerSystem : Entity
     private void Start()
     {
         SetAni(E_AniType.Running);
-        UIManager.Instance.ActivatPanel(true);
+        UI_Play.Instance.ActivatPanel(true);
     }
 
     private void Update()

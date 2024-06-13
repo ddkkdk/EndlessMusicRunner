@@ -66,7 +66,7 @@ public class ScoreManager : MonoBehaviour
         CurrentCombo++;
         //현재 콤보가 5이상일때만 오브젝트 활성화 시키기
         if (CurrentCombo >= 5)
-            UIManager.Instance.ComboScoreUpdater(CurrentCombo);
+            UI_Play.Instance.Set_Combo(CurrentCombo);
 
         //피버타임 체크
         SkillSystem.instance.ActivePassiveSkill(SkillSystem.E_Trigger.Combo);
@@ -83,7 +83,7 @@ public class ScoreManager : MonoBehaviour
     public void SetBestCombo_Reset()
     {
         CurrentCombo = 0;
-        UIManager.Instance.ResetComboScoreUpdater();
+        UI_Play.Instance.Reset_Combo();
     }
 
     //점수 높이기
@@ -91,13 +91,13 @@ public class ScoreManager : MonoBehaviour
     {
         var totalvalue = FerverTimeSystem.SetFeverScore(vlaue);
         CurrentScore += totalvalue;
-        UIManager.Instance.ScoreUpdater(CurrentScore);
+        UI_Play.Instance.SetScore(CurrentScore);
     }
     //스킬 영향 없이 획득
     public void SetCurrentScore(int vlaue, bool noneadd)
     {
         CurrentScore += vlaue;
-        UIManager.Instance.ScoreUpdater(CurrentScore);
+        UI_Play.Instance.SetScore(CurrentScore);
     }
 
     //현재 점수 가져오기
