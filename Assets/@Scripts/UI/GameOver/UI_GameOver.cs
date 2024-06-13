@@ -9,9 +9,10 @@ public class UI_GameOver : MonoBehaviour
     {
         var obj = Resources.Load<GameObject>(Name);
         Instantiate<GameObject>(obj);
-        if(AudioManager.instance)
+        var audio = AudioManager.instance;
+        if (audio != null)
         {
-            
+            audio.Audio_BackGround.PlayOneShot(audio.failGame);
         }
     }
 

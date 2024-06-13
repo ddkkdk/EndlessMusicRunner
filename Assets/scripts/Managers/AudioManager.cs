@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip clap_2;
     public AudioClip ouch_1;
     public AudioClip failGame;
-    [SerializeField] AudioSource Audio_BackGround;
+    [SerializeField] public  AudioSource Audio_BackGround;
     [SerializeField] AudioClip[] BackSound;
 
     void Start()

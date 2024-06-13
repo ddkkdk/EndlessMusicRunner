@@ -2183,6 +2183,7 @@ MonoBehaviour:
   clap_1: {fileID: 8300000, guid: 2d84add459c89fd43927672f1486827b, type: 3}
   clap_2: {fileID: 8300000, guid: 8f45f6d2f3aedc545a567482f23b0f7a, type: 3}
   ouch_1: {fileID: 8300000, guid: f4684ca5a03e3b94684f0d8f69680689, type: 3}
+  failGame: {fileID: 8300000, guid: 8b6bd52672dabdd47b271583bcf17225, type: 3}
   Audio_BackGround: {fileID: 108821246}
   BackSound:
   - {fileID: 8300000, guid: a2abdeff1338aa0419b0d09eaf30b841, type: 3}
@@ -2340,17 +2341,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7436808ca6c023d42bfbc716373e6a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upHitEffect: {fileID: 181478, guid: 13a6fe769bfe41f48be29d1efb86874c, type: 3}
-  hitEffect: {fileID: 181478, guid: 4f7e2db9e95811a4ead0ef5a15d02e2e, type: 3}
-  destroyParticleEffects:
-  - {fileID: 1563634094512642, guid: a11f5f52bd76689408d6bf7a6c2fcdd2, type: 3}
-  - {fileID: 181478, guid: 01f13413141286047b76117d176a0098, type: 3}
-  - {fileID: 1142193931700624, guid: 4e5996f6f077ad44d82d1749f27b436c, type: 3}
-  - {fileID: 1377947171569574, guid: 93ab8c8fa5f009a48ba64c5f4f136fef, type: 3}
-  - {fileID: 1563634094512642, guid: 3c694dde03f10854381d567f80195215, type: 3}
-  - {fileID: 1142193931700624, guid: c5251d511df730c4eb4877ca02b0beca, type: 3}
-  - {fileID: 1142193931700624, guid: f26c13dc7e2f44749ad7ead993a862f0, type: 3}
-  puffEffect: {fileID: 6937266754178720687, guid: be603513333205c4999f4a991dec2546, type: 3}
+  upHitEffect: {fileID: 0}
+  hitEffect: {fileID: 0}
+  destroyParticleEffects: []
+  puffEffect: {fileID: 0}
   ScroeStateList:
   - {fileID: 4197860271363767521, guid: 457c5d2d30a38f2468be6f1d324e304e, type: 3}
   - {fileID: 8220573634043099456, guid: a1ed6f22b3d10c0499a06d458a4021ab, type: 3}

@@ -10,13 +10,14 @@ public class UI_Lobby : MonoBehaviour
     public static bool Type;
     public static PlayerSkinType playerSkinType = PlayerSkinType.Skin0;
 
+
     public SkeletonGraphic playerUiGraphic;
     private List<string> skin_Names = new()
     {
         "skin0","skin1","skin2","skin3","skin4","skin5","skin6","skin7"
     };
     private void Start()
-    {
+    { 
         if (T_Type == null)
             return;
         T_Type.text = Type ? "B" : "A";
@@ -58,6 +59,7 @@ public class UI_Lobby : MonoBehaviour
     {
         SecenManager.LoadScene("MainGameScene");
     }
+
 }
 
 
