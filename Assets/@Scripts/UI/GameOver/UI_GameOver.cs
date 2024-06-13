@@ -9,6 +9,10 @@ public class UI_GameOver : MonoBehaviour
     {
         var obj = Resources.Load<GameObject>(Name);
         Instantiate<GameObject>(obj);
+        if(AudioManager.instance)
+        {
+            
+        }
     }
 
     [SerializeField] TextMeshProUGUI[] T_TextList;
