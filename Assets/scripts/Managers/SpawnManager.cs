@@ -8,11 +8,9 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager instance;
 
-    public List<MonsterItem> monster;
-    public float itemSpawnDelay;
-    public float setSpawnDelay;
-
-
+    bool isCompletedSpawn = false;
+    float gameOverTime = 0f;
+    public int StageInfo = 0; //추후 데이터 어디에서 데이터 받아오는 형태로 만들예정
     public enum E_SpawnPoint
     {
         Low,
@@ -26,7 +24,6 @@ public class SpawnManager : MonoBehaviour
         new Vector3(20, 0, 0),
         new Vector3(20, 3.5f, 0)
     };
-    public GameObject bossPrefab;
 
     public List<GameObject> monsterOBjects = new List<GameObject>();
     public List<GameObject> bossObjects = new List<GameObject>();
@@ -40,7 +37,6 @@ public class SpawnManager : MonoBehaviour
         else
         {
             instance = this;
-
         }
 
     }
@@ -64,72 +60,14 @@ public class SpawnManager : MonoBehaviour
     {
         if (isSpawn)
             StartCoroutine(SpawnMonstersAtRandomPos());
-
     }
-
-
-    public bool isBuildTestingRandomMonster = true;
-    public int CreatBossCounting = 0;
-    public readonly int CreatBossCountingDuration = 2;
-    public bool isCreatBoss = false;
-
-    public bool isTestTableSpawn = false;
-    bool isCompletedSpawn = false;
-    float gameOverTime = 0f;
+   
     IEnumerator SpawnMonstersAtRandomPos()
     {
-
-
-        #region Old MonsterSpwan
-        while (true && !isTestTableSpawn)
-        {
-            for (int setIndex = 0; setIndex < monster.Count; setIndex++)
-            {
-                MonsterItem currentSet = monster[0];
-                for (int i = 0; i < currentSet.monster.Length; i++)
-                {
-                    GameObject item = currentSet.monster[i];
-                    //print(item.name);
-                    int itemNumber = item.GetComponent<MoveLeft>().monsterNumber;
-
-                    if (item != null)
-                    {
-                        var pos = L_SpawnPoint[(int)E_SpawnPoint.Low];
-                        if (isBuildTestingRandomMonster)
-                        {
-                            int random = Random.Range(0, currentSet.monster.Length);
-                            if (random == 0 && itemNumber == 0 || itemNumber == 1 || itemNumber == 2 || itemNumber == 5 || itemNumber == 6
-                                   || itemNumber == 7 || itemNumber == 9 || itemNumber == 10 || itemNumber == 11
-                                   || itemNumber == 12 || itemNumber == 13 || itemNumber == 16)
-                            {
-                                pos = L_SpawnPoint[(int)E_SpawnPoint.Hight];
-                            }
-                        }
-                        if (i == 3)
-                            pos = L_SpawnPoint[(int)E_SpawnPoint.Low];
-
-                        GameObject spawnedObjects = Instantiate(item, L_SpawnPoint[(int)E_SpawnPoint.Hight], item.transform.rotation);
-
-                        yield return new WaitForSeconds(itemSpawnDelay);
-                    }
-                }
-                CreatBossCounting++;
-                if (CreatBossCounting >= CreatBossCountingDuration && !isCreatBoss)
-                {
-                    isCreatBoss = true;
-                    var obj = Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
-
-                }
-                yield return new WaitForSeconds(setSpawnDelay);
-            }
-
-            print("생성 완료");
-        }
-        #endregion
-        Debug.Log("몬스터 시작");
+        //몬스터 오브젝트풀링으로 추후 변경예정
         int counting = 0;
         bool isNewCreatBoss = false; // 보스생성했는가에 대한 변수
-        while (true && isTestTableSpawn)
+        while (true)
         {
             var level = GameData.Data.LevelDesigin[StageInfo];
             int idx = 0;
@@ -163,27 +101,24 @@ public class SpawnManager : MonoBehaviour
                         yield return new WaitForSeconds(level[idx].CoolTime);
                     }
                 }
-
                 idx++;
             }
+            //보스 포지션은 테스트후 재설정 할예정
             var bossPosition = Vector3.zero;
             bossPosition.x = -40;
 
             counting++;
-            Debug.Log($"몬스터재시작 {counting}");
             if (counting == 2)
             {
                 isCompletedSpawn = true;
-                Debug.Log($"최종 몬스터 수 :{LevelDesignMonsterCount.GetMonsterCount(0)}");
                 yield break;
             }
         }
 
     }
-    public int StageInfo = 0;
+    
     public void MonsterSpawn(C_MonsterTable t, MonsterSpwanPosition spwanPosition, bool CreatBoss = false)
     {
-        //var t = GameData.Data.MonsterTable[idx];
         string prefab = string.Empty;
         bool isMonster = t.monsterType == Monster_Type.Normal;
         if (t.monsterType == Monster_Type.Normal)
