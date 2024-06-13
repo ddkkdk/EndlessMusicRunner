@@ -79,7 +79,7 @@ public class LongNote : MonoBehaviour
         }
 
         var player = GameManager.instance.player;
-        if (player.GetAttackState(PlayerSystem.E_AttackState.Hold))
+        if (player.GetAttackState(E_AttackState.Hold))
         {
             //딜레이 시간
             if (GetScoreTime + 0.1f <= Time.time)
