@@ -1,16 +1,23 @@
 using DG.Tweening;
 using Spine.Unity;
 using System.Collections;
+using System.Collections.Generic;
+using System.Net;
+using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UIElements;
 
 public class HitCollisionDetection : MonoBehaviour
 {
     public static HitCollisionDetection Instance;
-    public GameObject upHitEffect;
-    public GameObject hitEffect;
-    public GameObject[] destroyParticleEffects;
-    public GameObject puffEffect;
+    const string PlayerUpEffectName = "Up_Effect";
+    const string PlayerDownEffectName = "Down_Effect";
     public GameObject[] ScroeStateList;
+
+    private List<string> ScoreStateListName = new List<string>()
+    {"Perfect_Effect","Great_Effect","Great_Effect","Great_Effect","Opps_Effect"};
 
     [Range(0.2f, 10f)]
     public float fadeDuration = 2.0f;
@@ -42,7 +49,7 @@ public class HitCollisionDetection : MonoBehaviour
         SetEffect(obj, perfect);
     }
 
-    void SetEffect(GameObject obj, ScoreManager.E_ScoreState perfect)
+    async void SetEffect(GameObject obj, ScoreManager.E_ScoreState perfect)
     {
         AudioManager.instance.PlaySound();
         //Perfect / Great�϶��� ���� �ְ� ���� 
@@ -65,24 +72,36 @@ public class HitCollisionDetection : MonoBehaviour
 
         var hitPoint = obj.transform.position;
         // ��� ����Ʈ �ϴ�����Ʈ ����
+
         if (hitPoint.y > 0)
         {
-            GameObject hitObject = Instantiate(upHitEffect, hitPoint, Quaternion.identity);
+            MakeEffectParticle(PlayerUpEffectName, hitPoint, Quaternion.identity);
         }
         else
         {
-            GameObject hitObject = Instantiate(hitEffect, hitPoint, Quaternion.identity);
+            MakeEffectParticle(PlayerDownEffectName, hitPoint, Quaternion.identity);
         }
-        
-        
-        var txteffects = ScroeStateList[(int)perfect];
+
+
+        //var txteffects = ScroeStateList[(int)perfect];
         //����Ʈ ��ġ���� �ڵ�� ���� 
-        CreatEffect(obj, hitPoint, txteffects, effectUpPositionY);
+        var txteffects = Addressables.InstantiateAsync(ScoreStateListName[(int)perfect]);
 
-        if (!obj.name.Contains("Boss"))
-            HIttingEffects(obj, hitPoint);
+        txteffects.Completed += (AsyncOperationHandle<GameObject> objects) =>
+        {
+            if (objects.Status == AsyncOperationStatus.Succeeded)
+            {
+                GameObject txteffects = objects.Result;
 
-        //MoveUPword(txtobject, hitPoint);
+                CreatEffect(obj, hitPoint, txteffects, effectUpPositionY);
+            }
+            else
+            {
+                Debug.Log("Addressable 객체 생성 실패");
+            }
+        };
+
+        //CreatEffect(obj, hitPoint, txteffects, effectUpPositionY);
     }
 
     public void SetHit(GameObject obj, ScoreManager.E_ScoreState state)
@@ -105,54 +124,6 @@ public class HitCollisionDetection : MonoBehaviour
         perfectTxtEffect.transform.DOMoveY(hitPoint.y + 2, 0.1f);
 
     }
-
-    public void HIttingEffects(GameObject other, Vector2 hitPoint)
-    {
-        int mNumber = other.GetComponent<MoveLeft>().monsterNumber;
-
-        if (mNumber == 0)
-        {
-            GameObject destroyEffects = Instantiate(destroyParticleEffects[0], hitPoint, Quaternion.identity);
-            Destroy(destroyEffects, 0.5f);
-
-        }
-        else if (mNumber == 1)
-        {
-            GameObject destroyEffects = Instantiate(destroyParticleEffects[1], hitPoint, Quaternion.identity);
-            Destroy(destroyEffects, 0.5f);
-
-        }
-        else if (mNumber == 2)
-        {
-            GameObject destroyEffects = Instantiate(destroyParticleEffects[2], hitPoint, Quaternion.identity);
-            Destroy(destroyEffects, 0.5f);
-        }
-        else if (mNumber == 3)
-        {
-            GameObject destroyEffects = Instantiate(destroyParticleEffects[3], hitPoint, Quaternion.identity);
-            Destroy(destroyEffects, 0.5f);
-        }
-        else if (mNumber == 4)
-        {
-            GameObject destroyEffects = Instantiate(destroyParticleEffects[4], hitPoint, Quaternion.identity);
-            Destroy(destroyEffects, 0.5f);
-
-        }
-        else if (mNumber == 5)
-        {
-            GameObject destroyEffects = Instantiate(destroyParticleEffects[5], hitPoint, Quaternion.identity);
-            Destroy(destroyEffects, 0.5f);
-
-        }
-        else if (mNumber == 6)
-        {
-            GameObject destroyEffects = Instantiate(destroyParticleEffects[6], hitPoint, Quaternion.identity);
-            Destroy(destroyEffects, 0.5f);
-        }
-
-
-    }
-
     public IEnumerator OpacityChange(GameObject obj)
     {
         var color = obj.GetComponent<SpriteRenderer>();
@@ -186,7 +157,7 @@ public class HitCollisionDetection : MonoBehaviour
         }
     }
 
-    private void CreatEffect(GameObject monster,Vector3 hitPoint,GameObject txteffects  ,float effectUpPositionY )
+    private void CreatEffect(GameObject monster, Vector3 hitPoint, GameObject txteffects, float effectUpPositionY)
     {
         var monsterType = monster.GetComponent<MoveLeft>().uniqMonster;
         var effectPosition = Vector3.zero;
@@ -208,7 +179,11 @@ public class HitCollisionDetection : MonoBehaviour
         GameObject txtobject = Instantiate(txteffects, effectPosition, Quaternion.identity);
         StartCoroutine(OpacityChange(txtobject));
 
-
         MoveUPword(txtobject, effectPosition);
+    }
+
+    private void MakeEffectParticle(string name, Vector3 pos, Quaternion quaternion)
+    {
+        Addressables.InstantiateAsync(name, pos, quaternion);
     }
 }
