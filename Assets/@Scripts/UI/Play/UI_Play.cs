@@ -7,14 +7,14 @@ public class UI_Play : MonoBehaviour
     public static UI_Play Instance;
 
     [Header("키 설명")]
-    public GameObject instructionPanel;
+    public GameObject Key_Explain;
 
     [Header("콤보 오브젝트")]
-    public GameObject combo;
+    [SerializeField] GameObject combo;
 
     [Header("콤보 및 스코어 텍스트")]
-    public TextMeshProUGUI scoreTxt;
-    public TextMeshProUGUI comboTxt;
+    [SerializeField] TextMeshProUGUI scoreTxt;
+    [SerializeField] TextMeshProUGUI comboTxt;
 
     float DelayTime = 7;
 
@@ -26,14 +26,14 @@ public class UI_Play : MonoBehaviour
     public void ActivatPanel(bool activate)
     {
         ScoreManager.instance.ScoreReset();
-        instructionPanel.SetActive(activate);
+        Key_Explain.SetActive(activate);
         StartCoroutine(DeactivatePanel());
     }
 
     IEnumerator DeactivatePanel()
     {
         yield return new WaitForSeconds(DelayTime);
-        instructionPanel.SetActive(false);
+        Key_Explain.SetActive(false);
         SpawnManager.instance.StartSpawningObjects(true);
     }
 

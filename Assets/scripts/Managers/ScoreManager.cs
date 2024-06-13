@@ -83,7 +83,7 @@ public class ScoreManager : MonoBehaviour
     public void SetBestCombo_Reset()
     {
         CurrentCombo = 0;
-        UI_Play.Instance.ResetComboScoreUpdater();
+        UI_Play.Instance.Reset_Combo();
     }
 
     //점수 높이기
