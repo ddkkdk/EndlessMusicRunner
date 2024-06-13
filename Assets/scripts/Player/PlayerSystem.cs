@@ -33,12 +33,13 @@ public class PlayerSystem : Entity
         Attack_Re//다시 공격 가능 상태
     }
 
+    //enum 순서를 Middle , UP으로 변경 
     public enum E_AttackPoint
     {
         None = -1,
         Down,
+        Middle,
         Up,
-        Middle
     }
 
     [SerializeField] SkeletonAnimation M_SkeletonAnimation;
@@ -161,7 +162,8 @@ public class PlayerSystem : Entity
         }
         AttackDelay = 2;
         DownDelay = 1;
-        if (CheckAttackPoin(E_AttackPoint.Middle))
+        // 검사해야할 조건을추가하여 다음 위치로 가게 만듬 
+        if (CheckAttackPoin(E_AttackPoint.Middle) || CheckAttackPoin(checkpoint))
         {
             SetDirectMoveIdx(nextpoint);
         }
