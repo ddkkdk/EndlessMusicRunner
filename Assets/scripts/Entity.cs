@@ -75,7 +75,7 @@ public class Entity : MonoBehaviour
         ScoreManager.instance.SetBestCombo_Reset();
 
         //공격 사운드 및 애니메이션 처리
-        PlayerSystem.SetPlayerAni(PlayerSystem.E_AniType.Hit);
+        PlayerSystem.SetPlayerAni(E_AniType.Hit);
         AudioManager.instance.PlayerHItSound();
 
         //사망처리
