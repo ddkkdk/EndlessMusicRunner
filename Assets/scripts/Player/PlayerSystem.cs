@@ -14,34 +14,6 @@ public class PlayerSystem : Entity
     //움직임 속도
     const float MiddleMoveSpeed = 100;
 
-    public enum E_AniType
-    {
-        Running,
-        Fly,
-        Kick,
-        Tail_Attack,
-        Fire_Attack,
-        Hold_Attack,
-        Hit,
-    }
-
-    public enum E_AttackState
-    {
-        None,
-        Attack,
-        Hold,
-        Attack_Re//다시 공격 가능 상태
-    }
-
-    //enum 순서를 Middle , UP으로 변경 
-    public enum E_AttackPoint
-    {
-        None = -1,
-        Down,
-        Middle,
-        Up,
-    }
-
     [SerializeField] SkeletonAnimation M_SkeletonAnimation;
 
     //피격박스 사이즈
@@ -78,6 +50,8 @@ public class PlayerSystem : Entity
 
     //현재 공격 위치
     [SerializeField] E_AttackPoint AttackPoint = E_AttackPoint.Down;
+    //현재 공격 위치
+    [SerializeField] E_AttackPoint MovePoint = E_AttackPoint.Down;
 
     //공격 카운트 수정
     float AttackDelay = 2f;
@@ -86,7 +60,7 @@ public class PlayerSystem : Entity
     int AttackCount = 0;
 
     //내려가기 딜레이
-    float DownDelay = 1f;
+    float DownDelay = 0.5f;
 
     //홀딩 딜레이
     float HoldDelay = 0.2f;
@@ -110,8 +84,8 @@ public class PlayerSystem : Entity
         if (Input.GetKey(KeyCode.F) && CheckAttackState())
         {
             var idx = SetAttack_Idx(E_AttackPoint.Up, E_AttackPoint.Down);
-            AttackState = SetAttack(idx);
-
+            AttackState = SetAttack(idx.Item1);
+            MovePoint = idx.Item2;
             if (HoldDelay <= 0)
             {
                 SetAni(AttackState == E_AttackState.None ? E_AniType.Fly : E_AniType.Fire_Attack);
@@ -121,8 +95,8 @@ public class PlayerSystem : Entity
         if (Input.GetKey(KeyCode.J) && CheckAttackState())
         {
             var idx = SetAttack_Idx(E_AttackPoint.Down, E_AttackPoint.Up);
-            AttackState = SetAttack(idx);
-
+            AttackState = SetAttack(idx.Item1);
+            MovePoint = idx.Item2;
             if (HoldDelay <= 0)
             {
                 var type = AttackCount > 1 ? E_AniType.Tail_Attack : E_AniType.Kick;
@@ -154,7 +128,7 @@ public class PlayerSystem : Entity
     }
 
     //공격 상태 변경
-    E_AttackPoint SetAttack_Idx(E_AttackPoint nextpoint, E_AttackPoint checkpoint)
+    (E_AttackPoint, E_AttackPoint) SetAttack_Idx(E_AttackPoint nextpoint, E_AttackPoint checkpoint)
     {
         AttackCount++;
         if (CheckAttackPoin(checkpoint) || AttackDelay <= 0)
@@ -166,10 +140,10 @@ public class PlayerSystem : Entity
         // 검사해야할 조건을추가하여 다음 위치로 가게 만듬 
         if (CheckAttackPoin(E_AttackPoint.Middle))
         {
-            return E_AttackPoint.Middle;
+            return (nextpoint, E_AttackPoint.Middle);
         }
         SetDirectMoveIdx(nextpoint);
-        return nextpoint;
+        return (nextpoint, nextpoint);
     }
 
 
@@ -203,7 +177,7 @@ public class PlayerSystem : Entity
         }
 
         // 목표 위치 가져오기
-        var targetPos = Tr_AttackVector[(int)AttackPoint];
+        var targetPos = Tr_AttackVector[(int)MovePoint];
         var targetY = targetPos.y;
         var targetZ = targetPos.z;
 
@@ -224,9 +198,9 @@ public class PlayerSystem : Entity
     }
 
     //공격 함수
-    E_AttackState SetAttack(E_AttackPoint idx)
+    E_AttackState SetAttack(E_AttackPoint attackidx)
     {
-        var result_hit = SetHit((int)idx);
+        var result_hit = SetHit((int)attackidx);
 
         var col = result_hit.Item1;
         var perfect = result_hit.Item2;
