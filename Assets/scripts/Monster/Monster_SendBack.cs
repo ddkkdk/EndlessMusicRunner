@@ -43,6 +43,8 @@ public class Monster_SendBack : MonoBehaviour
         return;
     }
 
+
+    //줌인 단계
     void SetZoomIn()
     {
         EndTimes = true;
@@ -51,6 +53,7 @@ public class Monster_SendBack : MonoBehaviour
         CameraSystem.cameraSystem.SetZoomIn();
     }
 
+    //줌아웃 단계
     void SetZoomOut()
     {
         CameraSystem.cameraSystem.ReSetZoom();
