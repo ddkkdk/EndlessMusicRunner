@@ -34,6 +34,16 @@ public class UI_Lobby : MonoBehaviour
     {
         playerSkinType = (PlayerSkinType)skinDropDown.value;
     }
+
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
+
+    public void Btn_Play()
+    {
+        SecenManager.LoadScene("MainGameScene");
+    }
 }
 
 
