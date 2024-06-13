@@ -11,11 +11,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject instructionPanel;
 
-    public TextMeshProUGUI scoreTxt_1;
-    public TextMeshProUGUI scoreTxt_2;
+    public TextMeshProUGUI scoreTxt;
     public GameObject combo;
-    public TextMeshProUGUI comboTxt_1;
-    public TextMeshProUGUI comboTxt_2;
+    public TextMeshProUGUI comboTxt;
     public GameObject UpperPanel;
     public GameObject lowerPanel;
     public float instructionPanelActivationTime;
@@ -41,14 +39,12 @@ public class UIManager : MonoBehaviour
     }
     public void UpperPanelActive(bool activate)
     {
-        UpperPanel.gameObject.SetActive(true);
+        //UpperPanel.gameObject.SetActive(true);
         LowerPanelActivate(true);
-
-
     }
     public void LowerPanelActivate(bool activate)
     {
-        lowerPanel.gameObject.SetActive(true);
+        //lowerPanel.gameObject.SetActive(true);
     }
     IEnumerator DeactivatePanel()
     {
@@ -60,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     public void ScoreUpdater(int score)
     {
-        scoreTxt_2.text = score.ToString();
+        scoreTxt.text = score.ToString();
     }
 
     public void ResetComboScoreUpdater()
@@ -70,8 +66,7 @@ public class UIManager : MonoBehaviour
 
     public void ComboScoreUpdater(int score)
     {
-        comboTxt_1.text = score.ToString();
-        comboTxt_2.text = score.ToString();
+        comboTxt.text = score.ToString();
         combo.gameObject.SetActive(true);
     }
 }

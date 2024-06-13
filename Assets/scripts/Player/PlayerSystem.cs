@@ -61,7 +61,7 @@ public class PlayerSystem : Entity
     };
 
     //공격 상태
-    E_AttackState AttackState = E_AttackState.None;
+    [SerializeField] E_AttackState AttackState = E_AttackState.None;
 
     //애니메이션 리스트
     List<string> L_AniStr = new List<string>()

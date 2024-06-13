@@ -15,14 +15,16 @@ public class SpawnManager : MonoBehaviour
     {
         Low,
         Middle,
-        Hight
+        Hight,
+        BossPoint,
     }
 
-    List<Vector3> L_SpawnPoint = new List<Vector3>()
+   List<Vector3> L_SpawnPoint = new List<Vector3>()
     {
         new Vector3(20, -3.5f, 0),
         new Vector3(20, 0, 0),
-        new Vector3(20, 3.5f, 0)
+        new Vector3(20, 3.5f, 0),
+       new Vector3(12, -2.5f, 0),
     };
 
     public List<GameObject> monsterOBjects = new List<GameObject>();
@@ -147,7 +149,7 @@ public class SpawnManager : MonoBehaviour
             Monster.Create("Monster", prefab, MySpwanPoint, t.MaxHp, t.Speed, t.Uniq_MonsterType);
         else if (!isMonster)
         {
-            Boss.Create(L_SpawnPoint[(int)E_SpawnPoint.Middle]);
+            Boss.Create(L_SpawnPoint[(int)E_SpawnPoint.BossPoint]);
         }
     }
 

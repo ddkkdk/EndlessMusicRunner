@@ -834,6 +834,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &208279703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8295100676557159550, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
+  m_PrefabInstance: {fileID: 2277379502515520649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &209027955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,45 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d89e2ad830cd3b4bbc7ff3fde4b65c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster:
-  - monster: []
-  - monster:
-    - {fileID: 5629541656628589791, guid: 02d7063ba6de34047a99b6b8b7c4e934, type: 3}
-  - monster:
-    - {fileID: 5151318159573600705, guid: b3c96dccf4d271449bff9d55fab4a903, type: 3}
-  - monster:
-    - {fileID: 1450675091563296711, guid: 052c6b7c7af29e44c9809e5269231bd9, type: 3}
-  - monster:
-    - {fileID: 3909550831714088322, guid: b7a19ede863c3b2468abaae2938cf17d, type: 3}
-  - monster:
-    - {fileID: 2819491545882889420, guid: 2e4ac1c67731fda44810669ec7c3ac1a, type: 3}
-  - monster:
-    - {fileID: 158793283704363192, guid: 0fca1f5f332f5944e8816ff6c76cd448, type: 3}
-  - monster:
-    - {fileID: 4017503350375869807, guid: 629fcae51ee2b3347b2a68971eec23b6, type: 3}
-  - monster:
-    - {fileID: 24179194683735109, guid: 2d4e438a961c7c2418a9eb309e2c94d7, type: 3}
-  - monster:
-    - {fileID: 5388534414444513884, guid: 69717752b388bf24d8065e9429ccfdcf, type: 3}
-  - monster:
-    - {fileID: 5807613031276573903, guid: 1c5ebf5ef15ed784592e5104f463b8ae, type: 3}
-  - monster:
-    - {fileID: 1679112057939430794, guid: c980e77ed95b70749a83c231682b5cd5, type: 3}
-  - monster:
-    - {fileID: 2376462067880542252, guid: 42ade969904056a43b5e0e94b1d4963e, type: 3}
-  - monster:
-    - {fileID: 8655841565898487343, guid: 7ada345965a193c4d9233900fd0fa7ba, type: 3}
-  - monster:
-    - {fileID: 2027002376000927764, guid: 37a0495d3ad7e244f96b67c01c410aad, type: 3}
-  - monster:
-    - {fileID: 8755797267905834417, guid: c6a094e62acc8374c882212de40ab6a8, type: 3}
-  - monster:
-    - {fileID: 5156434469478692734, guid: 4f284eb3ac29a2649b230369f4177e3a, type: 3}
-  - monster:
-    - {fileID: 5927427790796394008, guid: 25fa8bc59d16fb3479cc86d751515cc7, type: 3}
-  itemSpawnDelay: 0.5
-  setSpawnDelay: 1.5
-  bossPrefab: {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
+  StageInfo: 0
   monsterOBjects:
   - {fileID: 1768767069754803484, guid: aadad9fd2c648c648984fa1ae2bdca51, type: 3}
   - {fileID: 5629541656628589791, guid: c457964665b6f994496a2e5b317fa8e3, type: 3}
@@ -1110,11 +1083,6 @@ MonoBehaviour:
   - {fileID: 8821321151596255113, guid: 0eadad63813328445b1dab927b7c1d6a, type: 3}
   bossObjects:
   - {fileID: 5927427790796394008, guid: 053161a8487a77c48952b9c3ef9e4f63, type: 3}
-  isBuildTestingRandomMonster: 1
-  CreatBossCounting: 0
-  isCreatBoss: 1
-  isTestTableSpawn: 1
-  StageInfo: 0
 --- !u!4 &342117586
 Transform:
   m_ObjectHideFlags: 0
@@ -2402,8 +2370,8 @@ MonoBehaviour:
   - {fileID: 6630400188505773858, guid: dd80aa9b27baa334ea57eb66d90b8392, type: 3}
   fadeDuration: 0.75
   HitAnimation: 
-  downHitPoint: {fileID: 0}
-  upHitPoint: {fileID: 0}
+  downHitPoint: {fileID: 304495756}
+  upHitPoint: {fileID: 1369864925}
   effectUpPositionY: 1
 --- !u!114 &827244273
 MonoBehaviour:
@@ -4451,6 +4419,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1675962208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3759502843663463978, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
+  m_PrefabInstance: {fileID: 2277379502515520649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1694601120
 GameObject:
   m_ObjectHideFlags: 0
@@ -5090,11 +5069,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionPanel: {fileID: 878702052}
-  scoreTxt_1: {fileID: 0}
-  scoreTxt_2: {fileID: 0}
+  scoreTxt: {fileID: 1675962208}
   combo: {fileID: 1744640698}
-  comboTxt_1: {fileID: 0}
-  comboTxt_2: {fileID: 0}
+  comboTxt: {fileID: 208279703}
   UpperPanel: {fileID: 0}
   lowerPanel: {fileID: 0}
   instructionPanelActivationTime: 7
@@ -5299,6 +5276,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057752624113839, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2642176565748934900, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759502843663463978, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4882579418262911265, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5342,6 +5331,18 @@ PrefabInstance:
     - target: {fileID: 6957311660622393265, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
       propertyPath: m_Name
       value: '@UI_Play'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333271121942471777, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549932907469600241, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107276350651311775, guid: d97a277ca46f5f64880e74e60037fede, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
