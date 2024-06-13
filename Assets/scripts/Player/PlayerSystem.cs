@@ -165,8 +165,9 @@ public class PlayerSystem : Entity
         // 검사해야할 조건을추가하여 다음 위치로 가게 만듬 
         if (CheckAttackPoin(E_AttackPoint.Middle) || CheckAttackPoin(checkpoint))
         {
-            SetDirectMoveIdx(nextpoint);
+            return;
         }
+        SetDirectMoveIdx(nextpoint);
     }
 
 
