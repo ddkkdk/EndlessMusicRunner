@@ -2323,7 +2323,7 @@ MonoBehaviour:
   speaker_2: {fileID: 753292737}
   player: {fileID: 1608568235}
   bossWaitPosition: {fileID: 0}
-  lowerAttackPoint: {fileID: 0}
+  lowerAttackPoint: {fileID: 304495756}
 --- !u!4 &827244270
 Transform:
   m_ObjectHideFlags: 0

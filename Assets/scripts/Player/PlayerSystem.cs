@@ -53,7 +53,7 @@ public class PlayerSystem : Entity
     };
 
     //위치
-    List<Vector3> Tr_AttackVector = new List<Vector3>()
+    public List<Vector3> Tr_AttackVector = new List<Vector3>()
     {
         new Vector3(-5, -3.5f, 0),
         new Vector3(-5, 0, 0),
@@ -61,7 +61,7 @@ public class PlayerSystem : Entity
     };
 
     //공격 상태
-    [SerializeField] E_AttackState AttackState = E_AttackState.None;
+    E_AttackState AttackState = E_AttackState.None;
 
     //애니메이션 리스트
     List<string> L_AniStr = new List<string>()
@@ -76,7 +76,7 @@ public class PlayerSystem : Entity
     };
 
     //현재 공격 위치
-    E_AttackPoint AttackPoint = E_AttackPoint.Down;
+    [SerializeField] E_AttackPoint AttackPoint = E_AttackPoint.Down;
 
     //공격 카운트 수정
     float AttackDelay = 2f;
