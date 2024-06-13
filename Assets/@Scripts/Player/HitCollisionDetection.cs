@@ -18,7 +18,6 @@ public class HitCollisionDetection : MonoBehaviour
     [SpineAnimation]
     public string HitAnimation;
 
-    //����Ʈ ������ġ
     public Transform downHitPoint;
     public Transform upHitPoint;
     public float effectUpPositionY;

@@ -9,8 +9,7 @@ public class MoveLeft : MonoBehaviour
     [SerializeField] float DestoryX;
 
     public UniqMonster uniqMonster;
-
-    bool EndTimes;
+    
     void Update()
     {
         // 오브젝트를 왼쪽으로 이동
