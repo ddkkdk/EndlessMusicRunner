@@ -604,14 +604,18 @@ PrefabInstance:
     - target: {fileID: 7310346940799525424, guid: ed5b253ae97123140b94ca732eaceb00, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 162969931}
     - target: {fileID: 7310346940799525424, guid: ed5b253ae97123140b94ca732eaceb00, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetSkin
       objectReference: {fileID: 0}
     - target: {fileID: 7310346940799525424, guid: ed5b253ae97123140b94ca732eaceb00, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetPlayerSkin
+      value: ChangePlayerUiGraphics
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310346940799525424, guid: ed5b253ae97123140b94ca732eaceb00, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UI_Lobby, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8866807496587129065, guid: ed5b253ae97123140b94ca732eaceb00, type: 3}
       propertyPath: playerUiGraphic
