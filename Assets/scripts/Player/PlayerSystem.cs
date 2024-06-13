@@ -163,7 +163,7 @@ public class PlayerSystem : Entity
         AttackDelay = 2;
         DownDelay = 1;
         // 검사해야할 조건을추가하여 다음 위치로 가게 만듬 
-        if (CheckAttackPoin(E_AttackPoint.Middle) || CheckAttackPoin(checkpoint))
+        if (CheckAttackPoin(E_AttackPoint.Middle))
         {
             return;
         }
